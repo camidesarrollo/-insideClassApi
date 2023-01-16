@@ -10,7 +10,7 @@ public class apoderadoEntity {
     Integer apoderado_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "alumno_persona_rut", nullable = false)
+    @JoinColumn(name = "apoderado_persona_rut", nullable = false)
     personaEntity personaEntity;
 
 

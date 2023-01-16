@@ -1,8 +1,6 @@
 package com.springboot.insideClass.entity;
 
-
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -36,7 +34,9 @@ public class usuarioEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "usuario_perfil_id", nullable = false)
     perfilEntity perfilEntity;
-    
+
+
+
     public usuarioEntity() {
     }
 

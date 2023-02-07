@@ -610,7 +610,7 @@ INSERT INTO [dbo].[t_curso]
 
 
 INSERT INTO [dbo].[t_persona]
-           ([persona_rut]
+           ([persona_run]
            ,[persona_apellido_materno]
            ,[persona_apellido_paterno]
            ,[persona_fecha_nacimiento]
@@ -1623,7 +1623,7 @@ INSERT INTO [dbo].[t_persona]
 
 
 INSERT INTO [dbo].[t_rep_legal]
-           ([rep_legal_persona_rut])
+           ([rep_legal_persona_run])
      VALUES
 ( '10007672-1 '),
 ( '10020197-6 '),
@@ -1816,7 +1816,7 @@ INSERT INTO [dbo].[t_asignatura]
 	('Tecnología');
 
 INSERT INTO [dbo].[t_docente]
-           ([docente_persona_rut])
+           ([docente_persona_run])
      VALUES
 ('10253981-8'),
 ('10258276-4'),
@@ -4088,7 +4088,7 @@ INSERT INTO [dbo].[t_utp]
 		(22,'14661529-5');
 
 INSERT INTO [dbo].[t_persona]
-           ([persona_rut]
+           ([persona_run]
            ,[persona_apellido_materno]
            ,[persona_apellido_paterno]
            ,[persona_fecha_nacimiento]
@@ -4331,7 +4331,7 @@ INSERT INTO [dbo].[t_persona]
 ('9991768-7','Saavedra','Carrasco','2012-2-1','OLGA','+56963719937','(2) 283762745','F');
 
 INSERT INTO [dbo].[t_alumno]
-           ([alumno_persona_rut])
+           ([alumno_persona_run])
      VALUES
 ('10108517-1'),
 ('10161263-5'),
@@ -4567,7 +4567,7 @@ INSERT INTO [dbo].[t_alumno]
 ('9991768-7');
 
 INSERT INTO [dbo].[t_apoderado]
-           ([apoderado_persona_rut])
+           ([apoderado_persona_run])
      VALUES
 ('13263940-k '),
 ('13269124-k '),
@@ -5270,236 +5270,1448 @@ INSERT INTO [dbo].[t_matricula]
            ,[matricula_apoderado_id]
            ,[matricula_curso_establ_id])
      VALUES
-(2022,2,374,116),
-(2022,6,156,20),
-(2022,25,223,123),
-(2022,51,569,167),
-(2022,83,595,56),
-(2022,120,384,179),
-(2022,136,556,48),
-(2022,152,516,196),
-(2022,158,132,43),
-(2022,179,373,149),
-(2022,185,6,116),
-(2022,186,241,173),
-(2022,62,263,128),
-(2022,90,591,46),
-(2022,91,33,187),
-(2022,94,307,53),
-(2022,105,266,87),
-(2022,108,180,76),
-(2022,139,624,166),
-(2022,147,49,151),
-(2022,172,103,177),
-(2022,177,495,194),
-(2022,182,364,31),
-(2022,197,222,137),
-(2022,200,227,20),
-(2022,202,6,182),
-(2022,204,370,136),
-(2022,229,617,174),
-(2022,5,239,3),
-(2022,11,209,77),
-(2022,18,667,100),
-(2022,19,528,27),
-(2022,33,688,104),
-(2022,42,331,87),
-(2022,64,274,198),
-(2022,72,90,158),
-(2022,73,50,173),
-(2022,86,549,146),
-(2022,102,430,37),
-(2022,130,95,151),
-(2022,138,282,7),
-(2022,160,86,110),
-(2022,164,614,176),
-(2022,166,171,167),
-(2022,174,650,179),
-(2022,192,322,19),
-(2022,195,547,150),
-(2022,218,174,41),
-(2022,230,257,190),
-(2022,60,344,145),
-(2022,75,440,192),
-(2022,85,155,190),
-(2022,88,468,82),
-(2022,103,47,43),
-(2022,146,95,23),
-(2022,148,56,10),
-(2022,159,497,149),
-(2022,170,247,142),
-(2022,201,330,115),
-(2022,203,536,111),
-(2022,219,217,157),
-(2022,38,336,3),
-(2022,71,393,105),
-(2022,77,313,68),
-(2022,106,369,177),
-(2022,168,126,45),
-(2022,184,689,109),
-(2022,226,121,159),
-(2022,9,684,11),
-(2022,23,387,65),
-(2022,31,286,109),
-(2022,43,129,160),
-(2022,53,283,182),
-(2022,59,313,139),
-(2022,66,554,166),
-(2022,95,662,23),
-(2022,111,99,191),
-(2022,144,387,34),
-(2022,151,480,63),
-(2022,154,242,173),
-(2022,180,243,106),
-(2022,187,235,102),
-(2022,194,76,164),
-(2022,207,462,113),
-(2022,215,245,110),
-(2022,10,508,1),
-(2022,21,79,72),
-(2022,22,507,96),
-(2022,28,243,12),
-(2022,39,662,166),
-(2022,40,298,123),
-(2022,61,318,60),
-(2022,67,477,70),
-(2022,68,206,10),
-(2022,70,241,186),
-(2022,129,638,137),
-(2022,137,653,102),
-(2022,140,62,157),
-(2022,165,275,7),
-(2022,178,392,26),
-(2022,189,588,88),
-(2022,198,295,93),
-(2022,208,552,72),
-(2022,212,618,24),
-(2022,221,456,189),
-(2022,227,222,37),
-(2022,232,186,22),
-(2022,44,606,170),
-(2022,48,341,15),
-(2022,55,369,145),
-(2022,112,118,68),
-(2022,133,126,50),
-(2022,163,190,154),
-(2022,171,76,112),
-(2022,206,516,55),
-(2022,209,666,34),
-(2022,210,178,21),
-(2022,217,95,118),
-(2022,231,262,19),
-(2022,13,624,185),
-(2022,17,437,191),
-(2022,20,402,53),
-(2022,26,44,29),
-(2022,32,684,69),
-(2022,41,597,161),
-(2022,54,169,138),
-(2022,57,323,145),
-(2022,76,101,129),
-(2022,87,668,21),
-(2022,100,437,130),
-(2022,116,192,80),
-(2022,118,567,94),
-(2022,119,397,168),
-(2022,155,22,196),
-(2022,196,564,120),
-(2022,205,141,15),
-(2022,216,82,21),
-(2022,222,6,167),
-(2022,24,78,91),
-(2022,37,517,184),
-(2022,46,34,65),
-(2022,65,503,54),
-(2022,78,388,50),
-(2022,82,252,76),
-(2022,92,476,148),
-(2022,115,474,32),
-(2022,126,689,17),
-(2022,141,370,89),
-(2022,161,407,118),
-(2022,162,392,138),
-(2022,175,396,86),
-(2022,176,588,1),
-(2022,183,155,159),
-(2022,213,48,35),
-(2022,214,140,130),
-(2022,220,201,74),
-(2022,228,529,89),
-(2022,3,470,21),
-(2022,7,260,149),
-(2022,30,487,160),
-(2022,35,71,186),
-(2022,45,398,95),
-(2022,50,34,3),
-(2022,101,270,196),
-(2022,134,630,173),
-(2022,150,288,38),
-(2022,153,99,90),
-(2022,169,261,78),
-(2022,181,21,109),
-(2022,224,638,92),
-(2022,8,548,148),
-(2022,29,35,125),
-(2022,79,574,53),
-(2022,81,637,53),
-(2022,96,414,117),
-(2022,110,673,103),
-(2022,114,590,5),
-(2022,117,622,102),
-(2022,123,211,191),
-(2022,128,130,152),
-(2022,156,676,155),
-(2022,211,470,8),
-(2022,1,20,176),
-(2022,4,690,153),
-(2022,27,674,115),
-(2022,52,287,24),
-(2022,74,180,63),
-(2022,93,400,198),
-(2022,98,229,145),
-(2022,125,47,4),
-(2022,127,483,61),
-(2022,142,267,164),
-(2022,143,168,52),
-(2022,145,526,40),
-(2022,149,62,181),
-(2022,157,367,116),
-(2022,173,213,31),
-(2022,188,305,76),
-(2022,193,457,75),
-(2022,199,187,190),
-(2022,12,262,54),
-(2022,34,564,70),
-(2022,49,533,128),
-(2022,84,653,176),
-(2022,89,394,57),
-(2022,99,330,124),
-(2022,107,496,87),
-(2022,109,178,60),
-(2022,121,23,161),
-(2022,131,105,16),
-(2022,132,184,142),
-(2022,167,21,170),
-(2022,190,53,2),
-(2022,223,423,150),
-(2022,14,49,102),
-(2022,15,192,59),
-(2022,16,151,184),
-(2022,36,586,124),
-(2022,47,233,119),
-(2022,56,518,141),
-(2022,58,17,134),
-(2022,63,571,93),
-(2022,69,658,152),
-(2022,80,89,25),
-(2022,97,118,123),
-(2022,104,236,124),
-(2022,113,472,178),
-(2022,122,235,1),
-(2022,124,301,25),
-(2022,135,368,3),
-(2022,191,66,184),
-(2022,225,131,176);
+(2023,2,374,116),
+(2023,6,156,20),
+(2023,25,223,123),
+(2023,51,569,167),
+(2023,83,595,56),
+(2023,120,384,179),
+(2023,136,556,48),
+(2023,152,516,196),
+(2023,158,132,43),
+(2023,179,373,149),
+(2023,185,6,116),
+(2023,186,241,173),
+(2023,62,263,128),
+(2023,90,591,46),
+(2023,91,33,187),
+(2023,94,307,53),
+(2023,105,266,87),
+(2023,108,180,76),
+(2023,139,624,166),
+(2023,147,49,151),
+(2023,172,103,177),
+(2023,177,495,194),
+(2023,182,364,31),
+(2023,197,222,137),
+(2023,200,227,20),
+(2023,202,6,182),
+(2023,204,370,136),
+(2023,229,617,174),
+(2023,5,239,3),
+(2023,11,209,77),
+(2023,18,667,100),
+(2023,19,528,27),
+(2023,33,688,104),
+(2023,42,331,87),
+(2023,64,274,198),
+(2023,72,90,158),
+(2023,73,50,173),
+(2023,86,549,146),
+(2023,102,430,37),
+(2023,130,95,151),
+(2023,138,282,7),
+(2023,160,86,110),
+(2023,164,614,176),
+(2023,166,171,167),
+(2023,174,650,179),
+(2023,192,322,19),
+(2023,195,547,150),
+(2023,218,174,41),
+(2023,230,257,190),
+(2023,60,344,145),
+(2023,75,440,192),
+(2023,85,155,190),
+(2023,88,468,82),
+(2023,103,47,43),
+(2023,146,95,23),
+(2023,148,56,10),
+(2023,159,497,149),
+(2023,170,247,142),
+(2023,201,330,115),
+(2023,203,536,111),
+(2023,219,217,157),
+(2023,38,336,3),
+(2023,71,393,105),
+(2023,77,313,68),
+(2023,106,369,177),
+(2023,168,126,45),
+(2023,184,689,109),
+(2023,226,121,159),
+(2023,9,684,11),
+(2023,23,387,65),
+(2023,31,286,109),
+(2023,43,129,160),
+(2023,53,283,182),
+(2023,59,313,139),
+(2023,66,554,166),
+(2023,95,662,23),
+(2023,111,99,191),
+(2023,144,387,34),
+(2023,151,480,63),
+(2023,154,242,173),
+(2023,180,243,106),
+(2023,187,235,102),
+(2023,194,76,164),
+(2023,207,462,113),
+(2023,215,245,110),
+(2023,10,508,1),
+(2023,21,79,72),
+(2023,22,507,96),
+(2023,28,243,12),
+(2023,39,662,166),
+(2023,40,298,123),
+(2023,61,318,60),
+(2023,67,477,70),
+(2023,68,206,10),
+(2023,70,241,186),
+(2023,129,638,137),
+(2023,137,653,102),
+(2023,140,62,157),
+(2023,165,275,7),
+(2023,178,392,26),
+(2023,189,588,88),
+(2023,198,295,93),
+(2023,208,552,72),
+(2023,212,618,24),
+(2023,221,456,189),
+(2023,227,222,37),
+(2023,232,186,22),
+(2023,44,606,170),
+(2023,48,341,15),
+(2023,55,369,145),
+(2023,112,118,68),
+(2023,133,126,50),
+(2023,163,190,154),
+(2023,171,76,112),
+(2023,206,516,55),
+(2023,209,666,34),
+(2023,210,178,21),
+(2023,217,95,118),
+(2023,231,262,19),
+(2023,13,624,185),
+(2023,17,437,191),
+(2023,20,402,53),
+(2023,26,44,29),
+(2023,32,684,69),
+(2023,41,597,161),
+(2023,54,169,138),
+(2023,57,323,145),
+(2023,76,101,129),
+(2023,87,668,21),
+(2023,100,437,130),
+(2023,116,192,80),
+(2023,118,567,94),
+(2023,119,397,168),
+(2023,155,22,196),
+(2023,196,564,120),
+(2023,205,141,15),
+(2023,216,82,21),
+(2023,222,6,167),
+(2023,24,78,91),
+(2023,37,517,184),
+(2023,46,34,65),
+(2023,65,503,54),
+(2023,78,388,50),
+(2023,82,252,76),
+(2023,92,476,148),
+(2023,115,474,32),
+(2023,126,689,17),
+(2023,141,370,89),
+(2023,161,407,118),
+(2023,162,392,138),
+(2023,175,396,86),
+(2023,176,588,1),
+(2023,183,155,159),
+(2023,213,48,35),
+(2023,214,140,130),
+(2023,220,201,74),
+(2023,228,529,89),
+(2023,3,470,21),
+(2023,7,260,149),
+(2023,30,487,160),
+(2023,35,71,186),
+(2023,45,398,95),
+(2023,50,34,3),
+(2023,101,270,196),
+(2023,134,630,173),
+(2023,150,288,38),
+(2023,153,99,90),
+(2023,169,261,78),
+(2023,181,21,109),
+(2023,224,638,92),
+(2023,8,548,148),
+(2023,29,35,125),
+(2023,79,574,53),
+(2023,81,637,53),
+(2023,96,414,117),
+(2023,110,673,103),
+(2023,114,590,5),
+(2023,117,622,102),
+(2023,123,211,191),
+(2023,128,130,152),
+(2023,156,676,155),
+(2023,211,470,8),
+(2023,1,20,176),
+(2023,4,690,153),
+(2023,27,674,115),
+(2023,52,287,24),
+(2023,74,180,63),
+(2023,93,400,198),
+(2023,98,229,145),
+(2023,125,47,4),
+(2023,127,483,61),
+(2023,142,267,164),
+(2023,143,168,52),
+(2023,145,526,40),
+(2023,149,62,181),
+(2023,157,367,116),
+(2023,173,213,31),
+(2023,188,305,76),
+(2023,193,457,75),
+(2023,199,187,190),
+(2023,12,262,54),
+(2023,34,564,70),
+(2023,49,533,128),
+(2023,84,653,176),
+(2023,89,394,57),
+(2023,99,330,124),
+(2023,107,496,87),
+(2023,109,178,60),
+(2023,121,23,161),
+(2023,131,105,16),
+(2023,132,184,142),
+(2023,167,21,170),
+(2023,190,53,2),
+(2023,223,423,150),
+(2023,14,49,102),
+(2023,15,192,59),
+(2023,16,151,184),
+(2023,36,586,124),
+(2023,47,233,119),
+(2023,56,518,141),
+(2023,58,17,134),
+(2023,63,571,93),
+(2023,69,658,152),
+(2023,80,89,25),
+(2023,97,118,123),
+(2023,104,236,124),
+(2023,113,472,178),
+(2023,122,235,1),
+(2023,124,301,25),
+(2023,135,368,3),
+(2023,191,66,184),
+(2023,225,131,176);
 
+INSERT INTO [dbo].[t_perfil]
+           ([perfil_nombre])
+     VALUES
+           ('Apoderado'),
+		   ('Docente'),
+		   ('Director'),
+		   ('Alumno');
+
+INSERT INTO [dbo].[t_vigencia]
+          ([vigencia_nombre])
+    VALUES
+          ('Vigente'),
+       ('No Vigente');
+
+
+SET IDENTITY_INSERT [dbo].[t_usuario] ON
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1, N'Director_Adelina_14218@gmail.com', N'$2a$10$ETZFxXjBzJ.iPURklWxNiOWSkdcQDTQfT3rhwecMK7esinRZxvP8.', N'Director_Adeli_14218', 3, N'14218894-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (2, N'Director_Raquel_14224@gmail.com', N'$2a$10$.KP.GVgYdPUrikLEHud01.XsIN.ZM3N70lVExtOT7zn0N8UTO2Pvu', N'Director_Raque_14224', 3, N'14224136-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (3, N'Director_Iván_14225@gmail.com', N'$2a$10$Vt7.CWLHr5cp.I0.hPTUHeD1/wskuflTIMG8YSuDaenG.7EOovSEe', N'Director_Iván_14225', 3, N'14225191-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (4, N'Director_Danilo_14249@gmail.com', N'$2a$10$Ec0GJZTEc6KdiG69IlSnC.dAG/u5vDe7e5Z.TbsrXZsmYIipwyzZG', N'Director_Danil_14249', 3, N'14249583-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (5, N'Director_Adelina_14256@gmail.com', N'$2a$10$NB4BDW5nNIDHUH9Q16iUMeG6GofypdGf8z7VguT1PcPPPE17O.kES', N'Director_Adeli_14256', 3, N'14256080-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (6, N'Director_Visitación_14257@gmail.com', N'$2a$10$992lNOzALIwm2Lb528YILutks3w1j3H1EmZIPTPEQsLAgO5FSBQsu', N'Director_Visit_14257', 3, N'14257703-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (7, N'Director_Fernando_14275@gmail.com', N'$2a$10$NIoIwhoGdTZat866HHMmuO7Da2.HoeFrTDwHFglhF.NHKN.Qzkl2i', N'Director_Ferna_14275', 3, N'14275763-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (8, N'Director_Florina_14281@gmail.com', N'$2a$10$oUukcPDC7ebtKJWiQEXzzeGxpZdKz9XRbwff8QQ4uC8mpY1C/Z79a', N'Director_Flori_14281', 3, N'14281043-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (9, N'Director_Jimena_14287@gmail.com', N'$2a$10$mdFpo7hX6HwTlV83pf2MruCjCDzdyZc/nmgszcwoDNpi2DcyCM8QC', N'Director_Jimen_14287', 3, N'14287344-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (10, N'Director_Hermenegildo_14296@gmail.com', N'$2a$10$YHeuh5KjYSkbHSrOcXeyx.eZZ.HabInoVWYh/vIJLwHyltXN2Jn92', N'Director_Herme_14296', 3, N'14296021-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (11, N'Director_Fulgencio_14305@gmail.com', N'$2a$10$MI2y4EqJ74kzrwHY4J4r9uyxOTEwnolXROJ5swNoP2a56tv.3ckN6', N'Director_Fulge_14305', 3, N'14305011-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (12, N'Director_Aureliano_14305@gmail.com', N'$2a$10$EIkn02mFk03.PMgrgC4OiuheZnZV9qOPRvLGwb.9jeLm/Wmhc9kOy', N'Director_Aurel_14305', 3, N'14305013-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (13, N'Director_Marcial_14317@gmail.com', N'$2a$10$ZC3xsdmUOnfPGWZfqyc7R.xqUhPsVdCCq02r.LW8PziwYNv2brCTC', N'Director_Marci_14317', 3, N'14317456-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (14, N'Director_Fidela_14323@gmail.com', N'$2a$10$ISnLzNHZ0jFRiBL/6idGQOvoVrw99.v82zTsDxhiGnh8FFygBByrW', N'Director_Fidel_14323', 3, N'14323291-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (15, N'Director_Fabricio_14335@gmail.com', N'$2a$10$AESVobXL6miZlYNpaMz8ne7j.i.Wyr1LNRZwx04YUwJUEGzqFR2Vu', N'Director_Fabri_14335', 3, N'14335545-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (16, N'Director_Tecla_14341@gmail.com', N'$2a$10$mx.pp5nOyJDHyN5M8RV1jeRyZlqG0sxzFQYxKGineBuTLLn2T2t.O', N'Director_Tecla_14341', 3, N'14341357-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (17, N'Director_Teodoro_14363@gmail.com', N'$2a$10$arqTaZiNNPSdUV7/zk6NWO0TZ08EJ3PZIKxAAxbFg2V90r7LDY7c.', N'Director_Teodo_14363', 3, N'14363025-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (18, N'Director_Lucas_14370@gmail.com', N'$2a$10$G1u9aN3x3MvOlDYTjLpRyOQM7lBONbnWqCbtuF7ZfPNyPEVaDFnqG', N'Director_Lucas_14370', 3, N'14370588-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (19, N'Director_Eligia_14379@gmail.com', N'$2a$10$Y5MIY7AM8RUsbuTeLLrPpOHEyriTT/czwSZiSCj/HDeRAdu6ezEFq', N'Director_Eligi_14379', 3, N'14379776-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (20, N'Director_Cesar_14386@gmail.com', N'$2a$10$jZV5M.q/E6/wdZU5moXfVO/BHaNhBLsOH/ML1wrlnaz.Vulf06pK6', N'Director_Cesar_14386', 3, N'14386647-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (21, N'Director_Dora_14420@gmail.com', N'$2a$10$2HFqlA2V7r8vwkpWhjgk7OOX7K7EqXk3Iy5orWRhW5tqOb9ed1uxC', N'Director_Dora_14420', 3, N'14420070-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (22, N'Director_Hugo_14422@gmail.com', N'$2a$10$3phP7OEwvZTq.m4SL29nXumqBTKXnFjswXmX7L.cKy9j9iU1o/l6O', N'Director_Hugo_14422', 3, N'14422764-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (23, N'Apoderado_Rafa_13263@gmail.com', N'$2a$10$1CtFaS3zY6nE7QQGuA.izufPPoHqsnU76NLHyO8dixWFzTyDR6.ja', N'Apoderado_Rafa_13263', 1, N'13263940-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (24, N'Apoderado_Celestina_13269@gmail.com', N'$2a$10$Nhgzz3V.D9hAkq1JQW.pw.EFtnLIPp4BY5xcHn5u6u1l23vSg5hDi', N'Apoderado_Celes_13269', 1, N'13269124-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (25, N'Apoderado_Francisco_13276@gmail.com', N'$2a$10$Bcl45trWafTud/ABi8LgHeGwVyDbNhsnjjvHYUi6fMAehy8YzRjLO', N'Apoderado_Franc_13276', 1, N'13276952-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (26, N'Apoderado_Alex_13283@gmail.com', N'$2a$10$mIQCeeGYAvXk81oBZJMU5OlkdXkW.Gh66LOR6NmiZ2M9TVDrLFu3S', N'Apoderado_Alex_13283', 1, N'13283228-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (27, N'Apoderado_Josep_13287@gmail.com', N'$2a$10$NaflUIEB9EPkzgxm0uZqGubxofTJh2owbLoMlc0QwnTDksuBazQtS', N'Apoderado_Josep_13287', 1, N'13287555-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (28, N'Apoderado_Jordán_13287@gmail.com', N'$2a$10$q.VqpSeKZUmimuS5M2JC4u3HbDRLPxj8WGVUAwDlBtUkXFqzm7rqS', N'Apoderado_Jordá_13287', 1, N'13287638-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (29, N'Apoderado_María_13293@gmail.com', N'$2a$10$WRziwlHNfiWJzLV2zvzl..937xsedShfutIzSzxR/ptEhhYljOXem', N'Apoderado_María_13293', 1, N'13293393-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (30, N'Apoderado_Eva_13296@gmail.com', N'$2a$10$CjYgNMqUKGFDw3zSnNx8c.uFkTS1K/tibaQpdK0mV6Wu1oR5nNEd.', N'Apoderado_Eva_13296', 1, N'13296241-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (31, N'Apoderado_Álvaro_13317@gmail.com', N'$2a$10$0sITUxW1KlPp3FLNWNG7dOCcp3ruN6ij4hN1vkia6l7Eouro2aFoG', N'Apoderado_Álvar_13317', 1, N'13317341-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (32, N'Apoderado_Juan_13322@gmail.com', N'$2a$10$oEVhBgiPymI7juak29T.NuOZfAMa/F4Pl45wppj5exzOpsoDrYxfy', N'Apoderado_Juan_13322', 1, N'13322547-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (33, N'Apoderado_Víctor_13362@gmail.com', N'$2a$10$L/s.XT308fudqRJ7zM3urelwMZaG9zZTUxk9GhsF7OfZiS140YWbu', N'Apoderado_Vícto_13362', 1, N'13362228-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (34, N'Apoderado_Gervasio_13363@gmail.com', N'$2a$10$LJti44KUz47lsuVHpdro4.k99DzFB62ehzOh.t.brpyY5mU7qLQcq', N'Apoderado_Gerva_13363', 1, N'13363861-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (35, N'Apoderado_Emma_13363@gmail.com', N'$2a$10$r3kZawywwzWW5t2SPUcPT.XaYjpwl4lUlEJlJM5m0ksSiiXAQzPNS', N'Apoderado_Emma_13363', 1, N'13363944-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (36, N'Apoderado_Aitana_13372@gmail.com', N'$2a$10$KdpOtNfnhPkW9vTezJQVPexSsTdqUGUZD19XZokAix7N2xRhLsAC6', N'Apoderado_Aitan_13372', 1, N'13372558-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (37, N'Apoderado_Ovidio_13374@gmail.com', N'$2a$10$Ug6Ro2VQozIpw5syLc74Wew7LWTACLa5n3c4oaAUKn/NwNCHrOvwC', N'Apoderado_Ovidi_13374', 1, N'13374749-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (38, N'Apoderado_Chelo_13388@gmail.com', N'$2a$10$UrXmaB2BPN.Tvpg3Rc4eE.3oqbnB..tKBxRDHV8oZrCHReM4HkX/O', N'Apoderado_Chelo_13388', 1, N'13388365-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (39, N'Apoderado_Lucía_13410@gmail.com', N'$2a$10$n5MEea8UfiDZWw1e5cVkaOCA0bDV5SmJayjyfLlVLrxCbs6pK6gM2', N'Apoderado_Lucía_13410', 1, N'13410580-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (40, N'Apoderado_Nélida_13411@gmail.com', N'$2a$10$hdLLtaO7EL64u62wdQBAS.Ch6sdnKmEHu0ZL9an.Sh/ZURjIVD.Uq', N'Apoderado_Nélid_13411', 1, N'13411638-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (41, N'Apoderado_Paco_13417@gmail.com', N'$2a$10$xnXUoPjeFPGv0n93d12ARuDgCl/MOO8WfriEtd1YGK0GWF65ibr42', N'Apoderado_Paco_13417', 1, N'13417558-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (42, N'Apoderado_Maxi_13423@gmail.com', N'$2a$10$AcLS5t.H/kG/0SAuKwvMceOVB1JagK2scBLRfYBn41ftWtQM.E3Y2', N'Apoderado_Maxi_13423', 1, N'13423811-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (43, N'Apoderado_Estela_13443@gmail.com', N'$2a$10$Zkd3BT2ch4I.SvE8dzU.R.1IEHRk1GrBsF0KEXmCEuQj1PwMavZse', N'Apoderado_Estel_13443', 1, N'13443180-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (44, N'Apoderado_Maite_13448@gmail.com', N'$2a$10$UJ5gio0nKlOJJ0Qmut88DeyxTIGcBiNLOmpkYYzY.MGRfQ79AfR2m', N'Apoderado_Maite_13448', 1, N'13448142-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (45, N'Apoderado_Edgardo_13455@gmail.com', N'$2a$10$HVOaARLXf/JGzwpa0WtYV.ncAPn6OfaZaJ/T2VBEbllDCcMbXz5ui', N'Apoderado_Edgar_13455', 1, N'13455567-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (46, N'Apoderado_Fátima_13462@gmail.com', N'$2a$10$0o.ux10wuN4tEHs78HtcQ.jai.gVU/EZIeFKNfDBN1tpgF503ysle', N'Apoderado_Fátim_13462', 1, N'13462736-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (47, N'Apoderado_Jose_13465@gmail.com', N'$2a$10$L3FQOBqjMs3XPgj4..IB9u/nHmFuCWd0V.LjZONyRDmrImcOHjTm6', N'Apoderado_Jose_13465', 1, N'13465574-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (48, N'Apoderado_Angelina_13466@gmail.com', N'$2a$10$FbFqq5fuclmzTie/uXkO3eMIuPcA9rJvvIiXgxuV7M6DOYiTf9P6y', N'Apoderado_Angel_13466', 1, N'13466545-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (49, N'Apoderado_Bernarda_13474@gmail.com', N'$2a$10$m5AlHzYVTxgU8WmzE.7h3.FBaUedI.m57E41vAgpH2naV/y5UnHdu', N'Apoderado_Berna_13474', 1, N'13474067-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (50, N'Apoderado_Elba_13474@gmail.com', N'$2a$10$N2m9jZdMt1Al5aZS/IIs.um72ZUZGA61dwn1R5AnmRYSzWjCvU/6y', N'Apoderado_Elba_13474', 1, N'13474325-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (51, N'Apoderado_Manuelita_13478@gmail.com', N'$2a$10$JpSZu66B02RoVQLDEDOVEeagZX2Ya9SunHDXegAdwIqqDQQ9nm4X6', N'Apoderado_Manue_13478', 1, N'13478959-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (52, N'Apoderado_Adalberto_13490@gmail.com', N'$2a$10$fBTQGf3cIN5sdl9.flRIxOfJAV33tNqGVzyshgM1OZYgzyRBKOo1W', N'Apoderado_Adalb_13490', 1, N'13490604-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (53, N'Apoderado_Evita_13493@gmail.com', N'$2a$10$qx05DBnB4DwIMmU3YcDAged28yT.Vsr.FdySYR0c9t350HPD1Vl3.', N'Apoderado_Evita_13493', 1, N'13493857-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (54, N'Apoderado_Rosalía_13506@gmail.com', N'$2a$10$nMYIOu4tfBmothnxcmtpKe6CgOOaQ22LxKAt1p7n.k2n3O7zmDkii', N'Apoderado_Rosal_13506', 1, N'13506199-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (55, N'Apoderado_Alejo_13511@gmail.com', N'$2a$10$Ub8SEkUEuWrfkv9ZyZdWzeWDJftyffkieYr65jiYeUbe0tvPIKTx.', N'Apoderado_Alejo_13511', 1, N'13511651-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (56, N'Apoderado_Lupe_13529@gmail.com', N'$2a$10$GEoYSMlveIZnAqc2RijqdeU74sRQwEKKC.7SkP0O5qUzx1Ehsg/TG', N'Apoderado_Lupe_13529', 1, N'13529640-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (57, N'Apoderado_Eugenio_13532@gmail.com', N'$2a$10$9tteunBrjee0bhRgf48e6eadXMO0/3Gve4sPx.W94gczhQiSXdfTa', N'Apoderado_Eugen_13532', 1, N'13532532-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (58, N'Apoderado_Teófila_13539@gmail.com', N'$2a$10$7BQ3MBLGgi9h.0PAa/pcZ.oJUJUjs28qgbb5iZGGa8uK5gTFUPUdm', N'Apoderado_Teófi_13539', 1, N'13539393-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (59, N'Apoderado_Sigfrido_13539@gmail.com', N'$2a$10$ANiPh2wUJeIU2BwrY6Za3uzfI77LpcZb7E8Jp6LDDBnI2PKptA1yu', N'Apoderado_Sigfr_13539', 1, N'13539789-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (60, N'Apoderado_Tito_13543@gmail.com', N'$2a$10$A71NhD7C2Qs.MHkzIFyGNOCavfCXyERUrL1kQ96yCMTTfuZk5mCR.', N'Apoderado_Tito_13543', 1, N'13543595-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (61, N'Apoderado_Jorge_13547@gmail.com', N'$2a$10$M09Mk/X31lRO.kIARXoQS.8tm8PteStCtSVUoF/NYzWxXzEhbTOEW', N'Apoderado_Jorge_13547', 1, N'13547242-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (62, N'Apoderado_Andrés_13549@gmail.com', N'$2a$10$/32/ImCK0lCygn4tGbF1.uTExHtHylNg.sqH4PZq8XdugKs5sM2Qe', N'Apoderado_André_13549', 1, N'13549704-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (63, N'Apoderado_Encarnacion_13558@gmail.com', N'$2a$10$kqsbJ38wNVejAVpUM0Z/j.dxRNfJA1K2wiif.O.Lbmvm6v5J1frBK', N'Apoderado_Encar_13558', 1, N'13558917-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (64, N'Apoderado_Jessica_13565@gmail.com', N'$2a$10$03C0HORlNAixg7SrEO2lku5uIxBhEz18cBdyrW8kz5coAKRUDjjIu', N'Apoderado_Jessi_13565', 1, N'13565523-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (65, N'Apoderado_Pía_13567@gmail.com', N'$2a$10$WP7I.0Q.ZUsU.ehONFKQ5emD4iTk.mvXHef4W7MOuUYs/j.LNjdQq', N'Apoderado_Pía_13567', 1, N'13567240-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (66, N'Apoderado_Francisco_13567@gmail.com', N'$2a$10$k0yBqUEwf1Y5snimoY.wSOxwh1hAscll.RlLIYdMGYgmFYJO1iMYu', N'Apoderado_Franc_13567', 1, N'13567255-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (67, N'Apoderado_Seve_13602@gmail.com', N'$2a$10$L/TyPSViCKphKizeUDMy6uCEkWvw.UafK1U8x9HRwJwlhUiOoU7g6', N'Apoderado_Seve_13602', 1, N'13602705-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (68, N'Apoderado_Prudencia_13622@gmail.com', N'$2a$10$WYp5QoB43gnSoLZeOMDCH.tu7v/UKXpXXQXW.Punx2u/Hpp5czK5y', N'Apoderado_Prude_13622', 1, N'13622701-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (69, N'Apoderado_Rosenda_13630@gmail.com', N'$2a$10$UezjTUxkpYhwdgwk8Hw6w.5Q//hH893vZR.gPsLya2udNG.hwqAca', N'Apoderado_Rosen_13630', 1, N'13630884-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (70, N'Apoderado_Ximena_13632@gmail.com', N'$2a$10$WEPcbEPgeXF5io1nDA3r8uG7vYOsTb2XK8tTnuxSwlwv/G1/YW/Ue', N'Apoderado_Ximen_13632', 1, N'13632855-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (71, N'Apoderado_Chema_13639@gmail.com', N'$2a$10$9CPNZ6Wsr2o05aFCATXVc.5eaYiDYuUJWXUxbob8qW/1uHkFhHjke', N'Apoderado_Chema_13639', 1, N'13639690-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (72, N'Apoderado_Daniela_13648@gmail.com', N'$2a$10$RQ8pKq1rVYKVRbAs4ldfr.m2xUo3VX.ZgC6OTP.96LJz6A6iMtseC', N'Apoderado_Danie_13648', 1, N'13648490-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (73, N'Apoderado_Miguel_13660@gmail.com', N'$2a$10$QbjgbLffbwTAzB8Qz9P64.InbP6ildikCud1DmcgRzQ.FbDyx7nf6', N'Apoderado_Migue_13660', 1, N'13660551-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (74, N'Apoderado_Cipriano_13674@gmail.com', N'$2a$10$OtJ.MyMavJoo0pxOIrCvi.y/RXiHlyx.qq2K8JaJhUUjVGJ3GjrmK', N'Apoderado_Cipri_13674', 1, N'13674283-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (75, N'Apoderado_Arturo_13675@gmail.com', N'$2a$10$qTUlhqmqCmpihGT4NTKQlemgjBBedxOfCjawLiUcIdIbyCzju3IXm', N'Apoderado_Artur_13675', 1, N'13675794-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (76, N'Apoderado_Virginia_13686@gmail.com', N'$2a$10$XzPP4pIxMKVCg52MOqcoTefs27XuSHPyX9llhJbSeyhsgo8z9Kjwq', N'Apoderado_Virgi_13686', 1, N'13686122-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (77, N'Apoderado_Saturnino_13688@gmail.com', N'$2a$10$QDoP1TUOHVnkgS.IIw1W6.9KTZyFbEvVgD5uO.Vw3FIB/BVXWkIle', N'Apoderado_Satur_13688', 1, N'13688966-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (78, N'Apoderado_Martirio_13719@gmail.com', N'$2a$10$.RAxYmffTB6boARxuRHchOp4qYnQsSWcjz/wYMxT94zdqWJKJkNqC', N'Apoderado_Marti_13719', 1, N'13719528-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (79, N'Apoderado_Ramón_13725@gmail.com', N'$2a$10$JUJOTYI.juZtCxjeiCJyiea0i9ivbmf8AWlxIJcfd0B9QAgikzUIC', N'Apoderado_Ramón_13725', 1, N'13725066-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (80, N'Apoderado_Cloe_13742@gmail.com', N'$2a$10$X1xE2DaAgscWXXHDTbkNguBNt9tCGdSHt5yfLUO4HabN.JGza0nVS', N'Apoderado_Cloe_13742', 1, N'13742329-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (81, N'Apoderado_Juan_13754@gmail.com', N'$2a$10$OAOuxC5U7UpjpcdzcgYHCu0pgW1Bz5iWGopDT6gc.ZaCHLilXkQKu', N'Apoderado_Juan_13754', 1, N'13754872-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (82, N'Apoderado_Rodrigo_13755@gmail.com', N'$2a$10$fO0/bHaEQSAeO7UL9iFe.uOd4Qs4Rv5iRB541MB.o/FZS8OkN6ge2', N'Apoderado_Rodri_13755', 1, N'13755681-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (83, N'Apoderado_Fausto_13761@gmail.com', N'$2a$10$XbmgJ.rE38KC4qtFqynlfuns2oXMOVpcpKAr8aUeEiONS/OrjYi/C', N'Apoderado_Faust_13761', 1, N'13761711-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (84, N'Apoderado_Javi_13790@gmail.com', N'$2a$10$SxrNaG1q3H3dMhlmO56Qge7gF/s3G6aUscafiR0jZxMBaLgn8uNni', N'Apoderado_Javi_13790', 1, N'13790481-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (85, N'Apoderado_José_13792@gmail.com', N'$2a$10$A0JPoyfogdWqi805gSoVIukmFGjK8C9e472KMIQHbhbQ8X0B3GTdq', N'Apoderado_José_13792', 1, N'13792757-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (86, N'Apoderado_Cruz_13795@gmail.com', N'$2a$10$uux9qTnCwYjrTjS9sxWNg.6Rtwq2RvFA3gHqbLHXXTB.fS0HYunme', N'Apoderado_Cruz_13795', 1, N'13795755-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (87, N'Apoderado_Beatriz_13812@gmail.com', N'$2a$10$8t.GJ4zwxmmw6PMltnOvIOWMJYLnpIAuqI4f1FEwo1u8OV1CZlnj6', N'Apoderado_Beatr_13812', 1, N'13812346-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (88, N'Apoderado_Ascensión_13822@gmail.com', N'$2a$10$6VVidDXWBbDZdc92WSadV.MvNfnBAbo6BSC6KMFN92AlzFh25L6ne', N'Apoderado_Ascen_13822', 1, N'13822330-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (89, N'Apoderado_Rebeca_13822@gmail.com', N'$2a$10$eaKLC1f8/3pO1jfngwwh1uVsLIgVeXQOQSUhdQ/CKLHlaPzBxFDoy', N'Apoderado_Rebec_13822', 1, N'13822989-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (90, N'Apoderado_Candela_13824@gmail.com', N'$2a$10$XoUMK//ufD3qTqAFOb0xSuI8tS6sTWq0T71H/TWdb11TiYCJsLIBG', N'Apoderado_Cande_13824', 1, N'13824547-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (91, N'Apoderado_David_13833@gmail.com', N'$2a$10$2yeH1sy8W8qLmigUoWzNlelcGboy0NcSEWKPNOGod1GaoUVYIJwq6', N'Apoderado_David_13833', 1, N'13833729-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (92, N'Apoderado_Josep_13834@gmail.com', N'$2a$10$PsS2yo6hqr6TKf/DqmYEd.rC50D3bAFvag4X5GALIe8XTxN.vW8AC', N'Apoderado_Josep_13834', 1, N'13834142-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (93, N'Apoderado_Juliana_13846@gmail.com', N'$2a$10$jLhlso/mpQLMAJKNrxLuYuRNNemiaedfF785cLyh/AbaXd/hciSnS', N'Apoderado_Julia_13846', 1, N'13846172-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (94, N'Apoderado_Baudelio_13852@gmail.com', N'$2a$10$j8HYInP9iBI9FllZMlYyfOKFKrjyASZ/xeKN62ZYIkq1.PHpd50L.', N'Apoderado_Baude_13852', 1, N'13852329-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (95, N'Apoderado_Piedad_13866@gmail.com', N'$2a$10$EL9GZK/P2xsVas6wdNBAne2JNRLyiljTYrcGwYfRXgoRi9btYNYiW', N'Apoderado_Pieda_13866', 1, N'13866551-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (96, N'Apoderado_Luis_13886@gmail.com', N'$2a$10$LrzkGK8MdWRYlCSGU9XkRuTyLKLXrQywrsaZUEObfPnhZeBoRTdEi', N'Apoderado_Luis_13886', 1, N'13886495-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (97, N'Apoderado_María_13912@gmail.com', N'$2a$10$NhEgzujqoWRb9OwpYtNU7.bDJKWeVyp9DvHdVVejl5iUHaDnjZQe6', N'Apoderado_María_13912', 1, N'13912617-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (98, N'Apoderado_Narciso_13913@gmail.com', N'$2a$10$q6TXAUnE4ct1aLIzNWmmHeLqYL7uddyeOGoSUxEAbePPDhPtjYZnG', N'Apoderado_Narci_13913', 1, N'13913725-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (99, N'Apoderado_Calista_13970@gmail.com', N'$2a$10$4g0KEGdCZ9Z./XtRkhXezOQmca4EOH6x3iekbr7Gn6Mhn17PdVj/C', N'Apoderado_Calis_13970', 1, N'13970857-1 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (100, N'Apoderado_Elba_13979@gmail.com', N'$2a$10$nW/lRStl5DT8m6acBdy7eO/txhoZU5Goqp12tEKaOsgPz9HkUdV5G', N'Apoderado_Elba_13979', 1, N'13979267-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (101, N'Apoderado_Jonatan_13983@gmail.com', N'$2a$10$RP66B0eE7SO.dKgtMTHzP.aWYF60iy0vhZS772wAfQN3GbqnoyieK', N'Apoderado_Jonat_13983', 1, N'13983572-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (102, N'Apoderado_Feliciana_13985@gmail.com', N'$2a$10$P.TGRUastCEfaRngicPNEO7LmQsLjEjpU/gEkEI3JRMuCwS7MtRa6', N'Apoderado_Felic_13985', 1, N'13985194-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (103, N'Apoderado_Pío_14003@gmail.com', N'$2a$10$LDt8uG8T4GmMxPOl2sYK9.Iiz.J4YtDC7l2Q7NeEO8BJxrLfgC1L6', N'Apoderado_Pío_14003', 1, N'14003611-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (104, N'Apoderado_Dolores_14004@gmail.com', N'$2a$10$XlkJcjJ.URzwe3Bxk2wSiOWYZeizNQYhkKS516CCQAZB7cUYVKTsC', N'Apoderado_Dolor_14004', 1, N'14004197-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (105, N'Apoderado_Griselda_14004@gmail.com', N'$2a$10$3QtOSnh5ju/fXjNQak/nHuwUIwFggt6M0ZYcHb4RDSyo2NuWAFGUS', N'Apoderado_Grise_14004', 1, N'14004836-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (106, N'Apoderado_Paca_14011@gmail.com', N'$2a$10$53bplZWjAN8SMKC1YzG3JOFrZ.MI7J0pDrS9Y6yg1gkfnoRrp3eIC', N'Apoderado_Paca_14011', 1, N'14011311-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (107, N'Apoderado_Alondra_14017@gmail.com', N'$2a$10$fC0VvqOAz8gTDSmgXFsLE.3wMmwC/oB71POEm9lxaZwlVfiHA5IPK', N'Apoderado_Alond_14017', 1, N'14017776-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (108, N'Apoderado_Kike_14041@gmail.com', N'$2a$10$oUs62n6.WA5QODl.t/Fzh.wD..QSYgrcRu9coAMh6j1ZrlnLF9cJ2', N'Apoderado_Kike_14041', 1, N'14041899-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (109, N'Apoderado_Wilfredo_14068@gmail.com', N'$2a$10$tMSUyxgcX3T0XKiJEo1.dOFCjL1yRryNuVZv0jl9a9LJrTTIvglCu', N'Apoderado_Wilfr_14068', 1, N'14068550-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (110, N'Apoderado_Mireia_14074@gmail.com', N'$2a$10$YlnKuf6liNKa/19jXI0W4OHetOXp0s5YIdCblJ4uCw/LPbyO217ye', N'Apoderado_Mirei_14074', 1, N'14074955-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (111, N'Apoderado_Moisés_14078@gmail.com', N'$2a$10$WwxumBDfivUsu1QxAtb0Re.uPE7G1USQ1ObvWvcs71cpD.mq3HxMe', N'Apoderado_Moisé_14078', 1, N'14078233-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (112, N'Apoderado_Sigfrido_14134@gmail.com', N'$2a$10$t5kLJzafIaU1iVg35IK3kO3zdzTeMMtaq8EO5bOYddTa/Tyogdgfm', N'Apoderado_Sigfr_14134', 1, N'14134348-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (113, N'Apoderado_Espiridión_14149@gmail.com', N'$2a$10$SNWm6QJjgHQeQ05CIn4Sou8/I5hBJ7Q13DPTSCx1R4u61kRUr7iAm', N'Apoderado_Espir_14149', 1, N'14149250-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (114, N'Apoderado_Fortunata_14156@gmail.com', N'$2a$10$dVmerN6T0OzOoOITV3IhhO4SQ5Mky21.KXaM77tdU30NBfAs9lpxy', N'Apoderado_Fortu_14156', 1, N'14156047-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (115, N'Apoderado_Fernando_14168@gmail.com', N'$2a$10$Lv0AVTUS4ZqFiKXEG1xMz.9/NGL3dxHy6uu/R3aKqSUC6TQMrRB5G', N'Apoderado_Ferna_14168', 1, N'14168155-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (116, N'Apoderado_Reynaldo_14197@gmail.com', N'$2a$10$rvVqgfFPyOG80V.gxcNQae4pWhJNPh16DykVOpO7KD0J5Flem3Nju', N'Apoderado_Reyna_14197', 1, N'14197219-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (117, N'Apoderado_Saturnina_14209@gmail.com', N'$2a$10$7/c6TcUwHc8hB0Cdk8/ZgOvQ3Zlj1cJWElofKYeyr6zO7mfP5nsyK', N'Apoderado_Satur_14209', 1, N'14209858-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (118, N'Apoderado_Adelina_14218@gmail.com', N'$2a$10$YtF3q0vYWMfaPrBb7IsqYeaRdUCvTORnhdkmyQi6qovHkFj20KU.O', N'Apoderado_Adeli_14218', 1, N'14218894-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (119, N'Apoderado_Raquel_14224@gmail.com', N'$2a$10$Qotfqu1QrflpqTmpukOlOe9KbARffYSz..yKEdSD.SjTHnZHfXhpi', N'Apoderado_Raque_14224', 1, N'14224136-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (120, N'Apoderado_Iván_14225@gmail.com', N'$2a$10$J2XmfSgvLq21J3ngS/LsKON5fn4U1cUjgWwYxUIgllsOWbUbt6iV2', N'Apoderado_Iván_14225', 1, N'14225191-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (121, N'Apoderado_Danilo_14249@gmail.com', N'$2a$10$shOV8YXs5PyS.zXUqLsoJuXZx3sFploJmXRvVW4euudAGobD2BhB.', N'Apoderado_Danil_14249', 1, N'14249583-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (122, N'Apoderado_Adelina_14256@gmail.com', N'$2a$10$P9fuqH7aZd3HwD8TyIjTHOCiJ2JeZjLsW8F8I5EKDQ6bmUBa7Zwl.', N'Apoderado_Adeli_14256', 1, N'14256080-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (123, N'Apoderado_Visitación_14257@gmail.com', N'$2a$10$SEO1NWbsXNzVsatXflzlDe8g4rb6a/jQtWLrmRU292x/8ykpz8YvK', N'Apoderado_Visit_14257', 1, N'14257703-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (124, N'Apoderado_Fernando_14275@gmail.com', N'$2a$10$P0bmB8b54avKOPXiKJEtxOF/iw300OdVG072G5Qa0w/wGG2xiy3hy', N'Apoderado_Ferna_14275', 1, N'14275763-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (125, N'Apoderado_Florina_14281@gmail.com', N'$2a$10$eaUJab47Pm4b//CXaC.2J.h2jNE7x7QOxl.uGdsAW4PlncHQ4lhXK', N'Apoderado_Flori_14281', 1, N'14281043-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (126, N'Apoderado_Jimena_14287@gmail.com', N'$2a$10$DDVZfyQfCvHUpU.wQWZ8oeNvMYpr20Pbu5d0DIYQOkyv3LwjJcER2', N'Apoderado_Jimen_14287', 1, N'14287344-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (127, N'Apoderado_Hermenegildo_14296@gmail.com', N'$2a$10$ezzNakJ12niWdGQwfOkYBeT0IdRvA8kShEj/3OUaPHc3ibFrtpF36', N'Apoderado_Herme_14296', 1, N'14296021-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (128, N'Apoderado_Fulgencio_14305@gmail.com', N'$2a$10$7UjH5RP4NhFm/wjpZSAWKOqyEqfVm8ceSgtc1CYVa.QU1IFYP86Zi', N'Apoderado_Fulge_14305', 1, N'14305011-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (129, N'Apoderado_Aureliano_14305@gmail.com', N'$2a$10$m80h6XSAG4d5fvvXzatbk.MPASCs0ivC57EXokxAAPOnayfeybZL.', N'Apoderado_Aurel_14305', 1, N'14305013-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (130, N'Apoderado_Marcial_14317@gmail.com', N'$2a$10$UYSYC9y64lrNpLaBDHo0DOPLGAiQpcElAr8.ia3KxET.eSZQASHyW', N'Apoderado_Marci_14317', 1, N'14317456-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (131, N'Apoderado_Fidela_14323@gmail.com', N'$2a$10$llJ4zv/hNJVqXw0WQOlOE.Ywvyzayd.isurn1yQ1lh3iU8cD7u1mq', N'Apoderado_Fidel_14323', 1, N'14323291-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (132, N'Apoderado_Fabricio_14335@gmail.com', N'$2a$10$3mLtVv.tCSxS3CitfI8jsO.OdRcOuCgPaIR9l4H11bIiQjAVbHHeG', N'Apoderado_Fabri_14335', 1, N'14335545-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (133, N'Apoderado_Tecla_14341@gmail.com', N'$2a$10$Vuc.ItI1wjN6FA0KgO5i7O/Rh8tjZ8iQeup05ht9L6onrT9xgDZwK', N'Apoderado_Tecla_14341', 1, N'14341357-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (134, N'Apoderado_Teodoro_14363@gmail.com', N'$2a$10$P9lgAYJXHFeix171lTq5QupqvOjDoN4oqISfvk82YQkDUWT/GQt0u', N'Apoderado_Teodo_14363', 1, N'14363025-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (135, N'Apoderado_Lucas_14370@gmail.com', N'$2a$10$7X1uUpr.xAd/0qKpDIQWQ.M5Y1HZyexP4RJtcVke/sEGwA/QCbBMG', N'Apoderado_Lucas_14370', 1, N'14370588-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (136, N'Apoderado_Eligia_14379@gmail.com', N'$2a$10$bfr0/Rk9kF2A4Jjg7BB9pOhaxSii5Ojn/8Jiem49Z4IK7OrP/7I6u', N'Apoderado_Eligi_14379', 1, N'14379776-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (137, N'Apoderado_Cesar_14386@gmail.com', N'$2a$10$GGYLxZk4GDXuCmmF8jKbJumd4yGfkULDQkyjVdpmjZGt9WFruP15m', N'Apoderado_Cesar_14386', 1, N'14386647-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (138, N'Apoderado_Dora_14420@gmail.com', N'$2a$10$j3xc9FU6.4gEwFts3ePt7uttkpYp.DuAQeeGcsePtgULqMm3/4dE.', N'Apoderado_Dora_14420', 1, N'14420070-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (139, N'Apoderado_Hugo_14422@gmail.com', N'$2a$10$5Tfg83jJ3xNjew5uoX1uZ.ylHtguEZsd5pU850XXMcaaITStt/7VC', N'Apoderado_Hugo_14422', 1, N'14422764-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (140, N'Apoderado_Norberto_14457@gmail.com', N'$2a$10$Mu3IxuQNwr3dUiQv5HJGue1W/DqF98tyeUdAVRj8uhrtkEq4scLKu', N'Apoderado_Norbe_14457', 1, N'14457172-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (141, N'Apoderado_Juan_14462@gmail.com', N'$2a$10$oWta2MllJIlaqgG.EgA4e.nMoDyDlc3rZmCfzn.BjjJaJLsllq0Ai', N'Apoderado_Juan_14462', 1, N'14462369-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (142, N'Apoderado_Adelina_14472@gmail.com', N'$2a$10$3.JD5F09gheGD8VQswU5kOqvArcmKCJOojqM6pjB66ehCIbA8t2HG', N'Apoderado_Adeli_14472', 1, N'14472366-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (143, N'Apoderado_Chuy_14486@gmail.com', N'$2a$10$5Phoh8freMzjwc.60gOk2uKDCbLymmFqU0VG4h8dnU0VCwk1qkqeW', N'Apoderado_Chuy_14486', 1, N'14486694-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (144, N'Apoderado_Graciana_14491@gmail.com', N'$2a$10$Z5iCroEvkSwRgZEaphP1A.y3KNXDG.lMSfgBj4hBrDd0huJY1PzOy', N'Apoderado_Graci_14491', 1, N'14491813-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (145, N'Apoderado_Jaime_14501@gmail.com', N'$2a$10$rTY7AaAztjhy7xnj8RIpvOg3N7U.Tdw0VIz7MYI8OKodapzaxhJ3.', N'Apoderado_Jaime_14501', 1, N'14501107-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (146, N'Apoderado_Abraham_14509@gmail.com', N'$2a$10$aq.exYJsXBK3cfUTAaBUnOnCLniMJZGpYLph.pdDup8h28fc2LUde', N'Apoderado_Abrah_14509', 1, N'14509486-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (147, N'Apoderado_María_14510@gmail.com', N'$2a$10$qw.ljxrl2SaO94t7uInkYeOX15IWgFSUXNrzSyoiLmGL6fDZa4qwy', N'Apoderado_María_14510', 1, N'14510271-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (148, N'Apoderado_Gisela_14539@gmail.com', N'$2a$10$tvIbtk2r4rFSKcNJlx1KteSWJbrzi3FHftDibZrhgcp.JFX/fxjZS', N'Apoderado_Gisel_14539', 1, N'14539285-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (149, N'Apoderado_Jordán_14549@gmail.com', N'$2a$10$AZuvWKoAGzw1rvO9cAdK1uOvFbYkrENLku3vLb2HasPNiR6XAZX7i', N'Apoderado_Jordá_14549', 1, N'14549981-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (150, N'Apoderado_Marisela_14554@gmail.com', N'$2a$10$1fd2vizh9AKO.s4z0O2AbuC.EbslicRR499.cYeFRDi/BPSLoxrM.', N'Apoderado_Maris_14554', 1, N'14554230-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (151, N'Apoderado_Oriana_14554@gmail.com', N'$2a$10$4nFkBEPZ4puD0ag4EAE5q.oYjrOdTDIUD1Fa.wVymBECzc1q9BqNW', N'Apoderado_Orian_14554', 1, N'14554251-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (152, N'Apoderado_Perlita_14567@gmail.com', N'$2a$10$Mw67ervEEXlp4zDcweZwBOeXUVA4JYWjukLjrssRfKUAl2G/k47hm', N'Apoderado_Perli_14567', 1, N'14567934-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (153, N'Apoderado_Ámbar_14574@gmail.com', N'$2a$10$MpJfEuxNz3d0hLA4//isoesmz4MZOxeJSUsPNvfo9tb79A2m/qjca', N'Apoderado_Ámbar_14574', 1, N'14574849-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (154, N'Apoderado_Olga_14598@gmail.com', N'$2a$10$7.wwm1zYX1/0G6098gJDie/X.NTC4TSVHr/Fgx7qO5ZWSJp4u1FoW', N'Apoderado_Olga_14598', 1, N'14598145-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (155, N'Apoderado_Isaac_14605@gmail.com', N'$2a$10$iUIVgvI.hIX8lWHbwQBWJ.h8XrW9czYrSFb6wLkjEJoHDpbxg.HBa', N'Apoderado_Isaac_14605', 1, N'14605101-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (156, N'Apoderado_Roque_14627@gmail.com', N'$2a$10$zEVO5taoAZq5SB3HlGzjUeWvm2LmFKeAhyE7PqdptNrJr4OAHYCcC', N'Apoderado_Roque_14627', 1, N'14627082-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (157, N'Apoderado_Marcia_14628@gmail.com', N'$2a$10$hrifR/3uNeyl9uBWK/7gvOVrMlZucfgl9UzjEv5UK.lI55t7ewmWW', N'Apoderado_Marci_14628', 1, N'14628456-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (158, N'Apoderado_Mireia_14633@gmail.com', N'$2a$10$m25lgnH67Q5vLIvHKI45HefQCdpKQmAEOuQ0PWAP52RFRxAdUoH0.', N'Apoderado_Mirei_14633', 1, N'14633324-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (159, N'Apoderado_Hilario_14645@gmail.com', N'$2a$10$vcuWI4bZ2fRmsxv5ZtoolOObqmKo8xuo0H37ji5q6WtK.wUia27Sa', N'Apoderado_Hilar_14645', 1, N'14645067-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (160, N'Apoderado_Camilo_14645@gmail.com', N'$2a$10$eREaNFcgdPL4f3O8T76jb.nORb70hgBkwfWD4EpeNNq6B8TB7xE1C', N'Apoderado_Camil_14645', 1, N'14645492-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (161, N'Apoderado_Dorotea_14656@gmail.com', N'$2a$10$76BmimRURd9zLWEx/LF9IOukyxwdt2.oozUn1lNhlRgZNHSxAo4zG', N'Apoderado_Dorot_14656', 1, N'14656786-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (162, N'Apoderado_Jaime_14661@gmail.com', N'$2a$10$xbD5dUXzHpUTV6A18lzOd.ALsbI/w10g8ZdkNmMuuJ2fhOoYda6ua', N'Apoderado_Jaime_14661', 1, N'14661529-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (163, N'Apoderado_Edmundo_14671@gmail.com', N'$2a$10$eAgBp2eocURgbfmY/54s2.GOWbCmrjFyTY3MNuJiNnMsWYvQFK.hC', N'Apoderado_Edmun_14671', 1, N'14671112-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (164, N'Apoderado_Mohamed_14671@gmail.com', N'$2a$10$H1RKWO7FcGx/Kr8lm1P/POAddwFwl64QC.IZXMk5tpqBYYdCF1Pbi', N'Apoderado_Moham_14671', 1, N'14671421-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (165, N'Apoderado_Félix_14678@gmail.com', N'$2a$10$n/Nhf4jVTZh1BB0MQvLrouB0T26DFY5FJ/IGhTqjgeVACmNEfMtaO', N'Apoderado_Félix_14678', 1, N'14678670-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (166, N'Apoderado_Ángel_14680@gmail.com', N'$2a$10$WyJWvhAc8BMI3Csyntq0qOVcpM8w2.zMi.lx5qPD8OyrhGLK0ojki', N'Apoderado_Ángel_14680', 1, N'14680619-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (167, N'Apoderado_Leticia_14686@gmail.com', N'$2a$10$4tQfOQVMjjSQLEOFTyRC9.3kUj8XO4aoV8LRcNVwj9Zk/.UCtiOQa', N'Apoderado_Letic_14686', 1, N'14686507-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (168, N'Apoderado_Paca_14694@gmail.com', N'$2a$10$1G1C.aopjYWqgtNcO.v9i.SZbjfXJX7rmdbUd/6VEmorh64qTyuy2', N'Apoderado_Paca_14694', 1, N'14694086-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (169, N'Apoderado_Espiridión_14696@gmail.com', N'$2a$10$855G9wAz9UiGAyNDuyZEN.nvzT4fOu/150sAUmcZ0AgZsZ4xxXmku', N'Apoderado_Espir_14696', 1, N'14696505-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (170, N'Apoderado_Jacobo_14709@gmail.com', N'$2a$10$VrspFqKw5KN7ZI9/YpiTTu9z6rEqKkef4TiYRIJ5msPC9fc9Q.aoS', N'Apoderado_Jacob_14709', 1, N'14709163-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (171, N'Apoderado_Domitila_14715@gmail.com', N'$2a$10$u4AVZSrFeoy6d95V5GTKYOP.sRsWoJHmnf9YSSVtLxIboZzgIHy7W', N'Apoderado_Domit_14715', 1, N'14715101-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (172, N'Apoderado_Ruy_14753@gmail.com', N'$2a$10$oI3tk9Hynatw.fTykShCeeHf4wusOoTsma0FSPMrUZu4JQAsxmvly', N'Apoderado_Ruy_14753', 1, N'14753433-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (173, N'Apoderado_Dionisia_14759@gmail.com', N'$2a$10$D9HNf/dK/FGytWWT/XlyJeuInVdjFBi8c9zGNsPHvNEhy0r536M/K', N'Apoderado_Dioni_14759', 1, N'14759187-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (174, N'Apoderado_Felicidad_14760@gmail.com', N'$2a$10$DbCL4zHvsjerFEs/g5GgWO4W4XQzUG2YH7XLtxnOQHNX84JnBnq8C', N'Apoderado_Felic_14760', 1, N'14760260-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (175, N'Apoderado_Marco_14760@gmail.com', N'$2a$10$fE/dlGXanvIzGZjrcdkJruqIi4zQ10A3NC4mpqsBQuTxiW5MH6a26', N'Apoderado_Marco_14760', 1, N'14760767-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (176, N'Apoderado_Zoraida_14770@gmail.com', N'$2a$10$AOBqLTX8JSWsxjp7mpkA3eQT3i.rvlGqoERHo/k.Vba6Lks2G9OwC', N'Apoderado_Zorai_14770', 1, N'14770207-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (177, N'Apoderado_Macaria_14782@gmail.com', N'$2a$10$CpYy.m7yzDrfaCYV4qmSoev.0Ly3d.fkT.Wh.iVivAuY2rwDOA5NO', N'Apoderado_Macar_14782', 1, N'14782495-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (178, N'Apoderado_Hermenegildo_14800@gmail.com', N'$2a$10$eTRJubYh80JJCEDE8Wnff.AdFvPX2dicIeI.AEnn2mh2fiR3UlfSu', N'Apoderado_Herme_14800', 1, N'14800687-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (179, N'Apoderado_Merche_14804@gmail.com', N'$2a$10$XBi7QYhicCZ.JXnwwUQ1Iu4XnzURH8qgL.tBbJYxZgO2GO.SIuluC', N'Apoderado_Merch_14804', 1, N'14804677-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (180, N'Apoderado_Rosario_14809@gmail.com', N'$2a$10$l/x/5BZnZ243cvwp1g4tjO.EalZf2wTuSYgsU7lW5kRyJPEzrGPKu', N'Apoderado_Rosar_14809', 1, N'14809441-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (181, N'Apoderado_Vicente_14814@gmail.com', N'$2a$10$/bZaGAn4J2kj5bv0s2ifDet6jQmq0a/QivN1BxBiGwZiHLWIDsd3C', N'Apoderado_Vicen_14814', 1, N'14814543-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (182, N'Apoderado_Zaira_14822@gmail.com', N'$2a$10$x6NQQ0.aRQLkMTa80q6RvOnnu5kRlNTog6ji9ZFTPWPaVn0/FX23O', N'Apoderado_Zaira_14822', 1, N'14822144-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (183, N'Apoderado_Fernanda_14828@gmail.com', N'$2a$10$BUHwssaupdxNdp9OWCjxIO1WNrNBh8o52IaPdrPuSwjLgLurytqZy', N'Apoderado_Ferna_14828', 1, N'14828016-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (184, N'Apoderado_Blas_14830@gmail.com', N'$2a$10$/Vf5y7x9CpQJIxtu1745BeC6N0GN86ZQugvTtf8ukkRwurFQJaqGC', N'Apoderado_Blas_14830', 1, N'14830496-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (185, N'Apoderado_Águeda_14838@gmail.com', N'$2a$10$xUytYViCNQ5q..YwH2MVvuXEogtf3L3CENhVDday/0LWKfrNKKZqC', N'Apoderado_Águed_14838', 1, N'14838403-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (186, N'Apoderado_Noemí_14851@gmail.com', N'$2a$10$KB9PlxtoQKB6pIvnYYfmfugrCELLgzqOP/6kqv8Xt7/i3cL2QNhme', N'Apoderado_Noemí_14851', 1, N'14851657-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (187, N'Apoderado_Erasmo_14860@gmail.com', N'$2a$10$1vG9qZJ9RLK7VvpfOdQSFeqEgwiizJTG12ad4wntZRi7LetIt8Lka', N'Apoderado_Erasm_14860', 1, N'14860166-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (188, N'Apoderado_Itziar_14883@gmail.com', N'$2a$10$BBX3LCfnumeTmz9pkjXuju1Lq/tKG4RoSRzs/NWE9MbOntlW1pOHu', N'Apoderado_Itzia_14883', 1, N'14883937-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (189, N'Apoderado_Graciana_14917@gmail.com', N'$2a$10$wQrqRYtAZhRhvckDWKa.DeHWyGRGhcvnwpp52Dow/buKCe7voHCce', N'Apoderado_Graci_14917', 1, N'14917382-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (190, N'Apoderado_Clotilde_14923@gmail.com', N'$2a$10$cEH5cZ5gxUSd8NDNwqipAevJRS9Zh18p1pDNyRdO6zoIQfO0SYQTO', N'Apoderado_Cloti_14923', 1, N'14923274-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (191, N'Apoderado_Samuel_14926@gmail.com', N'$2a$10$xbDCa1X64ZwznJr.n1MD/e2R/fEqA3BXP9.gLh4mzjVWE2JaPmSTO', N'Apoderado_Samue_14926', 1, N'14926790-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (192, N'Apoderado_Emperatriz_14927@gmail.com', N'$2a$10$O6CTDvNCA6gTXLyUZoPQPe9eZX9hiCAAYjbiUnMSinCF3gNbd6XG2', N'Apoderado_Emper_14927', 1, N'14927880-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (193, N'Apoderado_Miguel_14929@gmail.com', N'$2a$10$LbTZpvY7sauR6J3tkEMbfOcIgdYNtFT5KSYeqENJPSWXu6nmBdAhy', N'Apoderado_Migue_14929', 1, N'14929309-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (194, N'Apoderado_Carlota_14934@gmail.com', N'$2a$10$uCD2jfIQuoEGCgSUIbGz1.PyaZUcbzITPSQHZs82iJgbuVis36cUi', N'Apoderado_Carlo_14934', 1, N'14934729-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (195, N'Apoderado_Jose_14936@gmail.com', N'$2a$10$Yw8qmy.F9i.pKqT3JryFeukvAnzpAG2IwjhZYvcUW0qOCNeI/O4iO', N'Apoderado_Jose_14936', 1, N'14936387-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (196, N'Apoderado_Priscila_14936@gmail.com', N'$2a$10$PsJv1TWfZI/gvE/x2LdMxeNzNLZMbZeNJEHjZgPUJwna.GFDgZUgS', N'Apoderado_Prisc_14936', 1, N'14936591-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (197, N'Apoderado_Juan_14938@gmail.com', N'$2a$10$.NRoGevG5CPgK8rRYuwUXeHIDzffxfIIc8Um5TtCKX3GMCGcijtg.', N'Apoderado_Juan_14938', 1, N'14938591-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (198, N'Apoderado_Andrés_14941@gmail.com', N'$2a$10$DrMWgm9A81ainqP6mnrk1OplkNXDPsQ8pmUBTMQJgfzNKcSqRviDG', N'Apoderado_André_14941', 1, N'14941244-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (199, N'Apoderado_Elodia_14964@gmail.com', N'$2a$10$/rrpDonTJFE73x5YQdmtRuN.NjW6bGnMPgQTnzroJe9uGiTfnlPMO', N'Apoderado_Elodi_14964', 1, N'14964175-0 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (200, N'Apoderado_Daniel_14965@gmail.com', N'$2a$10$7YnSkG.BiXxC7MMepQOIwuXhI4FY/Cwcozq.eQItufXUa697WdIaW', N'Apoderado_Danie_14965', 1, N'14965443-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (201, N'Apoderado_Ascensión_14988@gmail.com', N'$2a$10$kWZbMtetVREw.f44C..NjOSXUYnb5VmuliBYF9jQLaID46/xe7DRG', N'Apoderado_Ascen_14988', 1, N'14988821-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (202, N'Apoderado_Julián_14999@gmail.com', N'$2a$10$VKW7ZhS38GzE22LJ6VNo/uPgFOD9oxF8H/t/hbmyMr0LE7UA4sf4i', N'Apoderado_Juliá_14999', 1, N'14999507-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (203, N'Apoderado_Cayetano_15009@gmail.com', N'$2a$10$2KC1rdDDJ2ay0XDbpKr8LuFUwGPfOykavxl9fbm6IwV9S6ghBrOom', N'Apoderado_Cayet_15009', 1, N'15009257-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (204, N'Apoderado_Roxana_15013@gmail.com', N'$2a$10$L1yEb1jDSbGwXrzkoPe1/eVW7r9ua1QI/Bmyytd0WuDp6myZ4hmGe', N'Apoderado_Roxan_15013', 1, N'15013289-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (205, N'Apoderado_Armando_15016@gmail.com', N'$2a$10$V04TdbT1XNq08lbFW9R0gOT.FztUcO0xvcFEe8luKcker5p7QvWQW', N'Apoderado_Arman_15016', 1, N'15016763-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (206, N'Apoderado_Lupe_15021@gmail.com', N'$2a$10$X5MtvPN0SeZxmG3J6sKlrOhDexe2g0/.ADhcez249l5qLMzyLqOou', N'Apoderado_Lupe_15021', 1, N'15021905-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (207, N'Apoderado_Sosimo_15023@gmail.com', N'$2a$10$gNGwHu2NGdAaWcdsjP8XqeB9lm3Rqo5hHA1rqSNH1pEVIN.awvJXO', N'Apoderado_Sosim_15023', 1, N'15023801-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (208, N'Apoderado_María_15028@gmail.com', N'$2a$10$tpYvy5vTMP7tBr4p0KGzEek0XpWVdwlMlJUhhZlf8Kimm9Hxk7kNi', N'Apoderado_María_15028', 1, N'15028253-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (209, N'Apoderado_Moisés_15043@gmail.com', N'$2a$10$fcPnBGCHOvv11OP3fgVRQeElUlPHjXFPywImEzTSp8vpUbM6jUT3.', N'Apoderado_Moisé_15043', 1, N'15043360-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (210, N'Apoderado_Mireia_15062@gmail.com', N'$2a$10$pSEEp1KQqzuh4/N2q.IoS.n8F0PBo3IJ6IfgOiLW80.n0WbxNmcd2', N'Apoderado_Mirei_15062', 1, N'15062275-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (211, N'Apoderado_Basilio_15071@gmail.com', N'$2a$10$I3rkfNTEg/JTk4V169Ta9uAHZV4AWqj4qAIzMl8pJS2mSm9/t88QW', N'Apoderado_Basil_15071', 1, N'15071585-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (212, N'Apoderado_Reyna_15084@gmail.com', N'$2a$10$PXH6CzUQIKhneShZJFFsxuDlS0qTs9yc81lS/ZXSbuNGzBTnBBX.m', N'Apoderado_Reyna_15084', 1, N'15084210-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (213, N'Apoderado_Ascensión_15087@gmail.com', N'$2a$10$8XdpwviYCmFSwaAYJWpB6.E1jfFgvdODBsU.tAfFelBaUNK0bG11e', N'Apoderado_Ascen_15087', 1, N'15087728-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (214, N'Apoderado_Hortensia_15091@gmail.com', N'$2a$10$mG2cBP83hbd6ng2qANC24eauaZEKwJ1QP8wJ3Xb5OydNp4sYcbixa', N'Apoderado_Horte_15091', 1, N'15091385-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (215, N'Apoderado_Segismundo_15093@gmail.com', N'$2a$10$vwmjj.VuM3uhUjPwBYMeoOJ/m0hJQ/9GUnZa1KfZEMMGjQXu7TVy.', N'Apoderado_Segis_15093', 1, N'15093745-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (216, N'Apoderado_Olivia_15098@gmail.com', N'$2a$10$wYM5zkV63IW5BfL6FltAuuzctDcq5kjG1ZV9/I0hHwHf1ix2zN02K', N'Apoderado_Olivi_15098', 1, N'15098921-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (217, N'Apoderado_Ignacia_15103@gmail.com', N'$2a$10$HY/V9LPhVbBSDIjv29K6e.igZ4sxpM.XkymlEZfJSo8P3qsXPwbN6', N'Apoderado_Ignac_15103', 1, N'15103188-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (218, N'Apoderado_Víctor_15110@gmail.com', N'$2a$10$tOttNj1anF/f/YZF6o9Wt.9G9mMEhv0QWHD0yjRiCfRcwy4GvfKUm', N'Apoderado_Vícto_15110', 1, N'15110295-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (219, N'Apoderado_Luis_15120@gmail.com', N'$2a$10$fzoJERRZAYkODUxURUFZpuSCcFqpXIb.kX8KcSI4cl8CJh0MKIhqW', N'Apoderado_Luis_15120', 1, N'15120096-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (220, N'Apoderado_Charo_15124@gmail.com', N'$2a$10$TuHTl8UqqMzTynhn4b9h5eildOM6rx2EztgPDdjL.kUCK3m6l./Be', N'Apoderado_Charo_15124', 1, N'15124284-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (221, N'Apoderado_Tomasa_15135@gmail.com', N'$2a$10$wqWM6vkbwJB8E92WMKegm.srucBtnGAFoT6Cspu4xqs1CcUW.StKm', N'Apoderado_Tomas_15135', 1, N'15135848-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (222, N'Apoderado_Micaela_15149@gmail.com', N'$2a$10$E2K9u9rGVVGfhJS4/iTZrO6s/rkbPHQCC.3tIzV8xeI1jlAsf8mfK', N'Apoderado_Micae_15149', 1, N'15149866-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (223, N'Apoderado_Diego_15153@gmail.com', N'$2a$10$pET6cOtaal1sjIsxFimpdeV5ms0kIaZmAYs/TTM0vG5N6LxeeXcDW', N'Apoderado_Diego_15153', 1, N'15153256-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (224, N'Apoderado_Ximena_15158@gmail.com', N'$2a$10$s67srBb9JswnBB1yhWO3B.HvnWKCnpaXdnfGY7MGhFdVvnF4Yuumi', N'Apoderado_Ximen_15158', 1, N'15158590-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (225, N'Apoderado_Berto_15160@gmail.com', N'$2a$10$kA6JccCGP3ayUoEstWI4FuWSDOLf3.zrhqFsfr4NgqPgSCp62Bcu.', N'Apoderado_Berto_15160', 1, N'15160344-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (226, N'Apoderado_Modesto_15161@gmail.com', N'$2a$10$bfpF2caUHillW./Km5GS6eYBxAH2X162xiA8MKOIh7HbprHML0iS6', N'Apoderado_Modes_15161', 1, N'15161490-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (227, N'Apoderado_Bernabé_15166@gmail.com', N'$2a$10$JA1Hdn4sYQRZJWkFnzGKiuKTpHmnuTGWCqaqXt5OSDCKAjFLs6Ly2', N'Apoderado_Berna_15166', 1, N'15166715-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (228, N'Apoderado_Asunción_15172@gmail.com', N'$2a$10$2ogIcZZEgKmVriOVl2cbqumrmbiCVkbGj/BJaCj1tHk73ZmkABBIC', N'Apoderado_Asunc_15172', 1, N'15172797-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (229, N'Apoderado_Pascual_15199@gmail.com', N'$2a$10$XCB01VelH8DBFzyThT.f2.lIp9M/sESm09klUbFXFLc7NI/La0vM.', N'Apoderado_Pascu_15199', 1, N'15199194-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (230, N'Apoderado_Régulo_15201@gmail.com', N'$2a$10$qWw5NU.rXnl3XW4nxF522uwsgo5S7HfGZWCT55mxEMsy78pht8IsO', N'Apoderado_Régul_15201', 1, N'15201587-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (231, N'Apoderado_Edelmiro_15212@gmail.com', N'$2a$10$xW4jsRzmKQ4wH0NsgSeh7u9wnMMTgMVo8BQaw/0LR/ccIkI1nau42', N'Apoderado_Edelm_15212', 1, N'15212839-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (232, N'Apoderado_Ale_15229@gmail.com', N'$2a$10$eV//rtTiOJWXthmO9n2LMOwO1zOVx.VFPy6aFNHWkcuMJdpSr0yle', N'Apoderado_Ale_15229', 1, N'15229771-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (233, N'Apoderado_Manu_15240@gmail.com', N'$2a$10$UeJkfFl0QoiyyPF2JbO8j.yYfmgrmr8MFiZIKGs5nFbZi6sjJZo5K', N'Apoderado_Manu_15240', 1, N'15240538-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (234, N'Apoderado_Fidela_15248@gmail.com', N'$2a$10$hCwubblqkZL2A1fJEFd8puQVvqKqaVTT/Ce/l49kM7nqJlPWDf.mO', N'Apoderado_Fidel_15248', 1, N'15248739-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (235, N'Apoderado_Jose_15264@gmail.com', N'$2a$10$WPFjzljFKvi.Ap7BNeMxzOGayePN4sc.mNerfQdgmekvSjB6dJ1FS', N'Apoderado_Jose_15264', 1, N'15264344-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (236, N'Apoderado_María_15268@gmail.com', N'$2a$10$ic7hu4TXDet0GwgGDSFv1ei.Qcpv5gpyfsecqM32UaVdJKy3oaqfG', N'Apoderado_María_15268', 1, N'15268105-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (237, N'Apoderado_Isabel_15268@gmail.com', N'$2a$10$Mgr/GWquu7hHk35vCXRlz.Ba9ACzpr1BZp.DCTJ7x0zOm.NGnEX.m', N'Apoderado_Isabe_15268', 1, N'15268163-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (238, N'Apoderado_Perlita_15273@gmail.com', N'$2a$10$WBLB6xL1gg2xk/AYIMopUu4HhogxXNMwcliBm1LnTwcLeK8OUjjai', N'Apoderado_Perli_15273', 1, N'15273230-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (239, N'Apoderado_Marciano_15299@gmail.com', N'$2a$10$fNlbAWRq8ZqQ8w4Rc3oMBO7A4NWRonHLL7Ged3jRgNlwTMHEYJsl.', N'Apoderado_Marci_15299', 1, N'15299339-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (240, N'Apoderado_Cleto_15303@gmail.com', N'$2a$10$4FamnDC6pspbo04i5M5vI.blIir/v5BPWdQqDN36Gql8H/Qht0Lk6', N'Apoderado_Cleto_15303', 1, N'15303918-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (241, N'Apoderado_Emilio_15332@gmail.com', N'$2a$10$I0FC.jrMs5.kRmqh33dtn.Jkhjgc4AoZHcAhMBLYxBdahSbKdBalO', N'Apoderado_Emili_15332', 1, N'15332885-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (242, N'Apoderado_Gustavo_15348@gmail.com', N'$2a$10$su5SKhza6GJ0eTSQk5OgKOtQV2QojmA2P8gtDezEesDDke9dsK0B.', N'Apoderado_Gusta_15348', 1, N'15348005-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (243, N'Apoderado_María_15354@gmail.com', N'$2a$10$LnqhPlqIIfqGFoYUNXbIweh9HS6rrebyW/YvK3yo6VqCM.afPEFQe', N'Apoderado_María_15354', 1, N'15354132-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (244, N'Apoderado_Eloísa_15354@gmail.com', N'$2a$10$uO2/6mqrEwZ.8FHH7N3M4eMPDev5v7E3mRJU3l3A30U5aHirMhWrm', N'Apoderado_Eloís_15354', 1, N'15354372-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (245, N'Apoderado_Ángel_15368@gmail.com', N'$2a$10$PM28VrQ/n59IlaELb7ZMS.6TMKjMbty/3Jyuee9vbNglgnZO2eXLW', N'Apoderado_Ángel_15368', 1, N'15368061-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (246, N'Apoderado_Lupita_15370@gmail.com', N'$2a$10$6aqgNYfo8EnbJfJ6a5wUgeOtk9SODNJpuyZWGiKKJ.ZruYg/wJ2K2', N'Apoderado_Lupit_15370', 1, N'15370774-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (247, N'Apoderado_Iris_15383@gmail.com', N'$2a$10$FFK.WpIonJkv7VCL1qcmnOq6S2wb9ABpGo86wgC.owZLMgTqVYDsG', N'Apoderado_Iris_15383', 1, N'15383436-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (248, N'Apoderado_Filomena_15400@gmail.com', N'$2a$10$djWw1h2vmzvfgnZc5DgSUeINh8TIPKwbmffiohjlGynB0ehcJVLCi', N'Apoderado_Filom_15400', 1, N'15400857-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (249, N'Apoderado_Vera_15405@gmail.com', N'$2a$10$up1q4K6Q42rQE15TUPVwPuaL60iUpkTXRf8WvTdlfhJ4NcFxKLcDW', N'Apoderado_Vera_15405', 1, N'15405104-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (250, N'Apoderado_Máximo_15411@gmail.com', N'$2a$10$9zcYgRmQkwPy8APClIExxemIYvcsQC.1Kq.a5R/ZhIFtuEQNK.91i', N'Apoderado_Máxim_15411', 1, N'15411010-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (251, N'Apoderado_Aarón_15426@gmail.com', N'$2a$10$n4WibBnRzl/0FKzlNVrcJOEVJFffwRlpUFJIkd4wmTx1BSJilPVhm', N'Apoderado_Aarón_15426', 1, N'15426643-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (252, N'Apoderado_José_15431@gmail.com', N'$2a$10$u5Ymf/swvsAm3/4/84/Pb.jL6.SPOGn5hnPyEtecdhio76shduVJG', N'Apoderado_José_15431', 1, N'15431892-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (253, N'Apoderado_Anastasio_15454@gmail.com', N'$2a$10$HvIE3KpmcM.7BIl9nBrHPuGn5fK8tPFWJWZZHAzQStJKI8HX.mOQ6', N'Apoderado_Anast_15454', 1, N'15454085-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (254, N'Apoderado_Flavia_15469@gmail.com', N'$2a$10$9HsNNDfMk/SZt0nvjIeUrOKIT8s4R/NUYwTpF3Rwa9/ZJ2LgRjLL2', N'Apoderado_Flavi_15469', 1, N'15469561-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (255, N'Apoderado_Margarita_15475@gmail.com', N'$2a$10$4t2rSFUKjXW53gGW1Pf3FOeF9EFtFTlCQbpk6QVOSRnb3qldhswee', N'Apoderado_Marga_15475', 1, N'15475600-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (256, N'Apoderado_Casandra_15477@gmail.com', N'$2a$10$zlHvp7o2Up/99zEiyau8Juep.zMTtHAYnoH75e4YT.I8JoD/fqIT6', N'Apoderado_Casan_15477', 1, N'15477960-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (257, N'Apoderado_Amelia_15478@gmail.com', N'$2a$10$.jOSS.RovCROdqRXRxYnb.77MUd6l3Lq1D7aBcmUvt6rkdfFO0kyK', N'Apoderado_Ameli_15478', 1, N'15478142-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (258, N'Apoderado_Armando_15478@gmail.com', N'$2a$10$.gVRpt/TVGvaq.6GgrubJOoJ7veHddtMuSrVSiU0RPScR0eK9rDT.', N'Apoderado_Arman_15478', 1, N'15478674-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (259, N'Apoderado_Omar_15486@gmail.com', N'$2a$10$6IwK7XTzHLQUQcaca9saAuUsX/x2Snrg7WxGo2v1bJY2oXSkw.dRe', N'Apoderado_Omar_15486', 1, N'15486035-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (260, N'Apoderado_Candelario_15496@gmail.com', N'$2a$10$fRMYbEmJXCPMeIWe9/5Ltuiruy.3cINE98plHDBFaebxKmiL15rG6', N'Apoderado_Cande_15496', 1, N'15496912-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (261, N'Apoderado_Isidro_15497@gmail.com', N'$2a$10$3uuGka5IiyGYq8rpb4Y4sOU8p3La6e6VnDjjwuYuKEKZEN0pkbrx6', N'Apoderado_Isidr_15497', 1, N'15497259-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (262, N'Apoderado_Catalina_15516@gmail.com', N'$2a$10$JyA1TT6TDsxSftkKKsyA1eSqduWWr1lg1aS9hLiugd4mU4jzIaxXG', N'Apoderado_Catal_15516', 1, N'15516987-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (263, N'Apoderado_Flor_15521@gmail.com', N'$2a$10$07UCixa0CaHuRYoEz/Unl.u.00C1ZikZTZQmFZ7t8AdZEXzRMYD3K', N'Apoderado_Flor_15521', 1, N'15521004-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (264, N'Apoderado_Delfina_15532@gmail.com', N'$2a$10$wox6q/qFVBrDtKXctGh.zOvJkrqKW5721USqdmw3ZI.dTNdp8oXpm', N'Apoderado_Delfi_15532', 1, N'15532803-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (265, N'Apoderado_Pelayo_15534@gmail.com', N'$2a$10$Rl46HaVeciroLj8A1zVC5.3ZrczRn.YyMCwnGe4OSjDHEJc5KxhiK', N'Apoderado_Pelay_15534', 1, N'15534518-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (266, N'Apoderado_Leyre_15535@gmail.com', N'$2a$10$D3UkFE6iEb5D/JmadM9n.e5bluyzB1NrVdaaz.Ijc7hsRz6NscjV.', N'Apoderado_Leyre_15535', 1, N'15535291-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (267, N'Apoderado_Nazaret_15535@gmail.com', N'$2a$10$QJQeDJEDWX97xhVr76DnIOCuNhEgyYg7V0tWy7lsbIr9BD244DHA2', N'Apoderado_Nazar_15535', 1, N'15535399-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (268, N'Apoderado_Teodoro_15543@gmail.com', N'$2a$10$zLja8Ze5IP2/uQxHxIqskuHg5/jsTjf2SKrWLYOaRdgoO3tAJsQi6', N'Apoderado_Teodo_15543', 1, N'15543512-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (269, N'Apoderado_Aníbal_15556@gmail.com', N'$2a$10$pi1Ykdd31VFaP5ny4yz78uWEljW8wylss8xwec3Tq.x1hLS7QBSti', N'Apoderado_Aníba_15556', 1, N'15556118-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (270, N'Apoderado_Pepita_15560@gmail.com', N'$2a$10$ocLpRdx9mXPlvd4usl/3Xem7gkkKvp.yfr5LgmMjWUlE.RD7gDd5S', N'Apoderado_Pepit_15560', 1, N'15560302-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (271, N'Apoderado_Noelia_15565@gmail.com', N'$2a$10$qVNe/69ZJZ427cDs5JZCROt41ux10s0kKridcbOnfw/5WYaZEdCz.', N'Apoderado_Noeli_15565', 1, N'15565853-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (272, N'Apoderado_Magdalena_15567@gmail.com', N'$2a$10$eFulnIpI3QwkNIGKrv/NE.ZAK5dNcARlADYEen23ZeE7bujqYjw9K', N'Apoderado_Magda_15567', 1, N'15567123-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (273, N'Apoderado_Rosario_15575@gmail.com', N'$2a$10$UiB2nI8lRNIDh4l36i9mseRUUoITkNDsMYq5ZbpwFxY93p0OeH7Fy', N'Apoderado_Rosar_15575', 1, N'15575064-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (274, N'Apoderado_Guillermo_15586@gmail.com', N'$2a$10$3uNAnOBiLE5UpwToAVJV7.C4ayWFZSOKKbp73nHml3yFFgXdidLAy', N'Apoderado_Guill_15586', 1, N'15586228-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (275, N'Apoderado_Otilia_15593@gmail.com', N'$2a$10$dWvWZjtEUHfJ0NJBu0v5veFIrO3vp0YnehcuGpzZbC9Ui2IGfnAFW', N'Apoderado_Otili_15593', 1, N'15593079-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (276, N'Apoderado_Jesusa_15601@gmail.com', N'$2a$10$85VHmVucrcZ0tzffRjybcekwSmSKQ8pkB9ElhUlqY9B3Z/EaJtRzi', N'Apoderado_Jesus_15601', 1, N'15601153-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (277, N'Apoderado_Paula_15609@gmail.com', N'$2a$10$WYftwGywV1ITDXC1glE3TenCBbTlTUvfUM87wYOhrzcSwt2K0xqC.', N'Apoderado_Paula_15609', 1, N'15609722-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (278, N'Apoderado_César_15614@gmail.com', N'$2a$10$WaysLSdbkdeyfO5KkHFxIuCfIgUe0B7s.aW/lZL3xtoI3tsNL4cW2', N'Apoderado_César_15614', 1, N'15614408-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (279, N'Apoderado_Aroa_15617@gmail.com', N'$2a$10$nzH.48X7KXSgkD9egA7LmO5kcYjekSWyLFNT5piPYQsNo4OdBR6Si', N'Apoderado_Aroa_15617', 1, N'15617091-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (280, N'Apoderado_Anunciación_15630@gmail.com', N'$2a$10$eUkYej8SSx6sE9NBG1s2ueER7S.MFTl.gBdGw9ZxUohx06ahDgRJ6', N'Apoderado_Anunc_15630', 1, N'15630700-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (281, N'Apoderado_Mirta_15640@gmail.com', N'$2a$10$gn90.vvm2jG0EOZQ8KzZkuGTgxZOoMnRYuE9uAAAvb/A7G2jf6LIC', N'Apoderado_Mirta_15640', 1, N'15640102-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (282, N'Apoderado_Salvador_15652@gmail.com', N'$2a$10$j6pOASNQID9U.9P0i7Jfc.qjMXxNIvrATx5gjE4259aHSWSEx1T0m', N'Apoderado_Salva_15652', 1, N'15652002-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (283, N'Apoderado_Xavier_15671@gmail.com', N'$2a$10$WSfwzpYP4NdNmcGOoylqJ.mcp3DZwGW5yJ02LopAEXMuNCNuNc0a2', N'Apoderado_Xavie_15671', 1, N'15671466-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (284, N'Apoderado_Lina_15673@gmail.com', N'$2a$10$BogOGpQ7m/1kS.NlTTan3Ol4dPNWiy6IVoysviQ2u4jyKSLngRO9a', N'Apoderado_Lina_15673', 1, N'15673055-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (285, N'Apoderado_Teo_15691@gmail.com', N'$2a$10$ShnppfkqBzU.uuWGmwbznerQplODRhfiX8RswUhRrzbECPJVpqPX6', N'Apoderado_Teo_15691', 1, N'15691444-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (286, N'Apoderado_Evita_15706@gmail.com', N'$2a$10$LmohxDQVK6OInZ7sZXECkuu6CGCiotWyex31SJ3CBj6cGDSQA2a2C', N'Apoderado_Evita_15706', 1, N'15706420-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (287, N'Apoderado_Tristán_15709@gmail.com', N'$2a$10$fp9lFu0XDnj3pYB6ut4Hcue01REGtoGYNTRzYU/dYoOHrTZm8PyoW', N'Apoderado_Trist_15709', 1, N'15709080-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (288, N'Apoderado_Nadia_15709@gmail.com', N'$2a$10$eebUTKPqr7YbkOFwD72OBeuuJmzCheZFsdlImKMG0jE3GuvvOMWm6', N'Apoderado_Nadia_15709', 1, N'15709726-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (289, N'Apoderado_Trinidad_15727@gmail.com', N'$2a$10$LsUDMFrWflkMZc6adxZdaOkQh2sf1CO0YxsJ4qd.qbSXPF2Vhre7.', N'Apoderado_Trini_15727', 1, N'15727523-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (290, N'Apoderado_José_15728@gmail.com', N'$2a$10$Zx3f7cNqtcQR8oCvhuKX6eES5.hQ.qyyBDD2pM7b4ySYFzp93dKN.', N'Apoderado_José_15728', 1, N'15728824-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (291, N'Apoderado_Concepción_15735@gmail.com', N'$2a$10$UXGKi0kYipWoxky7hZtEgea7DX9YcD3q.NQ8Kg1KsR4D7BHRVdbYG', N'Apoderado_Conce_15735', 1, N'15735595-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (292, N'Apoderado_Lupe_15759@gmail.com', N'$2a$10$WogoTY5ZAIw26ZmvE5vVTu2VZzUNRv0fzaxp4eQCZyEL/uaXBPsAm', N'Apoderado_Lupe_15759', 1, N'15759200-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (293, N'Apoderado_Natividad_15770@gmail.com', N'$2a$10$xuQUw9v2v./4ryZLVHzPYu3QyySBT.AVwBX62yUfDfbHhH7O45aWO', N'Apoderado_Nativ_15770', 1, N'15770343-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (294, N'Apoderado_René_15783@gmail.com', N'$2a$10$dwpOJ/CWiae4v3ixHL0aP.At7PoPoCfZAUhpq9VZmCghfOiNQHnnq', N'Apoderado_René_15783', 1, N'15783910-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (295, N'Apoderado_Lidia_15804@gmail.com', N'$2a$10$XqdQqH57qRNC.9ObexQwben0P272B/Q8gjJb0ODho0Zx30as17qly', N'Apoderado_Lidia_15804', 1, N'15804963-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (296, N'Apoderado_Luis_15815@gmail.com', N'$2a$10$9OpaW4uR0f4AtLqwWQ7hxey6u2Tsy.rE3CfH/hFS2gPG0mRHuDaSm', N'Apoderado_Luis_15815', 1, N'15815361-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (297, N'Apoderado_Adora_15817@gmail.com', N'$2a$10$ur4vUZ79Q/VPZoiC4M5b6.QkAJVl7IMW4Uxv4K1rzL34XAMcGU5fW', N'Apoderado_Adora_15817', 1, N'15817798-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (298, N'Apoderado_Jordi_15827@gmail.com', N'$2a$10$pTbAoYv9GwwJiPIUJ/PFyeGKvpA/jPs8NrTOe1ZvpnkYVB82l4Kya', N'Apoderado_Jordi_15827', 1, N'15827041-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (299, N'Apoderado_Tiburcio_15833@gmail.com', N'$2a$10$Zm/dsrKX0DZcHn7/wghKL.kF242u050mR4TZ6IECj1K2NG2MSPIIe', N'Apoderado_Tibur_15833', 1, N'15833885-8 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (300, N'Apoderado_Raimundo_15845@gmail.com', N'$2a$10$2FlYEGXxawrU9hSJmvvZXuQmF6g4quwLql50jvQZF0MnGpyXhkgOa', N'Apoderado_Raimu_15845', 1, N'15845559-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (301, N'Apoderado_Liliana_15852@gmail.com', N'$2a$10$exuduoux231Mra39Klc/f.u29Yhyo5/wb3MF/qMvmZG7zYQ89G/yu', N'Apoderado_Lilia_15852', 1, N'15852575-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (302, N'Apoderado_Vicenta_15897@gmail.com', N'$2a$10$UJDHJzG6yoAo7.TGApEW1eY/T4nrQUP2SNWrpT6nVArINfF57kpt6', N'Apoderado_Vicen_15897', 1, N'15897578-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (303, N'Apoderado_Natalia_15918@gmail.com', N'$2a$10$NftmqXgX5scdW3FJ0nrxFOb.hI6aqHiEtBw66RcbejAdU0uON61rm', N'Apoderado_Natal_15918', 1, N'15918157-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (304, N'Apoderado_Ovidio_15921@gmail.com', N'$2a$10$qh1nKeyG7aETqZSgUX38OOK3M7P5wfONBXek21D2tPM0wdiacED/2', N'Apoderado_Ovidi_15921', 1, N'15921217-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (305, N'Apoderado_Teodora_15931@gmail.com', N'$2a$10$GOFL1ImpTGWYHITTVYcGduQ/92lcfPpPC05vVv.KoiZYn.KIF5jZi', N'Apoderado_Teodo_15931', 1, N'15931750-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (306, N'Apoderado_Sebastián_15931@gmail.com', N'$2a$10$/4nBNkEvknt71EvL4FEU3.W5iYfrh5KoqHg0Q/AGkxPcv396pSlXK', N'Apoderado_Sebas_15931', 1, N'15931800-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (307, N'Apoderado_Edelmiro_15933@gmail.com', N'$2a$10$nAv.I4z/K7Mn3RVRAK7vweWojik1yyMqdeNqyv8Yh/5H6FB6EnSQa', N'Apoderado_Edelm_15933', 1, N'15933801-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (308, N'Apoderado_Severino_15949@gmail.com', N'$2a$10$q/IDvmkz3lbVQee3DvWSuOa97jTfeyN0mUqUTcPbX14E1EmdmChUK', N'Apoderado_Sever_15949', 1, N'15949539-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (309, N'Apoderado_Jorge_15961@gmail.com', N'$2a$10$zOfBdLHEFMfhN74Qjrqg3e3NKUylorXWbAaUqE2u91/zrX.bIbHQa', N'Apoderado_Jorge_15961', 1, N'15961213-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (310, N'Apoderado_Heliodoro_15973@gmail.com', N'$2a$10$WNzBC7Eiispylp/btATIC.XhNLD.tgTK2M/3r.iO9FZc8JseDxaGS', N'Apoderado_Helio_15973', 1, N'15973612-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (311, N'Apoderado_Reyes_15981@gmail.com', N'$2a$10$eJqswj64cj8CbmYPnUhFJ.xXZyyJrdXCIfTTOImQOcHv9ywCgQ0Mq', N'Apoderado_Reyes_15981', 1, N'15981886-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (312, N'Apoderado_Rosalina_15986@gmail.com', N'$2a$10$hBqCtH7nNO5MlD59WhsuxeWRhNi7fr8WZu0nzMQg.0t9z9zzO4bFK', N'Apoderado_Rosal_15986', 1, N'15986829-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (313, N'Apoderado_Plácido_15994@gmail.com', N'$2a$10$xiTJ.ZBD68ZoBlD4i0SZs.6zPP4.7Fuj2Myfn9Fe5j0GZXhMRzLH6', N'Apoderado_Pláci_15994', 1, N'15994883-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (314, N'Apoderado_Ovidio_16002@gmail.com', N'$2a$10$qxdofMuhtGiTZhKIs2jiTeaUs2GmaCaFybsjoVNFoXbYGOvdoyZD6', N'Apoderado_Ovidi_16002', 1, N'16002603-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (315, N'Apoderado_Dora_16020@gmail.com', N'$2a$10$dU1hNoUP20/LryTBdhdFJ.5D97n6S2oKE4BBuCWS0BlEr.cJtY62S', N'Apoderado_Dora_16020', 1, N'16020148-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (316, N'Apoderado_Ildefonso_16027@gmail.com', N'$2a$10$J.N05YP5LBeQRZ6F5HCYB.L17dGSEAynK9b59cFKfm1YnfVxC7.ry', N'Apoderado_Ildef_16027', 1, N'16027923-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (317, N'Apoderado_Manu_16046@gmail.com', N'$2a$10$WpewavMy/Ejpnnh6qqw9Me/E2mXQDk/Pjpwk5mkOEJaLaUUreOoky', N'Apoderado_Manu_16046', 1, N'16046570-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (318, N'Apoderado_Lisandro_16046@gmail.com', N'$2a$10$QwO4SYyDkfLgYA2EFO/lxetvXoN/MChKuDTGN/8cG0gRfUK7VNYhW', N'Apoderado_Lisan_16046', 1, N'16046712-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (319, N'Apoderado_Rolando_16052@gmail.com', N'$2a$10$Hba6pSitaakt20SOIeXqm.XnDi0U6L3Q7/ErsblkNYft0EQkj05QO', N'Apoderado_Rolan_16052', 1, N'16052260-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (320, N'Apoderado_Juan_16090@gmail.com', N'$2a$10$tH5U8.tRbAiJfw69GwkAx.kPoWp6Vxg9VsKmEclPuQUwPSBCjBnne', N'Apoderado_Juan_16090', 1, N'16090908-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (321, N'Apoderado_Anunciación_16110@gmail.com', N'$2a$10$n1emyZrfOAdmrFeFPrF1futwkIQSpd7I1HBRIidFOyGz66J2Tkgky', N'Apoderado_Anunc_16110', 1, N'16110739-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (322, N'Apoderado_Luisa_16140@gmail.com', N'$2a$10$fGUJ84E6lhh8x.EZfKmmGeVSqEHMvaEJ87ZWvvEycKQIJxbJUpTLu', N'Apoderado_Luisa_16140', 1, N'16140312-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (323, N'Apoderado_Rolando_16152@gmail.com', N'$2a$10$NP3lu07WrnAJKfw2sPoDt.qoOvwXUuyfysxIf4GcniR.NkTEmo2l.', N'Apoderado_Rolan_16152', 1, N'16152457-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (324, N'Apoderado_Eugenio_16157@gmail.com', N'$2a$10$JmPDgVKtRFFNyQuBvNqHPeknt/H3ZJKTQn5oFigUeGIutlsZOFyWe', N'Apoderado_Eugen_16157', 1, N'16157921-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (325, N'Apoderado_Martirio_16158@gmail.com', N'$2a$10$JgWPxwoZ2H3dTpdEByhozuTof2Qg3UGc5yN/6GWv7g9bVjXT8le6K', N'Apoderado_Marti_16158', 1, N'16158212-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (326, N'Apoderado_Timoteo_16200@gmail.com', N'$2a$10$csVfb/MOyQAtGtQCiLDIKOq6airQ/wU2SIHRF9wWHMuh085Xe5L1m', N'Apoderado_Timot_16200', 1, N'16200275-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (327, N'Apoderado_Ezequiel_16200@gmail.com', N'$2a$10$53ni9Czg/mipoEODKByMVOK2tzqvHJlAS4Qiz3bz/PoyD8Vwtt6Dm', N'Apoderado_Ezequ_16200', 1, N'16200926-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (328, N'Apoderado_Guillermo_16208@gmail.com', N'$2a$10$16PSkWYQ7ZZqtVD9b/AfDuQTjndTikHOsbhMbt5FhcWh8IrLmCKXS', N'Apoderado_Guill_16208', 1, N'16208187-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (329, N'Apoderado_Espiridión_16219@gmail.com', N'$2a$10$NnGNpJioslG8YSg.EXxEmugFTuXe3j2rdevtzac55WwH3o9UQan/y', N'Apoderado_Espir_16219', 1, N'16219843-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (330, N'Apoderado_Irene_16243@gmail.com', N'$2a$10$x9.DMRHHAMrvR4q/IdKOKOMZs6WoNAKlXXj1NhRSVkzy8iTh1wNUS', N'Apoderado_Irene_16243', 1, N'16243986-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (331, N'Apoderado_Micaela_16254@gmail.com', N'$2a$10$0.4MjA0qDf2AIpUONJcTqO2WYEQSppltIPcY0Qa/ZfcJnpH5eYmHa', N'Apoderado_Micae_16254', 1, N'16254652-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (332, N'Apoderado_Gema_16265@gmail.com', N'$2a$10$bahBozujYuiT2endFlVKWeL/ax6YbLJuzjWbchk.XqdpiX/Oef4ju', N'Apoderado_Gema_16265', 1, N'16265458-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (333, N'Apoderado_Agustina_16269@gmail.com', N'$2a$10$T0N4jDSrVlY.EBVOpsrUZeJM3Ck5b67p1mhj/mtoBjWH.HKGw.bXu', N'Apoderado_Agust_16269', 1, N'16269763-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (334, N'Apoderado_Vasco_16275@gmail.com', N'$2a$10$.gfbCCe091.GOTmtJ4mVWevGhsYmeReeVbKJClOiFy0ASNM/4aUSO', N'Apoderado_Vasco_16275', 1, N'16275663-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (335, N'Apoderado_Visitación_16283@gmail.com', N'$2a$10$IjE/ngTfbZ5UqkwEMHfO..5/BQLA/0iAr52WxdVAk1OaswLM.BrEG', N'Apoderado_Visit_16283', 1, N'16283289-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (336, N'Apoderado_Perlita_16293@gmail.com', N'$2a$10$njVZ7gs0WZH6qyK0skmSxeoqG1fFTkftLmux7V.O/9qPZQvuqcXy.', N'Apoderado_Perli_16293', 1, N'16293629-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (337, N'Apoderado_Andrea_16301@gmail.com', N'$2a$10$PbNKeVGvLI6sENCQBK0.wunzcOOzmuubhlHTng9AfYF280QiKAg96', N'Apoderado_Andre_16301', 1, N'16301869-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (338, N'Apoderado_Bartolomé_16306@gmail.com', N'$2a$10$4tQCbktFhw618UR6NKb5/usSX9GkDjaHk478x0LHEkX3hl4PC.fne', N'Apoderado_Barto_16306', 1, N'16306398-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (339, N'Apoderado_Bonifacio_16320@gmail.com', N'$2a$10$hURpZZ4DO87C/cLCFnNJh.TqV/uQURCcofTI3KrY7xNGuyHzUOmEm', N'Apoderado_Bonif_16320', 1, N'16320808-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (340, N'Apoderado_Samuel_16327@gmail.com', N'$2a$10$pmN6lWy31zV/M3hn8jnxoehVfDblGDtyMtFvExhus4YKWE18NfL4S', N'Apoderado_Samue_16327', 1, N'16327714-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (341, N'Apoderado_Malena_16340@gmail.com', N'$2a$10$Nu2jbEVfofHUKMZKtIQfvO./hTTWdF5UGDIHTqgmUqVIsRFcKjlVO', N'Apoderado_Malen_16340', 1, N'16340925-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (342, N'Apoderado_Liliana_16343@gmail.com', N'$2a$10$LcEGtEcvwV2/bzEJtEtWze9pFZ/C6rjyq/xiF1lZ7pJsqgOS49hky', N'Apoderado_Lilia_16343', 1, N'16343046-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (343, N'Apoderado_Manolo_16365@gmail.com', N'$2a$10$Zbo9yHKeKF.g1tWh7t5zcuW7Y4eWalbY3UCytQjKsdviIK5YiDc2W', N'Apoderado_Manol_16365', 1, N'16365693-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (344, N'Apoderado_Guadalupe_16380@gmail.com', N'$2a$10$pvck8FygsxkszLAMCIVSKuk0C/xDqYSU5R0jSKW95AG7MpceC4n3q', N'Apoderado_Guada_16380', 1, N'16380698-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (345, N'Apoderado_Pánfilo_16382@gmail.com', N'$2a$10$ffgsrR6um1RuhNCjvmkYROEuasrSSD4/ZRTkpt31hzNfHM3yUXiWy', N'Apoderado_Pánfi_16382', 1, N'16382201-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (346, N'Apoderado_Faustino_16387@gmail.com', N'$2a$10$lP/xSbyXjbHh7GmhNfY8dOIsQ5i4juJEnH8IN0hB6VH.wImd/jc/q', N'Apoderado_Faust_16387', 1, N'16387064-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (347, N'Apoderado_Joaquín_16399@gmail.com', N'$2a$10$3ku/7d0RfgEIjA7J2r0g2.e.tRqNV8Ogr5JoRK8WNTzgzg.9ezbU2', N'Apoderado_Joaqu_16399', 1, N'16399091-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (348, N'Apoderado_Evaristo_16411@gmail.com', N'$2a$10$jjG4wICslytO9sdqb4z11.h0S7hBiejbCeNf9s4fLPZE92QIWaISa', N'Apoderado_Evari_16411', 1, N'16411398-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (349, N'Apoderado_Andrea_16413@gmail.com', N'$2a$10$4PlwACD4JwHTUGhUddWLJe3ngDSxpgjwERIIn6sdQ/8bQOY2yHfyC', N'Apoderado_Andre_16413', 1, N'16413787-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (350, N'Apoderado_Eufemia_16416@gmail.com', N'$2a$10$3JT5ZCL2Se8B.nxXO6BDMu6hsUpA7peyLvCdPuOo1L37kG.3W6bOa', N'Apoderado_Eufem_16416', 1, N'16416810-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (351, N'Apoderado_Pelayo_16418@gmail.com', N'$2a$10$LkRtwoeuAgTmy4/9Wt6Zue9gNYd9DanGq51zAlzBBwcQoTHVgtVsu', N'Apoderado_Pelay_16418', 1, N'16418565-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (352, N'Apoderado_Araceli_16419@gmail.com', N'$2a$10$/X1kKdHVwmLRCJsjBEpi1u9HvFrm3sTTuNNgx.vl3LJSOiQhxDMD2', N'Apoderado_Arace_16419', 1, N'16419175-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (353, N'Apoderado_Juan_16420@gmail.com', N'$2a$10$.zCBs6sJh7fHG0HysnZIn.wg.Vt8dLo3bBdcXqHU7naPmP7pdN7Ai', N'Apoderado_Juan_16420', 1, N'16420673-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (354, N'Apoderado_Celestina_16422@gmail.com', N'$2a$10$xcdoFNmRBrQdDQ0Zy/VPLuCyIFTTijOuBseF0cfmT2aMsPEAGM3au', N'Apoderado_Celes_16422', 1, N'16422889-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (355, N'Apoderado_Manuela_16429@gmail.com', N'$2a$10$Acf0swl41KHecxRu3vYcDOmKEaIp0hhDP4BZg.ogG8XWtVkKAu.w.', N'Apoderado_Manue_16429', 1, N'16429457-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (356, N'Apoderado_Ágata_16432@gmail.com', N'$2a$10$TZ9NQtOkGJcW58Y5tuBeTeoVLHJAxkt5xlPRvp419P7ewxbfq.0xK', N'Apoderado_Ágata_16432', 1, N'16432337-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (357, N'Apoderado_Macario_16442@gmail.com', N'$2a$10$ItTF129qobyu2lZmtRXB8.FYiWTa1N2Qn/XISWRcgh.aKmKDwqr8e', N'Apoderado_Macar_16442', 1, N'16442929-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (358, N'Apoderado_Griselda_16452@gmail.com', N'$2a$10$lAavTpkDafpSN8Gezf7equImsIPfekyLOZ5B6CdnQDNYBue7uzCIS', N'Apoderado_Grise_16452', 1, N'16452081-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (359, N'Apoderado_Aníbal_16469@gmail.com', N'$2a$10$IoE3AfLkJPf8puIZcFrrJeYfDJ6gG90H3acmj8sUp7BvJtMQCJqhG', N'Apoderado_Aníba_16469', 1, N'16469701-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (360, N'Apoderado_Jose_16477@gmail.com', N'$2a$10$1YCcPTox7Mx4mwSzDT0/W.enjf8gJJCi7Ydw48lZlroC9dD4HiZ2q', N'Apoderado_Jose_16477', 1, N'16477207-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (361, N'Apoderado_Goyo_16484@gmail.com', N'$2a$10$0dM2YFezXzpPrpzdwUSUNeqpuIvo2PxYJQ2v0nryPhZh9YWO03kma', N'Apoderado_Goyo_16484', 1, N'16484467-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (362, N'Apoderado_Nazaret_16503@gmail.com', N'$2a$10$XOPTtsciupmR2EqKFaPeheMJjuZw5FCSsJoLmCoENqNpW.OTzl31O', N'Apoderado_Nazar_16503', 1, N'16503858-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (363, N'Apoderado_Erasmo_16527@gmail.com', N'$2a$10$IOXTgVOhIhJlmhEjXMzM1OuAwA/DIIstk5PzfHKrJ8KetPwpOs4kq', N'Apoderado_Erasm_16527', 1, N'16527013-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (364, N'Apoderado_Alcides_16536@gmail.com', N'$2a$10$E0n5OQiyVr7uJof0.45TcOkop52GZmByWvPWgma1hJ.Jpaz2cB1Xa', N'Apoderado_Alcid_16536', 1, N'16536843-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (365, N'Apoderado_Horacio_16540@gmail.com', N'$2a$10$92MCVAHN.fhW9.b4/BbB0uFxgp4NbQ1wV.uwNri6vUNRGiNdTqJZa', N'Apoderado_Horac_16540', 1, N'16540074-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (366, N'Apoderado_Leandra_16554@gmail.com', N'$2a$10$IhiUHyaOLZUG64fB9M7JkO0dSqJuIxSpR6p8yXxBajpVAKqmvtjA2', N'Apoderado_Leand_16554', 1, N'16554719-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (367, N'Apoderado_Clímaco_16563@gmail.com', N'$2a$10$sOI7GhO0IXRnOI.5X0Kklu0QxfX0Zcj3wh1fbRUHt4.Y/YfMbqDfe', N'Apoderado_Clíma_16563', 1, N'16563570-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (368, N'Apoderado_Juan_16574@gmail.com', N'$2a$10$2eOIujHAR1/LP9QDnc5q3uYS/1rR5GQa69dCQfuVWhrbHTQfrT.W.', N'Apoderado_Juan_16574', 1, N'16574801-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (369, N'Apoderado_Ariel_16579@gmail.com', N'$2a$10$9eH5RNzY/Nq51d9r.3vy4.t2/wxbgB3dYJKyc25E0wFFfdtT1hu4e', N'Apoderado_Ariel_16579', 1, N'16579103-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (370, N'Apoderado_Leocadio_16588@gmail.com', N'$2a$10$q8IYUz7A37xEC0P5Vzakg.1m9jXuAmebJGFOFbuLYdM8aBdx1IB8i', N'Apoderado_Leoca_16588', 1, N'16588908-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (371, N'Apoderado_Maricela_16589@gmail.com', N'$2a$10$4r1SOuMATaBbF6ouFgsPIuvqpTehBTzd.q7bp4GI2kDHdje4N3Iea', N'Apoderado_Maric_16589', 1, N'16589970-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (372, N'Apoderado_Ofelia_16590@gmail.com', N'$2a$10$pd7kDvIocnPsxPPk7erpQe35di59AyOt4JySJiLrY3qTnA4hjL/6a', N'Apoderado_Ofeli_16590', 1, N'16590901-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (373, N'Apoderado_Zoraida_16594@gmail.com', N'$2a$10$55qZXXOzcQmgrUABs.RnpOlDSXPgerkJZm0hU4zrWDFT0nPggXky.', N'Apoderado_Zorai_16594', 1, N'16594034-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (374, N'Apoderado_Íñigo_16603@gmail.com', N'$2a$10$lEjxYJSnVPiKMB/I.jz3MeR5X7JiBkujVB.u9cV0B4JXXXp4D0qlO', N'Apoderado_Íñigo_16603', 1, N'16603922-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (375, N'Apoderado_Inocencio_16621@gmail.com', N'$2a$10$fBOJKXFSHKCNU5IHSp.kS.pWP9w0LACjl7mqf./bh6aLQ5xMgOqgq', N'Apoderado_Inoce_16621', 1, N'16621397-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (376, N'Apoderado_Gil_16631@gmail.com', N'$2a$10$5IKhUuJ9p4Syzw2PooNghOh/sUYnZcnXgJP5QmdgwAgsOfri4DADy', N'Apoderado_Gil_16631', 1, N'16631499-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (377, N'Apoderado_Marina_16637@gmail.com', N'$2a$10$uQQ99LonSkCjSm7ggpRt4uRYDk6R5Hky6HkGuFwqhSDwJfaDyqPhu', N'Apoderado_Marin_16637', 1, N'16637488-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (378, N'Apoderado_Bautista_16643@gmail.com', N'$2a$10$1qYF9FqN0aCrPO/jiz69u.y6wyDe.nwyI9/2qx1Bpgnvlwd38920W', N'Apoderado_Bauti_16643', 1, N'16643805-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (379, N'Apoderado_Charo_16654@gmail.com', N'$2a$10$W5jReTr3y7ucgF6US3/EWuN1tQb5AWysSc2ql0uvdjTy199Ia1fY6', N'Apoderado_Charo_16654', 1, N'16654445-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (380, N'Apoderado_Hernando_16660@gmail.com', N'$2a$10$dQAYpnwbLZaJovqkq8st.OpGDF/RLKPzKv8o0rIR/ns9NRKKEzrha', N'Apoderado_Herna_16660', 1, N'16660886-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (381, N'Apoderado_Timoteo_16665@gmail.com', N'$2a$10$fM4YbKkIRCnomTTdheGyUesjHR5BIyqVwCRKP.5giwnNAIvVOBYT6', N'Apoderado_Timot_16665', 1, N'16665782-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (382, N'Apoderado_Lucho_16665@gmail.com', N'$2a$10$ulSFTIZEON.DKRq579OnAOETYbL/tFu0gh/.lC5MDYXtnBTbuT7vW', N'Apoderado_Lucho_16665', 1, N'16665899-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (383, N'Apoderado_Toño_16666@gmail.com', N'$2a$10$.BxSxx.3CeS1Vgn6or5xHuQUgUo5qK8iYXYTA44yvU8Mradi242lO', N'Apoderado_Toño_16666', 1, N'16666436-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (384, N'Apoderado_Heriberto_16669@gmail.com', N'$2a$10$74BLhQ/xpXH7cOrE6VzqC.jrvHZrfSp8Kj02PkBZU1y2Itgr8Wzge', N'Apoderado_Herib_16669', 1, N'16669072-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (385, N'Apoderado_Alonso_16672@gmail.com', N'$2a$10$7oQyae7y7QOj2xPTkeWZVep5.GENVzDdSNH5/kyBfXIbvpDWfH5JW', N'Apoderado_Alons_16672', 1, N'16672251-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (386, N'Apoderado_Manuela_16685@gmail.com', N'$2a$10$RI6YFg.O.7SD/xWT53Gpie/eMTwpevhvkYf9WLnSzujrHUyralq9y', N'Apoderado_Manue_16685', 1, N'16685640-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (387, N'Apoderado_Vicente_16698@gmail.com', N'$2a$10$4EgghGLB3ShxnY.XJc9eRO8HI6s6RZTYepTuAoTSIkKESIVyn5uc2', N'Apoderado_Vicen_16698', 1, N'16698356-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (388, N'Apoderado_María_16711@gmail.com', N'$2a$10$rW7iFHndmNzKu0BVh7jciOVTi43ezzQZmD7Wz9yUoX580hjrxe8mm', N'Apoderado_María_16711', 1, N'16711678-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (389, N'Apoderado_Íñigo_16716@gmail.com', N'$2a$10$roMS3ZPOBoePwwJFOI3Z1O5XgCj/nJnv2Zqkuna48pGcb597qQ.mm', N'Apoderado_Íñigo_16716', 1, N'16716231-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (390, N'Apoderado_Marcial_16717@gmail.com', N'$2a$10$44uafH.TlNleqwWatVnQEOERUINuXPuM8zUuN61xeODlLh9rZAadu', N'Apoderado_Marci_16717', 1, N'16717181-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (391, N'Apoderado_Goyo_16720@gmail.com', N'$2a$10$tV1bvF/LaOhvkgHg7y34T.mdlAEY1sZcwnu9LV98oOdhJqxyYD4tO', N'Apoderado_Goyo_16720', 1, N'16720319-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (392, N'Apoderado_Leoncio_16721@gmail.com', N'$2a$10$ANAn2z537uVHEQzm9dZwqel/G1fIuLGgct2EzWwUbdusc6M21ujM2', N'Apoderado_Leonc_16721', 1, N'16721160-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (393, N'Apoderado_Arsenio_16729@gmail.com', N'$2a$10$dik8GFlZ5VhkgYxSGw2fGuXAMsBc4OJjphxYXViI6PcYc7cOvuwYG', N'Apoderado_Arsen_16729', 1, N'16729935-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (394, N'Apoderado_Leticia_16743@gmail.com', N'$2a$10$hd/WxIsUMb.S9X5h9ocrvu4ogmGQnE4EBeO1wNYTusNsUP7fAJCF.', N'Apoderado_Letic_16743', 1, N'16743869-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (395, N'Apoderado_Juan_16744@gmail.com', N'$2a$10$vLsO2p2NMZ1q3PAW048OluqPDBQ0NJYjmm57jHYXHY/dcVC9ncKR2', N'Apoderado_Juan_16744', 1, N'16744461-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (396, N'Apoderado_Rocío_16745@gmail.com', N'$2a$10$siO0wYmz1WCKZtqh.0u98u29xU2qsaJBQJyySRQCnWpHJWCnS4nhO', N'Apoderado_Rocío_16745', 1, N'16745402-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (397, N'Apoderado_Marcio_16759@gmail.com', N'$2a$10$VrgSPaity5dKRfx/9J7p1uyKY.XVZEqLiUMdLnMZfqNcBdVXEingq', N'Apoderado_Marci_16759', 1, N'16759381-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (398, N'Apoderado_María_16772@gmail.com', N'$2a$10$s4iHOR6n9bN.NL4bJ49OBO38I5D0IL/kpeNOS7b.OOoMbWHrXBEmq', N'Apoderado_María_16772', 1, N'16772015-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (399, N'Apoderado_Chus_16776@gmail.com', N'$2a$10$jWPS.R9UxSSD/1FZamMN5euo/jALjjyGk1Y4buEi1/3Z33CU2U1ca', N'Apoderado_Chus_16776', 1, N'16776725-7 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (400, N'Apoderado_Fabián_16785@gmail.com', N'$2a$10$7RdbobgBnYtfeu6vn8M9F.cCBdQZq64HSctvXO9MbSRMwrjHyMdcG', N'Apoderado_Fabiá_16785', 1, N'16785855-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (401, N'Apoderado_Dimas_16815@gmail.com', N'$2a$10$07sEMKEkO5brrjpkPOF7c.TE8e7TmN2s546/ms6XKfwzmBs0CL8DG', N'Apoderado_Dimas_16815', 1, N'16815535-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (402, N'Apoderado_Lucía_16822@gmail.com', N'$2a$10$uUKnhCMertuxNXzVtblKieDKRjYFdfOg7MDu7Ob0EoDaZ42MmpY9i', N'Apoderado_Lucía_16822', 1, N'16822010-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (403, N'Apoderado_Juanito_16827@gmail.com', N'$2a$10$Px3xg52qbdHEklP7vr7aI.X0aXFsWHWC0Xcwk9q7.qoKzUoLPzvWC', N'Apoderado_Juani_16827', 1, N'16827933-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (404, N'Apoderado_Fabiola_16831@gmail.com', N'$2a$10$QvaRZYGp9hzonJHIKWEwCOh.oI/K/R8GzGQfIpU1N6hshyGuIT5Cu', N'Apoderado_Fabio_16831', 1, N'16831263-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (405, N'Apoderado_Rosalina_16837@gmail.com', N'$2a$10$6DKRF/lTEYUT5ScsJe0eA.rFAomyBV1XCG4.bVVNtJC1Zn1zdf1i2', N'Apoderado_Rosal_16837', 1, N'16837363-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (406, N'Apoderado_Jacobo_16840@gmail.com', N'$2a$10$0IB7oCeAv.q.BQfOwF467Ocik5vvJ0yt048e8C6JTzezZWok9/SIK', N'Apoderado_Jacob_16840', 1, N'16840694-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (407, N'Apoderado_Iris_16845@gmail.com', N'$2a$10$MXJDvgr5EiukJ9Iohb4H5.bFdr1ceBkb/idZ8djU6iNiRhpD1MOBy', N'Apoderado_Iris_16845', 1, N'16845249-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (408, N'Apoderado_Alma_16847@gmail.com', N'$2a$10$rES49P.yMPRMImgD1RJOpenzjS3XtocfKXYyOY2Vc.ICZQIZvusIK', N'Apoderado_Alma_16847', 1, N'16847347-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (409, N'Apoderado_Ema_16848@gmail.com', N'$2a$10$1MwxGlGUKo45Yxozjrb0UuT5NYOitZn0gkXRaLfqFkjC2tpPk7TBG', N'Apoderado_Ema_16848', 1, N'16848191-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (410, N'Apoderado_Alex_16852@gmail.com', N'$2a$10$WFUfCBJcWPjHL46p3qOcMuP9QdJh6jj9puT0UNv5OcWg./igV9qiO', N'Apoderado_Alex_16852', 1, N'16852945-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (411, N'Apoderado_Ildefonso_16856@gmail.com', N'$2a$10$cYCyba/VHPnPz03vr7jcZeIUHdEqCDwyhA2XoYmxD1SLRG9eTNj4i', N'Apoderado_Ildef_16856', 1, N'16856729-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (412, N'Apoderado_Febe_16873@gmail.com', N'$2a$10$8EYfEd/mMY8Qj8T34nM4QOU9D30xSP07QEdIWeFxIemgoFjY7Pa4C', N'Apoderado_Febe_16873', 1, N'16873869-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (413, N'Apoderado_Irma_16885@gmail.com', N'$2a$10$MqMHO9H8oOz2.TDP95Be9eGLuBe3Ldz./G2mXh2afibeXeIiXyyRa', N'Apoderado_Irma_16885', 1, N'16885505-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (414, N'Apoderado_Eloy_16911@gmail.com', N'$2a$10$VWQSiTsyi4biE59.e5T40.10Ku4LvIue3k3WZ1GK12pIBlGFdzwYW', N'Apoderado_Eloy_16911', 1, N'16911128-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (415, N'Apoderado_Eva_16930@gmail.com', N'$2a$10$pFwTgPfTIm6kyHt4iGrZ/ubtJz4WODu9KEHCR/amoud3Eul78DRi.', N'Apoderado_Eva_16930', 1, N'16930522-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (416, N'Apoderado_Isaac_16943@gmail.com', N'$2a$10$O50eReinfV0islamBbXYU.MEiS/V3Kzndg0tloRd7/3jwxErteyQa', N'Apoderado_Isaac_16943', 1, N'16943453-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (417, N'Apoderado_Roque_16953@gmail.com', N'$2a$10$05P5AKmLj1R0unmXbL9ZgegRQluc7aRyiuaDnbf3hMhKx8d7.IDiq', N'Apoderado_Roque_16953', 1, N'16953607-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (418, N'Apoderado_Sigfrido_16985@gmail.com', N'$2a$10$SuIIZoes4Y4fI4Gv1oTzfOaSaDPGsLSRE2iu32I.wBBb7SrpXjVhC', N'Apoderado_Sigfr_16985', 1, N'16985866-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (419, N'Apoderado_Nazaret_16991@gmail.com', N'$2a$10$WRGdr8iDfQA7RPFXVDB88OyXDxrdeoOdE4aS6aDsQC3rn/KLGzUQK', N'Apoderado_Nazar_16991', 1, N'16991425-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (420, N'Apoderado_Valero_16992@gmail.com', N'$2a$10$pOa/lfFGBIcTHJvmfDJ1jebCZLfgFnYK1Ksh9Bl3PAVZO8EYS6aGG', N'Apoderado_Valer_16992', 1, N'16992222-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (421, N'Apoderado_Consuela_16992@gmail.com', N'$2a$10$1fQfTvwuWUNvg97PDynCVe1sMozB6FrqQOAW5dQxLR8sF5DV3b6ai', N'Apoderado_Consu_16992', 1, N'16992885-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (422, N'Apoderado_Selena_17015@gmail.com', N'$2a$10$IVpxNf7AJXOXEZhOTI2oH.cRZLCHBH.YJWkBtXiEkSCeEh1HGdoYi', N'Apoderado_Selen_17015', 1, N'17015583-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (423, N'Apoderado_Camilo_17022@gmail.com', N'$2a$10$pRo53vo9OdHOeRZVxyG89e8.BTUNRSqN.c7a8DfKFohHIRS2F4apG', N'Apoderado_Camil_17022', 1, N'17022813-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (424, N'Apoderado_Noé_17024@gmail.com', N'$2a$10$EYUArj2ZCGVc8rKRnfkzCeWho.RO.IKoueFUbdmBoWHZqnpO9k9DO', N'Apoderado_Noé_17024', 1, N'17024758-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (425, N'Apoderado_Atilio_17028@gmail.com', N'$2a$10$cEYphmlxLnAYaLNR8Daw0eu0jEG.5ukUcX2EuxXHXpnkILJnF3xK6', N'Apoderado_Atili_17028', 1, N'17028114-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (426, N'Apoderado_Victoria_17038@gmail.com', N'$2a$10$B5IjyFomDoOKruSV05SZmuwtIy4zIEnbjS.JaO44y4ldiibkvr4k.', N'Apoderado_Victo_17038', 1, N'17038957-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (427, N'Apoderado_Chus_17042@gmail.com', N'$2a$10$ueloYE0nSpFoiJ72w6dMC.jFjHpJvt/16T0ZJu0v2L9E/M6ZgMktm', N'Apoderado_Chus_17042', 1, N'17042778-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (428, N'Apoderado_Consuelo_17057@gmail.com', N'$2a$10$u/bTcpmwgjn1L2UEymoiteTv0I/Sy1ItfkJcqWhp6aX/dZH7e4xc.', N'Apoderado_Consu_17057', 1, N'17057088-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (429, N'Apoderado_Consuelo_17086@gmail.com', N'$2a$10$OORXVYV.t8agQEp3SsOH7.oWt2M8yJnUe/ujuEXEsEw4eUGtIGfZi', N'Apoderado_Consu_17086', 1, N'17086907-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (430, N'Apoderado_Dora_17089@gmail.com', N'$2a$10$zBlp.tsTQI2iB//Gvsvo1..ROWQSmEPghkt.b1Kr.EnYQqyxX9v02', N'Apoderado_Dora_17089', 1, N'17089467-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (431, N'Apoderado_Amada_17091@gmail.com', N'$2a$10$MIBCZGwjsRX7duYQVfxdb./cWEqQnNP6QTAi7V6w.zzQQDNfkqq.i', N'Apoderado_Amada_17091', 1, N'17091096-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (432, N'Apoderado_Haroldo_17102@gmail.com', N'$2a$10$kFsi.RtOQYAz6Sze8Mgy7uH.p5/WsChcnRNTcRmYSLafeAVoi6noS', N'Apoderado_Harol_17102', 1, N'17102846-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (433, N'Apoderado_Jacinto_17105@gmail.com', N'$2a$10$oky1iykK1mTbeJV8HqjcROTWhNu/Lo3sbgIqmBG7TEOii5MWoJbqe', N'Apoderado_Jacin_17105', 1, N'17105152-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (434, N'Apoderado_Jose_17108@gmail.com', N'$2a$10$pzIUaoZ5B9tP2W9zSbnURegOdrDyYkaJ5IGyuHdWbqqmCnx8GNC4m', N'Apoderado_Jose_17108', 1, N'17108948-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (435, N'Apoderado_Arsenio_17122@gmail.com', N'$2a$10$Jkyo.hjjCrRyps3unZs77eRJrK3yYc.WAfPybGtXNnW.Y4eZjvqWa', N'Apoderado_Arsen_17122', 1, N'17122886-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (436, N'Apoderado_Aarón_17125@gmail.com', N'$2a$10$saN7q3eX8VYcgs4qnSCkQOHTHKrZhumy84si4lsyvtJGBZVLsQgJK', N'Apoderado_Aarón_17125', 1, N'17125581-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (437, N'Apoderado_Yésica_17134@gmail.com', N'$2a$10$soMoxgMxI2CDXezXVLnfdOeoPkMLNvURdylikcSXaGZ4ethbp/V5m', N'Apoderado_Yésic_17134', 1, N'17134387-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (438, N'Apoderado_Julie_17145@gmail.com', N'$2a$10$VrIEVfVNNgCEuxQDfJRaqOdEOc4shcBmviQZ45E4m2u1//U0XMc6.', N'Apoderado_Julie_17145', 1, N'17145040-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (439, N'Apoderado_Efraín_17156@gmail.com', N'$2a$10$Er0P4wGwu5AampGcyQdX4OewdTz2ihA/XbUDpWd4E89eEAEW0H.3u', N'Apoderado_Efraí_17156', 1, N'17156977-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (440, N'Apoderado_Juan_17160@gmail.com', N'$2a$10$jFZNfpQlJBbHqPsa.RSwIeyszFjUpubHp3NBQ4ONQL.AGGE.mHLJe', N'Apoderado_Juan_17160', 1, N'17160551-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (441, N'Apoderado_Adán_17166@gmail.com', N'$2a$10$1C52BGyjaxnFb3nOc4b10u4X64ur0BkWd4SuAxji/qhF3BkfAOQIC', N'Apoderado_Adán_17166', 1, N'17166705-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (442, N'Apoderado_Casandra_17167@gmail.com', N'$2a$10$21aApUwnVFKIT1Jklz7pIe1eVMwyUMAmCMqsyrb7zPdy4kikE4fci', N'Apoderado_Casan_17167', 1, N'17167932-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (443, N'Apoderado_Pilar_17190@gmail.com', N'$2a$10$LWQqE4Dzg2ur2wgMSFHZgOzuTUJd6znZ1NdvD41VixQv6t5NKlRhu', N'Apoderado_Pilar_17190', 1, N'17190657-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (444, N'Apoderado_Sonia_17198@gmail.com', N'$2a$10$9Ud5W5pvRsg8RSvpSmjjreSSVACvgloPqAiwKiYVyqqrdWFBxUQFe', N'Apoderado_Sonia_17198', 1, N'17198003-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (445, N'Apoderado_Marisela_17206@gmail.com', N'$2a$10$dgQVKAmUccqmvSODdT7d0..syQnpsq3VPLkZ5K/9OvK01M8voAbXy', N'Apoderado_Maris_17206', 1, N'17206784-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (446, N'Apoderado_Emigdio_17209@gmail.com', N'$2a$10$B3MzsMdbp.WtjhevcQvMpeAGqAYBLd8iCggKVR8kSwV4eNexgvus.', N'Apoderado_Emigd_17209', 1, N'17209289-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (447, N'Apoderado_Delia_17215@gmail.com', N'$2a$10$1BlvgUxZZ9eq0Z3QJ8gJhe8.PIvgbEGxyvjPByJVBDaljDaZSZHKe', N'Apoderado_Delia_17215', 1, N'17215797-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (448, N'Apoderado_René_17217@gmail.com', N'$2a$10$qCd4hoMd/Uq81ku1NlSE4OOxkROMK.i/gBSwnTpf469muCEZto/zW', N'Apoderado_René_17217', 1, N'17217511-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (449, N'Apoderado_Abraham_17245@gmail.com', N'$2a$10$mVjnmpHmwBtH.3bJy7oCmumNSQ861I/ettPTt63iRYa3uqBAdRRoG', N'Apoderado_Abrah_17245', 1, N'17245857-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (450, N'Apoderado_Fernanda_17255@gmail.com', N'$2a$10$58HV7txBTMiOoSsd6qT92uFw1/IGExD32kCHHfccgf/pWJQRqU/GC', N'Apoderado_Ferna_17255', 1, N'17255051-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (451, N'Apoderado_Perla_17257@gmail.com', N'$2a$10$.SZSS7ovkCGPWI48NuhS2uzMqn/GAb79CZu9F0Ma3DNSr5ceBLrdi', N'Apoderado_Perla_17257', 1, N'17257333-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (452, N'Apoderado_Evaristo_17261@gmail.com', N'$2a$10$Hq/o2klgXYSjz6T6JhDxyORBIxTiyfSYkF.pfbnAepgk9P/91ErTy', N'Apoderado_Evari_17261', 1, N'17261510-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (453, N'Apoderado_Virgilio_17272@gmail.com', N'$2a$10$CqEZemYmvwvQVwt2TOYxz.ZGHFoGgCooRhQx6JJqfcJnD8QJZ6nLS', N'Apoderado_Virgi_17272', 1, N'17272719-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (454, N'Apoderado_Sabas_17288@gmail.com', N'$2a$10$XVPA.dAr.gvjOvROIPxqluNh.yTzNDsoS09V3TbGwiUjB116mGKhu', N'Apoderado_Sabas_17288', 1, N'17288657-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (455, N'Apoderado_Luciana_17306@gmail.com', N'$2a$10$mG/VW3N.G1ZahYqwC6tZy.HwtK.ke7Ny5lHkSY3rW3IqzUQxmNMxG', N'Apoderado_Lucia_17306', 1, N'17306575-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (456, N'Apoderado_Georgina_17306@gmail.com', N'$2a$10$n/yBQysxni8isVNxxxRpEOa4iP3zKY2Pxf6scIampIcSCKWRzhLYS', N'Apoderado_Georg_17306', 1, N'17306582-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (457, N'Apoderado_Matías_17340@gmail.com', N'$2a$10$V5rkaZpOtK6k6MGjeftCJuAyn7xuLAH2R/FdQTc2S9bb5Nqfw5gUS', N'Apoderado_Matía_17340', 1, N'17340339-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (458, N'Apoderado_Cristian_17340@gmail.com', N'$2a$10$Bx3xm6xER.Ab.OF.5LacBOEcy.nL.HfqqxvldvamP4OapM/Ox3O4G', N'Apoderado_Crist_17340', 1, N'17340745-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (459, N'Apoderado_Jennifer_17345@gmail.com', N'$2a$10$6B3SNIwHXnfPLDz4A4zdK.EDPi6ZhD5pVK.n1GwBtdf5jZKfhvVDG', N'Apoderado_Jenni_17345', 1, N'17345780-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (460, N'Apoderado_Áurea_17349@gmail.com', N'$2a$10$WXf41p0O/osiQLlD0w2LMOuXs0tPG4azSbEAI0DPXe.5d4/3uEzqu', N'Apoderado_Áurea_17349', 1, N'17349210-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (461, N'Apoderado_Cándido_17365@gmail.com', N'$2a$10$3ocLehEs3casBvZ9EwjdvO6erbbIbHKGBXVo8iUluXWgggxP6ZVmO', N'Apoderado_Cándi_17365', 1, N'17365106-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (462, N'Apoderado_Silvestre_17378@gmail.com', N'$2a$10$OIvCCVkOFOXnZfuq.IP7TeYe2QI0m8vnF.KLoXg.n95ndjCmWiQt2', N'Apoderado_Silve_17378', 1, N'17378283-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (463, N'Apoderado_Marcos_17382@gmail.com', N'$2a$10$wrbzHRMD4ftrFWpY1kk/9u57z7V1Y9hBe3KXreVrk6NQHpgr3edKO', N'Apoderado_Marco_17382', 1, N'17382963-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (464, N'Apoderado_Heraclio_17386@gmail.com', N'$2a$10$vZFacugH0nCIP70KaqyCiORSPBNvGy7sORpfDWRJEmVlL9KAOigjm', N'Apoderado_Herac_17386', 1, N'17386909-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (465, N'Apoderado_Matías_17389@gmail.com', N'$2a$10$0xNfIZTTVOtddf6a3w5G3.YsfmN2zJJYnHTCdCdpIKlUrX5GUKiYG', N'Apoderado_Matía_17389', 1, N'17389967-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (466, N'Apoderado_Isaura_17410@gmail.com', N'$2a$10$unNSV/og06H5cLLhZ7aFGuAnsAnwrxkSuzQNYB3k8Zy./b2UeCwiC', N'Apoderado_Isaur_17410', 1, N'17410219-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (467, N'Apoderado_Cristina_17415@gmail.com', N'$2a$10$GASW/4irAysSQb3cuzwzBu66.7nNiGr2LQH/fJgphJVRnYxOqBNay', N'Apoderado_Crist_17415', 1, N'17415920-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (468, N'Apoderado_Ruy_17427@gmail.com', N'$2a$10$LJvJEQbbfu687h1gbsKIZOY2VDq0XKcctjqAucwKWxtCdDA2i.4oO', N'Apoderado_Ruy_17427', 1, N'17427726-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (469, N'Apoderado_Gaspar_17434@gmail.com', N'$2a$10$B9vVKV0.2gxhQKBVcb2Zt.utRUvm3iocjR5wzW4WNS9yYWgXJN9g.', N'Apoderado_Gaspa_17434', 1, N'17434178-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (470, N'Apoderado_Violeta_17488@gmail.com', N'$2a$10$5OcnsHy.hkXYVUjCiElSqeAOqVdSa48Q4CVQC9XwnGHNqVbJ3mKAu', N'Apoderado_Viole_17488', 1, N'17488738-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (471, N'Apoderado_Jessica_17496@gmail.com', N'$2a$10$AAP7KW4PQFRrTX8B0YIGuuhJpRq1lHKUyOFyMkbEey1QXSDC3Ykfa', N'Apoderado_Jessi_17496', 1, N'17496764-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (472, N'Apoderado_Damián_17496@gmail.com', N'$2a$10$jyTaZfTKjoVMMdXfyl2t0uu6hfp.dMxwmbHIpgXIgOTkYALW6/doi', N'Apoderado_Damiá_17496', 1, N'17496959-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (473, N'Apoderado_Amada_17504@gmail.com', N'$2a$10$Nl9kAMLJkuV6A.x7YvZhd.X8PGjULqj.LlzFXdJbS7DlxscijIG2.', N'Apoderado_Amada_17504', 1, N'17504306-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (474, N'Apoderado_Luisa_17510@gmail.com', N'$2a$10$TSKaRxwVh1JDZ9Y9YkvPMOOlPfEWhHt7zK5V1ZCoiNw/rrcsicFY.', N'Apoderado_Luisa_17510', 1, N'17510703-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (475, N'Apoderado_Nicanor_17510@gmail.com', N'$2a$10$ue1qCGXBKmKBY7Zbu1OYMOcsnQ0vTxW9BMcxNm7j5ubKU6Qn037Du', N'Apoderado_Nican_17510', 1, N'17510923-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (476, N'Apoderado_Ángeles_17513@gmail.com', N'$2a$10$hhHgk3BRwVvsqwQ5RBnbYuLmMGi94vOViZNqz4Ed7vQ4lnmXTi6Nm', N'Apoderado_Ángel_17513', 1, N'17513847-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (477, N'Apoderado_Bernardo_17515@gmail.com', N'$2a$10$UZLYdmASkjNCb7iMM0muXeD8GBWbXoTjayr/EZWinCSkhlLO3NSi.', N'Apoderado_Berna_17515', 1, N'17515016-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (478, N'Apoderado_Raúl_17516@gmail.com', N'$2a$10$/OlaveVmHJ3mTR9DivC8IOTubnBQ70sEWxn5xqRQMZjwgo4e9BpHK', N'Apoderado_Raúl_17516', 1, N'17516176-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (479, N'Apoderado_Estefanía_17517@gmail.com', N'$2a$10$Vbxfhr0FlOi4CIGqvRgQUuodJDUThYJljUA6rTsjUZUH8ghm197BG', N'Apoderado_Estef_17517', 1, N'17517892-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (480, N'Apoderado_Amanda_17523@gmail.com', N'$2a$10$kbEQ7M3shyhd24yj0sUdoetl81uEn34Hhn4JgaTktXf./Hqq5SqVW', N'Apoderado_Amand_17523', 1, N'17523182-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (481, N'Apoderado_Bárbara_17526@gmail.com', N'$2a$10$v/2.vH0wP8xxnLIOvLGIVu8jWvgPaotPz4Pj/hRntpqwEZW93veLa', N'Apoderado_Bárba_17526', 1, N'17526299-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (482, N'Apoderado_Imelda_17528@gmail.com', N'$2a$10$iGDTjk2W/.3bsI1Fxf5CSepsqt.MODcdeHZDr95JE7ZUaLEkXJWFK', N'Apoderado_Imeld_17528', 1, N'17528329-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (483, N'Apoderado_Delfina_17544@gmail.com', N'$2a$10$M5tahEj6wA1886FnxGFnAObqKtN160PIzl0pON9fg4DMEa31fpAfS', N'Apoderado_Delfi_17544', 1, N'17544384-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (484, N'Apoderado_Alfonso_17548@gmail.com', N'$2a$10$qVvMpMHBxg8Gyt2ZI86GhuUwYjZ6gxVRy8LELYzRIeUf3ac2veq2u', N'Apoderado_Alfon_17548', 1, N'17548626-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (485, N'Apoderado_Mamen_17551@gmail.com', N'$2a$10$J.ca.7XPxqq311PDjD.kWOD6vDlqutgoJuX7yM5H85NBYs/dgh7C2', N'Apoderado_Mamen_17551', 1, N'17551533-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (486, N'Apoderado_Hipólito_17574@gmail.com', N'$2a$10$NvVsGYFk/C590oTBnGCI0ez0eGBWi.5QoFZY7l.68s8Z0ZRDTzDcG', N'Apoderado_Hipól_17574', 1, N'17574582-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (487, N'Apoderado_Ana_17578@gmail.com', N'$2a$10$4QShn/JU1Bzd22vtjkiZZOcz2P.hpX5sH7FAy0SCZI0ng8Qqs7LOS', N'Apoderado_Ana_17578', 1, N'17578021-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (488, N'Apoderado_Emilio_17591@gmail.com', N'$2a$10$TfP8Feb13CrgcgHjTuH.XOun.hem66LSFobLTC29qisE.Tx2dyLiK', N'Apoderado_Emili_17591', 1, N'17591429-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (489, N'Apoderado_Aitana_17599@gmail.com', N'$2a$10$BTA0NJjVHLAI.qPxJuTh6uyuxR.Z.LVcNC5gXHdOBan4tAjud6mS6', N'Apoderado_Aitan_17599', 1, N'17599794-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (490, N'Apoderado_Américo_17612@gmail.com', N'$2a$10$p5Bm94ffF2Nqams1JvJZ0.E0uJSRJNik.BGQDN89KrmH0vcct3dJK', N'Apoderado_Améri_17612', 1, N'17612335-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (491, N'Apoderado_Lisandro_17627@gmail.com', N'$2a$10$tlUTzGjPcx4MgGkeKSe2fOplLug2pn/7xGZe81myAACWW97/UNGXC', N'Apoderado_Lisan_17627', 1, N'17627037-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (492, N'Apoderado_Jenaro_17630@gmail.com', N'$2a$10$3qmhkWaLwLX08Llhg0j2mOi2GsvyrRk9OL9Uj/FWtJ4XPmgCF5yO.', N'Apoderado_Jenar_17630', 1, N'17630615-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (493, N'Apoderado_Mireia_17643@gmail.com', N'$2a$10$epL.eDLlQq5K/iOnMU8Z3OtrKZ3e02O9moYlODVjf8Pc4jc/K1Y6O', N'Apoderado_Mirei_17643', 1, N'17643244-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (494, N'Apoderado_Faustino_17647@gmail.com', N'$2a$10$MA6S8/7/Fon25rH5iDs9E.LhKCfwL9ohDm/Sq3Br2qnlL9ocTSz6y', N'Apoderado_Faust_17647', 1, N'17647355-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (495, N'Apoderado_Eric_17648@gmail.com', N'$2a$10$vpuocpD8ucbCc.MxE2vQdOoB.EZ0eeFSjAiasqwL0hiB56BJYrXYe', N'Apoderado_Eric_17648', 1, N'17648399-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (496, N'Apoderado_Duilio_17651@gmail.com', N'$2a$10$ePs7TKvSG/Z9zO6KIzSJkOsoeySvu38wiDy0p5ne6V9ROMElWBNqu', N'Apoderado_Duili_17651', 1, N'17651138-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (497, N'Apoderado_Constanza_17672@gmail.com', N'$2a$10$y/krqh8/OQpTAHpfVFSBkuSoeGYvRs3GVSBUcmCyrpSGmTHW6MR0a', N'Apoderado_Const_17672', 1, N'17672481-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (498, N'Apoderado_Rómulo_17676@gmail.com', N'$2a$10$UaZnCnest/0BL8AbcLOOAOKDG6wuWh5VQFFtifunqiu6gzKPOjkfO', N'Apoderado_Rómul_17676', 1, N'17676307-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (499, N'Apoderado_Evangelina_17696@gmail.com', N'$2a$10$NLIhjDRcLxRxo6Ez12CChuOqAQUp7SXgLFFLSE6xf8CLcEop.fOay', N'Apoderado_Evang_17696', 1, N'17696112-0 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (500, N'Apoderado_Leonardo_17707@gmail.com', N'$2a$10$xhC1FC0Tr6PBavYRgv0hSO/lvrosbVVDwcbUm/R.z/LZdaG/7ptqC', N'Apoderado_Leona_17707', 1, N'17707464-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (501, N'Apoderado_Gilberto_17716@gmail.com', N'$2a$10$tNl3s0NzKG.tD./JZIJuguGDx669wfPhjGl.8eosTI5TOGDAkK9Hu', N'Apoderado_Gilbe_17716', 1, N'17716337-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (502, N'Apoderado_Faustino_17720@gmail.com', N'$2a$10$H2O4j0ES/bNq2/EcaJlQ2eOkoSxfHgQ77.qwMllwJ4.falY3FGFW2', N'Apoderado_Faust_17720', 1, N'17720800-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (503, N'Apoderado_Román_17728@gmail.com', N'$2a$10$ntUalonkwHtSphKmKHSUqOTYLjw0jEq8u458rPum1ZnhhosAiQsli', N'Apoderado_Román_17728', 1, N'17728887-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (504, N'Apoderado_Joaquina_17747@gmail.com', N'$2a$10$GEgxm7315uy0G3FA45g5eOsw/CUHkQ69yjYp77CL1QUCPISKE.smG', N'Apoderado_Joaqu_17747', 1, N'17747682-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (505, N'Apoderado_Pablo_17747@gmail.com', N'$2a$10$8C1hCPQZtqW48jewRUggf.5l5Q.GmMWA8jFLpV5AzhRjCu3e.01xu', N'Apoderado_Pablo_17747', 1, N'17747986-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (506, N'Apoderado_Noé_17777@gmail.com', N'$2a$10$YpNVIDQttfVlcFucdwBAOuLg.4TPMyNWLPcUU.W87CMn9eCPgCsbm', N'Apoderado_Noé_17777', 1, N'17777532-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (507, N'Apoderado_Ciriaco_17779@gmail.com', N'$2a$10$WTGzbIkgoXReZ0FrCjzwH.n0FyJOfssq59LD.9UMYmEOkiohPy9hK', N'Apoderado_Ciria_17779', 1, N'17779762-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (508, N'Apoderado_Roldán_17798@gmail.com', N'$2a$10$aGih7VFWyEKJCSjb8mWvoeAtjkdyqAjxArGw4re.g5j438E84MUaS', N'Apoderado_Roldá_17798', 1, N'17798706-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (509, N'Apoderado_Azahar_17802@gmail.com', N'$2a$10$6U0NsJosiNWll4f95r8rOOy0w2p8RUZQrq0htAf2h8mUbiUCf0fKy', N'Apoderado_Azaha_17802', 1, N'17802810-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (510, N'Apoderado_María_17810@gmail.com', N'$2a$10$IpZbQnCch1tPpaDoHFAgxuRj89BaKBgMZ32GR47TIQj8a34h9VPO6', N'Apoderado_María_17810', 1, N'17810544-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (511, N'Apoderado_Julia_17817@gmail.com', N'$2a$10$w4OceuOiSNwp6LJLTeBG4uWYq3TktZRxTd4snHIkh/GM4vJRlJPPm', N'Apoderado_Julia_17817', 1, N'17817613-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (512, N'Apoderado_Marina_17819@gmail.com', N'$2a$10$t64YT9HcRyMrIB/CZ8g9k.MWOv.xtrbV29/qoNcrSfm.nNQ.WJNfi', N'Apoderado_Marin_17819', 1, N'17819072-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (513, N'Apoderado_Aarón_17825@gmail.com', N'$2a$10$UAAa94XQNjaWKT6PPQqSi.UJnc41OTO4RY.WCyLtSK2OVpZindt2m', N'Apoderado_Aarón_17825', 1, N'17825245-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (514, N'Apoderado_Ovidio_17846@gmail.com', N'$2a$10$SExkTy0BxsXl/8/emT8HWOe2Cqu5t17yxha2qOwOk0M3fSZF7J8Li', N'Apoderado_Ovidi_17846', 1, N'17846200-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (515, N'Apoderado_Eduardo_17846@gmail.com', N'$2a$10$t9Ya5Z1rY03oOfPN/NNVJOwozEeU/eyFtl.apzjHtA4GvHCjrCqju', N'Apoderado_Eduar_17846', 1, N'17846240-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (516, N'Apoderado_Francisco_17858@gmail.com', N'$2a$10$N7vhvyQqb1pOJ7qq4Hq7xe.Blou9/m8rfKuXKmaGOJTgfjA3eah7e', N'Apoderado_Franc_17858', 1, N'17858210-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (517, N'Apoderado_Jonatan_17878@gmail.com', N'$2a$10$k6Qqs/LURLFNSW2gFoVQq.nBaZK7PmfBq59AHxQbmKV57sHAINIz.', N'Apoderado_Jonat_17878', 1, N'17878199-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (518, N'Apoderado_Ovidio_17888@gmail.com', N'$2a$10$m.qMTBwDrxNrIHQU.0M5EOUKVLuuydKndaeSHjq1q/dOOPrGdjkvW', N'Apoderado_Ovidi_17888', 1, N'17888190-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (519, N'Apoderado_Ascensión_17901@gmail.com', N'$2a$10$0BzKtsR5URUilP0y00jsB.XOtz5VfxzUdfGvz46N08PReMVR6D4i6', N'Apoderado_Ascen_17901', 1, N'17901164-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (520, N'Apoderado_Jenaro_17908@gmail.com', N'$2a$10$oVItCwQ3PrgEU3cj8M8gXefnDW1kSEw0hOOiyEMTXr9QFSsuck5Yq', N'Apoderado_Jenar_17908', 1, N'17908788-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (521, N'Apoderado_Borja_17917@gmail.com', N'$2a$10$iFLGVYrRVwzJQXzcz3PnJ.ltYieZDPMhhXYkmzlaQLXhZ13jQkbfW', N'Apoderado_Borja_17917', 1, N'17917469-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (522, N'Apoderado_Adrián_17921@gmail.com', N'$2a$10$Gw0p0cymcP1TgD/5Uwe/B.k252na5zWCNlSnt.Cy2y3hkwWi.aYUS', N'Apoderado_Adriá_17921', 1, N'17921289-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (523, N'Apoderado_Rosario_17933@gmail.com', N'$2a$10$TRFVEeN1pqNNR8.JA7k2S.Bh48br0V3uMS3KDsiq.e7cuVqXaMXVC', N'Apoderado_Rosar_17933', 1, N'17933448-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (524, N'Apoderado_Aránzazu_17950@gmail.com', N'$2a$10$9labwRu4lLrxuqubOKr80e9xWAKGrF0aiyCTVjwC5Ex0ejvXU38pq', N'Apoderado_Aránz_17950', 1, N'17950136-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (525, N'Apoderado_Roxana_17960@gmail.com', N'$2a$10$qG47AO2U4Jy1wcbc8qMLMOSx1yI1P8eaWwO.21kFXndrmY272IzZm', N'Apoderado_Roxan_17960', 1, N'17960002-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (526, N'Apoderado_Juanito_17981@gmail.com', N'$2a$10$h8qr6tuFkwVy2y6o.eE39u.VUh8mFRZqHhM4oyY8apJs9CsPGoXT2', N'Apoderado_Juani_17981', 1, N'17981124-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (527, N'Apoderado_Modesta_17996@gmail.com', N'$2a$10$s/Mgl4B3puNubz09fOQNueyIPb2G2aePFv7s4OxJQMi0LGBcEH0Y6', N'Apoderado_Modes_17996', 1, N'17996112-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (528, N'Apoderado_Miguel_18023@gmail.com', N'$2a$10$RGI8kr09M.x92sCNIsefPefrq8BrT6OlNACHSjo6B6c3dSPMepzpS', N'Apoderado_Migue_18023', 1, N'18023817-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (529, N'Apoderado_Lucio_18024@gmail.com', N'$2a$10$yqTLUyBvuvyLelCpBxKd8ORPxgv3ziGW9hrYeyMWS0ebAppuDsCxu', N'Apoderado_Lucio_18024', 1, N'18024443-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (530, N'Apoderado_Trinidad_18027@gmail.com', N'$2a$10$Re3on12rE3i67RBJvC/krOZB9BKXRGddJgBTeZP4ko3ZqOfsW9UCm', N'Apoderado_Trini_18027', 1, N'18027932-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (531, N'Apoderado_Alfredo_18029@gmail.com', N'$2a$10$BfaWNX9nD8Jr9BiUOquT5OVUflnqe1nhrbvyLXgU7nLq9Fbe94pdG', N'Apoderado_Alfre_18029', 1, N'18029066-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (532, N'Apoderado_Roque_18058@gmail.com', N'$2a$10$mdZL/AFt9s8a6Qgaso0US.O32/h5nFoqWeRzae6o9PRqIE20EXA/K', N'Apoderado_Roque_18058', 1, N'18058884-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (533, N'Apoderado_Édgar_18059@gmail.com', N'$2a$10$mOsTDHsB8npZQqXnY/Ht/OJ7JMeZRTlQr9BVuIs/a.iCXB51DlxGS', N'Apoderado_Édgar_18059', 1, N'18059881-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (534, N'Apoderado_Domingo_18087@gmail.com', N'$2a$10$d3U0KvhQNIBNMICHGUPr8eDVFW9psoMYpNqv80nOSz0xdJjTM5fRO', N'Apoderado_Domin_18087', 1, N'18087272-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (535, N'Apoderado_Marianela_18107@gmail.com', N'$2a$10$R9mgQ2BECwGIKmCd4W0joOIB/IrMqd5FWc9JT1wnDmXsSKQwkXH1q', N'Apoderado_Maria_18107', 1, N'18107022-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (536, N'Apoderado_Valero_18113@gmail.com', N'$2a$10$bCImdb8B8ETNhaYcGR19He2toL91si5tM58sYWJyyGovAOhnFcdkS', N'Apoderado_Valer_18113', 1, N'18113046-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (537, N'Apoderado_Moreno_18121@gmail.com', N'$2a$10$bz1x2fLIJZGWxBt7ZaUaX.gNPuiYX3XBixuNXAr.tbN0.IQtSZyfu', N'Apoderado_Moren_18121', 1, N'18121760-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (538, N'Apoderado_Rolando_18126@gmail.com', N'$2a$10$ZLruj2d6zb5rSf/kgQiu4.ngTcdvbkC8XLAObxgDFUJtFt8GZy..2', N'Apoderado_Rolan_18126', 1, N'18126350-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (539, N'Apoderado_Raúl_18131@gmail.com', N'$2a$10$j4yOsXryHIsSwSy/kbEyx.OR2BHbCCyoJvoZKDxuJY9LshsEpPdSu', N'Apoderado_Raúl_18131', 1, N'18131392-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (540, N'Apoderado_Jonatan_18136@gmail.com', N'$2a$10$HGRlfj0YPEdDmctWEASDBuhNZKhR2VF1m9jYpu1etfD8VFmj3X6pq', N'Apoderado_Jonat_18136', 1, N'18136863-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (541, N'Apoderado_Eusebia_18137@gmail.com', N'$2a$10$rBla0vx3LByNtBCRNhQ74.JZk6.kkj76joXL8.i/HZyMKtxiIPlOi', N'Apoderado_Euseb_18137', 1, N'18137035-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (542, N'Apoderado_Nilo_18137@gmail.com', N'$2a$10$oOi.TDAlepk9qJQ1KLfsYOp3vqy.u5PkWLqMd2X3SmblhPQcHH33O', N'Apoderado_Nilo_18137', 1, N'18137603-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (543, N'Apoderado_Maura_18142@gmail.com', N'$2a$10$KAIXJK/ypKw8Ld657oGlEu9qtns4mQuUuigPjAOhLH76TrS5FLvBW', N'Apoderado_Maura_18142', 1, N'18142901-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (544, N'Apoderado_Lucio_18149@gmail.com', N'$2a$10$.JsQrglHf0NZUsoWk8USYe3ayPKJ2OH7pdEI2CDpZj24.PA/r8gze', N'Apoderado_Lucio_18149', 1, N'18149685-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (545, N'Apoderado_Piedad_18167@gmail.com', N'$2a$10$6wB1aZ/.ktB0cpUapUu2jumuMJHKlNi5POvziDjSC/BS7b4CIBUq.', N'Apoderado_Pieda_18167', 1, N'18167463-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (546, N'Apoderado_Luisina_18170@gmail.com', N'$2a$10$SLG7rRtK6fnh9GVBbDXaW.oNBuGj5no8xDorL4RA5dwJAQpFxTnkK', N'Apoderado_Luisi_18170', 1, N'18170302-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (547, N'Apoderado_Candelas_18182@gmail.com', N'$2a$10$tIxya5dsNRRuATy9qvC3rOcaYHUIabQH3noAk5LHn2HR.S9IQ7w2u', N'Apoderado_Cande_18182', 1, N'18182094-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (548, N'Apoderado_Mateo_18183@gmail.com', N'$2a$10$.X/HqstwQRL79lcjYGcrpOpgQcihINCmAP2F8R/abtfQmILkkzeTi', N'Apoderado_Mateo_18183', 1, N'18183784-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (549, N'Apoderado_Eustaquio_18202@gmail.com', N'$2a$10$y6kPk2TReHDHPiL07DIv9OZPk.Bgu/GIfLWSNIVEwyeuWlXJePh7K', N'Apoderado_Eusta_18202', 1, N'18202329-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (550, N'Apoderado_Pepe_18209@gmail.com', N'$2a$10$kGU1qADnrTVsBh73cu2mReWZd7q573RRW83Io2.asfUhOvdUFLCVu', N'Apoderado_Pepe_18209', 1, N'18209421-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (551, N'Apoderado_María_18223@gmail.com', N'$2a$10$utO1.7uwhvPwc5dp3JI87O8wooDhlrbkAo0uaimpPP7tZDNxwY5iS', N'Apoderado_María_18223', 1, N'18223184-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (552, N'Apoderado_Obdulia_18233@gmail.com', N'$2a$10$jynQlno9zMcSJf2kjObHDeMYqAr.XJ2LXv42MiLtV1a21OegdubQi', N'Apoderado_Obdul_18233', 1, N'18233494-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (553, N'Apoderado_Nayara_18246@gmail.com', N'$2a$10$3yPeWarAbH7t8AyC9Sa11e.qyWDuVCcbZNBMqy0JbH9a0pIJgwviK', N'Apoderado_Nayar_18246', 1, N'18246071-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (554, N'Apoderado_Néstor_18253@gmail.com', N'$2a$10$EljDJOOz6aywEQVwrt3kauwxYC218/2hH5GwrlOBa5XwHSZoIIDkK', N'Apoderado_Nésto_18253', 1, N'18253279-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (555, N'Apoderado_Feliciana_18262@gmail.com', N'$2a$10$P4NBkXgA0ubhnrkavBIwOOOlxwoOVxQyY/V/I6Mr5GqnVVb1rxZSW', N'Apoderado_Felic_18262', 1, N'18262298-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (556, N'Apoderado_Emilia_18270@gmail.com', N'$2a$10$N4/rvFV9KO632Ejd3mNdmOigzfgmBZq8EeCFZVxcg4/0Bo.A68ecq', N'Apoderado_Emili_18270', 1, N'18270475-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (557, N'Apoderado_Marco_18278@gmail.com', N'$2a$10$mGDcg2SvSfUp4SJeCOK8geByJw0RweQeT/8gyjDx7fpvBzDyoj8H2', N'Apoderado_Marco_18278', 1, N'18278471-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (558, N'Apoderado_Maximiliano_18281@gmail.com', N'$2a$10$PBjWtP6D0stkLueHLDDZae8hhuX2FHGCoq5riC4h5lOem1IH5xp5a', N'Apoderado_Maxim_18281', 1, N'18281705-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (559, N'Apoderado_Duilio_18285@gmail.com', N'$2a$10$O6bGABCC6.haTM7fpM3iWuJBqu/Z12eVHmMLXPOiqooFZ6ntoRELO', N'Apoderado_Duili_18285', 1, N'18285397-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (560, N'Apoderado_Inmaculada_18302@gmail.com', N'$2a$10$xMMiE9NdXQy837XF8ehVn.ieNrkhERdi5RRXoypA21.EF6e.TjrUW', N'Apoderado_Inmac_18302', 1, N'18302636-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (561, N'Apoderado_Priscila_18321@gmail.com', N'$2a$10$twVpK4AmjwPxYlqmLqQKQu77sqroeQ8Qi9bi2xknAqUuH36fby1hq', N'Apoderado_Prisc_18321', 1, N'18321456-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (562, N'Apoderado_Lucía_18323@gmail.com', N'$2a$10$PCY3c4vWc3YTj9n9u2qO7Okkp3s4vAEgVmFLOV1E0eFNlxikVr33W', N'Apoderado_Lucía_18323', 1, N'18323651-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (563, N'Apoderado_Calista_18334@gmail.com', N'$2a$10$35sWqIZR3u5VpBsTGrM.ceBVS6Ltp6pvBqLTkAFIhtC9EcTFdECsi', N'Apoderado_Calis_18334', 1, N'18334910-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (564, N'Apoderado_Erasmo_18356@gmail.com', N'$2a$10$9YaNSGNDEVMt6U6e3s64Euj..K7F5XQypyU/bUvlJ3TH3Vr7ojcsq', N'Apoderado_Erasm_18356', 1, N'18356107-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (565, N'Apoderado_Azahara_18358@gmail.com', N'$2a$10$An9ebDuAEENJiqYr2TtRlex4VqgxlcS1M0IDbTiYcxG2mSqw60K4C', N'Apoderado_Azaha_18358', 1, N'18358153-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (566, N'Apoderado_Mariano_18360@gmail.com', N'$2a$10$CwJl3a7sAQS7fAtKIU3OduFbOqvaNConV.R98rJVD52s6KrF9Pc3C', N'Apoderado_Maria_18360', 1, N'18360082-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (567, N'Apoderado_Modesta_18363@gmail.com', N'$2a$10$AaovEvM2CG5/LE/Nn0sU4eSe.1MAa0114SIItJ6A4V5JXqurT/TWe', N'Apoderado_Modes_18363', 1, N'18363517-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (568, N'Apoderado_Natalio_18379@gmail.com', N'$2a$10$pYK/2V8ZwcsfzkD1KElE.uyrUYT7jKsr8RaDSzB.VSEYPltSHEB.C', N'Apoderado_Natal_18379', 1, N'18379022-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (569, N'Apoderado_Nacho_18397@gmail.com', N'$2a$10$S2PSkrYVKaSbhNVQEb9/du7Kmeyc51mNpQuqi.pdayqU4I8JZK0hC', N'Apoderado_Nacho_18397', 1, N'18397725-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (570, N'Apoderado_Bienvenida_18401@gmail.com', N'$2a$10$U.c3QuN.tMe.g98BGNXy/.tmovyXv8AHaB7x.dfG0LhUm7iiD2.DG', N'Apoderado_Bienv_18401', 1, N'18401996-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (571, N'Apoderado_Alejandra_18430@gmail.com', N'$2a$10$bF4DUSsSKvfGikSV6O7RGe6jlyD9uA5I2frzQSpeI0ARuH5mpfSbm', N'Apoderado_Aleja_18430', 1, N'18430407-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (572, N'Apoderado_Agustín_18440@gmail.com', N'$2a$10$Y/bsffD6PCcF26UbMsIIp.gkwODnB7s9qS3PVFW2R26YC/PAaFsjG', N'Apoderado_Agust_18440', 1, N'18440268-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (573, N'Apoderado_Esperanza_18481@gmail.com', N'$2a$10$hOK8cIYGh06klQtjMczLO.vdmh.qFK4cZpY.elACVwhmaRCZ797wG', N'Apoderado_Esper_18481', 1, N'18481991-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (574, N'Apoderado_Ariel_18486@gmail.com', N'$2a$10$GOMjr.e7LOB8PCnrfEh/rett1VMO9X88F7x9vEYxnmO766aMUlhEu', N'Apoderado_Ariel_18486', 1, N'18486531-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (575, N'Apoderado_María_18487@gmail.com', N'$2a$10$8DbLSzTf88Unn75qe/KLlODo0SZLqlky9IkBneoKPYkc3prg9dE3a', N'Apoderado_María_18487', 1, N'18487169-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (576, N'Apoderado_Hermenegildo_18491@gmail.com', N'$2a$10$rJhnqai9TNJ8cLIWdo3CX.RnAdr39.H2mmjClEph6yu7wyFymP3zi', N'Apoderado_Herme_18491', 1, N'18491573-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (577, N'Apoderado_Filomena_18495@gmail.com', N'$2a$10$VUFo1sJlBNlNHX2badjXvOKq91caPK3oJhM5/zCDy2lppM5cHbbAG', N'Apoderado_Filom_18495', 1, N'18495766-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (578, N'Apoderado_Tere_18532@gmail.com', N'$2a$10$TPWuYxVD3pJlJ117QXqYG.Tox4AU6PpV6aHfEE.1yYbb9jkYnBWa2', N'Apoderado_Tere_18532', 1, N'18532071-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (579, N'Apoderado_Moisés_18543@gmail.com', N'$2a$10$C2KrgGzPh4D8ZO0/m6oOOeo19fhZj52OodY8zo.dT03QMh3UDdIKm', N'Apoderado_Moisé_18543', 1, N'18543862-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (580, N'Apoderado_Camilo_18575@gmail.com', N'$2a$10$xE7pxiosaKTx6uDHCyu42OtkfLBoQnKXEf1OWivkVLEabB9VyJnAy', N'Apoderado_Camil_18575', 1, N'18575156-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (581, N'Apoderado_Tania_18595@gmail.com', N'$2a$10$qTcs7h.wrlEoWSfhsyCp2.2UyxdUdzRQHQFmTxfYnmzNXTP77Y.yu', N'Apoderado_Tania_18595', 1, N'18595030-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (582, N'Apoderado_Adolfo_18598@gmail.com', N'$2a$10$Hy67/DNC8pgHZeXYmocXd./EbIrID/7b3x2nEl6C.R0t5oeftvBii', N'Apoderado_Adolf_18598', 1, N'18598960-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (583, N'Apoderado_Nydia_18599@gmail.com', N'$2a$10$UEnqXSFFFIddtBtzPtZjbOF64dLZ24ClnNNv2aHygIwTAK/SHuSnG', N'Apoderado_Nydia_18599', 1, N'18599136-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (584, N'Apoderado_Rodolfo_18604@gmail.com', N'$2a$10$ezHm686RP.SD0xC.QQT/8eOlomo8Ui/MC0ZT6VRSstCa0MkJiUeJS', N'Apoderado_Rodol_18604', 1, N'18604493-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (585, N'Apoderado_Oriana_18619@gmail.com', N'$2a$10$b9V3Q4VHFwOw0XcZXWZyp.aMSF3p948/1QckmOKt21XskAy6LHGTG', N'Apoderado_Orian_18619', 1, N'18619682-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (586, N'Apoderado_Elodia_18631@gmail.com', N'$2a$10$LEMMpHyEBCkFXXaqzIsnf.cnCq0GYfZNZ4zfXG.ENlbvipqAKsWVG', N'Apoderado_Elodi_18631', 1, N'18631423-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (587, N'Apoderado_Marciano_18638@gmail.com', N'$2a$10$xVnfPk.kxV5OfpHToQpioeOGdIkgVgXPwdaGMA6DUootKJr0sOcHm', N'Apoderado_Marci_18638', 1, N'18638684-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (588, N'Apoderado_Lázaro_18645@gmail.com', N'$2a$10$FClApCxP9I7lNh7xqnMt4..FU64mHbyxPh82LXCi28Yfwanx8kNYq', N'Apoderado_Lázar_18645', 1, N'18645135-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (589, N'Apoderado_Reyes_18653@gmail.com', N'$2a$10$4DtZeSehBaCm5JjTa7zeDOUJPezvq/rxCOR7IeyCuJjIjchTtkWXK', N'Apoderado_Reyes_18653', 1, N'18653731-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (590, N'Apoderado_Magdalena_18660@gmail.com', N'$2a$10$gFzVnAolWKQqcbCvt3Xi3unqpKnc4b7KLhpxaW9vK2d2Rhp6WZn.y', N'Apoderado_Magda_18660', 1, N'18660568-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (591, N'Apoderado_Jose_18686@gmail.com', N'$2a$10$du1pTALL4vlpc8rznm5gUusz36FW/mI5PSmHCZl9UNX9I//hD6HfW', N'Apoderado_Jose_18686', 1, N'18686963-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (592, N'Apoderado_Carlito_18691@gmail.com', N'$2a$10$o4heqc76kyTAWZ6Q0RJOBeBQioYJqo9ZufE5FLELbFUxDEZbOyF0a', N'Apoderado_Carli_18691', 1, N'18691861-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (593, N'Apoderado_Josué_18700@gmail.com', N'$2a$10$3gBrhr9zNDLu2Fm8RTv2bueqKnKvBvDRAV0XHDKorTTGl/bBb0zl6', N'Apoderado_Josué_18700', 1, N'18700817-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (594, N'Apoderado_Fidela_18721@gmail.com', N'$2a$10$OMhUFQhLEvDu2JbRqkkn7OnziWJ1DDOqJ99EnipVML8HAdl.BZBf.', N'Apoderado_Fidel_18721', 1, N'18721005-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (595, N'Apoderado_Cleto_18728@gmail.com', N'$2a$10$qwXDO..avENwPdiUI55D.O3.AZ7DvqpKhVOIGhzLjZzG85w7p3LP6', N'Apoderado_Cleto_18728', 1, N'18728155-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (596, N'Apoderado_Modesta_18738@gmail.com', N'$2a$10$MzFxT5cZrRBbLHyLhVRKA.azgFDhywJnLvX.rRFzFd8dorgWgC852', N'Apoderado_Modes_18738', 1, N'18738186-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (597, N'Apoderado_Eligio_18744@gmail.com', N'$2a$10$wVpIC.cXdlJQRG81yd4dGOxkxnrVJ57HE5tD2cQmMhcUZzgV5Zp.O', N'Apoderado_Eligi_18744', 1, N'18744001-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (598, N'Apoderado_Juliana_18749@gmail.com', N'$2a$10$4/s6hSQykEVEdMfiw.OoPuLevOqdTpTcKlJjzDPJ4K0Cb/5y2HGie', N'Apoderado_Julia_18749', 1, N'18749256-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (599, N'Apoderado_Lupe_18756@gmail.com', N'$2a$10$IxxGwRvMN/4HWx7w526nkeHVZO3wIgIpwtdMR7rzE9yCEcYhD65Qa', N'Apoderado_Lupe_18756', 1, N'18756477-8 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (600, N'Apoderado_Reynaldo_18762@gmail.com', N'$2a$10$AfDQpZ5rf0hGwRvy44DFHOlaTUp5nRX2g3WTb6/yKC.1hNMkyoPMK', N'Apoderado_Reyna_18762', 1, N'18762861-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (601, N'Apoderado_Abraham_18766@gmail.com', N'$2a$10$bbE1TQnjcUU.0gffdyhE.OSKXvjQi.8ukvJLYNtlNYpj5qc9.U8Ia', N'Apoderado_Abrah_18766', 1, N'18766791-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (602, N'Apoderado_Andrés_18767@gmail.com', N'$2a$10$F.T4eIf4bExGMJM3ZWSVzexyV.OqrY7oZ7aC644Bz.9S.BGyamiu6', N'Apoderado_André_18767', 1, N'18767755-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (603, N'Apoderado_Encarnación_18783@gmail.com', N'$2a$10$SLntWPoSWS3vB699/KcZ4.1wcfaW9HuLkzit2NP.mhemGtDFFFfnu', N'Apoderado_Encar_18783', 1, N'18783520-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (604, N'Apoderado_Fermín_18798@gmail.com', N'$2a$10$FAXoHXrXwJI13M2cllgNr.T8AsW07JrYdVECOeC9R1H6OQTLLqZ3O', N'Apoderado_Fermí_18798', 1, N'18798124-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (605, N'Apoderado_Florentino_18814@gmail.com', N'$2a$10$CWtIIy/U/qmdO.sgEwp9wOv6hAfRUT3iGOkY0U5L6ZRoxUXZoHSdq', N'Apoderado_Flore_18814', 1, N'18814692-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (606, N'Apoderado_Lupita_18816@gmail.com', N'$2a$10$IAkjUagmJCAgbgIQWM4gyuBkYyhaCfjInWxM3g5Swv6AmW8ukKb2O', N'Apoderado_Lupit_18816', 1, N'18816018-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (607, N'Apoderado_Leoncio_18844@gmail.com', N'$2a$10$7036GA742EXzwcvKN.5PWewZA7EIE0mtMuaoVHjxaf93mk7cYLanu', N'Apoderado_Leonc_18844', 1, N'18844964-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (608, N'Apoderado_Sebastián_18845@gmail.com', N'$2a$10$eZTjfbjuNbHMA/HEosfcpOglzGUMKTbCsdEZrB3x/c2Yw6WEqTHFS', N'Apoderado_Sebas_18845', 1, N'18845209-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (609, N'Apoderado_Fulgencio_18852@gmail.com', N'$2a$10$IEMNrgfxTkIjkvwsX/8a4eR.IFY.Ii9UOChCZVG/iwX0rtdpIGtay', N'Apoderado_Fulge_18852', 1, N'18852359-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (610, N'Apoderado_Soraya_18855@gmail.com', N'$2a$10$dhxWBNugVVpJZnbgD3DARuNw3VSJ/VKjZ4XCrZYybVpJ3WiDdphuK', N'Apoderado_Soray_18855', 1, N'18855282-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (611, N'Apoderado_Teo_18855@gmail.com', N'$2a$10$6jCRe9yQ7hxeCJngcVE/8.rQZKCF5P5mwQfBRCXGY1mZ1Q9QC2IIS', N'Apoderado_Teo_18855', 1, N'18855611-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (612, N'Apoderado_Maricela_18858@gmail.com', N'$2a$10$Y8EX2haLN.cIPzvg7azizeDnJDOUC1SDP2WgIgAAy9QdCg05K91LO', N'Apoderado_Maric_18858', 1, N'18858185-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (613, N'Apoderado_Maxi_18874@gmail.com', N'$2a$10$mxnVXw7YcOlSd7nKp4BBO.P9ZcuJmW4mEqMYsK4wG0fdJz7953HSa', N'Apoderado_Maxi_18874', 1, N'18874107-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (614, N'Apoderado_Segismundo_18875@gmail.com', N'$2a$10$MzOJrwia7NcNa52Hi4ZW..aB3TNu3FxvYO4SpmJLXK6dLQ.y5ke9e', N'Apoderado_Segis_18875', 1, N'18875515-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (615, N'Apoderado_Zaira_18893@gmail.com', N'$2a$10$ZaSlb6SxVsY2d6tDenaZDens4j1QCu9spCmW6x9DyDrIs.qbyt2gO', N'Apoderado_Zaira_18893', 1, N'18893694-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (616, N'Apoderado_Noelia_18900@gmail.com', N'$2a$10$SwiFxT7Rwzw4xuxORIE7Y./2bf2HxQQOQ2HbFZl9IHBQS4xsNYo8S', N'Apoderado_Noeli_18900', 1, N'18900246-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (617, N'Apoderado_Palmira_18911@gmail.com', N'$2a$10$BMZ4VnAfd7X0.yuHJ4aoJuL5o8TNGIVQE.nrqgoQwg9KjaIiXBGJm', N'Apoderado_Palmi_18911', 1, N'18911726-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (618, N'Apoderado_Jose_18922@gmail.com', N'$2a$10$gjsQTbFFwQAq/jQ0nGWhkeQOLW0JNjPSpToBQv8qtTUd19jw8aga2', N'Apoderado_Jose_18922', 1, N'18922942-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (619, N'Apoderado_Susanita_18926@gmail.com', N'$2a$10$fWTrHgodiPHJ2rTxNgZBtuotMMw1q.Xq9lRjp2zeI8J1bhuK8BO2G', N'Apoderado_Susan_18926', 1, N'18926834-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (620, N'Apoderado_Gonzalo_18927@gmail.com', N'$2a$10$2ss1BtmnwU0x3teglP2rMOAcl/.TYWs2RSpl4lvOa5MVrGSNRY0lK', N'Apoderado_Gonza_18927', 1, N'18927008-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (621, N'Apoderado_Apolinar_18935@gmail.com', N'$2a$10$R97bGvtYYiVd3pQyblD5VeKVMUmEmZOtU01.VQNPf5Ac/i2zfCt/i', N'Apoderado_Apoli_18935', 1, N'18935628-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (622, N'Apoderado_Balduino_18936@gmail.com', N'$2a$10$wnLFGTOeE9xDkj61pWl4Ye8s7JRf7ObVRBOu2TbbAyW4t/Pa7RWnS', N'Apoderado_Baldu_18936', 1, N'18936163-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (623, N'Apoderado_Arsenio_18949@gmail.com', N'$2a$10$6XrFqduN2zV1QMHxB/6NceJy.DDxpD7lWVAGeCJ9Vr64SC9gW/iGi', N'Apoderado_Arsen_18949', 1, N'18949920-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (624, N'Apoderado_Alma_18953@gmail.com', N'$2a$10$V8fVySq.ddYCwnDJbpK.ouR.hibIpy85zh64ZUzemWhCtwAAHBLbq', N'Apoderado_Alma_18953', 1, N'18953288-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (625, N'Apoderado_María_18956@gmail.com', N'$2a$10$YhZnNczQTjrct1vmn0wqaumJ1Hs1jPeIAkuhxlBYO2H8isX4ISh3C', N'Apoderado_María_18956', 1, N'18956474-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (626, N'Apoderado_Úrsula_18978@gmail.com', N'$2a$10$/VOrmbiGkujqkeXfRF3tdutmlVNcyF425TaCw9UO7RKTsWQinO3Ly', N'Apoderado_Úrsul_18978', 1, N'18978016-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (627, N'Apoderado_Natalio_18979@gmail.com', N'$2a$10$cMoXJ5uHdFKNwmKFBwKH8OcLbutgZBaUTAnRMqgpBwjWhk0KKQq.S', N'Apoderado_Natal_18979', 1, N'18979688-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (628, N'Apoderado_Candelas_18982@gmail.com', N'$2a$10$ooJF/BXeZh1URtkDYUHgHusuRL2UIsEFSZmN9fKWgTuN2EF5uONjG', N'Apoderado_Cande_18982', 1, N'18982627-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (629, N'Apoderado_Loreto_18999@gmail.com', N'$2a$10$pA.0pLG3Yfl8JnIa0/wAAecOJp8IeIv7KXEpKfLeWPbEBfpnryt3y', N'Apoderado_Loret_18999', 1, N'18999464-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (630, N'Apoderado_Ulises_19006@gmail.com', N'$2a$10$ygN24ndwghsTBj3DPpWblO7.j5Khy.r515LqzZrDv8zGc.joReGjK', N'Apoderado_Ulise_19006', 1, N'19006555-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (631, N'Apoderado_Armida_19018@gmail.com', N'$2a$10$rprFgfAJAKSOIA1uPVSn/OIptMjbeFGipepuqBU85Dh0UBH9JDKwO', N'Apoderado_Armid_19018', 1, N'19018136-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (632, N'Apoderado_Marcela_19026@gmail.com', N'$2a$10$eoYSfYH2kCo5FiU4.GrkYOrKuxFiRzLGw6n6NxTCRxrD8ycqRFEAS', N'Apoderado_Marce_19026', 1, N'19026280-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (633, N'Apoderado_Fausto_19036@gmail.com', N'$2a$10$7mrzFi51UzSzdgV8iDKbYu2K6eQ1LEtqfm6855SoxK8gV9AwHZelK', N'Apoderado_Faust_19036', 1, N'19036268-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (634, N'Apoderado_Teresa_19058@gmail.com', N'$2a$10$N9T32XpA.v4jjMzDsU0rnu020nNk4rDVdDRtkTJ3fR54Elgf9SYki', N'Apoderado_Teres_19058', 1, N'19058643-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (635, N'Apoderado_Ildefonso_19096@gmail.com', N'$2a$10$yN/O24Yce/Lxe8EyjIv0beWfgzag.D9.gM9UC9cH12dNah8hsxo0K', N'Apoderado_Ildef_19096', 1, N'19096620-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (636, N'Apoderado_Carolina_19105@gmail.com', N'$2a$10$fXUSJ0TnRpeyk3pqyTPJx.7QvcKGserKNUudvB6zMJYcldQlYts2.', N'Apoderado_Carol_19105', 1, N'19105493-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (637, N'Apoderado_Edu_19115@gmail.com', N'$2a$10$4KgXniRcjkrH5CqB.A8WJe2.32sw5nnjpNMSxS2cVWHxmQC5xmkGa', N'Apoderado_Edu_19115', 1, N'19115407-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (638, N'Apoderado_Rosa_19120@gmail.com', N'$2a$10$KNv42q/AdVqXrk7sfYOX3eoc1AAYDnqNhHEcT8a77IliN..Lk2uW2', N'Apoderado_Rosa_19120', 1, N'19120436-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (639, N'Apoderado_Carmela_19128@gmail.com', N'$2a$10$8tB1INRzadWiIYvbwq8abO8lo7Q1MmQZKyno5F32yONs3yrOQQIvS', N'Apoderado_Carme_19128', 1, N'19128881-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (640, N'Apoderado_Encarnacion_19135@gmail.com', N'$2a$10$EcWU1jZF03GI3a8N0aYoWea/1K4dlhO2c30DtonuZFH9D8nxN4HKq', N'Apoderado_Encar_19135', 1, N'19135515-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (641, N'Apoderado_Rosario_19155@gmail.com', N'$2a$10$bOz05U8F8FiKZBH0V4OQM.JCxyyFtLapQo3OR9Su5GEpX6FwOjFY.', N'Apoderado_Rosar_19155', 1, N'19155144-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (642, N'Apoderado_Evaristo_19163@gmail.com', N'$2a$10$55/Y8gUh5nUQcYKLd.Qb6.nOYg7wm0q7JZsJgLf50m1CRW/E.Yb5O', N'Apoderado_Evari_19163', 1, N'19163059-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (643, N'Apoderado_Natalio_19176@gmail.com', N'$2a$10$WxPHq1DeWyea0XmJQy/r8uAV4ja/Bq95fDZIXXQr8V5VWoWBnecva', N'Apoderado_Natal_19176', 1, N'19176601-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (644, N'Apoderado_Cándida_19184@gmail.com', N'$2a$10$CaDzZEgSAbYOl68PPO.uZOTEg86dawKGATGrDsQqr41jgExWyJDh2', N'Apoderado_Cándi_19184', 1, N'19184328-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (645, N'Apoderado_Clímaco_19198@gmail.com', N'$2a$10$..X0hWgHNoerTeVE6h61WOkHvx7TWjO7EhCCqYOyqmpLtDvsHJaz.', N'Apoderado_Clíma_19198', 1, N'19198923-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (646, N'Apoderado_Luciana_19199@gmail.com', N'$2a$10$szFdng0Cejgx4ThnKK9LeetNBnDS4ENmPlsF5U13YaKzRntN895Qm', N'Apoderado_Lucia_19199', 1, N'19199357-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (647, N'Apoderado_Otilia_19204@gmail.com', N'$2a$10$jsb7AV.MSqamCAadjTrHPuTHuldEy2oqihpJJZLnwsnea.oZtRC/e', N'Apoderado_Otili_19204', 1, N'19204242-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (648, N'Apoderado_Andrés_19233@gmail.com', N'$2a$10$F6N92yT.jUQ4bTTtmPryxur1QamtH57ib7wZFvjuKWX8.wJ0cd1ta', N'Apoderado_André_19233', 1, N'19233618-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (649, N'Apoderado_Samanta_19237@gmail.com', N'$2a$10$NVmNxnjHFs6priw7mUtJo.WKiYKhhEN7sntX0OFwTogFOamayJzDm', N'Apoderado_Saman_19237', 1, N'19237267-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (650, N'Apoderado_Ariel_19250@gmail.com', N'$2a$10$4vscW0EG.U7j9CZE9ZcLTOMoa2scUrvTImLj8i1h6Hi3C/bLflm3m', N'Apoderado_Ariel_19250', 1, N'19250569-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (651, N'Apoderado_Serafina_19253@gmail.com', N'$2a$10$72E7BzUD8z9YiFIiHIUTOuxsyenrT8G6r8aIylPKCpxP9FlKH/LWC', N'Apoderado_Seraf_19253', 1, N'19253791-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (652, N'Apoderado_Jose_19255@gmail.com', N'$2a$10$wd7T7KfL6gfVc6NRUqaRpOkJUHEjA/FpEfx2IRs97KEWVC1S2II8u', N'Apoderado_Jose_19255', 1, N'19255256-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (653, N'Apoderado_José_19270@gmail.com', N'$2a$10$ZmBOt5KwO1R1Y32UpheTcevhmpIbiOHSTqUhhBIAetVIFE4/E4Tfe', N'Apoderado_José_19270', 1, N'19270650-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (654, N'Apoderado_Celia_19292@gmail.com', N'$2a$10$dzh6i5Q5G0yVOr1bPdYtrO0Q2DNnGXkY5rfswTxmRm0P4cDpTYKbO', N'Apoderado_Celia_19292', 1, N'19292152-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (655, N'Apoderado_Juan_19308@gmail.com', N'$2a$10$tafOIeFuIulkkPlIK8xk5.noMq.FfDBVmFBfyeJj2vCuqKJ/ZP7J2', N'Apoderado_Juan_19308', 1, N'19308270-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (656, N'Apoderado_Gregorio_19311@gmail.com', N'$2a$10$jGNXAOcdIcKCMX1Epvo6R.pZ5dT2CWuJoPhwOprp59XEDHgIxQrp.', N'Apoderado_Grego_19311', 1, N'19311341-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (657, N'Apoderado_Sonia_19324@gmail.com', N'$2a$10$nzTroO/IoVqP.0gr5Wadn.DDJolNAU1fy9/Qn3xRT5pMUanVEehSO', N'Apoderado_Sonia_19324', 1, N'19324641-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (658, N'Apoderado_Rebeca_19335@gmail.com', N'$2a$10$BZ1dszX9RoYVK0WZncu9YOqNBNpvkv1EbsAKKYbVnbb1hyj8l0z4e', N'Apoderado_Rebec_19335', 1, N'19335925-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (659, N'Apoderado_Perlita_19341@gmail.com', N'$2a$10$yCU2O88A1JeSDqAqpSmQW.bEdDtUUAkngcE7P7zaolDhLRBSX4nVW', N'Apoderado_Perli_19341', 1, N'19341550-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (660, N'Apoderado_Susana_19369@gmail.com', N'$2a$10$UR1o//Jo.bd2L6mQgeRnP./7mK.TjsihUVtFc1nHe7ikd06fdNyN.', N'Apoderado_Susan_19369', 1, N'19369379-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (661, N'Apoderado_Palmira_19382@gmail.com', N'$2a$10$Qthgrd5zOIP4ML2BN4LBDe8VspSF7pP8c92JfeFc0ImvCJJXyPNrm', N'Apoderado_Palmi_19382', 1, N'19382159-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (662, N'Apoderado_Eliseo_19384@gmail.com', N'$2a$10$oOYYRm.sWjjPUttEWoR6EejgB//Mt1VtumaIOFtm6ouMixamVf4B6', N'Apoderado_Elise_19384', 1, N'19384334-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (663, N'Apoderado_Lisandro_19385@gmail.com', N'$2a$10$XwMNDI5zy7AYwGFky479Vuj8rSFrkcK6RNa83PK4bssiGCfpDkTmG', N'Apoderado_Lisan_19385', 1, N'19385443-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (664, N'Apoderado_Jose_19386@gmail.com', N'$2a$10$UFVLXs.hDnqMMK3vncaFLec1fNeeQSPEB6ltBCf18Gi5hcwk2acX2', N'Apoderado_Jose_19386', 1, N'19386900-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (665, N'Apoderado_Dorotea_19400@gmail.com', N'$2a$10$9lJ67BRk1OROHBjb.gwuSe6DSEVoINxFrLHOdJCrm9KM3ALVI4jl6', N'Apoderado_Dorot_19400', 1, N'19400209-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (666, N'Apoderado_Yéssica_19402@gmail.com', N'$2a$10$tpFlHhGZQ98R.rTUQ0uYuuaqwAoHVm41MqlUe3u26FH0GZq4vUwli', N'Apoderado_Yéssi_19402', 1, N'19402121-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (667, N'Apoderado_Eutimio_19411@gmail.com', N'$2a$10$xg58Qe5cI13M2ZkipwAa5OBH.m5gacn2USaxm7RwUyOJojh4fCZn2', N'Apoderado_Eutim_19411', 1, N'19411124-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (668, N'Apoderado_Heliodoro_19432@gmail.com', N'$2a$10$AllIphC.yOz4jkEo6v4td.ELqVIrODhAUpC70GD8OD2fdTTGhBnt.', N'Apoderado_Helio_19432', 1, N'19432846-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (669, N'Apoderado_Valeria_19438@gmail.com', N'$2a$10$rujx/q1P7I3jLy/oc3uVf.rIuMYrrtPdHhvrTyzsIr3/.eVdPOcse', N'Apoderado_Valer_19438', 1, N'19438767-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (670, N'Apoderado_Jose_19448@gmail.com', N'$2a$10$/rXw/NQpQ7OS89Xm6fGPGeSmTXh7WxIXBJxPR97xEOIQPSC.byJ/e', N'Apoderado_Jose_19448', 1, N'19448250-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (671, N'Apoderado_Joaquina_19454@gmail.com', N'$2a$10$iZ20kIL1bUYsjnfkXb/EmegC/0nP8Yd45VDKOZZ8vV/qbpvcOX4eu', N'Apoderado_Joaqu_19454', 1, N'19454640-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (672, N'Apoderado_Alejo_19457@gmail.com', N'$2a$10$.ZXXFpfZrhQc6w10Pdd78.xvjN52DegSZgvuh7IHauA1VtbDWLKSy', N'Apoderado_Alejo_19457', 1, N'19457785-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (673, N'Apoderado_Noé_19473@gmail.com', N'$2a$10$kuQD5qAKOrnJmhnY5K.J3.ZloYPN3D3nmmSbEfbWv.8osYJf4.TLi', N'Apoderado_Noé_19473', 1, N'19473318-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (674, N'Apoderado_María_19484@gmail.com', N'$2a$10$rbOF/lBzRWeT4O92qnuEgeuhBcKs6ULmuQezospQVwGLE9tiW1jCK', N'Apoderado_María_19484', 1, N'19484957-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (675, N'Apoderado_Wálter_19528@gmail.com', N'$2a$10$hSlXsSouGELBR51DE.OxcubUti.DLUaI/bgYmbX16FVEv6LoYreNG', N'Apoderado_Wálte_19528', 1, N'19528644-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (676, N'Apoderado_Lorenzo_19547@gmail.com', N'$2a$10$gTuU4xaS3UdRvoiRkpNaWuFLWZ6wWe/DmKGEek.Pi1beq6Y7bR9EW', N'Apoderado_Loren_19547', 1, N'19547817-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (677, N'Apoderado_Bibiana_19548@gmail.com', N'$2a$10$6/Ji/hXONOharm0t5asJZuDZ84AGN6mDg5AMqKE9FJnwIQhIobn2e', N'Apoderado_Bibia_19548', 1, N'19548611-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (678, N'Apoderado_David_19557@gmail.com', N'$2a$10$6uFFS0F4OUiacAMBwQPHc.V4ji3uaEgHmE.2UwcdZvtIrOQi8I7le', N'Apoderado_David_19557', 1, N'19557515-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (679, N'Apoderado_Flora_19559@gmail.com', N'$2a$10$rrCxUu2BkZRodMHTCn3hxuI7xJAHh7NAmkPy.xUs5Xy9VTssBB6Da', N'Apoderado_Flora_19559', 1, N'19559641-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (680, N'Apoderado_Azeneth_19569@gmail.com', N'$2a$10$HOL/wUNXwe8ZaiY2bPAW4O0FERpHqrWvv7xwRlifNwnNMyxS0c0C2', N'Apoderado_Azene_19569', 1, N'19569203-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (681, N'Apoderado_Nicolás_19583@gmail.com', N'$2a$10$aEGSdldUVpMJ8SJGU4mwe.cKNPC5E1U9fSNNjKjgvHFlHQbCw4mMi', N'Apoderado_Nicol_19583', 1, N'19583718-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (682, N'Apoderado_Crescencia_19585@gmail.com', N'$2a$10$rdiLFD/XnGsYCDCL.MPkduWHiSmnOlFm5DYcWHBSzj35YtV07MtCW', N'Apoderado_Cresc_19585', 1, N'19585533-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (683, N'Apoderado_Emilia_19586@gmail.com', N'$2a$10$vYN3xpiuxq6SZRVVFQ2lFO8CHt1acuUDRHzzFflrjtwBXp/MokBnK', N'Apoderado_Emili_19586', 1, N'19586515-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (684, N'Apoderado_Miguel_19631@gmail.com', N'$2a$10$ETbWbF6sE//AN29fVBPB3euANRi8Ajsxd.EO/chxT1X3kmKvaAvXu', N'Apoderado_Migue_19631', 1, N'19631044-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (685, N'Apoderado_Miguel_19634@gmail.com', N'$2a$10$iIsY.Qo4UGAqh2jgMEcVOunaAlWKIrs/I5h6cLXxSOUjKDDyHDVnS', N'Apoderado_Migue_19634', 1, N'19634706-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (686, N'Apoderado_Bienvenida_19656@gmail.com', N'$2a$10$um7L7YCiGatv1A/Vvt.90uLm1tDomkGEhGR8lLijUWaYhPyC9VpFG', N'Apoderado_Bienv_19656', 1, N'19656943-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (687, N'Apoderado_Nicanor_19659@gmail.com', N'$2a$10$P8DfC3NVKRYpaJryWG7KbOkpdDWoa.ntz5JS0RL0sE55MlAGZGjDC', N'Apoderado_Nican_19659', 1, N'19659359-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (688, N'Apoderado_Elba_19664@gmail.com', N'$2a$10$lKAFeEsKMCA6Kr6UiDyIPeT0J8NyFUYJzWbiFFuEJdc.cj3rHa7mq', N'Apoderado_Elba_19664', 1, N'19664081-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (689, N'Apoderado_Cosme_19669@gmail.com', N'$2a$10$ytrueXC9IJxyCiYYKFJkmOp16zymFNMXQCVp6sbZMIofiGpjPzM4C', N'Apoderado_Cosme_19669', 1, N'19669963-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (690, N'Apoderado_Vicenta_19670@gmail.com', N'$2a$10$Y4YVtW8OCJ8hUj5eLANM0ulCfhIrxkLgRkDri6VU6DpzclJ4vzFrO', N'Apoderado_Vicen_19670', 1, N'19670967-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (691, N'Apoderado_Marcelo_19676@gmail.com', N'$2a$10$rVXLrcckOpuot9.zyzUI9O1xEy6KV9hReaZmmg1P/QK0zPDf8JLmq', N'Apoderado_Marce_19676', 1, N'19676501-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (692, N'Apoderado_Mateo_19687@gmail.com', N'$2a$10$IP6Rd6BTuG5GbaMQzKI7puLn1UxgArOUeLulI.tuR3QErMzjpawO.', N'Apoderado_Mateo_19687', 1, N'19687629-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (693, N'Apoderado_Trinidad_19700@gmail.com', N'$2a$10$pPp2RnUTgiAs8XvWYH3mKOuT5OKZ992TfQqnBA3iMRy7sdRdVmknu', N'Apoderado_Trini_19700', 1, N'19700750-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (694, N'Apoderado_Reyes_19714@gmail.com', N'$2a$10$v3IxVb8EAyGyRJgFkmGVi.rrfA8R7cwOAJZz9jfJCTxOHEhS2posm', N'Apoderado_Reyes_19714', 1, N'19714290-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (695, N'Apoderado_Melisa_19743@gmail.com', N'$2a$10$Z7YpIZRsuhUPWU.douDA5OuIp4lm5tqounLEYRd4yK1FxcubxJ8jq', N'Apoderado_Melis_19743', 1, N'19743620-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (696, N'Apoderado_Francisco_19748@gmail.com', N'$2a$10$NBWX7t4/mJm4l6Eauv7/Kuh9mrpIPgGazX0kEYGCevdg0fV8UmSrO', N'Apoderado_Franc_19748', 1, N'19748195-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (697, N'Apoderado_Benita_19752@gmail.com', N'$2a$10$ScYRTW0O3zbYflX1ZQ7bgeu9nO7X93NpIvQ2LX9i6K6.Az63nWdZG', N'Apoderado_Benit_19752', 1, N'19752704-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (698, N'Apoderado_Amada_19755@gmail.com', N'$2a$10$7t0lWwTRlSYmBWRgX0E5y.AL9RvbEiYMUwMMHoXTA/TmgciaYTkPO', N'Apoderado_Amada_19755', 1, N'19755898-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (699, N'Apoderado_Gaspar_19783@gmail.com', N'$2a$10$HAVZzAjrhVMDhDYcX5VQqurRwVkV04qxom5oFdz/O9xCO6ke1wMXK', N'Apoderado_Gaspa_19783', 1, N'19783662-8 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (700, N'Apoderado_Reyes_19815@gmail.com', N'$2a$10$1G/luU85vhhz7BxSm6Ml4OCxH.ZTVyOYTnG94g3wnXUaWLpwjWkU6', N'Apoderado_Reyes_19815', 1, N'19815608-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (701, N'Apoderado_Genoveva_19823@gmail.com', N'$2a$10$j8sle7I9Cyi2RJQNLFPDoOIAAQ97wFJdrit4/f3y8MG4dZmJ1dUMm', N'Apoderado_Genov_19823', 1, N'19823600-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (702, N'Apoderado_Marcio_19840@gmail.com', N'$2a$10$rFK4w9QKvUAhXXZUki.Fj.nAsVjZsnk/YJxym2Wrhn8kd25u3TvdO', N'Apoderado_Marci_19840', 1, N'19840621-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (703, N'Apoderado_Luciano_19848@gmail.com', N'$2a$10$OJYO.4JNCpHy2cJQc1zj0.0n5lTMj7XetqbgPPrMaKOp6iJs0s1AG', N'Apoderado_Lucia_19848', 1, N'19848581-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (704, N'Apoderado_Godofredo_19850@gmail.com', N'$2a$10$bo4fgTDpbHYIMMFAtO01ieRzl15u44mygTSAliJtMoEdfUB/nf0RG', N'Apoderado_Godof_19850', 1, N'19850820-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (705, N'Apoderado_Encarnita_19853@gmail.com', N'$2a$10$tPK01OrcLvCRSmHEME4.Y.A.MC/seUBCbVSIQ0w3rzxr7PZ8ME7W.', N'Apoderado_Encar_19853', 1, N'19853989-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (706, N'Apoderado_Quique_19860@gmail.com', N'$2a$10$5V0tqdDnn7qOxtaXoK7Av.BZjv32IUBqEKH2kE7vRoDIGFJTP2ZT.', N'Apoderado_Quiqu_19860', 1, N'19860422-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (707, N'Apoderado_Fabián_19866@gmail.com', N'$2a$10$dC8uhWVa.biXZGMlqUYp/.1HQcgXkHK/xSuIL04LvWh3fDqN6HR8i', N'Apoderado_Fabiá_19866', 1, N'19866433-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (708, N'Apoderado_María_19878@gmail.com', N'$2a$10$cJzTeN5bSTlQgjLtsC626uOY7QewbMXmyIhGEC9SKWeAaXYW9FhYe', N'Apoderado_María_19878', 1, N'19878870-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (709, N'Apoderado_Aristides_19886@gmail.com', N'$2a$10$/mA3UroFuLIKzbVgjgcPQOd5qvqV.ZpcHMWtmDDL/n55YQaYuoWwK', N'Apoderado_Arist_19886', 1, N'19886592-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (710, N'Apoderado_Chelo_19910@gmail.com', N'$2a$10$WG9wmmKlz4kStQh09NVVmOV.f.fecGrSptD.Fm8JRFDqQpAipzA92', N'Apoderado_Chelo_19910', 1, N'19910380-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (711, N'Apoderado_Hernando_19918@gmail.com', N'$2a$10$CclOvkQ.4KshDAooFLPRlOjhA4VEKjwCY6pzoSq2OF3apeiVgC5Ni', N'Apoderado_Herna_19918', 1, N'19918987-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (712, N'Apoderado_Asdrubal_19932@gmail.com', N'$2a$10$FpUxF2d1rRZRrWZUEZkaouwStxlFPV7sC1fa8ka3gKA5fFFZFhQ8e', N'Apoderado_Asdru_19932', 1, N'19932684-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (713, N'Apoderado_Cruz_19935@gmail.com', N'$2a$10$f.d6TFwkQCMN8Ch6p7rdluPBfJJf/DYgWBDnlpazCx8pw6ebHTS1S', N'Apoderado_Cruz_19935', 1, N'19935501-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (714, N'Apoderado_Bienvenida_19947@gmail.com', N'$2a$10$TIISIEB9WLKc7d3aE8P0oeFgWbmsLTK6kgvNaXgTbJIb823NxnNZm', N'Apoderado_Bienv_19947', 1, N'19947745-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (715, N'Apoderado_Chema_19948@gmail.com', N'$2a$10$fJiBeUTkXMtLJNecSdBiauet3Et2F0CVjA7x50Q4RRHGX9pVON3/G', N'Apoderado_Chema_19948', 1, N'19948887-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (716, N'Apoderado_Tiburcio_19958@gmail.com', N'$2a$10$p4kaGPbaLDBL8CbUwwWSDOI5G5Q/XcSlhZfASLEXzLrhc5pnmL4d2', N'Apoderado_Tibur_19958', 1, N'19958763-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (717, N'Docente_Flavia_10253@gmail.com', N'$2a$10$DF6.RAd3WH0PbZLUwuamf.riVVmi78EBCwcXWSb5u3jZ1kcn4cTYK', N'Docente_Flavi_10253_2023', 2, N'10253981-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (718, N'Docente_Eusebio_10258@gmail.com', N'$2a$10$N7kusQJ/925HDhi1ADf5/enxuXpDxGeUR44rMcNskcJdjnjNXLC0O', N'Docente_Euseb_10258_2023', 2, N'10258276-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (719, N'Docente_Natalia_10282@gmail.com', N'$2a$10$A4Do4ZwmXs8gQe5YcBRxjugHWSDDcgW21MHEMIfioIr3ItaTA8DVa', N'Docente_Natal_10282_2023', 2, N'10282003-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (720, N'Docente_Valeria_10283@gmail.com', N'$2a$10$VtgBej76hoogISCkf3NMtOf1A5vb1zKuNzhV2FhleAaK16E01.YIi', N'Docente_Valer_10283_2023', 2, N'10283850-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (721, N'Docente_Matilde_10284@gmail.com', N'$2a$10$HSjhDm5skS8.ipbo3Pd9/eASWR2yCRIU18AGB3y8iuNZKhKpNkXdu', N'Docente_Matil_10284_2023', 2, N'10284435-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (722, N'Docente_Anselmo_10289@gmail.com', N'$2a$10$EBeXhMpQWE8ocC9QR8Ouh.K9UVboej7xYY7nmOJvprfU1ypP93al2', N'Docente_Ansel_10289_2023', 2, N'10289034-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (723, N'Docente_Jerónimo_10294@gmail.com', N'$2a$10$YJRfwFAEmDaS1Nnlm9Ej1eKgiB1F70.2VctVIqj1uAayb7Fg064yC', N'Docente_Jerón_10294_2023', 2, N'10294702-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (724, N'Docente_Eva_10307@gmail.com', N'$2a$10$zwKwM/Q3UfHRxWr8uX.UI.OfGjqZdC7yc4TCpaem2N2qY0JXhl8Z6', N'Docente_Eva_10307_2023', 2, N'10307783-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (725, N'Docente_Luz_10309@gmail.com', N'$2a$10$2lJApcZ.UKjnbDtMA2K8yusz4T7eTxIaWNJ3TxHrBXkW7etb/kwWC', N'Docente_Luz_10309_2023', 2, N'10309856-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (726, N'Docente_Héctor_10335@gmail.com', N'$2a$10$hcIxOAsEQax.DZaftrSFJuQ8mY2B8Xtx0VVu3PayKEKUgokOxukPC', N'Docente_Hécto_10335_2023', 2, N'10335354-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (727, N'Docente_Lucía_10337@gmail.com', N'$2a$10$qHgtPVF7xniAaY8v/npBZeYAwq7Inf7gvmX0VvoXCHaQEqz.XGpx.', N'Docente_Lucía_10337_2023', 2, N'10337268-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (728, N'Docente_Paz_10341@gmail.com', N'$2a$10$tmlBFMXceg.PZmsjJ9MWt.3FHTIvHm/soDVIf310YDTqMCZPBd5sq', N'Docente_Paz_10341_2023', 2, N'10341783-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (729, N'Docente_Carmelita_10343@gmail.com', N'$2a$10$pREkzc.8WkAV5YdfU.CyHONoHE48XGPADPtkFpqkYMbRyolj1kXum', N'Docente_Carme_10343_2023', 2, N'10343931-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (730, N'Docente_Emma_10344@gmail.com', N'$2a$10$bNlGDNouvfrxrj44WksUd.96app01l7Nj78k/tsi8CbrC6jBhFRd2', N'Docente_Emma_10344_2023', 2, N'10344239-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (731, N'Docente_Elba_10371@gmail.com', N'$2a$10$9vVVGa2yXuNqQd1NyJ6zAe75MEDMCTMkbGEmTnkT0HFxtyll6vU9e', N'Docente_Elba_10371_2023', 2, N'10371655-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (732, N'Docente_Ramiro_10372@gmail.com', N'$2a$10$tfQ0ErN.0JSh.pV0pAEcWuOPZOWFeUd387OyVtkRNtIkP/xBjTtpm', N'Docente_Ramir_10372_2023', 2, N'10372585-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (733, N'Docente_Gabriela_10383@gmail.com', N'$2a$10$rwos6ahF58VUk/QuFKxY4.8KYbWBdE23C6rXHrlS0mkOGe9QuVwaK', N'Docente_Gabri_10383_2023', 2, N'10383412-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (734, N'Docente_Candela_10419@gmail.com', N'$2a$10$JTsV85atBrzjRHRpzvqbQOjP8Mo5CtSxI15C1Dv.K0tC1m4U16Pxy', N'Docente_Cande_10419_2023', 2, N'10419644-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (735, N'Docente_Macarena_10426@gmail.com', N'$2a$10$O5Lv8orOQsB7H5F0Vtz/..H7MdMU.GuSUEtFVmc6p6ypae8NLSIx6', N'Docente_Macar_10426_2023', 2, N'10426377-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (736, N'Docente_Cosme_10440@gmail.com', N'$2a$10$WOl0QAtiRtJcaPKhNYhjFOpIG4rqb2.fVC/2XfssLmD3DHrHqLw6q', N'Docente_Cosme_10440_2023', 2, N'10440686-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (737, N'Docente_Sandra_10442@gmail.com', N'$2a$10$H3/O0dA5KemBu2Kdps7MNuDVv.UMMwpI7PZCWvVvP0cbxdlfBvn1C', N'Docente_Sandr_10442_2023', 2, N'10442532-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (738, N'Docente_Isaías_10452@gmail.com', N'$2a$10$yK/8lg03hOmSgYfX08IzreCwhR7vpexE/2WieClvAhQPWUdnpsfkC', N'Docente_Isaía_10452_2023', 2, N'10452525-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (739, N'Docente_Nuria_10461@gmail.com', N'$2a$10$BsQS2qJrJUAleTbYwNdxSOkRMEjZbY.gJGRd2Fb7RzEEyHb4RQVX.', N'Docente_Nuria_10461_2023', 2, N'10461021-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (740, N'Docente_Matilde_10462@gmail.com', N'$2a$10$8dcNk2w5r6qw0m3y.FktIu.CqCg.2vzcWBmlqKYFC2LiEjLo4Ti3a', N'Docente_Matil_10462_2023', 2, N'10462201-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (741, N'Docente_Tiburcio_10474@gmail.com', N'$2a$10$K2w52iu.xtpvnribLNTJ1eLp/HH0HxUe2OeUTELu0xg2MATJcDwAq', N'Docente_Tibur_10474_2023', 2, N'10474580-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (742, N'Docente_Verónica_10477@gmail.com', N'$2a$10$Rkq67H0Auyr70r1o0iQE/.bJbIJ0bl/ZXMFBZ93F8fTLJvG57fP8m', N'Docente_Verón_10477_2023', 2, N'10477159-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (743, N'Docente_Marcelino_10504@gmail.com', N'$2a$10$7L5L7h2UJGDwIFXnE36lSOMe6Q9et4i/gKks9ldkA77t4.30l2R0W', N'Docente_Marce_10504_2023', 2, N'10504838-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (744, N'Docente_María_10508@gmail.com', N'$2a$10$sZFHAdiv/74k088qjJaYHuyUq2LGDWSybAJb7mM30ZI.CWBBSlBOG', N'Docente_María_10508_2023', 2, N'10508665-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (745, N'Docente_Bonifacio_10510@gmail.com', N'$2a$10$k0votQei.BywkNZtYqRnqe/Ue/AHJj6d1eTcCcLP2/X0SDoOKG2cC', N'Docente_Bonif_10510_2023', 2, N'10510257-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (746, N'Docente_Lucho_10511@gmail.com', N'$2a$10$ZcHzK2NQYTPhRKQr1THZW.jCuCf6jw47e8qbyJJeG468jumoFblke', N'Docente_Lucho_10511_2023', 2, N'10511035-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (747, N'Docente_Nuria_10536@gmail.com', N'$2a$10$97GVx/pDuonQcIjexMkhGOEuOcf8MduJzyERSc4traP0noaALtQha', N'Docente_Nuria_10536_2023', 2, N'10536148-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (748, N'Docente_Salvador_10539@gmail.com', N'$2a$10$K43ZGmaVpEScGgS6dbiYbe2rTMV/NOaZwGCCDZeYVCNc1X.y/jkRi', N'Docente_Salva_10539_2023', 2, N'10539485-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (749, N'Docente_Gustavo_10547@gmail.com', N'$2a$10$h332n4Sr/8umO86EIiBRDeFsJiJMBqrHBTvyE2ZTdQ8Q97576AJiG', N'Docente_Gusta_10547_2023', 2, N'10547385-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (750, N'Docente_Marianela_10553@gmail.com', N'$2a$10$vTIPLGAZlK6gMjC/bGHT6eANJdEIK4Zq4C83BDC2q3sY5jsbsMC8.', N'Docente_Maria_10553_2023', 2, N'10553589-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (751, N'Docente_Tatiana_10556@gmail.com', N'$2a$10$Axvm6crjvQ6dSIOuqOrqYOKrsutGdhzPw/3NU/8IEPBhezsgtKLmO', N'Docente_Tatia_10556_2023', 2, N'10556456-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (752, N'Docente_Micaela_10575@gmail.com', N'$2a$10$YUBr1jSZbnxp2n9bFrZKBuWo3tIxDOL/ivMWWlJ4QXKtO5ZqcvSQe', N'Docente_Micae_10575_2023', 2, N'10575408-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (753, N'Docente_Griselda_10584@gmail.com', N'$2a$10$uQPzp0tskStZZgnzXZKBBunWWNrTP5KPnuruC9pjiL2FbEvX0taEW', N'Docente_Grise_10584_2023', 2, N'10584120-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (754, N'Docente_Ramón_10593@gmail.com', N'$2a$10$SSHUpRaF71kQirP81VuA.OxPQ/DdM0kzE.cuY7DhjnXxanWTX51qy', N'Docente_Ramón_10593_2023', 2, N'10593687-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (755, N'Docente_Emiliano_10617@gmail.com', N'$2a$10$4LLcXyJtFG0RjzjPACcIlO5nqwysCW8d1Li4PIzyWPHVoT.nVw/T6', N'Docente_Emili_10617_2023', 2, N'10617869-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (756, N'Docente_Sonia_10628@gmail.com', N'$2a$10$iebpg0dDpsqjPRykIJvxJ.6d46TfSJvfZ6XVd7JuzTuVLmM/xSDpS', N'Docente_Sonia_10628_2023', 2, N'10628551-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (757, N'Docente_Alejandra_10633@gmail.com', N'$2a$10$A1uZ9xpf6uV9CwsoT.tda.errTh74lGAlGBo2.7kGG6Po.KDFfaWC', N'Docente_Aleja_10633_2023', 2, N'10633287-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (758, N'Docente_Ciro_10659@gmail.com', N'$2a$10$ETlbASWqc2Ay4ULY5xybr.niOdCqvEXU0mwQsouOyUBQJ58rNQuf.', N'Docente_Ciro_10659_2023', 2, N'10659332-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (759, N'Docente_Andrea_10672@gmail.com', N'$2a$10$ZiHNQXSVERVnZbLKZGObX.YhpyJbEAAezwZy4d3hInNZyhBCMTwIy', N'Docente_Andre_10672_2023', 2, N'10672491-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (760, N'Docente_Amaya_10695@gmail.com', N'$2a$10$WX8e.OOBhtEKfZ1gXsnGnemFMxxNMVQt3qTILW/w2TyvMxjDFo.Fy', N'Docente_Amaya_10695_2023', 2, N'10695109-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (761, N'Docente_Edelmiro_10700@gmail.com', N'$2a$10$pqTd0hf1OT/PAMW8moXHC..vb73eg1SXnJQ.RkkfpxCKi6iSLuhGS', N'Docente_Edelm_10700_2023', 2, N'10700522-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (762, N'Docente_Bernabé_10705@gmail.com', N'$2a$10$xfq1Hg8et4RD2gvnRhP2I.Zeg3La56hvVbXLS8lrYMxOX7tZ4VJ8y', N'Docente_Berna_10705_2023', 2, N'10705549-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (763, N'Docente_Gisela_10706@gmail.com', N'$2a$10$arMWko6u.0YJJsYpNIRMpe8kaEay13f36TxqIt5sUEXCPOAhIEh1i', N'Docente_Gisel_10706_2023', 2, N'10706331-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (764, N'Docente_Yago_10721@gmail.com', N'$2a$10$fKRTdqHA0PRcGrqjB0.PQehFDcKBDdid1n8FLKjpaYEFyoIIjRhdq', N'Docente_Yago_10721_2023', 2, N'10721723-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (765, N'Docente_Cristóbal_10733@gmail.com', N'$2a$10$qaB29bF1Z1r43GSlky5VeOnzC9vIsL0i7PO9b2g0EeC5IqPL09ZO.', N'Docente_Crist_10733_2023', 2, N'10733695-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (766, N'Docente_Nacho_10738@gmail.com', N'$2a$10$jTLgGXYr.mEflfV7i3.qkOPHpp4Zh2Z7YdZKVxU2KLbW.OdrIVyba', N'Docente_Nacho_10738_2023', 2, N'10738748-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (767, N'Docente_Arsenio_10740@gmail.com', N'$2a$10$xxti/jTIYgDbGXuZO1M6QOV7riF5.8a8SWzKvqB9UGHPCxkMDKZ4K', N'Docente_Arsen_10740_2023', 2, N'10740172-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (768, N'Docente_Jacinto_10744@gmail.com', N'$2a$10$Kq115vpCh9Up/YX3O5Axte9zRbYk35ghCwvNoRkjnSW3Qk/UqWFcW', N'Docente_Jacin_10744_2023', 2, N'10744132-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (769, N'Docente_Teodora_10763@gmail.com', N'$2a$10$HUY9xXmwg6ygai07xKs8puY7HGEl6U1FF.zkk4IGJBhylKse8CMs2', N'Docente_Teodo_10763_2023', 2, N'10763343-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (770, N'Docente_Diana_10773@gmail.com', N'$2a$10$KDR1xLeu27uC2BW/3vy2U.TeYwb5kt45irVSKsQqGFFszRBJEwguu', N'Docente_Diana_10773_2023', 2, N'10773848-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (771, N'Docente_Soledad_10779@gmail.com', N'$2a$10$yM4LHweEGQeneKUkrTGuluU/R3d3wIyv9ApPfevHv.m5GC5XEXjnq', N'Docente_Soled_10779_2023', 2, N'10779229-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (772, N'Docente_Nadia_10788@gmail.com', N'$2a$10$Xpb5hg/kZaig19Gz..CRkeA5o7jWtNy7w4w7/v.YkMih9w4cga.JC', N'Docente_Nadia_10788_2023', 2, N'10788953-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (773, N'Docente_Tadeo_10802@gmail.com', N'$2a$10$uqLDebEkiD8nro5T3Fg.LuvruNAuyU4LYAYVXZkEYDVrHxDmtHTA2', N'Docente_Tadeo_10802_2023', 2, N'10802648-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (774, N'Docente_Severo_10814@gmail.com', N'$2a$10$GXlcBMuE8DV5/jGUBeR3f.SSaQYaqoh0sj3F6cgK7Rt7X3zVDMkvC', N'Docente_Sever_10814_2023', 2, N'10814200-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (775, N'Docente_Amanda_10830@gmail.com', N'$2a$10$d.blOR/KKqqjsMCc68XG3ekhLHdVrOyCkq3N1GoIjthkJYudbdrJS', N'Docente_Amand_10830_2023', 2, N'10830649-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (776, N'Docente_Cesar_10830@gmail.com', N'$2a$10$YAHZhFvWtgYETLaIsejrNu1MwTVshD8AZD9.3aDnKgj58L/h6YjZ2', N'Docente_Cesar_10830_2023', 2, N'10830895-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (777, N'Docente_Eusebio_10836@gmail.com', N'$2a$10$5BtNpgl/tPXOk4tgUSq.Xu49KusPsgrpPr5nGonzMFONDltp6sk3O', N'Docente_Euseb_10836_2023', 2, N'10836337-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (778, N'Docente_Nadia_10861@gmail.com', N'$2a$10$wQ4B8IjkQ4z4vSRpeOsyrO5s0vO/Gt77JnTvFGMnMvXuEuEFIwFsi', N'Docente_Nadia_10861_2023', 2, N'10861765-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (779, N'Docente_Haroldo_10866@gmail.com', N'$2a$10$bdvQf2WphhYf8BccKrDVmuTDal6ToJ2QTx4NGl7tyU5mOZ4MwaGAq', N'Docente_Harol_10866_2023', 2, N'10866223-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (780, N'Docente_Blas_10883@gmail.com', N'$2a$10$WlSwQovE.ftOUGJcspmbRuwBJU5foEyYiid/LAIcWu0Cr8MRki/Xy', N'Docente_Blas_10883_2023', 2, N'10883566-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (781, N'Docente_Angelina_10897@gmail.com', N'$2a$10$mVor89NczjKEssKhf0MHmeLH237YiDtNv/aerP1P5HLaRUn0V9Dw6', N'Docente_Angel_10897_2023', 2, N'10897741-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (782, N'Docente_Isa_10905@gmail.com', N'$2a$10$pjVaVCz1L8a4zI1D4Qv2vOXYBFrHgrQIthwAi.Xj/hfs67N71tp7G', N'Docente_Isa_10905_2023', 2, N'10905674-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (783, N'Docente_Fernanda_10938@gmail.com', N'$2a$10$1U1NyYkJCxXIO8Zm0JhQi.qDRDSis1gf4czXe3VPDuDLIQjv6yeam', N'Docente_Ferna_10938_2023', 2, N'10938191-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (784, N'Docente_Eusebia_10942@gmail.com', N'$2a$10$ZGlra.mu0NH1pZBBJjulBO5pt3NkY8BD6pl.5Tml0Rv140WKg37L6', N'Docente_Euseb_10942_2023', 2, N'10942645-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (785, N'Docente_Saturnino_10949@gmail.com', N'$2a$10$1cfzIN9XZJJ8/pI3dEHbveE5Q6hGI6Q2tXnXF3bvNFKafhucjLQKy', N'Docente_Satur_10949_2023', 2, N'10949037-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (786, N'Docente_Joan_10955@gmail.com', N'$2a$10$Eu4ohq93.qvEfCQ9RE9UoeNaflGQwUUrcSuO9HvQa/08Vz6ZTaa1e', N'Docente_Joan_10955_2023', 2, N'10955920-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (787, N'Docente_Elías_10956@gmail.com', N'$2a$10$te15kxg1fhzZ2vC39Eke1eUcdcV2013sg3urq3cFiMIo00QWhuGYi', N'Docente_Elías_10956_2023', 2, N'10956528-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (788, N'Docente_Luciana_10962@gmail.com', N'$2a$10$IBS0W6J7daove7QCpcvD1ejn1R19AF0uhqNFHjaag42fdPs2UNKTm', N'Docente_Lucia_10962_2023', 2, N'10962131-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (789, N'Docente_Hilda_10967@gmail.com', N'$2a$10$EKCIt3UYcUNxcUGvK/zuh.mmaCbcg.1C3jYR.saoz8rI0NZDMbgMq', N'Docente_Hilda_10967_2023', 2, N'10967060-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (790, N'Docente_María_10967@gmail.com', N'$2a$10$Tyti9HnTiGOin32dwPaFA.eHzoIotPa3cbfA1c7wxSuGyUyt9xCFC', N'Docente_María_10967_2023', 2, N'10967188-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (791, N'Docente_Alex_10987@gmail.com', N'$2a$10$BcFJvdXOHV/bMLV8uEL1H.1dQL7MTWjyIpU2I9uFUSH8Bj8quNw8a', N'Docente_Alex_10987_2023', 2, N'10987992-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (792, N'Docente_Susanita_11007@gmail.com', N'$2a$10$.fhrKdM05v.3AUfOwakjTeJJf6GC.Y5VUEvBAZ/l7BWtTo5i5Ssoy', N'Docente_Susan_11007_2023', 2, N'11007556-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (793, N'Docente_Eutropio_11008@gmail.com', N'$2a$10$nofuWQGZ7JXZmQXcVLzmHOPF1kNcUqdcHUYyiE0.5UHmf6IApQdKO', N'Docente_Eutro_11008_2023', 2, N'11008805-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (794, N'Docente_Patricia_11036@gmail.com', N'$2a$10$wy87U0KovVWFH3eIPkAEKe1YSmZiMjFIlify3lDbgtjvpB0slpGy2', N'Docente_Patri_11036_2023', 2, N'11036749-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (795, N'Docente_Rosa_11050@gmail.com', N'$2a$10$ZH7j2oiB4ArH0Mx/xdyRXOPvYm4OAxoUQUapnuwyTJq6X02Ug6NqW', N'Docente_Rosa_11050_2023', 2, N'11050974-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (796, N'Docente_Paz_11054@gmail.com', N'$2a$10$N0xFY3OZCE0x0wGCiw4oB.NtBg8Nv7Fv.B226qhs1TJ/XGKNn7.I.', N'Docente_Paz_11054_2023', 2, N'11054915-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (797, N'Docente_Diana_11059@gmail.com', N'$2a$10$Nk9UepwJUHmiuR8b.1fv6OsO9.BLSyOAZsRBCdZw1zrb.PespaacG', N'Docente_Diana_11059_2023', 2, N'11059095-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (798, N'Docente_Dan_11062@gmail.com', N'$2a$10$JTbgo1pnbWvfLSnZZh0esey..iPq/MnW1SnoWMhAIS2s1ngjx2Mmm', N'Docente_Dan_11062_2023', 2, N'11062704-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (799, N'Docente_Augusto_11082@gmail.com', N'$2a$10$QzRRzr5lg8HUyLTPS/PmPO/MeIDuWN9U5uS2PqwUAvbhD87RYZ.kq', N'Docente_Augus_11082_2023', 2, N'11082022-4 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (800, N'Docente_Anselmo_11084@gmail.com', N'$2a$10$irVWdJv7RA4yB65RUwjuSernmYk/rnL7Vc1OIH3JeyBgUQypSfwxK', N'Docente_Ansel_11084_2023', 2, N'11084619-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (801, N'Docente_Ágata_11098@gmail.com', N'$2a$10$XMlZumXAK4KjFCOYmmXW/.fB/zwnwR1p8XwkKgGmiVdH2/lP25gYm', N'Docente_Ágata_11098_2023', 2, N'11098895-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (802, N'Docente_Asunción_11123@gmail.com', N'$2a$10$LI3NQ6oS29giuqlmcHv.IOIaU0nsM/Zidb3tlJbEgWFGylAvw6VhO', N'Docente_Asunc_11123_2023', 2, N'11123065-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (803, N'Docente_Tadeo_11126@gmail.com', N'$2a$10$rVi51QVLYGu2awt0Lsa4n.ed.8D8mX1bl9OpwMC9ALmM53mv7pFUC', N'Docente_Tadeo_11126_2023', 2, N'11126113-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (804, N'Docente_Pastora_11145@gmail.com', N'$2a$10$2RJBwvHqueBch8GUif76LuvnBJsbZtHvKC4f3lPooAmsmkT/3WVpS', N'Docente_Pasto_11145_2023', 2, N'11145086-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (805, N'Docente_Curro_11145@gmail.com', N'$2a$10$HVg7noeGoChiC0dXmMmvUepJEXLX2qHzaixgXEzcQbrnkbht5Rcly', N'Docente_Curro_11145_2023', 2, N'11145641-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (806, N'Docente_Albina_11164@gmail.com', N'$2a$10$Ni1WY65syTe/OqdlEpPGgeGW/q9qiNqSJ8BPjSoDAv84gWFjZS3ym', N'Docente_Albin_11164_2023', 2, N'11164951-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (807, N'Docente_Olalla_11168@gmail.com', N'$2a$10$giX2b1fk8RHwIjHXWVRlG.iNLLQkUlUyelH0H7YKs/pm16ZjnRa5q', N'Docente_Olall_11168_2023', 2, N'11168517-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (808, N'Docente_Germán_11173@gmail.com', N'$2a$10$AKVAM2LLUg.8xPwN0Q5rS.q152htr9Y.i50FkOypWR/IcSYC06cke', N'Docente_Germá_11173_2023', 2, N'11173549-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (809, N'Docente_América_11176@gmail.com', N'$2a$10$Ri0bQwinGsCwuRLPHGUsp.eRg3fCocaWGrSn9qP8xfXrR0ulN.HjO', N'Docente_Améri_11176_2023', 2, N'11176016-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (810, N'Docente_Eladio_11176@gmail.com', N'$2a$10$XZxlzSWRTo18yDY7XrQ7Tu7GqI5QqIuaxzc2Ls/ZeclrlLj8uadZ6', N'Docente_Eladi_11176_2023', 2, N'11176056-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (811, N'Docente_Brígida_11182@gmail.com', N'$2a$10$lfaRrG1Y9iQiYUyp6odfruoQlyE2tQd5zgmF7ChteQDdZgPocDVRO', N'Docente_Brígi_11182_2023', 2, N'11182218-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (812, N'Docente_Bernarda_11185@gmail.com', N'$2a$10$qqSA.ln3jlUH.AricGPgTO7OJZvam6HmBrJdlMcB9mSn.I9Zj4QPi', N'Docente_Berna_11185_2023', 2, N'11185639-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (813, N'Docente_Delfina_11188@gmail.com', N'$2a$10$4dgoqAOkDxAB.HYkgSbbQu6vclBqGDIf7Knt4J0cIT.3K/cdPt2ay', N'Docente_Delfi_11188_2023', 2, N'11188577-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (814, N'Docente_Chucho_11198@gmail.com', N'$2a$10$NVkhf3PcY6mht0V9hU2NpOul2mlRrBxX5IMoO5tUjlIvWnvsS4OZW', N'Docente_Chuch_11198_2023', 2, N'11198467-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (815, N'Docente_Aroa_11199@gmail.com', N'$2a$10$cj0YWXoTIMcDoaAQbhHB9Ogk9QnLGFu79OMSvDLzFj9WQ6ijkRHFS', N'Docente_Aroa_11199_2023', 2, N'11199081-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (816, N'Docente_Glauco_11208@gmail.com', N'$2a$10$JuasLuzRxTPBZF2FPzs.DOsi179jGobSapKWopS6hWYloMfSvvjNy', N'Docente_Glauc_11208_2023', 2, N'11208457-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (817, N'Docente_Juan_11216@gmail.com', N'$2a$10$sEpTh8CYzEICINI5p47zv.MgwOxn6RACS/XB6yUFOocZu0US3/S/a', N'Docente_Juan_11216_2023', 2, N'11216921-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (818, N'Docente_Maricruz_11217@gmail.com', N'$2a$10$9RhU56/W2amiPdhmznGeI.YTHKqYsc9RmwSc7vPOtSS4mTmXYpuTK', N'Docente_Maric_11217_2023', 2, N'11217170-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (819, N'Docente_Isabela_11219@gmail.com', N'$2a$10$V4Gnei/IVsKU.2Res6V9YehvxUozr4RNlsOOPsUTCRfH7RBzcTJGC', N'Docente_Isabe_11219_2023', 2, N'11219994-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (820, N'Docente_Bibiana_11227@gmail.com', N'$2a$10$JV.9/wpOBOAUfssz1CWlLOBLdY/bWpJ/l9SI8tT/Z..DZ9qApYufW', N'Docente_Bibia_11227_2023', 2, N'11227400-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (821, N'Docente_Daniel_11253@gmail.com', N'$2a$10$QzdI98kaZUrASfUgcR2j5.hUHjCUQewu6MzA.DEcZ2/dzru70hzKC', N'Docente_Danie_11253_2023', 2, N'11253393-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (822, N'Docente_Ligia_11284@gmail.com', N'$2a$10$GUdnoNwS4Ku3G4HiLApBKOA/lKNs0LbCxF74arkjciv1Wf5l8rdbS', N'Docente_Ligia_11284_2023', 2, N'11284745-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (823, N'Docente_Sol_11297@gmail.com', N'$2a$10$Jg9MjNe46aJaeXXdaKd2wewlnKdd3ZEcPGOtJx1Tyn4MYbCn/Emru', N'Docente_Sol_11297_2023', 2, N'11297502-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (824, N'Docente_Etelvina_11303@gmail.com', N'$2a$10$sUubFvu2EUjCCE892.bfTeBLauzhVFQsRHJbaJnZeKa97RtgW0ivC', N'Docente_Etelv_11303_2023', 2, N'11303471-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (825, N'Docente_Moreno_11309@gmail.com', N'$2a$10$YAc28oM93SsVmBqf0CTSm.TsjvrNxbRkqAOshy6lEoMSGnn2ZQfN2', N'Docente_Moren_11309_2023', 2, N'11309691-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (826, N'Docente_Miguel_11315@gmail.com', N'$2a$10$DC/.Bi2UOXTWO2mN8kb9j.GZE2cQ71nGc0vkgVAwbS83C8mQnTHZq', N'Docente_Migue_11315_2023', 2, N'11315203-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (827, N'Docente_Ileana_11316@gmail.com', N'$2a$10$MgfSzCJqLtB1Yx/jUfZSSeIb8ksnI4u5hTfQVFygxuU8Pmv4K6Ehu', N'Docente_Ilean_11316_2023', 2, N'11316271-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (828, N'Docente_Emelina_11322@gmail.com', N'$2a$10$PyFMYYTyAcplFf9lJWieru37D9.uYnlw6z6i0Xdwypj2mqqGyvwDa', N'Docente_Emeli_11322_2023', 2, N'11322539-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (829, N'Docente_Bernardino_11322@gmail.com', N'$2a$10$5.N5MmSS99Wi0YRtgLYMFOJ40csI2kyeT6gI9N02I7XOps8WQq4Sy', N'Docente_Berna_11322_2023', 2, N'11322765-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (830, N'Docente_Carmen_11334@gmail.com', N'$2a$10$KLhmB4zWvbede/fCkaR2yupKK20sSMF75bDd2f8tv93AX1htQrNgS', N'Docente_Carme_11334_2023', 2, N'11334648-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (831, N'Docente_Elisa_11352@gmail.com', N'$2a$10$NCv2AUU0sh5avJptg55aw.rBP.1i6kCO2I2lEbNtUY8WDWRMCoZCy', N'Docente_Elisa_11352_2023', 2, N'11352824-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (832, N'Docente_Valerio_11353@gmail.com', N'$2a$10$sNbM8y5VK4gpRkZsWs0QOu.t/w2bPPCWd4d7oD1bC2gDBWOTqRjXC', N'Docente_Valer_11353_2023', 2, N'11353432-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (833, N'Docente_Fabián_11358@gmail.com', N'$2a$10$DyFrRn3dYfgbq08ApJ.6oOJQzlD5/Ut/Kq30friYoDpX6auFC6F4y', N'Docente_Fabiá_11358_2023', 2, N'11358792-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (834, N'Docente_Eusebio_11408@gmail.com', N'$2a$10$3kyXKbIjKQJnhJKwSFfHZeWT9KhZJOSc.NNp/HXlWg7/6QvOJJ6dW', N'Docente_Euseb_11408_2023', 2, N'11408393-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (835, N'Docente_Gil_11430@gmail.com', N'$2a$10$RM1cg5K9w6/.M/lKl5tlvuHcy.hvW98AAWFYL1c0VxZNjYt8bV1QG', N'Docente_Gil_11430_2023', 2, N'11430437-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (836, N'Docente_Dora_11431@gmail.com', N'$2a$10$.RGHczddlwAHvX2yCEVHNOl.8N58nx/xPr.wfXr0Nm86OylXUWtcS', N'Docente_Dora_11431_2023', 2, N'11431877-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (837, N'Docente_Úrsula_11433@gmail.com', N'$2a$10$r8g7MIlzT2Jzm.F3tG7Kr.BG3/XqFu5XDaBzf6hhevxYGXhy.6iMy', N'Docente_Úrsul_11433_2023', 2, N'11433382-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (838, N'Docente_Morena_11434@gmail.com', N'$2a$10$jvFIt1sjlIDZOytdSxLCx.su.VUEOg/DcSCHHbdOAjy.lCwCt72ZC', N'Docente_Moren_11434_2023', 2, N'11434461-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (839, N'Docente_Yolanda_11444@gmail.com', N'$2a$10$19x1WoegEmgKR54BFKIK1.1QaIogn27V84UPDRiLAXRP9lLPiHTUW', N'Docente_Yolan_11444_2023', 2, N'11444595-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (840, N'Docente_Juana_11451@gmail.com', N'$2a$10$D.VRrcKhTiNoxfkAniYTQOV.Cp5pBQnL5DnyC4lez4bgy920T42bS', N'Docente_Juana_11451_2023', 2, N'11451351-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (841, N'Docente_Eligio_11455@gmail.com', N'$2a$10$bS3Fvy39XbzEDSfPGY6o8OFxuo7dlg2t0iuCh6sjk4KEVh.M6XSfm', N'Docente_Eligi_11455_2023', 2, N'11455765-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (842, N'Docente_Tania_11469@gmail.com', N'$2a$10$a9OtpW69Kc664soYD2n6wOLn1mw10cvU2b8zTTs6yMbIag.Pgd336', N'Docente_Tania_11469_2023', 2, N'11469397-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (843, N'Docente_Emma_11471@gmail.com', N'$2a$10$EA/0n7hy.KczsG4qL9JpwOLGPNnNdN7ZQLeKxHcqWdSfQF.mLlkHG', N'Docente_Emma_11471_2023', 2, N'11471072-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (844, N'Docente_Jafet_11480@gmail.com', N'$2a$10$kkT2FXZYcLF0zLQ84TXD6uTXdPJIDcRpcyJgA4PTtrU2st0ASaaim', N'Docente_Jafet_11480_2023', 2, N'11480725-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (845, N'Docente_Jose_11499@gmail.com', N'$2a$10$6cFKPx7p/V3RNgivc/8hSu9FOvVeUz/sDNVQjZsk0OWU.BYFsBXja', N'Docente_Jose_11499_2023', 2, N'11499957-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (846, N'Docente_Pastora_11517@gmail.com', N'$2a$10$AUErnC.ty85h5y.Ob0EwyenFxuhPpGEwtNL/52N0HVVWA6cdfFXYm', N'Docente_Pasto_11517_2023', 2, N'11517664-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (847, N'Docente_Isa_11524@gmail.com', N'$2a$10$/zGuL0H8czdgWNZA/ws5ce04PiHZJFYUd1tjpbJ5FJvdiDOzlEFlq', N'Docente_Isa_11524_2023', 2, N'11524508-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (848, N'Docente_Wálter_11527@gmail.com', N'$2a$10$gXs.QXQdTZmM/Hw9bUBnheWxXNF4i8DAdeHkWLihOIB4bxsDrddAW', N'Docente_Wálte_11527_2023', 2, N'11527425-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (849, N'Docente_Juan_11577@gmail.com', N'$2a$10$UC/ufYvZLwyqEQITtbqRIeSV.BfcGb7JoEH3Xhs1/XWAO1pzD2D/i', N'Docente_Juan_11577_2023', 2, N'11577212-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (850, N'Docente_Juliana_11598@gmail.com', N'$2a$10$lM.gq2xM4x2/pL1JHoqfZOkS6cQYaqQ/Y2ZIMf07S6NwUvFniAvHO', N'Docente_Julia_11598_2023', 2, N'11598215-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (851, N'Docente_Eligia_11601@gmail.com', N'$2a$10$1NiqMqY1VnB5TrpDuqznfOgtzwoyOkEtjrmL3fvU7w08dhTqzpuBm', N'Docente_Eligi_11601_2023', 2, N'11601329-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (852, N'Docente_Eufemia_11605@gmail.com', N'$2a$10$XgDuttfAoiopQ42ytSV8GObiNAvzAId0sHvHskrQY5a4xRcBsNIum', N'Docente_Eufem_11605_2023', 2, N'11605505-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (853, N'Docente_Bienvenida_11616@gmail.com', N'$2a$10$lrU/zpldFDPILGmerJsKMuB6HqHVXLXH5oPOrhGKlMFTJ5izaxY4K', N'Docente_Bienv_11616_2023', 2, N'11616524-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (854, N'Docente_Alicia_11624@gmail.com', N'$2a$10$d5uh3i8bVDL9xhaEggJsROfFEDdE1ZMKX3cm7mAs6mGg1IGv2hvrC', N'Docente_Alici_11624_2023', 2, N'11624333-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (855, N'Docente_Fabiana_11633@gmail.com', N'$2a$10$VeUoCqBCv6iuwA2IVIjlCukNUGvL4nDDZcLYH0Tv29miFfLCBTeTy', N'Docente_Fabia_11633_2023', 2, N'11633547-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (856, N'Docente_Cleto_11660@gmail.com', N'$2a$10$RVS7YWzTDe9Ts.WPnpf3We/V7EbipMf82WO6S3EgqNH2fJRxENMwG', N'Docente_Cleto_11660_2023', 2, N'11660317-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (857, N'Docente_Ramiro_11666@gmail.com', N'$2a$10$tThuDqe1I8OagxlIX2Rnje9bdO7AThDMBa7pCGwG3mZYL22WUC4ZO', N'Docente_Ramir_11666_2023', 2, N'11666439-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (858, N'Docente_María_11671@gmail.com', N'$2a$10$twsbEhdDgXh/e1oelyfp8uLqqxya59lopIwYcwHxGhBC7gRCHPWG6', N'Docente_María_11671_2023', 2, N'11671016-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (859, N'Docente_Leocadia_11674@gmail.com', N'$2a$10$Pz6enVWBRlYQ5dYX31BryediZbd/OXZA5KVW0p8XC2vpZzbANRh8.', N'Docente_Leoca_11674_2023', 2, N'11674014-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (860, N'Docente_Cristian_11683@gmail.com', N'$2a$10$TncjLkSYbY/XWB2956yzH.41Vr5yJoxQ1yg.sG4zw9XsXm/rUT4yC', N'Docente_Crist_11683_2023', 2, N'11683737-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (861, N'Docente_Merche_11708@gmail.com', N'$2a$10$P/OLacRd4oZX4iiYspuJeuamFgwLnjghTuCmyeCG6WjNedG8kyJkC', N'Docente_Merch_11708_2023', 2, N'11708304-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (862, N'Docente_Luis_11711@gmail.com', N'$2a$10$Ym/ridTJLxxmgxZsMabuXux9Kf4O5aI0pBO64YLPGRlaUMrUiZ6Ja', N'Docente_Luis_11711_2023', 2, N'11711168-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (863, N'Docente_Domitila_11722@gmail.com', N'$2a$10$s0gwJHT3BydcVWOpaZAAZe/h4nXfLGGdjBQCNdqflQMc1bgzuf7nO', N'Docente_Domit_11722_2023', 2, N'11722146-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (864, N'Docente_Graciana_11733@gmail.com', N'$2a$10$9Nki2pZwTkqFeT1J.L0xhui.MxSWgM4Hh0FH8gJxZWHa1we721W6a', N'Docente_Graci_11733_2023', 2, N'11733502-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (865, N'Docente_Isabel_11740@gmail.com', N'$2a$10$/pq8fv8XrMwqBqCI.bTW2u.4Kw7e6wa2QRaSuYO9D0OYNeh2f6HnW', N'Docente_Isabe_11740_2023', 2, N'11740188-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (866, N'Docente_Noa_11744@gmail.com', N'$2a$10$em2IhThl7omYG/8DXCLwmOvOwZRLq4/WRE49p5z9ZtrrS5O1rOyHi', N'Docente_Noa_11744_2023', 2, N'11744859-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (867, N'Docente_Olga_11759@gmail.com', N'$2a$10$CkIY5Uds7UrQNYzC6U7LtOdhW/2pnumr9KSNNMjphxpFtpm13rOMe', N'Docente_Olga_11759_2023', 2, N'11759443-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (868, N'Docente_Gerónimo_11761@gmail.com', N'$2a$10$ZpV6XirzfUnMqoqrka5LpevFb57UaIb8FQFZYLEaHcHwcT0zrH34S', N'Docente_Gerón_11761_2023', 2, N'11761847-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (869, N'Docente_Isaura_11776@gmail.com', N'$2a$10$OxMuJ5Jm3E3UzX6aAnQjTetLvOdgzXgZvsd5NqduB7tnuRoEMyw2O', N'Docente_Isaur_11776_2023', 2, N'11776869-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (870, N'Docente_Eva_11794@gmail.com', N'$2a$10$69dZxthySO0L/4i2.XZ/le7QBwTotS16Rd8sVOpCqroFwbLBdPE0S', N'Docente_Eva_11794_2023', 2, N'11794615-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (871, N'Docente_Maxi_11810@gmail.com', N'$2a$10$tT.bAwhgedCaKe5qjTsZneFiolvLA7VJ6StG9uGAOfXkN582MrETK', N'Docente_Maxi_11810_2023', 2, N'11810267-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (872, N'Docente_Úrsula_11819@gmail.com', N'$2a$10$0IJptzu2sfbyLHsCN2v/vufE0DLLIKaR5dq0gcsJAtlnE866.6wvm', N'Docente_Úrsul_11819_2023', 2, N'11819750-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (873, N'Docente_Consuela_11833@gmail.com', N'$2a$10$pQS2HqEByKErtRh30QDQY.yGhbkS1aAL5pfLRAQXrCIiPN2Fnw5OW', N'Docente_Consu_11833_2023', 2, N'11833788-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (874, N'Docente_Humberto_11836@gmail.com', N'$2a$10$4WRpI8WySX/LVzAfpU78ducVPH/LYvwlvQwFwJ9JUXj.1RYe3N5uy', N'Docente_Humbe_11836_2023', 2, N'11836666-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (875, N'Docente_Gracia_11850@gmail.com', N'$2a$10$DEpVgvmx1/tgQmT.vhzZv.0/XZ/98o0zHTHb321si4PCP/JJSBrNW', N'Docente_Graci_11850_2023', 2, N'11850206-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (876, N'Docente_África_11868@gmail.com', N'$2a$10$8IKZ1CRljDEMMN2q2AcMJesQdPMWsglUOYKUtFmdl19l73YJDubX6', N'Docente_Áfric_11868_2023', 2, N'11868373-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (877, N'Docente_Leire_11873@gmail.com', N'$2a$10$2MP/OKBuaiWmIBVpz8Wef.kT5nLx2bjzzpccdrKDt2cHSGQbiEdIO', N'Docente_Leire_11873_2023', 2, N'11873643-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (878, N'Docente_Reyes_11881@gmail.com', N'$2a$10$YfqluN0OndVWXIomkzD8/.ViT9awgPvjMkutzDwIi6ZibcbgHCRfe', N'Docente_Reyes_11881_2023', 2, N'11881844-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (879, N'Docente_Marina_11904@gmail.com', N'$2a$10$OnP5rso7apNbJRQeLR8ADuwwRWTBcorUbFE7.abzk3joWLdyTBAMm', N'Docente_Marin_11904_2023', 2, N'11904379-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (880, N'Docente_Encarna_11906@gmail.com', N'$2a$10$YINQjaLIibaz19qFY1OdRuN1RVKKBQWgwzt5n0YFUOZdIbQY68Daq', N'Docente_Encar_11906_2023', 2, N'11906416-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (881, N'Docente_Imelda_11917@gmail.com', N'$2a$10$6KtAFpwKLyIdAR.8eZTNau2xYsNSYNmlk28JqOdMVk8NS0muwIBM2', N'Docente_Imeld_11917_2023', 2, N'11917875-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (882, N'Docente_Remigio_11946@gmail.com', N'$2a$10$hZTdsCMGG4UdycOXgEvj0etI9k.PH6JgY1fvNcpx52wuVPNruPuHW', N'Docente_Remig_11946_2023', 2, N'11946591-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (883, N'Docente_Saturnina_11958@gmail.com', N'$2a$10$tnc8wBeGP3/CAd4zlMmPrOe6KRVMQxdASl.xxreHlf66JchYxntLO', N'Docente_Satur_11958_2023', 2, N'11958784-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (884, N'Docente_Ariadna_11959@gmail.com', N'$2a$10$zwyuaLAr51lFQr3TrWyTQeJ3St050b9JlUnD95PjlOUEzwxcD.ME.', N'Docente_Ariad_11959_2023', 2, N'11959645-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (885, N'Docente_Borja_11959@gmail.com', N'$2a$10$v7IauTCY/NsSxFZw61PFheWHCKSfCDg3kvFLudb/6Udj3v1FIn0Cm', N'Docente_Borja_11959_2023', 2, N'11959835-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (886, N'Docente_Baldomero_11974@gmail.com', N'$2a$10$EcwBQLwS5eGbYGCZxDpd3eopQqJiWAKhYD6GiB/kN6j/8608wu6c6', N'Docente_Baldo_11974_2023', 2, N'11974383-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (887, N'Docente_Bautista_12001@gmail.com', N'$2a$10$8WJv/bxIDbzH4FZH.6nP1.7MR5hTGYS.RHm8hoRPMvYJTr8/WOZq6', N'Docente_Bauti_12001_2023', 2, N'12001609-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (888, N'Docente_Rosa_12004@gmail.com', N'$2a$10$kERRrE51paxuAvsQPBHCBeiGp/l6oJb3HaCxQ/OQnhG8d.DtJzO2.', N'Docente_Rosa_12004_2023', 2, N'12004414-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (889, N'Docente_Conrado_12026@gmail.com', N'$2a$10$2nughUevk2j.qn.LIZu4O.uexAXLUisPSXLECwt8II02cYV1WQ33q', N'Docente_Conra_12026_2023', 2, N'12026928-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (890, N'Docente_Juanito_12033@gmail.com', N'$2a$10$5z3wAPJE.tCfb1POakQniuYzPPj6EhKTqOXmGBieD.ulvPTib5DuK', N'Docente_Juani_12033_2023', 2, N'12033070-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (891, N'Docente_Elisa_12035@gmail.com', N'$2a$10$KSnUwSfCnWnnnl467nbSA.aW7nt6f49KAw/4H0aeaJy0Qty2jz6.u', N'Docente_Elisa_12035_2023', 2, N'12035695-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (892, N'Docente_José_12051@gmail.com', N'$2a$10$pxqvSqxDuMFsKxussK6MuevYXkhuSMapJ35RyzL4pIyPgAJFdPCS2', N'Docente_José_12051_2023', 2, N'12051453-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (893, N'Docente_Lucio_12057@gmail.com', N'$2a$10$eg7CjGXAslV6oIu5udbHN.j3T/NFA42JjVsz2SpcO6eWzSArt7stW', N'Docente_Lucio_12057_2023', 2, N'12057597-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (894, N'Docente_Carlito_12070@gmail.com', N'$2a$10$tOvN5iKNBVTarpVg4AGn3.kAgD9qFKksPWM.B2HancPPP5X5sj0de', N'Docente_Carli_12070_2023', 2, N'12070423-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (895, N'Docente_Crescencia_12077@gmail.com', N'$2a$10$pAweFZmHEupFNRGw3.Wkzu3/.4rnGm87izNZy6B9/lP0yJpWNuxnW', N'Docente_Cresc_12077_2023', 2, N'12077732-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (896, N'Docente_Felix_12078@gmail.com', N'$2a$10$dBlGcWq.MPqFUWV8Ye.NIejJ60ajAhwlVdkrttTBm02HeP/8rz/g2', N'Docente_Felix_12078_2023', 2, N'12078844-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (897, N'Docente_Antonio_12086@gmail.com', N'$2a$10$au58b5hswOeCIXGcgzHIhumG7htKxs.VycC.txQPXIUnbCvby40DS', N'Docente_Anton_12086_2023', 2, N'12086533-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (898, N'Docente_Susana_12089@gmail.com', N'$2a$10$Eb.QvSrC55Y3pgdpBGEMoevHovFShxAhSRcpbxWG9plG11/WlxSwW', N'Docente_Susan_12089_2023', 2, N'12089722-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (899, N'Docente_Blanca_12102@gmail.com', N'$2a$10$WEfduyLLN9Bn0wXEnu701.mq7CMUydhgM2L.8J6YhYds9s9f11q2C', N'Docente_Blanc_12102_2023', 2, N'12102298-2 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (900, N'Docente_Isidoro_12108@gmail.com', N'$2a$10$A/Ffzx.YRNyU.JBfDCSoo.tPp2YvwP6MKHgH/RUaHUCiN1GPuu076', N'Docente_Isido_12108_2023', 2, N'12108304-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (901, N'Docente_María_12123@gmail.com', N'$2a$10$JK5pORn03XfiKptkNYZdkOT.V1bIYhtMns5nHXZ.eevyrxf7pBzji', N'Docente_María_12123_2023', 2, N'12123814-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (902, N'Docente_María_12135@gmail.com', N'$2a$10$0C1Nfkk/1JbokPzpa5l85.JuQCpi.9G7h9K64g2TIxgG7WX.0ei72', N'Docente_María_12135_2023', 2, N'12135980-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (903, N'Docente_Ricarda_12136@gmail.com', N'$2a$10$nUQoDwzWsNkguJaMfIHXKenVqZAgxknKlC1Fk45Boz5LMtKHmphWu', N'Docente_Ricar_12136_2023', 2, N'12136075-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (904, N'Docente_Tomás_12136@gmail.com', N'$2a$10$jQjlDfEZUjEcEcjXm1Ipiu6I9GPW6yjtzIENsXyMcvGTIcD/6FHuy', N'Docente_Tomás_12136_2023', 2, N'12136289-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (905, N'Docente_Nilda_12143@gmail.com', N'$2a$10$zV0fktcLmpMsz3LusQA63O20EU8JpokhR2cbZGnvAD5b6wyVb6MCW', N'Docente_Nilda_12143_2023', 2, N'12143946-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (906, N'Docente_Tatiana_12158@gmail.com', N'$2a$10$k5wDSSKMtTc.ZJ.Askf1BuuWLAajLY.ocdhau8xl.fbaxEtMjPuvi', N'Docente_Tatia_12158_2023', 2, N'12158243-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (907, N'Docente_Desiderio_12160@gmail.com', N'$2a$10$nqx65zc.azV6xp0z.ePJ4.cwsBx50ujagcvhvBsPlVlvMxOuoR4J6', N'Docente_Desid_12160_2023', 2, N'12160085-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (908, N'Docente_José_12161@gmail.com', N'$2a$10$uGXkBpTn7rLf0bButzAvMOLo19Qv35AOvLYD8yyYSbWxq4ivcHUaS', N'Docente_José_12161_2023', 2, N'12161455-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (909, N'Docente_Imelda_12187@gmail.com', N'$2a$10$eeP481TcB6RnEw2zW0ED2OZFJadwCPVNVrR84sL1TpPsgcwS.dyO6', N'Docente_Imeld_12187_2023', 2, N'12187703-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (910, N'Docente_África_12198@gmail.com', N'$2a$10$NgbyvvKFUjTvFyxc8x3uBOYYmG2XWBhft3zNZmATGFiTJTptGx0XC', N'Docente_Áfric_12198_2023', 2, N'12198763-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (911, N'Docente_Geraldo_12199@gmail.com', N'$2a$10$9.kQ41eLH17XTNS37FwxZemoBAPdDNP0hidyw6nmO7Wxeq1V3GVle', N'Docente_Geral_12199_2023', 2, N'12199624-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (912, N'Docente_Reyna_12203@gmail.com', N'$2a$10$2Dr/qcaFgAmTYVNN8bYSTukt.X0HqwaPSfT7eqJfglsKoB8JeMh5K', N'Docente_Reyna_12203_2023', 2, N'12203790-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (913, N'Docente_Paloma_12224@gmail.com', N'$2a$10$m5HNqcJoAFKed7D9hjFei.8APgMp2dmlMd9dU67x9cIWXFN3Phr16', N'Docente_Palom_12224_2023', 2, N'12224585-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (914, N'Docente_Isaías_12233@gmail.com', N'$2a$10$3.6d53bREZIkORSObbIfYOarJCDi4Gcxg4xNs3UJA6tBCIglWuRly', N'Docente_Isaía_12233_2023', 2, N'12233991-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (915, N'Docente_Nereida_12247@gmail.com', N'$2a$10$v8tL9KRTCrb.zMuCLWNBlux0JAMQtxS1i48O089IT4HXqVjRDJ6hi', N'Docente_Nerei_12247_2023', 2, N'12247052-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (916, N'Docente_Ambrosio_12249@gmail.com', N'$2a$10$L2nUeUIBdNI9rRV5simjeOYTKi9DzLhB7VuHMe9x05QyzFVK0rrru', N'Docente_Ambro_12249_2023', 2, N'12249675-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (917, N'Docente_José_12253@gmail.com', N'$2a$10$ExGapaem8LniulG7Wy6sDO5JhFAjTNyfmrcZY2NOyWp.pXnsrMNNO', N'Docente_José_12253_2023', 2, N'12253177-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (918, N'Docente_Dora_12256@gmail.com', N'$2a$10$sU9i6PUf0Rt08x0jwxW3fertNvU7qmz8SoN8EHzmCneyFTTrbHxN.', N'Docente_Dora_12256_2023', 2, N'12256834-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (919, N'Docente_Dorita_12267@gmail.com', N'$2a$10$1Gq.H8Wdods156RdRQeGLOgJG2wmRvIm/NVClSx.fixOvdLmBE95i', N'Docente_Dorit_12267_2023', 2, N'12267765-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (920, N'Docente_Nieves_12274@gmail.com', N'$2a$10$LhRw90pvZIWZk0EpDw/7EugpXHYXjQWelZYGAUtdMFu6IUDsOBKx.', N'Docente_Nieve_12274_2023', 2, N'12274620-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (921, N'Docente_Custodia_12302@gmail.com', N'$2a$10$k3fnGCP7..bgNzWNIfXZ4exkPNXrfim/jM1lsprD5AvIm1OdCs0KO', N'Docente_Custo_12302_2023', 2, N'12302949-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (922, N'Docente_Ricardo_12304@gmail.com', N'$2a$10$vpK0YhqxiiKqjG1wOXaUdOAFynEOb3ylbc.Q3ODfzoo6R1jbTQQNa', N'Docente_Ricar_12304_2023', 2, N'12304987-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (923, N'Docente_Ágata_12321@gmail.com', N'$2a$10$u2w3PO/k9UPNdiUxRhRlPujmhmAfBF2fGnpq2uuXoWkGrySMtTz3W', N'Docente_Ágata_12321_2023', 2, N'12321870-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (924, N'Docente_Agapito_12322@gmail.com', N'$2a$10$atm35deAyHI3izvsmvrne.U29iG7PTWwG7s6GMLBMl1sfdbIS6o4i', N'Docente_Agapi_12322_2023', 2, N'12322583-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (925, N'Docente_Mireia_12326@gmail.com', N'$2a$10$C5nZDB.gHEKG0T9TdG25j.huQhfM92Tdvq59H.iLdHbuiSU1j58IC', N'Docente_Mirei_12326_2023', 2, N'12326211-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (926, N'Docente_Manuel_12331@gmail.com', N'$2a$10$HtoTDUl3tjZguEOWeNbDUePVDKNJOeOXXGCvkxs5muDxIl0Cjh3K6', N'Docente_Manue_12331_2023', 2, N'12331008-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (927, N'Docente_Corona_12345@gmail.com', N'$2a$10$ByY05YdOTHbXsbrtP9WrDu9SZ6.vIAuJ24l1rli8nlhma/vEDrIA2', N'Docente_Coron_12345_2023', 2, N'12345194-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (928, N'Docente_Juan_12353@gmail.com', N'$2a$10$.AZfAHVhRLFKatEl8vb4s.lh8oi/3bSaLsNj2D7dRr.1R6XQc2WzK', N'Docente_Juan_12353_2023', 2, N'12353202-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (929, N'Docente_Paola_12357@gmail.com', N'$2a$10$2yfDpsrhJKShSKGVw1pLzerJ0vfrL0PKXtSMbD/41upkL1VVGmzg6', N'Docente_Paola_12357_2023', 2, N'12357698-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (930, N'Docente_Aarón_12400@gmail.com', N'$2a$10$uySGMSbk99aUS8Dmr5X77.UNtquxyyWG7S0jKpmPCnPQxhWCVMKXm', N'Docente_Aarón_12400_2023', 2, N'12400096-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (931, N'Docente_Aurelia_12402@gmail.com', N'$2a$10$vXNQn4duitfxBtkXKOKd2eF3sBOWVoSp.Bn18UdKgxmNQauXdkET.', N'Docente_Aurel_12402_2023', 2, N'12402978-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (932, N'Docente_Baudelio_12404@gmail.com', N'$2a$10$mfYRT8bN0XgF4FnAeKI6EuBFKk5aCSUh6xEA1oPJv0JQBKAL3kJsq', N'Docente_Baude_12404_2023', 2, N'12404518-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (933, N'Docente_Lucila_12408@gmail.com', N'$2a$10$b8jk1fVAnDHx4GwvmgG/kumWuC3cYruGHxMjrS8Vmqkoivcy5O3/S', N'Docente_Lucil_12408_2023', 2, N'12408398-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (934, N'Docente_Martin_12412@gmail.com', N'$2a$10$tGLK13tjDzYi0cBaxfAsb.JVVVHAgV44KsX.2PTd2apGxyZ3xfr3a', N'Docente_Marti_12412_2023', 2, N'12412784-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (935, N'Docente_Zaida_12415@gmail.com', N'$2a$10$Q1qprZLeZbiQ65suSZghP.L53PfU.uh34ENy49DZ1Mkc8YVwA4fZ2', N'Docente_Zaida_12415_2023', 2, N'12415134-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (936, N'Docente_María_12425@gmail.com', N'$2a$10$AeBolGsqmm3W65Rp0OHCTeGAW5R0pbgAaJdGxGouAwE/brfbL7jI2', N'Docente_María_12425_2023', 2, N'12425989-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (937, N'Docente_Elena_12429@gmail.com', N'$2a$10$MzDGGMwJItNxHJVC.kJm/OZQRwMg0Zha2Yl3kuKqf38H/YvV.c1qS', N'Docente_Elena_12429_2023', 2, N'12429692-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (938, N'Docente_Glauco_12442@gmail.com', N'$2a$10$I.aXIkyv/QWDRGsI6pZ1Q.8Ms4RrsfzUgVwT3RH4FANh8EUZ59fYm', N'Docente_Glauc_12442_2023', 2, N'12442756-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (939, N'Docente_Ricarda_12462@gmail.com', N'$2a$10$tQKqyg45zZgjUWjwF7fWL.AIQcJwscTjbfbYoH63QwVPH3kEPOWay', N'Docente_Ricar_12462_2023', 2, N'12462396-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (940, N'Docente_Eva_12463@gmail.com', N'$2a$10$f1KCwKxNjsYcTsxn/CpCNeMf.pPuhjKG4pJklIG7qKhBgX.cLyW5i', N'Docente_Eva_12463_2023', 2, N'12463586-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (941, N'Docente_Sabina_12482@gmail.com', N'$2a$10$i9ZsK4YjimJSbdza5jXn6.FlNagbmv04kM328XFqqualrC60YCmoq', N'Docente_Sabin_12482_2023', 2, N'12482661-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (942, N'Docente_Hector_12489@gmail.com', N'$2a$10$slryaAzsxfL7AWZAuIg1f.dHYydTTfrkL0aYh/zUfpYjQQYez0nqu', N'Docente_Hecto_12489_2023', 2, N'12489531-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (943, N'Docente_Eutropio_12503@gmail.com', N'$2a$10$UbcnnX5yf3Yy5qiLgQix5OdNqCKQhfuwmyM/NQP.LBXmML6zSUXiC', N'Docente_Eutro_12503_2023', 2, N'12503946-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (944, N'Docente_Laura_12507@gmail.com', N'$2a$10$Df9d5i.eCRivO7oDWLecR.WKkbCBTh.GVypnQZ0VIsmtPMeeG9O5y', N'Docente_Laura_12507_2023', 2, N'12507657-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (945, N'Docente_Visitación_12526@gmail.com', N'$2a$10$hH/pD/XQ8xto7nwH6Iv4oenhsLzBrHVPoRdNQ5.Wg2qeq5B5IMfea', N'Docente_Visit_12526_2023', 2, N'12526155-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (946, N'Docente_Sofía_12546@gmail.com', N'$2a$10$Po6kwg.mi9Qv9w7mNJXSDeF4fh1sbCCbaaklZnYXJiPKYyb42Ts5e', N'Docente_Sofía_12546_2023', 2, N'12546347-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (947, N'Docente_Victorino_12567@gmail.com', N'$2a$10$U2zam44QinvmJzyKXKoLgu7YiB0OxksXkIgpqn7J53XWVxkRtzSxm', N'Docente_Victo_12567_2023', 2, N'12567318-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (948, N'Docente_Angelita_12577@gmail.com', N'$2a$10$3WWEItoR6BUpGQW1Om7lwu3.51C5mcSkMfmXSY1Wp5lLxIgbwXlgG', N'Docente_Angel_12577_2023', 2, N'12577750-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (949, N'Docente_Bibiana_12579@gmail.com', N'$2a$10$tnLlY94P8ZaktrjklYZh6e/0bTKFTjbu088xX8OY1fnb3BVfCk9Xy', N'Docente_Bibia_12579_2023', 2, N'12579409-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (950, N'Docente_Florinda_12580@gmail.com', N'$2a$10$I.7ojaiyVdfvrhZmEj5Ud.VO89QnnnL0fDwin4Ys.OgLEciZkceCO', N'Docente_Flori_12580_2023', 2, N'12580480-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (951, N'Docente_Rita_12582@gmail.com', N'$2a$10$S6OhDWzLJAMDGyPKu6f73.NPLkES.uyF1wipPSILwWWEOIhBld1yS', N'Docente_Rita_12582_2023', 2, N'12582057-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (952, N'Docente_Rosa_12606@gmail.com', N'$2a$10$WsR7fZ5CPxn0zQHnlCW8u.t1IwAt1G.FuXunrUOPRa6U8Dwwhse0G', N'Docente_Rosa_12606_2023', 2, N'12606604-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (953, N'Docente_Amalia_12608@gmail.com', N'$2a$10$TZXcLTm6D/F8K/MpoBSs/uQ0QaK3plsMZ5b2dzFUbcFQgV47DSiaS', N'Docente_Amali_12608_2023', 2, N'12608347-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (954, N'Docente_Baldomero_12611@gmail.com', N'$2a$10$TD6Ktw50O9bvDI0vPo20gOg3WcyjLD42IYjryaBFNrhfZ5bgJuVk.', N'Docente_Baldo_12611_2023', 2, N'12611214-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (955, N'Docente_Juan_12628@gmail.com', N'$2a$10$c.XOs6O58ip8CFcGjzInY.aK/QoVcqIm3JNq/zao1mlDZrIJDmbme', N'Docente_Juan_12628_2023', 2, N'12628491-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (956, N'Docente_Federico_12632@gmail.com', N'$2a$10$r9bS4jewKurWOcxUj9FOXeJBoNtV/Xu6WsXIYPtRE58F143F/5Q6.', N'Docente_Feder_12632_2023', 2, N'12632919-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (957, N'Docente_Azahara_12672@gmail.com', N'$2a$10$kSVd6MdSVe6Q69KVCJilQeRVo35nZ42Cs0di8hZjI0lu9xpCOBtbS', N'Docente_Azaha_12672_2023', 2, N'12672315-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (958, N'Docente_Juan_12680@gmail.com', N'$2a$10$CaLvJPqN0soT0tgqGt/dru/voHxL7oL74LxxM1VapVrm2W0Vbp7g.', N'Docente_Juan_12680_2023', 2, N'12680923-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (959, N'Docente_Noelia_12717@gmail.com', N'$2a$10$14wQBVJRVlVAvhAUcATqquWb5ddLqrC9KdKUY.6.sCrdfujVHKiSa', N'Docente_Noeli_12717_2023', 2, N'12717457-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (960, N'Docente_Emma_12720@gmail.com', N'$2a$10$CobcuV5cCMjahVJUYe.LI.Zx31zRitGXrdxcGlPmiQ/vP.7qMrIam', N'Docente_Emma_12720_2023', 2, N'12720040-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (961, N'Docente_Atilio_12743@gmail.com', N'$2a$10$fk8yJOSlsXW4bZx8HxZGwOst9q1cM3Glqbsaqw3.VQQkAaNFAiAYu', N'Docente_Atili_12743_2023', 2, N'12743380-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (962, N'Docente_Félix_12749@gmail.com', N'$2a$10$HEXY8mtarL9VDKaNuSUS5unNQn7zVaSindhWcEc/dWkR287VN/FWu', N'Docente_Félix_12749_2023', 2, N'12749398-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (963, N'Docente_Toribio_12767@gmail.com', N'$2a$10$zz.W2.94oNSM76u3v9cbJeeizBpfkKxIDPc5NoVJsg9CU07VT5Xga', N'Docente_Torib_12767_2023', 2, N'12767532-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (964, N'Docente_Olegario_12777@gmail.com', N'$2a$10$lG7f9iWGjNcFsxWdLB0XsukL3uuP82vwEzPxkFSTPvSeSUmwzZ59y', N'Docente_Olega_12777_2023', 2, N'12777742-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (965, N'Docente_Maura_12804@gmail.com', N'$2a$10$8ENQd2OxK7ZSfN6ZYEO/luDJI8uxMi6Uc8daKBcI40QVQelsryZdC', N'Docente_Maura_12804_2023', 2, N'12804380-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (966, N'Docente_Nicolás_12833@gmail.com', N'$2a$10$oKuZZ/jMINomU7QOxneE9.X3HxcStqyxfo7oRrUAt5iVkl0Is57Um', N'Docente_Nicol_12833_2023', 2, N'12833818-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (967, N'Docente_Zaira_12839@gmail.com', N'$2a$10$S2ibzgBLkIiA2.c1356We.9vZjVyvkgQdf7gwwCT5MZUJ0EezJd3W', N'Docente_Zaira_12839_2023', 2, N'12839134-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (968, N'Docente_Concha_12854@gmail.com', N'$2a$10$1OxF4pSKApPelpOF8cHc7upPkAj9mmxrPDQ3RG7qaz7PMlsgQ8CRS', N'Docente_Conch_12854_2023', 2, N'12854262-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (969, N'Docente_Priscila_12856@gmail.com', N'$2a$10$XlGrwfp71b6GzuGTuxAY5ue8D0LqQqpLbRcIN0bZG3/dfSjG9SB1u', N'Docente_Prisc_12856_2023', 2, N'12856748-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (970, N'Docente_Ignacia_12859@gmail.com', N'$2a$10$7EjHN/D8FUNyICXmy9NAFemKss0pRQZaNJn3xryYO9nhZDiAci.2W', N'Docente_Ignac_12859_2023', 2, N'12859330-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (971, N'Docente_Áurea_12878@gmail.com', N'$2a$10$Gu7XTXKDuUKkk/PIes8/tuWT8jhM44I5PoL1rz1Fb4SKmOfDIEQLi', N'Docente_Áurea_12878_2023', 2, N'12878102-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (972, N'Docente_Salomé_12893@gmail.com', N'$2a$10$u/MEaKxvWyrm.h.PIOkskew/gqGnkFlHaakxhRlkr54FfwbaRPl8S', N'Docente_Salom_12893_2023', 2, N'12893775-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (973, N'Docente_Jose_12941@gmail.com', N'$2a$10$DgxAX36UsODAUDbQs73hBu9o60S4bEXigRQ47q5lcMzg08ReUEgi2', N'Docente_Jose_12941_2023', 2, N'12941720-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (974, N'Docente_Sosimo_12960@gmail.com', N'$2a$10$g1lNWxenaJh//YvIQwnh.OL9lbktc4xpkTvTtC.ZvN9XtwYHsUi6.', N'Docente_Sosim_12960_2023', 2, N'12960555-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (975, N'Docente_Marina_12998@gmail.com', N'$2a$10$BYvxlxou6rRjmuGkLnZXc.pmlo0V2OtArmiUtgF98QVCsGn8ZQx7S', N'Docente_Marin_12998_2023', 2, N'12998143-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (976, N'Docente_Valerio_13007@gmail.com', N'$2a$10$Hu0uw16htX/YXE4uzRWhL.gkSczn1ZPiT6llC2ACV/TgLwEHDfhcq', N'Docente_Valer_13007_2023', 2, N'13007742-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (977, N'Docente_Germán_13012@gmail.com', N'$2a$10$Xp0yw8DJngfH6F7hDN635.5n/.tdSs.G.D1w1Amk0IqoSYWmfSMl.', N'Docente_Germá_13012_2023', 2, N'13012660-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (978, N'Docente_Angélica_13014@gmail.com', N'$2a$10$3Z9UGnyu1PSL/sao2XCkv.e.hRCiPlgKesmqjETJusbRtn6Y22xXW', N'Docente_Angél_13014_2023', 2, N'13014361-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (979, N'Docente_Ruth_13022@gmail.com', N'$2a$10$IYosffOC3.Mfi7cfhxdH/eqKNCxqvxyv.4GqPMeLIgNa1AbZgd5Oa', N'Docente_Ruth_13022_2023', 2, N'13022922-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (980, N'Docente_Lorenzo_13036@gmail.com', N'$2a$10$cEe/6Zy7YNYaaealUkmISedB9IB.QAcyrC2DJBdRRMawP3YSE.nmq', N'Docente_Loren_13036_2023', 2, N'13036082-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (981, N'Docente_Jonatan_13053@gmail.com', N'$2a$10$vFwoiyoRxmt19lnmRmyU5.nTud8mefbGosYmouBCdT6YtovP1olHi', N'Docente_Jonat_13053_2023', 2, N'13053465-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (982, N'Docente_Joaquina_13071@gmail.com', N'$2a$10$b4MmULssDLVEH7lTgPEivObwXz2HTyRqugU3/b3.VkHcwtOMYyi86', N'Docente_Joaqu_13071_2023', 2, N'13071620-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (983, N'Docente_Mohamed_13074@gmail.com', N'$2a$10$33FqQKrAjTJS07kVS9.sQONFQvkQoTszONYQj6mxUFvj9A1x7v2nG', N'Docente_Moham_13074_2023', 2, N'13074835-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (984, N'Docente_Adelardo_13104@gmail.com', N'$2a$10$4Q2AGZWEiQcDQnTX2STtzuDxH6O8cPurtZzM0uvvE4dW9xPzZrRHK', N'Docente_Adela_13104_2023', 2, N'13104816-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (985, N'Docente_Paulina_13127@gmail.com', N'$2a$10$eX49Mq.8AYzomvyxadKThuK1qoIplCwSXpqE8Qp99wxsLgalk6JEO', N'Docente_Pauli_13127_2023', 2, N'13127102-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (986, N'Docente_Timoteo_13164@gmail.com', N'$2a$10$3kk45vCE6psK0ueJB8HdhO.Xw8p0W9dzf6K/mKcM6xGoKMnhnOv0O', N'Docente_Timot_13164_2023', 2, N'13164403-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (987, N'Docente_Marcio_13164@gmail.com', N'$2a$10$QRqHpxC18h7rV82PWqtaSOWOgjDVKlkJD5eUBi9wKxrYVKHpGKNVS', N'Docente_Marci_13164_2023', 2, N'13164845-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (988, N'Docente_Joaquina_13166@gmail.com', N'$2a$10$gzFWF.9lo30cEoPd3VFZgOzdUG9wf.qycZP5WCFykS4EsC2zVn/r.', N'Docente_Joaqu_13166_2023', 2, N'13166555-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (989, N'Docente_Sabina_13169@gmail.com', N'$2a$10$.XQZu11AVYwfQ0CsXp96e.GD0wdvgH/BzZEZcIxUrcNVVLzl4QvBW', N'Docente_Sabin_13169_2023', 2, N'13169178-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (990, N'Docente_Ramón_13169@gmail.com', N'$2a$10$YL8wpxuJ/i1BZjiV3QQDg.kjclX11mO2sBbb2KyaBuXptJD4h7wS2', N'Docente_Ramón_13169_2023', 2, N'13169897-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (991, N'Docente_Guadalupe_13172@gmail.com', N'$2a$10$Jcr1loeqH/HzOPXEeeKFruJRxyhT4mgpjClr.GksUiKAYCpic40bG', N'Docente_Guada_13172_2023', 2, N'13172585-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (992, N'Docente_Fortunata_13176@gmail.com', N'$2a$10$3SThSOk0TXnHj7x1cdUgoetShZCQIfBlJKhLmQb/LhMPv.USpN/cq', N'Docente_Fortu_13176_2023', 2, N'13176516-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (993, N'Docente_Nacho_13180@gmail.com', N'$2a$10$5LNDlKy.r6f3KGQr9uAtWerperYReMUzbU/z1zELMUP9LN3q2jg/K', N'Docente_Nacho_13180_2023', 2, N'13180112-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (994, N'Docente_Sergio_13187@gmail.com', N'$2a$10$ZrrABPdx1ffjTKhmHbvSd.kyLsRWPmq9.3cIijjf1zcOmjSRb8fQi', N'Docente_Sergi_13187_2023', 2, N'13187874-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (995, N'Docente_Reyes_13189@gmail.com', N'$2a$10$c.aS11Hzq6Soaw5nxzz7g.d0l.sZMGZJi5q9MRA8HS9TndSxYj7JW', N'Docente_Reyes_13189_2023', 2, N'13189569-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (996, N'Docente_Pastor_13229@gmail.com', N'$2a$10$uw4GyWJ/m7NhQikZTW/Hb.ALjF4czA.II.1WNy8VB94cTwCB22HbC', N'Docente_Pasto_13229_2023', 2, N'13229854-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (997, N'Docente_Raúl_13230@gmail.com', N'$2a$10$i.zSuPNeLbo5jqYu0L0spu7eKxJOi0vs0DDNEqsGfw2DNEmtHpUaq', N'Docente_Raúl_13230_2023', 2, N'13230860-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (998, N'Docente_Paulina_13236@gmail.com', N'$2a$10$.sT7XjOCSL3LB/4ZOYRVS.sOG54H4MAMQ1/623sVBkKxXKC33kSna', N'Docente_Pauli_13236_2023', 2, N'13236896-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (999, N'Docente_Gustavo_13250@gmail.com', N'$2a$10$9UbVcMmqB9W5p7IfuCRUReAkIjAETYeOhIN9mzp1lbNLBnDXGCtRO', N'Docente_Gusta_13250_2023', 2, N'13250207-2 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1000, N'Docente_Benjamín_13255@gmail.com', N'$2a$10$P53RnDVvycgDLpIlxuh38.9TLGAiIsYFWFncRMT7Y.J3emm142zJK', N'Docente_Benja_13255_2023', 2, N'13255996-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1001, N'Docente_Lorenzo_13257@gmail.com', N'$2a$10$BUmOBX47K5730dZ25usTjOddUmkTVsY2cvlre1sgd8oyy2AqigPJu', N'Docente_Loren_13257_2023', 2, N'13257517-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1002, N'Docente_Bienvenida_13258@gmail.com', N'$2a$10$x18XUCdgAm9qnMV7AKBxrOvdd1LDqH0WiA3ZnPulMyHqspI0Wjynq', N'Docente_Bienv_13258_2023', 2, N'13258827-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1003, N'Docente_Sarita_13263@gmail.com', N'$2a$10$H0FK8mwWI9/rzwjmiv1t4eZ6ZtMkM9NY3pRgDUATpgEodyv3gpMxu', N'Docente_Sarit_13263_2023', 2, N'13263791-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1004, N'Docente_Rafa_13263@gmail.com', N'$2a$10$iEhtL1yXLlrNdc1MonhCNOJIQ0sa4co7NytZ/WGtfpMAECCtDXqke', N'Docente_Rafa_13263_2023', 2, N'13263940-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1005, N'Docente_Celestina_13269@gmail.com', N'$2a$10$ADPX.6jkZAtqj7WH2xy5OuS/6dRZi9DEQB6ai9ZWhflePrYQ4JFd2', N'Docente_Celes_13269_2023', 2, N'13269124-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1006, N'Docente_Francisco_13276@gmail.com', N'$2a$10$hGleokcLf4oQFjRetXxfvOwaoN/Zo.Rh/04ANg41ex.ZplLmtT3mm', N'Docente_Franc_13276_2023', 2, N'13276952-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1007, N'Docente_Alex_13283@gmail.com', N'$2a$10$XKhBwsO/OaMtYd9hNO2Wtufzw0zC8TrK3bU.yAFM8c6vviCOYN2gC', N'Docente_Alex_13283_2023', 2, N'13283228-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1008, N'Docente_Josep_13287@gmail.com', N'$2a$10$yb/OXGkgpEl0zJT6cbKLkuAQpfXeUYhkD2m8Ya7YpRewOgadhU1B2', N'Docente_Josep_13287_2023', 2, N'13287555-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1009, N'Docente_Jordán_13287@gmail.com', N'$2a$10$di/TabvDwJWCNQ921c7qk.ITBKvoMpOKg8O0t7vaiBWWGG1ipBTNy', N'Docente_Jordá_13287_2023', 2, N'13287638-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1010, N'Docente_María_13293@gmail.com', N'$2a$10$HUPp5PJzSs3UFpF1TfCtje.gRuatlujxojY36l0MFBfzSJzM/V0Mu', N'Docente_María_13293_2023', 2, N'13293393-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1011, N'Docente_Eva_13296@gmail.com', N'$2a$10$RVo/DhVLnXIoMoXJw02O9uD2AdPFMPaHnfFCwcFG8kvndnjDQcFFO', N'Docente_Eva_13296_2023', 2, N'13296241-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1012, N'Docente_Álvaro_13317@gmail.com', N'$2a$10$VakajLEpKaLdMzm0Q5Fate2Ey7vP0KikakIhWc8mNDwcIYVnQvcAu', N'Docente_Álvar_13317_2023', 2, N'13317341-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1013, N'Docente_Juan_13322@gmail.com', N'$2a$10$D8/cKb8S5kudev9049t31OnzxCtx6Z8fwQbgbmLfnMqRVCvnZhKpe', N'Docente_Juan_13322_2023', 2, N'13322547-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1014, N'Docente_Víctor_13362@gmail.com', N'$2a$10$kakREvNBE9ZofB3weyfruO6viarS9lH2nmwtQDaXoUi4sx8013rT.', N'Docente_Vícto_13362_2023', 2, N'13362228-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1015, N'Docente_Gervasio_13363@gmail.com', N'$2a$10$k81poWDsGuFswT506j./NOa2CGa905QW1UmIfnxtuKpISgpgDmony', N'Docente_Gerva_13363_2023', 2, N'13363861-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1016, N'Docente_Emma_13363@gmail.com', N'$2a$10$P.9FIXTq5GgnBTyI1pVwiu3uvJaIzp7PwieCCKSQiQ1eJ/oYhruD.', N'Docente_Emma_13363_2023', 2, N'13363944-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1017, N'Docente_Aitana_13372@gmail.com', N'$2a$10$NPcZfuhOIl.vfBBzAkhKCOjPjc5U6dYvnUNCAsNVn9IouofiIjlAq', N'Docente_Aitan_13372_2023', 2, N'13372558-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1018, N'Docente_Ovidio_13374@gmail.com', N'$2a$10$z1XHPloPxufiRmboTb8f2.SGorbn5euvU58TvOUQWTc5qOvz7LWOi', N'Docente_Ovidi_13374_2023', 2, N'13374749-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1019, N'Docente_Chelo_13388@gmail.com', N'$2a$10$VW4zYjkbki165LKHnLhRauRtS6ktgHzCpNPi8mPP4SDsdIigXA4sy', N'Docente_Chelo_13388_2023', 2, N'13388365-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1020, N'Docente_Lucía_13410@gmail.com', N'$2a$10$HU884kbVYUfdSiUaVWD3C.OFhS5hu1ESg3OefffWNnJUpOqrTsnhG', N'Docente_Lucía_13410_2023', 2, N'13410580-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1021, N'Docente_Nélida_13411@gmail.com', N'$2a$10$kCDWEUCkvlcVOKmFqC8MJ.7YDnmT8nO1x9e//3GRM9d1DWuZONgpO', N'Docente_Nélid_13411_2023', 2, N'13411638-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1022, N'Docente_Paco_13417@gmail.com', N'$2a$10$agJOlGomKt0rQUZG7oFx3.qcddWHuKcnxGbLgPrzHqEpn27P0fWTK', N'Docente_Paco_13417_2023', 2, N'13417558-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1023, N'Docente_Maxi_13423@gmail.com', N'$2a$10$U2UplHxAFq4dO7aiEG1JtORy8SpwqnBuu5glDVidfDtDhoIc5S.ga', N'Docente_Maxi_13423_2023', 2, N'13423811-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1024, N'Docente_Estela_13443@gmail.com', N'$2a$10$CbjLY6kb7iO4CPenGACXUeH0fvvthYJhN9Dtxqc8q6WzJNzF5G5EO', N'Docente_Estel_13443_2023', 2, N'13443180-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1025, N'Docente_Maite_13448@gmail.com', N'$2a$10$QwOI0xge2B/IMUZp9I1cuuB/L.Mp6vN9sIO7WqlJe6ibbFJYtaSRC', N'Docente_Maite_13448_2023', 2, N'13448142-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1026, N'Docente_Edgardo_13455@gmail.com', N'$2a$10$EshPi7GEow0Y6OvQUvD1GO.maiAyxuE5EoMwP0KTWzLExQoEpg3HS', N'Docente_Edgar_13455_2023', 2, N'13455567-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1027, N'Docente_Fátima_13462@gmail.com', N'$2a$10$ecA7Ye4/.0WKc.3SEnD9deQNt0Mt2kONZjVF1KIMb7sghvDpC8r/a', N'Docente_Fátim_13462_2023', 2, N'13462736-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1028, N'Docente_Jose_13465@gmail.com', N'$2a$10$A2H./j5bdxIwHNF/jn908.VNQBsozjtBoZamUrdAvO7CPwwmQSgT6', N'Docente_Jose_13465_2023', 2, N'13465574-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1029, N'Docente_Angelina_13466@gmail.com', N'$2a$10$6.5iQsEDugv2lyxBnUsGdetRJOw6kns9fuqbD4uaogYlCMHZoNyeG', N'Docente_Angel_13466_2023', 2, N'13466545-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1030, N'Docente_Bernarda_13474@gmail.com', N'$2a$10$z7oaHoHQTmpw9UgeuT3gL.yAJ4cVSx8XAA3x4uKAdLG4jGfnFAPDm', N'Docente_Berna_13474_2023', 2, N'13474067-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1031, N'Docente_Elba_13474@gmail.com', N'$2a$10$j1TtlKqIyeqgZTHciGQjDORvoyyVokKirA/FljscETmGRo0dLce4C', N'Docente_Elba_13474_2023', 2, N'13474325-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1032, N'Docente_Manuelita_13478@gmail.com', N'$2a$10$ewh7pnhfgqzhcJ6lHg3JUuBdNIkoI0H6oLMqccT/VJcJEZfr.5QHO', N'Docente_Manue_13478_2023', 2, N'13478959-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1033, N'Docente_Adalberto_13490@gmail.com', N'$2a$10$4n6idqlbyoBryTAv6FSbJOQNgZRFauj8u9aOQ1Sn33GuLsUFgdyoe', N'Docente_Adalb_13490_2023', 2, N'13490604-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1034, N'Docente_Evita_13493@gmail.com', N'$2a$10$HeDLFWpqEyoNcOOqhqALjeuZgT/ggwiRb6zsLOzxeQuPR6aANzCHC', N'Docente_Evita_13493_2023', 2, N'13493857-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1035, N'Docente_Rosalía_13506@gmail.com', N'$2a$10$KAHAqdBc2m/GU.BrtHLEueyjtR/EpOizdqu40C6Fbs0Gmsu6s1qwO', N'Docente_Rosal_13506_2023', 2, N'13506199-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1036, N'Docente_Alejo_13511@gmail.com', N'$2a$10$Db5Ys4J8xQF94moXUiCa1O73KZhehaF2DgIy/e8jTKr/JQlNKZ3ZG', N'Docente_Alejo_13511_2023', 2, N'13511651-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1037, N'Docente_Lupe_13529@gmail.com', N'$2a$10$at2sMi2yZQOmIWMYh.MEmeunzmUObKm/bncFJjf2GHY3PuNtdYPTS', N'Docente_Lupe_13529_2023', 2, N'13529640-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1038, N'Docente_Eugenio_13532@gmail.com', N'$2a$10$LoNAf07XQZCi8M8I1w09tuknlb7OmBlmAxaoyFB41WgRb/MtowvCa', N'Docente_Eugen_13532_2023', 2, N'13532532-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1039, N'Docente_Teófila_13539@gmail.com', N'$2a$10$FJjmxFv9JHLYSCrTaDVPvOHSg4dBWLK6u2lUJRZLAXJ5aqFAV1Mla', N'Docente_Teófi_13539_2023', 2, N'13539393-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1040, N'Docente_Sigfrido_13539@gmail.com', N'$2a$10$fYfLh4SSFNu.Jz3ChTL2R.unMSLJFMQNmbla33myL5sH.tHPJJcnu', N'Docente_Sigfr_13539_2023', 2, N'13539789-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1041, N'Docente_Tito_13543@gmail.com', N'$2a$10$81NTmZyaV6kdPJHeRfpwk.f.pcq03qwCdwvsR5XxhOWQfKVNO0jxS', N'Docente_Tito_13543_2023', 2, N'13543595-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1042, N'Docente_Jorge_13547@gmail.com', N'$2a$10$RpmQjUGd5msqy.Hd6Xq.aeQqPmTuyxsTNhnaRZ8.7AZbDaf59NZ..', N'Docente_Jorge_13547_2023', 2, N'13547242-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1043, N'Docente_Andrés_13549@gmail.com', N'$2a$10$t5Ur2tYkZobbP1JvYl7NuegnonYQrsGm9sv6nzCzhFn0n7jTQ.19u', N'Docente_André_13549_2023', 2, N'13549704-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1044, N'Docente_Encarnacion_13558@gmail.com', N'$2a$10$gBWsPgu39wUFQMaeCa0DDelCIH6yrThqqPPAieR1Um17/rRBKWUD2', N'Docente_Encar_13558_2023', 2, N'13558917-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1045, N'Docente_Jessica_13565@gmail.com', N'$2a$10$SJcZ6oZXscO2Zd2WddYE3uQeg1CZtvPLhAlyNMYs.1llXidLaBygi', N'Docente_Jessi_13565_2023', 2, N'13565523-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1046, N'Docente_Pía_13567@gmail.com', N'$2a$10$c9uvutGWOOPC5K7GEjVlZOLFOv5oexKHk7xadr68Ko7aPLwKvxXK.', N'Docente_Pía_13567_2023', 2, N'13567240-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1047, N'Docente_Francisco_13567@gmail.com', N'$2a$10$qMxiYiiLenqt.1fUztmdL.ay5PEMPrfmwmKyd6sAfKjR7D1KmMJiC', N'Docente_Franc_13567_2023', 2, N'13567255-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1048, N'Docente_Seve_13602@gmail.com', N'$2a$10$bX0hRLase4fB6T4FLSEuHe/R0bD/WC.022W1D8I6CTy4JQwl9RD4u', N'Docente_Seve_13602_2023', 2, N'13602705-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1049, N'Docente_Prudencia_13622@gmail.com', N'$2a$10$XBv.yZYC5kdO7.n6t/ZRj.tombDLnPul9O3iNP3YaBcw66A2QdjoW', N'Docente_Prude_13622_2023', 2, N'13622701-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1050, N'Docente_Rosenda_13630@gmail.com', N'$2a$10$FoOQ6.tUloqt0XccR31yRuL914aj4sBHp24gvDNla8bHCnjSZTYwS', N'Docente_Rosen_13630_2023', 2, N'13630884-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1051, N'Docente_Ximena_13632@gmail.com', N'$2a$10$KC1ugS/sjBNiroAiFGyOMOJsIpJtlHF.lpcGCGXzmq1m.IztvG/Gy', N'Docente_Ximen_13632_2023', 2, N'13632855-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1052, N'Docente_Chema_13639@gmail.com', N'$2a$10$CpLGNDr4OSIfFRSrWWI26Ozjbj6CCcpQAa3xe1VUVxhjX8QglcdnK', N'Docente_Chema_13639_2023', 2, N'13639690-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1053, N'Docente_Daniela_13648@gmail.com', N'$2a$10$Jg.7SVBy4R4ixm89wSBZAOPFrIrbJAPB3.WGV18tmCDPuEECzieyW', N'Docente_Danie_13648_2023', 2, N'13648490-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1054, N'Docente_Miguel_13660@gmail.com', N'$2a$10$P/dplTe3gIVi/Yi13ay0ouXWnsOiKDWPHt2lsN7Sqmub8.aPW1d.e', N'Docente_Migue_13660_2023', 2, N'13660551-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1055, N'Docente_Cipriano_13674@gmail.com', N'$2a$10$ZfaBsLhwKt79k9IXqqc1i.zKFg1PZCOJvPOOKoZa8kRaLHrbpAv06', N'Docente_Cipri_13674_2023', 2, N'13674283-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1056, N'Docente_Arturo_13675@gmail.com', N'$2a$10$NvfUqoigtNoPEyWJzw9JTet15r5r8aQdH7VvYdrBCFqDpIq1KSM1W', N'Docente_Artur_13675_2023', 2, N'13675794-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1057, N'Docente_Virginia_13686@gmail.com', N'$2a$10$FhKA5fShDDqRYlIH2z97pOGokUACVXvaGYqB3z6eWNC.hFKh0wDai', N'Docente_Virgi_13686_2023', 2, N'13686122-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1058, N'Docente_Saturnino_13688@gmail.com', N'$2a$10$cfwdb2OdqwD2gvZwba0skuIedkOWILZ.ameLwbp44P423P/3Kyw66', N'Docente_Satur_13688_2023', 2, N'13688966-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1059, N'Docente_Martirio_13719@gmail.com', N'$2a$10$Xn1OjEZM1.RHUtocxdjQlevkFM/ClVRtlI5E5fzl/Tlwe2oo7hQDm', N'Docente_Marti_13719_2023', 2, N'13719528-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1060, N'Docente_Ramón_13725@gmail.com', N'$2a$10$KQWdZPcyGmCVhIOc/S79oOtv3MLjGFsEp4CfeFlaWDWoMQTTt31WW', N'Docente_Ramón_13725_2023', 2, N'13725066-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1061, N'Docente_Cloe_13742@gmail.com', N'$2a$10$xmHSxn1xe672m4im4LretO7gHWhaOOQ54h9amz15qtz1scxBUJDU6', N'Docente_Cloe_13742_2023', 2, N'13742329-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1062, N'Docente_Juan_13754@gmail.com', N'$2a$10$FEfQGqV3Rn87mS9/eassDOtuMgrK3hq0.G4xnVbqD6VjM0152lRqy', N'Docente_Juan_13754_2023', 2, N'13754872-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1063, N'Docente_Rodrigo_13755@gmail.com', N'$2a$10$3VZtCr58Ya.heTzzw388wu.LqHiVtIzbTXSzpy3o9/1v06fMvh2aO', N'Docente_Rodri_13755_2023', 2, N'13755681-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1064, N'Docente_Fausto_13761@gmail.com', N'$2a$10$Huj5EVHbIxA7kC.ME4ugDuMroeE/Q8fi1mvldTWIL2AzRgpJ0M5oy', N'Docente_Faust_13761_2023', 2, N'13761711-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1065, N'Docente_Javi_13790@gmail.com', N'$2a$10$W34Ds4eFXEkhv6DG87I23e8UB38XWHVSVuPlGfNa2C0nL.uXK0rnK', N'Docente_Javi_13790_2023', 2, N'13790481-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1066, N'Docente_José_13792@gmail.com', N'$2a$10$wdGfozUfvXEvTOloIKq3hOpm.BTUFpNjrjAlOqSjp/xKLca3guojW', N'Docente_José_13792_2023', 2, N'13792757-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1067, N'Docente_Cruz_13795@gmail.com', N'$2a$10$2VZUeOljMzer0hbB2IG7FeNir.TAQQ5bw9QrxwRqCN54MDtPz69PG', N'Docente_Cruz_13795_2023', 2, N'13795755-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1068, N'Docente_Beatriz_13812@gmail.com', N'$2a$10$yM2VymIzY/YTw2URLM4LeeDyqornGvPvlrMnXzkdule0L.ID8PQFa', N'Docente_Beatr_13812_2023', 2, N'13812346-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1069, N'Docente_Ascensión_13822@gmail.com', N'$2a$10$fLbH4UQLSDi.2nPKeLf64.cef6clD1zh9oGe.S86o8wVWSM.Byui2', N'Docente_Ascen_13822_2023', 2, N'13822330-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1070, N'Docente_Rebeca_13822@gmail.com', N'$2a$10$F6yXK1h0aaHFeC.vUVMRNebw5sx99gfbJ1HFU.2vJOdq5ppL1luri', N'Docente_Rebec_13822_2023', 2, N'13822989-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1071, N'Docente_Candela_13824@gmail.com', N'$2a$10$H/HPGZ3sLvjBnnkbfsL.f.b1zX/oSU6xF1YWpgursqxQW5SCCC53K', N'Docente_Cande_13824_2023', 2, N'13824547-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1072, N'Docente_David_13833@gmail.com', N'$2a$10$Qt5xbVoghaVMtqe9OhAOWurByMHhb.WIyPMElZqKOz/2hRx0gedci', N'Docente_David_13833_2023', 2, N'13833729-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1073, N'Docente_Josep_13834@gmail.com', N'$2a$10$JzqoCwoO2a./UKvOQYstCuNmVR7VwSmIcNIT2X1fpp0bKJhSNDhaO', N'Docente_Josep_13834_2023', 2, N'13834142-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1074, N'Docente_Juliana_13846@gmail.com', N'$2a$10$jyeqcxrzGwZ5gmpk4UI.7uGlalUSx0REYRthldZP8Pg4isXeWnsvG', N'Docente_Julia_13846_2023', 2, N'13846172-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1075, N'Docente_Baudelio_13852@gmail.com', N'$2a$10$xA4PMOeCFGs4lXBD/4fnQ.654KWGwLXE2AYQVt584ghWz4ug/TcmO', N'Docente_Baude_13852_2023', 2, N'13852329-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1076, N'Docente_Piedad_13866@gmail.com', N'$2a$10$ETisGX2tvfdrK7loTGft0eoEWeo3vj.2ZZXs6gOvPH1h38xEmPPTm', N'Docente_Pieda_13866_2023', 2, N'13866551-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1077, N'Docente_Luis_13886@gmail.com', N'$2a$10$bjqHEWFaQLOfY8sdINiBS.eu3cEfF7yT4SlBKRECAt4br5vOjWM7C', N'Docente_Luis_13886_2023', 2, N'13886495-2 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1078, N'Docente_María_13912@gmail.com', N'$2a$10$nqX0aze63wWxb8MNwoiz.eNEoZma4g1o2ihR9lzK2pAnDgK3xtMPO', N'Docente_María_13912_2023', 2, N'13912617-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1079, N'Docente_Narciso_13913@gmail.com', N'$2a$10$kWeX2uvPdn6LmFliX4OQg.Lgjms.vZxivh5fZeAsSYWLxu6OZWh7G', N'Docente_Narci_13913_2023', 2, N'13913725-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1080, N'Docente_Calista_13970@gmail.com', N'$2a$10$4kUKH3lkLi2.7yC0npN/qOPIhTuR.EkOK49YkZ7nh5SAVApXj/Cme', N'Docente_Calis_13970_2023', 2, N'13970857-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1081, N'Docente_Elba_13979@gmail.com', N'$2a$10$8Vg4BkMrfFGkYmhbPmVk0uDJiYGDl4XQ6Ya63evnSlQVFwA75GPtC', N'Docente_Elba_13979_2023', 2, N'13979267-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1082, N'Docente_Jonatan_13983@gmail.com', N'$2a$10$ZQyQqc3uMWdRKingsURou..Rl4be19TiSmvjCeAbUHMW/TzZfFRGK', N'Docente_Jonat_13983_2023', 2, N'13983572-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1083, N'Docente_Feliciana_13985@gmail.com', N'$2a$10$zXI9Mxhkq6YoOgJRYYBP3ub1i0SCuttZg1CjMpBoqYEOOeDDIgMle', N'Docente_Felic_13985_2023', 2, N'13985194-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1084, N'Docente_Pío_14003@gmail.com', N'$2a$10$FdCudbZRzjaXqSZxfrsbwOjx2jXPRNmLZyJy9MA0QHcj34nLGGn5W', N'Docente_Pío_14003_2023', 2, N'14003611-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1085, N'Docente_Dolores_14004@gmail.com', N'$2a$10$zriRcTwpFR.iuOXkdlQPvuAReNZyYGw8JBDJGr57HYSAeGXmYKYHS', N'Docente_Dolor_14004_2023', 2, N'14004197-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1086, N'Docente_Griselda_14004@gmail.com', N'$2a$10$DVtRauS0eUtC/U6Zwb0qruEYpEQHaRGsQfvPBPp18PwGjZQ1oiI5W', N'Docente_Grise_14004_2023', 2, N'14004836-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1087, N'Docente_Paca_14011@gmail.com', N'$2a$10$peVyD/GHAx5L5NznReEW/.3smyKYZGWEBqyx6Fj42oqs0lzwAFlJm', N'Docente_Paca_14011_2023', 2, N'14011311-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1088, N'Docente_Alondra_14017@gmail.com', N'$2a$10$g2qGPr/STvr51.fX3NCzmOVWeJpao6UVJ6jD3rowUiS7PVXXonykW', N'Docente_Alond_14017_2023', 2, N'14017776-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1089, N'Docente_Kike_14041@gmail.com', N'$2a$10$AuwuliU8M/wINPfzEpPJFuX7jJfU7wnjoeMldtEWuxibsUEfiKt8G', N'Docente_Kike_14041_2023', 2, N'14041899-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1090, N'Docente_Wilfredo_14068@gmail.com', N'$2a$10$jDE2JXCJQ24xjbsaILA1/ugRj5cCCKZlM9/aK.bi02UctXZH0JQym', N'Docente_Wilfr_14068_2023', 2, N'14068550-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1091, N'Docente_Mireia_14074@gmail.com', N'$2a$10$X75/8u/jQxVVdXf8n7PcQ.Niz5UMowvNUjRG9JCbN4I/fSBjygMoK', N'Docente_Mirei_14074_2023', 2, N'14074955-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1092, N'Docente_Moisés_14078@gmail.com', N'$2a$10$jVMTxTWDR43Z5ToGnJRQ4ObwIy.19WjI7/mz4kcFQCSx8uQv6a4SO', N'Docente_Moisé_14078_2023', 2, N'14078233-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1093, N'Docente_Sigfrido_14134@gmail.com', N'$2a$10$WblrWPa2dfUNRkxWSNweUuAvzGVbs2tSjtvLfFxisyiLZQRf3pHd2', N'Docente_Sigfr_14134_2023', 2, N'14134348-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1094, N'Docente_Espiridión_14149@gmail.com', N'$2a$10$Xly4qWS7gsqAmHVN8JHnou4CW75GhW8X7GmLxHa/RkFZ4vJE6ErIO', N'Docente_Espir_14149_2023', 2, N'14149250-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1095, N'Docente_Fortunata_14156@gmail.com', N'$2a$10$gCiawH5m2M7nh/CTBfboeeIPgtluorNVlXJezpAyT5eigs1EmaF4W', N'Docente_Fortu_14156_2023', 2, N'14156047-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1096, N'Docente_Fernando_14168@gmail.com', N'$2a$10$nguUogfDu7m9Xqi52fsK.e.xy0IKVXpVE/qP.ztaYb7iXF.EqOnWW', N'Docente_Ferna_14168_2023', 2, N'14168155-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1097, N'Docente_Reynaldo_14197@gmail.com', N'$2a$10$tI7wRmEdWhnOEUcZQC94tORS9WkZfqXw8lXqnou0MB1B67pnJN4ry', N'Docente_Reyna_14197_2023', 2, N'14197219-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1098, N'Docente_Saturnina_14209@gmail.com', N'$2a$10$kq59H/mVY3Ltqpi/0EMX9O3m1snMENNdsnZeo3D.KAecmI.TXvd92', N'Docente_Satur_14209_2023', 2, N'14209858-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1099, N'Docente_Adelina_14218@gmail.com', N'$2a$10$BFmVAYTFWUTEufR3qF1zj.1eW.FgAOZAIjsbNTQraA.rjoZG/eEJq', N'Docente_Adeli_14218_2023', 2, N'14218894-5 ', 1)
+
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1100, N'Docente_Raquel_14224@gmail.com', N'$2a$10$Auis6KEog5.c.ca2CK.QP..OFAgONRvgfeCnz4L/YQsWdq.nXZqVK', N'Docente_Raque_14224_2023', 2, N'14224136-6 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1101, N'Docente_Iván_14225@gmail.com', N'$2a$10$.4gm4O3PjvfQjWJZmZm4xO4zf7dFa3Mr/63.0ga2lyCRGyf0Qlz92', N'Docente_Iván_14225_2023', 2, N'14225191-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1102, N'Docente_Danilo_14249@gmail.com', N'$2a$10$ZAiBO8RfhyICZjPhb1g9aOqOZ01c9mndT2BeT.J.M2BsuN6T4Gt8q', N'Docente_Danil_14249_2023', 2, N'14249583-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1103, N'Docente_Adelina_14256@gmail.com', N'$2a$10$pYmIdOrGRV5YWpFDXLJFHugGh3JRiUdoWNou5cazVbqjX8OOJSV8C', N'Docente_Adeli_14256_2023', 2, N'14256080-1 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1104, N'Docente_Visitación_14257@gmail.com', N'$2a$10$IdYTM0yWP3rc0lsuRDK2ROX2JjoYx8OV7G2/hdGOaECj0PUGX40wq', N'Docente_Visit_14257_2023', 2, N'14257703-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1105, N'Docente_Fernando_14275@gmail.com', N'$2a$10$eKUuI06a1oRXbwrrK2hV9OcmzawsILNSmGbZtjqtLTEoGocNRjZoW', N'Docente_Ferna_14275_2023', 2, N'14275763-k ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1106, N'Docente_Florina_14281@gmail.com', N'$2a$10$0tG8E0SYRSsJYfG7p6/1UOaRnK6juw5YL2DHaCUs33FpAeQNtTXla', N'Docente_Flori_14281_2023', 2, N'14281043-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1107, N'Docente_Jimena_14287@gmail.com', N'$2a$10$TAsXARN.Y7CLYaECxc1SjurXHXDsTsyAQ3eBoDjHSllLzWwULyxHC', N'Docente_Jimen_14287_2023', 2, N'14287344-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1108, N'Docente_Hermenegildo_14296@gmail.com', N'$2a$10$sT24R1ZkaaSpKpyer8LI4uP5VeRoFa7JycbuniUEDU3G7z8Sw.0Je', N'Docente_Herme_14296_2023', 2, N'14296021-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1109, N'Docente_Fulgencio_14305@gmail.com', N'$2a$10$IrnEWt1qfhxvFduS9UHfP.pjKChyeSsj3MM/ks7XUoEUm9I28Y2Zy', N'Docente_Fulge_14305_2023', 2, N'14305011-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1110, N'Docente_Aureliano_14305@gmail.com', N'$2a$10$pWA8ZKFtA7oFzOMa8rqcWuIKc.1HRstvSXw52oVCYuqAICrQ85xDi', N'Docente_Aurel_14305_2023', 2, N'14305013-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1111, N'Docente_Marcial_14317@gmail.com', N'$2a$10$vU/khWlLSph2rpTW/A51KezwuW7IzH4XVwWRLDCze0Y/wlnbUMI7K', N'Docente_Marci_14317_2023', 2, N'14317456-5 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1112, N'Docente_Fidela_14323@gmail.com', N'$2a$10$azPZps2pVhfsHwNIv/yPruCDG5W91uBcw5Wz1vG3vaEDSmh3YAQUq', N'Docente_Fidel_14323_2023', 2, N'14323291-3 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1113, N'Docente_Fabricio_14335@gmail.com', N'$2a$10$aOUSXJKVTn./kwAvBYHCwejakLBkL3ObLF97ewPSeg1dgrhu2KwHm', N'Docente_Fabri_14335_2023', 2, N'14335545-4 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1114, N'Docente_Tecla_14341@gmail.com', N'$2a$10$wt7xIZ5bIGstDQqbl.657er.3QsdPYhepm0gtF881R8dPCoM7JFRi', N'Docente_Tecla_14341_2023', 2, N'14341357-8 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1115, N'Docente_Teodoro_14363@gmail.com', N'$2a$10$jXlo32OhDXu9KdeaaXJz0.x7mu3lC/Yy2pSE/85XjqHZq3ycyfp36', N'Docente_Teodo_14363_2023', 2, N'14363025-0 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1116, N'Docente_Lucas_14370@gmail.com', N'$2a$10$rhz0f1.ON9ppgV4Xh65YRukWJfcSNIdMXmrrZS6kZHHZI3P0g2tui', N'Docente_Lucas_14370_2023', 2, N'14370588-9 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1117, N'Docente_Eligia_14379@gmail.com', N'$2a$10$8kZdDmUKbKdxWQ4BPCISNePZhmltyYDjaFei2Cf0BCcdBgdiCcT2C', N'Docente_Eligi_14379_2023', 2, N'14379776-7 ', 1)
+SET IDENTITY_INSERT [dbo].[t_usuario] OFF;
+
+IF EXISTS (
+    SELECT * FROM sysobjects WHERE name = 'fn_InfoDocente'
+)
+    DROP FUNCTION fn_InfoDocente;
+
+CREATE FUNCTION fn_InfoDocente (@parametro bigint)
+RETURNS TABLE
+AS
+
+RETURN(
+	select p.persona_run,
+	p.persona_nombre,
+	p.persona_apellido_paterno,
+	p.persona_apellido_materno,
+	p.persona_numero_celular,
+	p.persona_numero_telefonico,
+	a.asignatura_nombre,
+	e.establ_nombre,
+	c.curso_nombre
+	from t_docente d
+	inner join t_docente_curso dc on d.docente_id = dc.docente_curso_docente_id
+	inner join t_curso_establ ce on dc.docente_curso_establ_id = ce.curso_establ_id
+	inner join t_curso c on ce.curso_establ_curso_id = c.curso_id
+	inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+	inner join t_asignatura_docente ad on dc.docente_curso_id = ad.asignatura_doc_docente_establ_id
+	inner join t_asignatura a on ad.asignatura_doc_asignatura_id = a.asignatura_id
+	inner join t_persona p on d.docente_persona_run = p.persona_run
+	where ad.asignatura_doc_fin > GETDATE() and e.establ_id =(@parametro) );
+
+	IF EXISTS (
+        SELECT * FROM sysobjects WHERE name = 'fn_InfoAlumno'
+    )
+        DROP FUNCTION fn_InfoAlumno;
+
+    CREATE FUNCTION fn_InfoAlumno (@parametro bigint)
+    RETURNS TABLE
+    AS
+
+    RETURN(
+    select p.persona_run as alumno_rut, p.persona_nombre as alumno_nombre, p.persona_apellido_paterno as alumno_apellido_paterno, p.persona_apellido_materno as alumno_materno,
+    apoderado.apoderado_persona_run as apoderado_run, apoderado.persona_nombre as apoderado_nombre, apoderado.persona_apellido_paterno as apoderado_apellido_paterno,
+    apoderado.persona_apellido_materno as apoderado_apellido_materno,
+    c.curso_nombre, e.establ_nombre
+    from t_alumno a
+    inner join t_persona p on a.alumno_persona_run = p.persona_run
+    inner join t_matricula m on a.alumno_id = m.matricula_alumno_id
+    inner join (select * from t_apoderado apo inner join t_persona per on apo.apoderado_persona_run = per.persona_run) apoderado on apoderado.apoderado_id = m.matricula_apoderado_id
+    inner join t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id
+    inner join t_curso c on c.curso_id = ce.curso_establ_curso_id
+    inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+    where e.establ_id = (@parametro) and m.curso_agno = YEAR(CURRENT_TIMESTAMP));
+
+       --INSERT INTO [dbo].[t_usuario]
+         --         ([email]
+           --       ,[username]
+             --     ,[password]
+               --   ,[usuario_perfil_id]
+                 -- ,[usuario_persona_run]
+                 -- ,[usuario_vigencia_id])
+            --VALUES
+              --    ('camila.zaragoza@gmail.com','cami'
+                --  ,'$2a$10$XEGS8J0hIUII6kdPgT9ykuRTwPCdDiDzt24eOcodgi16kTMQPfqna'
+                  --,1
+                  --,'10007672-1 '
+                  --,1);

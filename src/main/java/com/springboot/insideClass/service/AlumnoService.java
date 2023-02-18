@@ -1,7 +1,6 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.AlumnoEntity;
-import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
 import com.springboot.insideClass.payload.response.AlumnoInfoResponse;
 import com.springboot.insideClass.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

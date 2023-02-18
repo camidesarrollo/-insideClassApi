@@ -27,6 +27,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
     @Query(value = "  select * from t_usuario where t_usuario.usuario_persona_run = ? and t_usuario.usuario_perfil_id = ?", nativeQuery = true)
     UsuarioEntity findByRunAndPerfil(@Param("usuario_persona_run") String usuario_persona_run, @Param("usuario_perfil_id") long usuario_perfil_id);
 
-
+    Optional<UsuarioEntity> findByEmail(String email);
 
 }

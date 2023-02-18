@@ -23,14 +23,17 @@ public class DocenteCursoEntity {
     @JoinColumn(name = " docente_curso_establ_id", nullable = false)
     CursoEstablecimientoEntity cursoEstablecimientoEntity;
 
+    Boolean docente_jefe;
+
     public DocenteCursoEntity() {
     }
 
-    public DocenteCursoEntity(Date docente_curso_fecha_inicio, Date docente_cuso_fecha_fin, DocenteEntity docenteEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity) {
+    public DocenteCursoEntity(Date docente_curso_fecha_inicio, Date docente_cuso_fecha_fin, DocenteEntity docenteEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, Boolean docente_jefe) {
         this.docente_curso_fecha_inicio = docente_curso_fecha_inicio;
         this.docente_cuso_fecha_fin = docente_cuso_fecha_fin;
         this.docenteEntity = docenteEntity;
         this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+        this.docente_jefe = docente_jefe;
     }
 
     public Long getDocente_curso_id() {
@@ -65,5 +68,21 @@ public class DocenteCursoEntity {
 
     public void setCursoEstablecimientoEntity(CursoEstablecimientoEntity cursoEstablecimientoEntity) {
         this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+    }
+
+    public DocenteEntity getDocenteEntity() {
+        return docenteEntity;
+    }
+
+    public CursoEstablecimientoEntity getCursoEstablecimientoEntity() {
+        return cursoEstablecimientoEntity;
+    }
+
+    public Boolean getDocente_jefe() {
+        return docente_jefe;
+    }
+
+    public void setDocente_jefe(Boolean docente_jefe) {
+        this.docente_jefe = docente_jefe;
     }
 }

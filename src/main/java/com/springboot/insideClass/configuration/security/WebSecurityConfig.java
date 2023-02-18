@@ -59,7 +59,6 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     return new BCryptPasswordEncoder();
   }
 
-
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.cors().and().csrf().disable()
@@ -73,6 +72,10 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/alumno/**").permitAll()
             .antMatchers("/api/matricula/**").permitAll()
             .antMatchers("/api/asistencia/**").permitAll()
+            .antMatchers("/api/curso/**").permitAll()
+            .antMatchers("/api/asignatura/**").permitAll()
+            .antMatchers("/api/conversations/**").permitAll()
+
         .antMatchers("/api/test/**").permitAll()
         .anyRequest().authenticated();
     
@@ -82,4 +85,6 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     
     return http.build();
   }
+
+
 }

@@ -193,31 +193,27 @@ public class DocenteController {
 
     }
 
-    @PostMapping("/tablaDocente")
-    public ResponseEntity<Object> tablaDocente(@RequestParam("id_establecimient") String id_establecimient) {
+    @PostMapping("/Get")
+    public ResponseEntity<Object> tablaDocente(@RequestParam("id_establecimient") long id_establecimient) {
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                .body(docenteService.getInfoDocente(id_establecimient, "-1", -1));
+        /*try {
 
-        try {
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(docenteService.getInfoDocente(id_establecimient));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logro obtener la informacion requerida!"));
 
-        }
+        }*/
     }
 
-    @PostMapping("/agregarDocenteAsignatura")
+    @PostMapping("/Create/DocenteAsignatura")
     public ResponseEntity<MessageResponse> agregarDocenteAsignatura(@Valid @RequestBody DocenteAsignaturaRequest docenteAsignaturaRequest) throws ParseException {
 
         try{
-
-            for (Long docenteAsignatura : docenteAsignaturaRequest.getAsignatura_doc_asignatura_id()) {
-
-                DocenteCursoEntity docenteCurso = docenteCursoService.findDocenteCursoByRunAndEstablecimientoByFecha(docenteAsignatura, docenteAsignaturaRequest.getEstablecimiento_id(), docenteAsignaturaRequest.getFecha_inicio(), docenteAsignaturaRequest.getFecha_fin());
-                AsignaturaEntity   asignatura = asignaturaService.findAsignaturaById(docenteAsignatura);
-                if(docenteCurso != null && asignatura!=  null){
-                    AsignaturaDocenteEntity asignaturaDocente = new AsignaturaDocenteEntity(docenteAsignaturaRequest.getFecha_inicio(), docenteAsignaturaRequest.getFecha_fin(), asignatura,  docenteCurso);
-                    asignaturaDocenteService.save(asignaturaDocente);
-                }
+            DocenteCursoEntity docenteCurso = docenteCursoService.findDocenteCursoByRunAndEstablecimientoByFecha(docenteAsignaturaRequest.getAsignatura_doc_id(), docenteAsignaturaRequest.getEstablecimiento_id(), docenteAsignaturaRequest.getFecha_inicio(), docenteAsignaturaRequest.getFecha_fin());
+            AsignaturaEntity   asignatura = asignaturaService.findAsignaturaById(docenteAsignaturaRequest.getAsignatura_doc_id());
+            if(docenteCurso != null && asignatura!=  null){
+                AsignaturaDocenteEntity asignaturaDocente = new AsignaturaDocenteEntity(docenteAsignaturaRequest.getFecha_inicio(), docenteAsignaturaRequest.getFecha_fin(), asignatura,  docenteCurso);
+                asignaturaDocenteService.save(asignaturaDocente);
             }
 
             return ResponseEntity.ok(new MessageResponse("Docente asignado correctamente a la asignatura!"));
@@ -227,7 +223,7 @@ public class DocenteController {
 
     }
 
-    @PostMapping("/agregarDocenteCurso")
+    @PostMapping("/Create/DocenteCurso")
     public ResponseEntity<MessageResponse> relacion_DocenteCurso(@Valid @RequestBody DocenteCursoRequest docenteCursoRequest) throws ParseException {
 
         try{
@@ -244,6 +240,7 @@ public class DocenteController {
                     docenteCurso.setCursoEstablecimientoEntity(cursoEstablecimiento);
                     docenteCurso.setDocente_curso_fecha_inicio(docenteCursoRequest.getDocente_curso_fecha_inicio());
                     docenteCurso.setDocente_cuso_fecha_fin(docenteCursoRequest.getDocente_cuso_fecha_fin());
+                    docenteCurso.setDocente_jefe(docenteCursoRequest.isDocente_jefe());
                     docenteCursoService.save(docenteCurso);
 
                     return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
@@ -259,5 +256,16 @@ public class DocenteController {
 
     }
 
+    @PostMapping("/Traer")
+    public ResponseEntity<Object> obtenerDocente(@Valid @RequestBody DocenteRequest docenteRequest) throws ParseException {
 
+        try {
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                    .body(docenteService.findDocenteByIdCursoEstablecimiento(docenteRequest.getEstablecimiento(), docenteRequest.getPersona().getPersona_run(), docenteRequest.getCurso()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logro obtener la informacion requerida!"));
+
+        }
+
+    }
 }

@@ -11,9 +11,17 @@ import java.util.List;
 @Repository
 public interface DocenteRepository extends JpaRepository<DocenteEntity, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoDocente(:value)")
-    List<Object> getInfoDocente(@Param("value") String value);
+    @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoDocente(:establecimiento, :persona_run, :curso_id)")
+    List<Object> getInfoDocente(@Param("establecimiento") long establecimiento, @Param("persona_run") String valuepersona, @Param("curso_id") long valueCurso);
 
     @Query(nativeQuery = true, value = "SELECT * FROM t_docente where t_docente.docente_persona_run = ? ")
     DocenteEntity findDocenteByRun(@Param("docente_persona_run") String docente_persona_run);
+
+
+    @Query(nativeQuery = true, value = "SELECT * FROM t_docente where t_docente.docente_persona_run = ? ")
+    DocenteEntity findDocenteByIdCursoEstablecimiento(@Param("docente_persona_run") String docente_persona_run);
+
+
+
+
 }

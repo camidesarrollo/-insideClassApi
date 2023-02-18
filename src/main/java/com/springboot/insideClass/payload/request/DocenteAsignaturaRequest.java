@@ -5,11 +5,13 @@ import java.util.List;
 
 public class DocenteAsignaturaRequest {
 
-    List<Long> asignatura_doc_asignatura_id;
+    Long asignatura_doc_id;
 
     long curso_id;
 
     long establecimiento_id;
+
+    long docente_id;
 
     Date fecha_inicio;
 
@@ -49,11 +51,19 @@ public class DocenteAsignaturaRequest {
     }
 
 
-    public List<Long> getAsignatura_doc_asignatura_id() {
-        return asignatura_doc_asignatura_id;
+    public Long getAsignatura_doc_id() {
+        return asignatura_doc_id;
     }
 
-    public void setAsignatura_doc_asignatura_id(List<Long> asignatura_doc_asignatura_id) {
-        this.asignatura_doc_asignatura_id = asignatura_doc_asignatura_id;
+    public void setAsignatura_doc_id(Long asignatura_doc_id) {
+        this.asignatura_doc_id = asignatura_doc_id;
+    }
+
+    public long getDocente_id() {
+        return docente_id;
+    }
+
+    public void setDocente_id(long docente_id) {
+        this.docente_id = docente_id;
     }
 }

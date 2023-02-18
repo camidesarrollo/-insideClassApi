@@ -1,6 +1,5 @@
 package com.springboot.insideClass.service;
 
-import com.springboot.insideClass.entity.DocenteEntity;
 import com.springboot.insideClass.entity.EstablecimientoEntity;
 import com.springboot.insideClass.repository.EstablecimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

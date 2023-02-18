@@ -12,6 +12,8 @@ public class DocenteCursoRequest {
 
     Date docente_cuso_fecha_fin;
 
+    private boolean docente_cuso_docente_jefe;
+
     public long getDocente_curso_docente_id() {
         return docente_curso_docente_id;
     }
@@ -42,5 +44,13 @@ public class DocenteCursoRequest {
 
     public void setDocente_cuso_fecha_fin(Date docente_cuso_fecha_fin) {
         this.docente_cuso_fecha_fin = docente_cuso_fecha_fin;
+    }
+
+    public boolean isDocente_jefe() {
+        return docente_cuso_docente_jefe;
+    }
+
+    public void setDocente_jefe(boolean docente_jefe) {
+        this.docente_cuso_docente_jefe = docente_jefe;
     }
 }

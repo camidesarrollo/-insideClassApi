@@ -1,0 +1,14 @@
+@relation students
+
+@attribute age numeric
+@attribute math_grade numeric
+@attribute science_grade numeric
+@attribute literature_grade numeric
+@attribute repetition {yes, no}
+
+@data
+14, 72, 83, 88, no
+16, 78, 76, 70, no
+15, 60, 65, 55, yes
+17, 80, 85, 87, no
+15, 65, 70, 75, no

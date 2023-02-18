@@ -1,13 +1,10 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
-import com.springboot.insideClass.entity.DocenteCursoEntity;
 import com.springboot.insideClass.repository.AsignaturaDocenteRepository;
 import com.springboot.insideClass.repository.AsignaturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AsignaturaDocenteService {

@@ -95,4 +95,7 @@ public class UsuarioService {
         }
 
     }
+    public Optional<UsuarioEntity> getUserByEmail(String email) {
+        return usurepo.findByEmail(email);
+    }
 }

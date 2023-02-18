@@ -28,6 +28,10 @@ public class MatriculaEntity {
     @Size(max = 200)
     String curso_agno;
 
+    @NotBlank
+    @Size(max = 200)
+    boolean  matricula_vigencia;
+
     public MatriculaEntity() {
     }
 
@@ -76,5 +80,13 @@ public class MatriculaEntity {
 
     public void setCurso_agno(String curso_agno) {
         this.curso_agno = curso_agno;
+    }
+
+    public boolean isVigencia() {
+        return matricula_vigencia;
+    }
+
+    public void setVigencia(boolean vigencia) {
+        this.matricula_vigencia = vigencia;
     }
 }

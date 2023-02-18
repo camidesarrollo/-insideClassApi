@@ -17,12 +17,16 @@ public class CursoEstablecimientoEntity {
     @JoinColumn(name = "curso_establ_establ_id", nullable = false)
     EstablecimientoEntity establecimientoEntity;
 
+    Boolean vigencia;
+
     public CursoEstablecimientoEntity() {
     }
 
-    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity) {
+    public CursoEstablecimientoEntity(Long curso_establ_id, CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Boolean vigencia) {
+        this.curso_establ_id = curso_establ_id;
         this.cursoEntity = cursoEntity;
         this.establecimientoEntity = establecimientoEntity;
+        this.vigencia = vigencia;
     }
 
     public Long getCurso_establ_id() {
@@ -33,13 +37,27 @@ public class CursoEstablecimientoEntity {
         this.curso_establ_id = curso_establ_id;
     }
 
+    public CursoEntity getCursoEntity() {
+        return cursoEntity;
+    }
 
     public void setCursoEntity(CursoEntity cursoEntity) {
         this.cursoEntity = cursoEntity;
     }
 
+    public EstablecimientoEntity getEstablecimientoEntity() {
+        return establecimientoEntity;
+    }
 
     public void setEstablecimientoEntity(EstablecimientoEntity establecimientoEntity) {
         this.establecimientoEntity = establecimientoEntity;
+    }
+
+    public Boolean getVigencia() {
+        return vigencia;
+    }
+
+    public void setVigencia(Boolean vigencia) {
+        this.vigencia = vigencia;
     }
 }

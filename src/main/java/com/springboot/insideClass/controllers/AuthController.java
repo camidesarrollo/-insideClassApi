@@ -1,6 +1,7 @@
 package com.springboot.insideClass.controllers;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -11,6 +12,7 @@ import com.springboot.insideClass.entity.VigenciaEntity;
 import com.springboot.insideClass.entity.UsuarioEntity;
 import com.springboot.insideClass.payload.request.LoginRequest;
 import com.springboot.insideClass.payload.request.SignupRequest;
+import com.springboot.insideClass.payload.response.DirectorInfoResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.payload.response.UserInfoResponse;
 import com.springboot.insideClass.configuration.security.jwt.JwtUtils;
@@ -60,6 +62,9 @@ public class AuthController {
   @Autowired
   EmailSenderService emailSenderService;
 
+  @Autowired
+  DirectorService directorService;
+
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -76,11 +81,33 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
+    System.out.println(roles.get(0));
+
+    Object[] arr = new Object[2];
+
+    if(Objects.equals(roles.get(0), "Director")){
+
+      System.out.println("Aqui entro");
+      List<DirectorInfoResponse> directorInfoResponse = directorService.findDirectorEstablecimientoByUsuario(userDetails.getId());
+      arr[0] = directorInfoResponse;
+      arr[1] = new UserInfoResponse(userDetails.getId(),
+              userDetails.getUsername(),
+              userDetails.getEmail(),
+              roles,
+              jwtCookie.toString());
+    }else{
+      System.out.println("Aqui aca");
+      arr[0] = new UserInfoResponse(userDetails.getId(),
+              userDetails.getUsername(),
+              userDetails.getEmail(),
+              roles,
+              jwtCookie.toString());
+    }
+
+    System.out.println(arr[0] );
+
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-        .body(new UserInfoResponse(userDetails.getId(),
-                                   userDetails.getUsername(),
-                                   userDetails.getEmail(),
-                                   roles));
+        .body(arr);
   }
 
   @PostMapping("/signup")

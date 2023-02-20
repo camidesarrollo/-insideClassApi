@@ -98,4 +98,8 @@ public class UsuarioService {
     public Optional<UsuarioEntity> getUserByEmail(String email) {
         return usurepo.findByEmail(email);
     }
+
+    public UsuarioEntity findByRunPerfil(String run, long perfil){
+        return usurepo.findByRunAndPerfil(run, perfil);
+    }
 }

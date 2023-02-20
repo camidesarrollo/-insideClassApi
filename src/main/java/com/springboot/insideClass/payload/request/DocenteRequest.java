@@ -1,5 +1,6 @@
 package com.springboot.insideClass.payload.request;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class DocenteRequest {
@@ -15,6 +16,10 @@ public class DocenteRequest {
     private Date fecha_inicio;
 
     private Date fecha_fin;
+
+    private Time horario_incio;
+
+    private Time horario_fin;
 
     public String getCorreo() {
         return correo;
@@ -72,5 +77,21 @@ public class DocenteRequest {
 
     public void setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
+    }
+
+    public Time getHorario_incio() {
+        return horario_incio;
+    }
+
+    public void setHorario_incio(Time horario_incio) {
+        this.horario_incio = horario_incio;
+    }
+
+    public Time getHorario_fin() {
+        return horario_fin;
+    }
+
+    public void setHorario_fin(Time horario_fin) {
+        this.horario_fin = horario_fin;
     }
 }

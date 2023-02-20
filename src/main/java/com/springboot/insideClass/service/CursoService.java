@@ -40,7 +40,7 @@ public class CursoService {
             fila = (Object[]) item;
             cursos.setId_curso(((BigInteger) fila[2]).longValue());
             cursos.setCurso((String)fila[3]);
-            cursos.setDocente_jefe((boolean) fila[4]);
+            cursos.setDocente_jefe(fila[4] == null ? false : (boolean) fila[4]);
             listaCursos.add(cursos);
 
         }

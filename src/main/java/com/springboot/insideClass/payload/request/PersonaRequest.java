@@ -25,6 +25,8 @@ public class PersonaRequest {
 
     private String persona_numero_celular;
 
+    private String correo;
+
     public String getPersona_run() {
         return persona_run;
     }
@@ -87,5 +89,13 @@ public class PersonaRequest {
 
     public void setPersona_numero_celular(String persona_numero_celular) {
         this.persona_numero_celular = persona_numero_celular;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 }

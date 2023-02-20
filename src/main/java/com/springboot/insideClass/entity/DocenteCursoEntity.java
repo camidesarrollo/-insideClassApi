@@ -1,6 +1,8 @@
 package com.springboot.insideClass.entity;
 
+
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 
 
@@ -15,6 +17,7 @@ public class DocenteCursoEntity {
     Date docente_curso_fecha_inicio;
 
     Date docente_cuso_fecha_fin;
+    Boolean docente_jefe;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = " docente_curso_docente_id", nullable = false)
@@ -23,17 +26,15 @@ public class DocenteCursoEntity {
     @JoinColumn(name = " docente_curso_establ_id", nullable = false)
     CursoEstablecimientoEntity cursoEstablecimientoEntity;
 
-    Boolean docente_jefe;
-
     public DocenteCursoEntity() {
     }
 
-    public DocenteCursoEntity(Date docente_curso_fecha_inicio, Date docente_cuso_fecha_fin, DocenteEntity docenteEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, Boolean docente_jefe) {
+    public DocenteCursoEntity(Date docente_curso_fecha_inicio, Date docente_cuso_fecha_fin,  Boolean docente_jefe, DocenteEntity docenteEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity) {
         this.docente_curso_fecha_inicio = docente_curso_fecha_inicio;
         this.docente_cuso_fecha_fin = docente_cuso_fecha_fin;
+        this.docente_jefe = docente_jefe;
         this.docenteEntity = docenteEntity;
         this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
-        this.docente_jefe = docente_jefe;
     }
 
     public Long getDocente_curso_id() {
@@ -60,24 +61,21 @@ public class DocenteCursoEntity {
         this.docente_cuso_fecha_fin = docente_cuso_fecha_fin;
     }
 
-    public void setDocenteEntity(DocenteEntity docenteEntity) {
-        this.docenteEntity = docenteEntity;
-    }
-
-
-
-    public void setCursoEstablecimientoEntity(CursoEstablecimientoEntity cursoEstablecimientoEntity) {
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
-    }
-
     public DocenteEntity getDocenteEntity() {
         return docenteEntity;
+    }
+
+    public void setDocenteEntity(DocenteEntity docenteEntity) {
+        this.docenteEntity = docenteEntity;
     }
 
     public CursoEstablecimientoEntity getCursoEstablecimientoEntity() {
         return cursoEstablecimientoEntity;
     }
 
+    public void setCursoEstablecimientoEntity(CursoEstablecimientoEntity cursoEstablecimientoEntity) {
+        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+    }
     public Boolean getDocente_jefe() {
         return docente_jefe;
     }
@@ -85,4 +83,5 @@ public class DocenteCursoEntity {
     public void setDocente_jefe(Boolean docente_jefe) {
         this.docente_jefe = docente_jefe;
     }
+
 }

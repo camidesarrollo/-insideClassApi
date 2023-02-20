@@ -11,10 +11,6 @@ public class AsignaturaDocenteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long asignatura_doc_id;
 
-    Date asignatura_doc_inicio;
-
-    Date asignatura_doc_fin;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "asignatura_doc_asignatura_id", nullable = false)
     AsignaturaEntity asignaturaEntity;
@@ -22,6 +18,12 @@ public class AsignaturaDocenteEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = " asignatura_doc_docente_establ_id", nullable = false)
     DocenteCursoEntity docenteCursoEntity;
+
+
+    Date asignatura_doc_inicio;
+
+    Date asignatura_doc_fin;
+
 
     public AsignaturaDocenteEntity() {
     }

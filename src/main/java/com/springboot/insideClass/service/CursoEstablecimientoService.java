@@ -5,6 +5,8 @@ import com.springboot.insideClass.repository.CursoEstablecimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
+
 @Service
 public class CursoEstablecimientoService {
 

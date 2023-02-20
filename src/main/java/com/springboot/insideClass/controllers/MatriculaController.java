@@ -72,7 +72,7 @@ public class MatriculaController {
 
             ApoderadoEntity apoderado = apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run());
 
-            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento());
+           /* CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento());
 
             System.out.println(cursoEstablecimiento.getCurso_establ_id());
 
@@ -81,7 +81,7 @@ public class MatriculaController {
             if(matricula == null){
                 MatriculaEntity matricula1 = new MatriculaEntity(alumno, apoderado, cursoEstablecimiento, matriculaRequest.getAgno());
                 matriculaService.save(matricula1);
-            }
+            }*/
 
             return ResponseEntity.ok(new MessageResponse("Alumno matriculado con registrado con exito!"));
 
@@ -99,14 +99,14 @@ public class MatriculaController {
 
             ApoderadoEntity apoderado = apoderadoService.findApoderadoByRun(editMatriculaRequest.getApoderado_run());
 
-            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(editMatriculaRequest.getCurso_id(), editMatriculaRequest.getEstablecimiento_id());
+            /*CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(editMatriculaRequest.getCurso_id(), editMatriculaRequest.getEstablecimiento_id());
 
             MatriculaEntity matricula = matriculaService.findMatriculaById(editMatriculaRequest.getMatricula_id());
 
             if(alumno != null && apoderado != null && cursoEstablecimiento != null && matricula != null){
                 matricula.setCursoEstablecimientoEntity(cursoEstablecimiento);
                 matriculaService.save(matricula);
-            }
+            }*/
 
             return ResponseEntity.ok(new MessageResponse("Matricula editada con registrado con exito!"));
 

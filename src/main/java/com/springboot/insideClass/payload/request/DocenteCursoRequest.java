@@ -1,34 +1,19 @@
 package com.springboot.insideClass.payload.request;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class DocenteCursoRequest {
-
-    private long docente_curso_docente_id;
-
-    private long docente_curso_establ_id;
 
     Date docente_curso_fecha_inicio;
 
     Date docente_cuso_fecha_fin;
 
-    private boolean docente_cuso_docente_jefe;
+    String curso_establ_hora_inicio;
 
-    public long getDocente_curso_docente_id() {
-        return docente_curso_docente_id;
-    }
+    String curso_establ_hora_fin;
 
-    public void setDocente_curso_docente_id(long docente_curso_docente_id) {
-        this.docente_curso_docente_id = docente_curso_docente_id;
-    }
-
-    public long getDocente_curso_establ_id() {
-        return docente_curso_establ_id;
-    }
-
-    public void setDocente_curso_establ_id(long docente_curso_establ_id) {
-        this.docente_curso_establ_id = docente_curso_establ_id;
-    }
+    String dia;
 
     public Date getDocente_curso_fecha_inicio() {
         return docente_curso_fecha_inicio;
@@ -46,11 +31,27 @@ public class DocenteCursoRequest {
         this.docente_cuso_fecha_fin = docente_cuso_fecha_fin;
     }
 
-    public boolean isDocente_jefe() {
-        return docente_cuso_docente_jefe;
+    public String getCurso_establ_hora_inicio() {
+        return curso_establ_hora_inicio;
     }
 
-    public void setDocente_jefe(boolean docente_jefe) {
-        this.docente_cuso_docente_jefe = docente_jefe;
+    public void setCurso_establ_hora_inicio(String curso_establ_hora_inicio) {
+        this.curso_establ_hora_inicio = curso_establ_hora_inicio;
+    }
+
+    public String getCurso_establ_hora_fin() {
+        return curso_establ_hora_fin;
+    }
+
+    public void setCurso_establ_hora_fin(String curso_establ_hora_fin) {
+        this.curso_establ_hora_fin = curso_establ_hora_fin;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
     }
 }

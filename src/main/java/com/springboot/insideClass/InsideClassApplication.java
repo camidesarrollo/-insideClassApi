@@ -1,6 +1,13 @@
 package com.springboot.insideClass;
 
 
+import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
+import com.springboot.insideClass.entity.EstablecimientoEntity;
+import com.springboot.insideClass.payload.request.AsignaturaDocenteRequest;
+import com.springboot.insideClass.repository.AsignaturaDocenteRepository;
+import com.springboot.insideClass.repository.EstablecimientoRepository;
+import com.springboot.insideClass.service.AsignaturaDocenteService;
+import com.springboot.insideClass.service.DocenteService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
@@ -27,6 +34,12 @@ public class InsideClassApplication {
 	@Autowired
 	private DataSource dataSource;
 
+	@Autowired
+	private AsignaturaDocenteRepository asignaturaDocenteRepository;
+
+	@Autowired
+	private EstablecimientoRepository establecimientoRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(InsideClassApplication.class, args);
@@ -37,7 +50,6 @@ public class InsideClassApplication {
 		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
 		resourceDatabasePopulator.addScript(new ClassPathResource("data.sql"));
 		resourceDatabasePopulator.execute(dataSource);
-
 	}
 
 }

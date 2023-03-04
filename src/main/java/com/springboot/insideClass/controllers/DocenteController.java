@@ -90,7 +90,7 @@ public class DocenteController {
 
     @PostMapping("Create/agregarDocente")
     public ResponseEntity<MessageResponse> agregarDocente(@Valid @RequestBody AddDocenteRequest addDocenteRequest) throws ParseException {
-
+        try{
             if (personaSer.findByRun(addDocenteRequest.getPersona().getPersona_run()) == null) {
                 PersonaEntity personaEntity = new PersonaEntity(addDocenteRequest.getPersona().getPersona_run(),
                         addDocenteRequest.getPersona().getPersona_nombre(),
@@ -186,9 +186,9 @@ public class DocenteController {
                 System.out.println("No se pudo insertar usuario");
             }
             return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
-        /*} catch (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
-        }*/
+        }
 
     }
 

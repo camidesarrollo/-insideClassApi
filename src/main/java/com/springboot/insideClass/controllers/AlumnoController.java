@@ -17,7 +17,7 @@ public class AlumnoController {
     private AlumnoService alumnoService;
 
 
-    @PostMapping("/tablaAlumno")
+    @PostMapping("/Get")
     public ResponseEntity<Object> tablaAlumno(@RequestParam("id_establecimient") String id_establecimient) {
 
         try {

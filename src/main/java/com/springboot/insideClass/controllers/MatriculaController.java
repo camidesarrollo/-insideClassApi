@@ -4,6 +4,7 @@ import com.springboot.insideClass.entity.*;
 import com.springboot.insideClass.payload.request.EditMatriculaRequest;
 import com.springboot.insideClass.payload.request.MatriculaRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
+import com.springboot.insideClass.repository.MatriculaRepository;
 import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -31,6 +32,8 @@ public class MatriculaController {
     private MatriculaService matriculaService;
     @Autowired
     private CursoService cursoService;
+    @Autowired
+    private MatriculaRepository matriculaRepository;
 
     @PostMapping("/agregarMatricula")
     public ResponseEntity<?> agregarMatricula(@Valid @RequestParam MatriculaRequest matriculaRequest) {
@@ -134,4 +137,43 @@ public class MatriculaController {
 
         }
     }
+    @PostMapping("/eliminarMatricula")
+    public ResponseEntity<?> agregarMatricula(@RequestParam("rut_alumno") String run_alumno,@RequestParam("id_establecimiento") long id_establecimiento, @RequestParam("curso_nombre") String curso_nombre, @RequestParam("curso_agno") String curso_agno ) {
+        /*try{
+
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha podido eliminar la matricula!"));
+
+        }*/
+
+        System.out.println("Nombre del curso");
+        System.out.println(curso_nombre);
+        CursoEntity curso = cursoService.findCursoByName(curso_nombre);
+        if(curso != null){
+            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), id_establecimiento);
+            if(cursoEstablecimiento != null){
+                AlumnoEntity alumno = alumnoService.findAlumnoByRun(run_alumno);
+                if(alumno != null){
+                    MatriculaEntity matricula = matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), curso_agno);
+                    matricula.setMatricula_vigencia(false);
+                    matriculaRepository.save(matricula);
+                    System.out.println(matricula.getMatricula_id());
+                    return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                            .body(new MessageResponse("Matricula eliminada con exito"));
+
+                }else{
+                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado alumno en el sistema!"));
+                }
+            }else{
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el colegio en el sistema!"));
+
+            }
+
+        }else{
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el sistema!"));
+
+        }
+    }
+
+
 }

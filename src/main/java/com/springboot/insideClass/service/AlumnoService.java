@@ -31,8 +31,8 @@ public class AlumnoService {
             alumnoInfoResponse.setApoderado_nombre((String) fila[5]);
             alumnoInfoResponse.setApoderado_apellido_paterno((String) fila[6]);
             alumnoInfoResponse.setApoderado_apellido_materno((String) fila[7]);
-            alumnoInfoResponse.setEstabl_nombre((String) fila[8]);
-            alumnoInfoResponse.setCurso_nombre((String) fila[9]);
+            alumnoInfoResponse.setEstabl_nombre((String) fila[9]);
+            alumnoInfoResponse.setCurso_nombre((String) fila[8]);
 
             listaAlumno.add(alumnoInfoResponse);
 

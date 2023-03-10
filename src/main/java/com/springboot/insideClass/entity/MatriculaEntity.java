@@ -27,9 +27,7 @@ public class MatriculaEntity {
     @NotBlank
     @Size(max = 200)
     String curso_agno;
-
-    @NotBlank
-    @Size(max = 200)
+    
     boolean  matricula_vigencia;
 
     public MatriculaEntity() {

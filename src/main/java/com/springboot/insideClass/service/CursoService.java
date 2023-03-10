@@ -29,6 +29,16 @@ public class CursoService {
         return null;
     }
 
+    public CursoEntity findCursoByName(String name){
+
+        try{
+            return cursoRepository.findCursoByName(name);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public List<CursoResponse> getCursoByEstablecimiento(long establecimiento_id){
         List<Object> listaObjetosNativos =  cursoEstablecimientoRepository.findCursoEstablecimientoByEstablecimiento(establecimiento_id);
         List<CursoResponse> listaCursos =  new ArrayList<>();

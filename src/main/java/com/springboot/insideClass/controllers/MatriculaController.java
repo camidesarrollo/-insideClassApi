@@ -6,6 +6,8 @@ import com.springboot.insideClass.payload.request.MatriculaRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +29,11 @@ public class MatriculaController {
     private CursoEstablecimientoService cursoEstablecimientoService;
     @Autowired
     private MatriculaService matriculaService;
+    @Autowired
+    private CursoService cursoService;
 
     @PostMapping("/agregarMatricula")
-    public ResponseEntity<?> agregarMatricula(@Valid @RequestBody MatriculaRequest matriculaRequest) {
+    public ResponseEntity<?> agregarMatricula(@Valid @RequestParam MatriculaRequest matriculaRequest) {
         try{
             if(alumnoService.findAlumnoByRun(matriculaRequest.getAlumno().getPersona_run())  == null){
                 if(personaService.findByRun(matriculaRequest.getAlumno().getPersona_run()) == null){
@@ -92,21 +96,8 @@ public class MatriculaController {
     }
 
     @PostMapping("/editarCursoMatricula")
-    public ResponseEntity<?>editarCursoMatricula(@Valid @RequestBody EditMatriculaRequest editMatriculaRequest){
+    public ResponseEntity<?>editarCursoMatricula(@Valid @RequestBody MatriculaRequest editMatriculaRequest){
         try{
-
-            AlumnoEntity alumno =  alumnoService.findAlumnoByRun(editMatriculaRequest.getAlumno_run());
-
-            ApoderadoEntity apoderado = apoderadoService.findApoderadoByRun(editMatriculaRequest.getApoderado_run());
-
-            /*CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(editMatriculaRequest.getCurso_id(), editMatriculaRequest.getEstablecimiento_id());
-
-            MatriculaEntity matricula = matriculaService.findMatriculaById(editMatriculaRequest.getMatricula_id());
-
-            if(alumno != null && apoderado != null && cursoEstablecimiento != null && matricula != null){
-                matricula.setCursoEstablecimientoEntity(cursoEstablecimiento);
-                matriculaService.save(matricula);
-            }*/
 
             return ResponseEntity.ok(new MessageResponse("Matricula editada con registrado con exito!"));
 
@@ -115,5 +106,32 @@ public class MatriculaController {
 
         }
 
+    }
+
+    @GetMapping("/ObtenerMatriculaByAlumno")
+    public ResponseEntity<?>ObtenerMatriculaByAlumno(@RequestParam("rut_alumno") String run_alumno,@RequestParam("id_establecimiento") long id_establecimiento, @RequestParam("curso_nombre") String curso_nombre, @RequestParam("curso_agno") String curso_agno ){
+        System.out.println("Nombre del curso");
+        System.out.println(curso_nombre);
+        CursoEntity curso = cursoService.findCursoByName(curso_nombre);
+        if(curso != null){
+            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), id_establecimiento);
+            if(cursoEstablecimiento != null){
+                AlumnoEntity alumno = alumnoService.findAlumnoByRun(run_alumno);
+                if(alumno != null){
+                    return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                            .body(matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), curso_agno));
+
+                }else{
+                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado alumno en el sistema!"));
+                }
+            }else{
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el colegio en el sistema!"));
+
+            }
+
+        }else{
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el sistema!"));
+
+        }
     }
 }

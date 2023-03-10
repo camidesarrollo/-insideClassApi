@@ -82,11 +82,11 @@ public class MatriculaEntity {
         this.curso_agno = curso_agno;
     }
 
-    public boolean isVigencia() {
+    public boolean isMatricula_vigencia() {
         return matricula_vigencia;
     }
 
-    public void setVigencia(boolean vigencia) {
-        this.matricula_vigencia = vigencia;
+    public void setMatricula_vigencia(boolean matricula_vigencia) {
+        this.matricula_vigencia = matricula_vigencia;
     }
 }

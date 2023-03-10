@@ -11,9 +11,9 @@ public class MatriculaService {
 @Autowired
     MatriculaRepository matriculaRepository;
 
-    public MatriculaEntity findEstablecimientoByAll(long curso_establecimiento, long alumno_id, long apoderado_id, String curso_agno){
+    public MatriculaEntity findEstablecimientoByAll(long curso_establecimiento, long alumno_id, String curso_agno){
         try{
-            return matriculaRepository.findEstablecimientoByAll(curso_establecimiento, alumno_id, apoderado_id, curso_agno);
+            return matriculaRepository.findEstablecimientoByAll(curso_establecimiento, alumno_id, curso_agno);
         }catch (Exception e){
             System.out.println(e);
         }

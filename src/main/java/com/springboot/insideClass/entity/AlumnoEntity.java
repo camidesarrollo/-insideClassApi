@@ -32,4 +32,8 @@ public class AlumnoEntity {
     public void setPersonaEntity(PersonaEntity personaEntity) {
         this.personaEntity = personaEntity;
     }
+
+    public PersonaEntity getPersonaEntity() {
+        return personaEntity;
+    }
 }

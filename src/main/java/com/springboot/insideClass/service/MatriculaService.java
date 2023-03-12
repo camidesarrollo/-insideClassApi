@@ -12,13 +12,20 @@ public class MatriculaService {
     MatriculaRepository matriculaRepository;
 
     public MatriculaEntity findEstablecimientoByAll(long curso_establecimiento, long alumno_id, String curso_agno){
-        try{
-            return matriculaRepository.findEstablecimientoByAll(curso_establecimiento, alumno_id, curso_agno);
+        System.out.println("Imprimiendo variables");
+        System.out.println(curso_establecimiento);
+        System.out.println(alumno_id);
+        System.out.println(curso_agno);
+        return matriculaRepository.findEstablecimientoByAll(curso_establecimiento, alumno_id, curso_agno);
+        /*try{
+
         }catch (Exception e){
             System.out.println(e);
         }
+        */
 
-        return null;
+
+        /*return null;*/
     }
 
     public void save(MatriculaEntity matricula){

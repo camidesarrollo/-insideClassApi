@@ -6,6 +6,8 @@ import com.springboot.insideClass.repository.AsignaturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AsignaturaDocenteService {
 
@@ -32,5 +34,15 @@ public class AsignaturaDocenteService {
             System.out.println(e);
         }
 
+    }
+
+    public List<AsignaturaDocenteEntity> findDocenteCursoByRunAndEstablecimiento(long id_establecimiento, String docente_run){
+
+        try{
+            return asignaturaDocenteRepository.findDocenteCursoByRunAndEstablecimiento(id_establecimiento,docente_run);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
     }
 }

@@ -1,15 +1,11 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.DocenteCursoEntity;
-import com.springboot.insideClass.payload.response.CursoResponse;
-import com.springboot.insideClass.payload.response.DocenteInfoResponse;
 import com.springboot.insideClass.repository.CursoEstablecimientoRepository;
 import com.springboot.insideClass.repository.DocenteCursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +27,18 @@ public class DocenteCursoService {
         return null;
     }
 
+
+    public List<DocenteCursoEntity> findDocenteCursoByRunAndEstablecimiento(long docente_id, long id_establecimiento){
+
+        try{
+            return docenteCursoRepository.findDocenteCursoByRunAndEstablecimiento(docente_id, id_establecimiento);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
     public void save(DocenteCursoEntity docenteCurso) {
 
         try{
@@ -39,8 +47,5 @@ public class DocenteCursoService {
 
         }
     }
-
-
-
 
 }

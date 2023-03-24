@@ -2,6 +2,7 @@ package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.entity.*;
 import com.springboot.insideClass.payload.request.EditMatriculaRequest;
+import com.springboot.insideClass.payload.request.Matricula.EliminarRequest;
 import com.springboot.insideClass.payload.request.MatriculaRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.repository.MatriculaRepository;
@@ -136,18 +137,18 @@ public class MatriculaController {
 
         }
     }
-    @PostMapping("/eliminarMatricula")
-    public ResponseEntity<?> eliminarMatricula(@RequestParam("rut_alumno") String run_alumno,@RequestParam("id_establecimiento") long id_establecimiento, @RequestParam("curso_nombre") String curso_nombre, @RequestParam("curso_agno") String curso_agno ) {
+    @PostMapping("/Delete")
+    public ResponseEntity<?> eliminarMatricula(@Valid @RequestParam EliminarRequest eliminarMatricula ) {
         try{
             System.out.println("Nombre del curso");
-            System.out.println(curso_nombre);
-            CursoEntity curso = cursoService.findCursoByName(curso_nombre);
+            System.out.println(eliminarMatricula.getCurso_nombre());
+            CursoEntity curso = cursoService.findCursoByName(eliminarMatricula.getCurso_nombre());
             if(curso != null){
-                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), id_establecimiento);
+                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), eliminarMatricula.getEstablecimiento_id());
                 if(cursoEstablecimiento != null){
-                    AlumnoEntity alumno = alumnoService.findAlumnoByRun(run_alumno);
+                    AlumnoEntity alumno = alumnoService.findAlumnoByRun(eliminarMatricula.getRut_alumno());
                     if(alumno != null){
-                        MatriculaEntity matricula = matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), curso_agno);
+                        MatriculaEntity matricula = matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), eliminarMatricula.getCurso_agno());
                         matricula.setMatricula_vigencia(false);
                         matriculaRepository.save(matricula);
                         System.out.println(matricula.getMatricula_id());

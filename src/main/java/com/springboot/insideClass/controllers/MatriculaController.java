@@ -170,7 +170,7 @@ public class MatriculaController {
         }catch (Exception e){
             System.out.println("Error:");
             System.out.println(e.getMessage());
-            return ResponseEntity.badRequest().body(new MessageResponse("Error de sistema!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("No se encontro matricula vigente!"));
 
         }
 

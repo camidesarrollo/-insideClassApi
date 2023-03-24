@@ -2825,8 +2825,8 @@ INSERT INTO [dbo].[t_curso_establ]
 (26,19,1);
 
 INSERT INTO [dbo].[t_docente_curso]
-           ([docente_curso_fecha_inicio]
-           ,[docente_cuso_fecha_fin]
+           ([docente_cuso_fecha_fin]
+           ,[docente_curso_fecha_inicio]
            ,[docente_curso_establ_id]
            ,[docente_curso_docente_id]
 		   ,[docente_jefe])

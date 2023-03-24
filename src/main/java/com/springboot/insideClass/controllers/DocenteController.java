@@ -1,10 +1,7 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.entity.*;
-import com.springboot.insideClass.payload.request.AddDocenteRequest;
-import com.springboot.insideClass.payload.request.DocenteAsignaturaRequest;
-import com.springboot.insideClass.payload.request.DocenteCursoRequest;
-import com.springboot.insideClass.payload.request.DocenteRequest;
+import com.springboot.insideClass.payload.request.*;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.repository.*;
 import com.springboot.insideClass.service.*;
@@ -16,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -79,6 +79,8 @@ public class DocenteController {
     private PersonaRepository personaRepository;
 
 
+
+
     @Autowired
     PerfilService perfilService;
 
@@ -87,6 +89,9 @@ public class DocenteController {
 
     @Autowired
     PersonaService personaService;
+
+    @Autowired
+    private CursoService cursoService;
 
     @PostMapping("Create/agregarDocente")
     public ResponseEntity<MessageResponse> agregarDocente(@Valid @RequestBody AddDocenteRequest addDocenteRequest) throws ParseException {
@@ -267,5 +272,45 @@ public class DocenteController {
 
         }
 
+    }
+    @PostMapping("/Delete")
+    public ResponseEntity<?> eliminarDocente(@Valid @RequestBody DocenteEstablecimientoRequest docenteEstablecimientoRequest) {
+        try {
+            Date fechaUtil = new Date();
+
+            // Convertir la fecha a un objeto de la clase java.sql.Date
+            java.sql.Date fechaSql = new java.sql.Date(fechaUtil.getTime());
+
+            DocenteEntity docente = docenteService.findDocenteByRun(docenteEstablecimientoRequest.getDocente_run());
+            if (docente != null) {
+                List<DocenteCursoEntity> docenteCurso = docenteCursoService.findDocenteCursoByRunAndEstablecimiento(docente.getDocente_id(), docenteEstablecimientoRequest.getEstablecimiento_id());
+
+                for (DocenteCursoEntity docenteCursoEntity : docenteCurso) {
+
+                    docenteCursoEntity.setDocente_cuso_fecha_fin(fechaSql);
+                    docenteCursoService.save(docenteCursoEntity);
+                }
+
+                List<AsignaturaDocenteEntity> docenteAsignatura =   asignaturaDocenteService.findDocenteCursoByRunAndEstablecimiento(docenteEstablecimientoRequest.getEstablecimiento_id(),docenteEstablecimientoRequest.getDocente_run());
+
+                for (AsignaturaDocenteEntity asignaturaDocenteEntity : docenteAsignatura) {
+
+                    asignaturaDocenteEntity.setAsignatura_doc_fin(fechaSql);
+                    asignaturaDocenteService.save(asignaturaDocenteEntity);
+                }
+
+                return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                        .body(new MessageResponse("Docente eliminado con exito"));
+
+            } else {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado docente en el sistema!"));
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error:");
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().body(new MessageResponse("No se encontro matricula vigente!"));
+
+        }
     }
 }

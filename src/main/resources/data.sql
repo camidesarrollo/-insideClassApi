@@ -6698,23 +6698,13 @@ CREATE FUNCTION fn_InfoDocente (@establecimiento bigint, @persona_run varchar(10
     )
         DROP FUNCTION fn_InfoAlumno;
 
-    CREATE FUNCTION fn_InfoAlumno (@parametro bigint)
-    RETURNS TABLE
-    AS
-
-    RETURN(
-    select p.persona_run as alumno_rut, p.persona_nombre as alumno_nombre, p.persona_apellido_paterno as alumno_apellido_paterno, p.persona_apellido_materno as alumno_materno,
-    apoderado.apoderado_persona_run as apoderado_run, apoderado.persona_nombre as apoderado_nombre, apoderado.persona_apellido_paterno as apoderado_apellido_paterno,
-    apoderado.persona_apellido_materno as apoderado_apellido_materno,
-    c.curso_nombre, e.establ_nombre
-    from t_alumno a
-    inner join t_persona p on a.alumno_persona_run = p.persona_run
-    inner join t_matricula m on a.alumno_id = m.matricula_alumno_id
-    inner join (select * from t_apoderado apo inner join t_persona per on apo.apoderado_persona_run = per.persona_run) apoderado on apoderado.apoderado_id = m.matricula_apoderado_id
-    inner join t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id
-    inner join t_curso c on c.curso_id = ce.curso_establ_curso_id
-    inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
-    where e.establ_id = (@parametro) and m.curso_agno = YEAR(CURRENT_TIMESTAMP));
+    	CREATE FUNCTION [dbo].[fn_InfoAlumno]  (@establecimiento bigint, @persona_run varchar(100), @curso_id bigint, @vigencia bigint)  RETURNS TABLE AS RETURN( select p.persona_run as alumno_rut, p.persona_nombre as alumno_nombre, p.persona_apellido_paterno as alumno_apellido_paterno, p.persona_apellido_materno as alumno_materno, apoderado.apoderado_persona_run as apoderado_run, apoderado.persona_nombre as apoderado_nombre, apoderado.persona_apellido_paterno as apoderado_apellido_paterno, apoderado.persona_apellido_materno as apoderado_apellido_materno, c.curso_nombre, e.establ_nombre from t_alumno a inner join t_persona p on a.alumno_persona_run = p.persona_run inner join t_matricula m on a.alumno_id = m.matricula_alumno_id inner join (select * from t_apoderado apo inner join t_persona per on apo.apoderado_persona_run = per.persona_run) apoderado on apoderado.apoderado_id = m.matricula_apoderado_id inner join t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id inner join t_curso c on c.curso_id = ce.curso_establ_curso_id inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+    where
+    (@establecimiento = -1 or e.establ_id = @establecimiento)
+    and (@vigencia = -1 or m.matricula_vigencia  = @vigencia )
+    and (@persona_run = '-1' or a.alumno_persona_run  = @persona_run)
+    and (@curso_id = -1 or c.curso_id = @curso_id)
+    and m.curso_agno = YEAR(CURRENT_TIMESTAMP));
 
     				  update t_usuario set password = '$2a$10$NZ57Zoyc8J/7V6hshE0JDe4OHvG2Wg14pxtLsHm/1QeQ8V52tCJ76'
 

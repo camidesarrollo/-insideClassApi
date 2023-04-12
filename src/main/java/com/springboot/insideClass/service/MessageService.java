@@ -2,9 +2,11 @@ package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.ConversationEntity;
 import com.springboot.insideClass.entity.MessageEntity;
+import com.springboot.insideClass.payload.response.AlumnoInfoResponse;
 import com.springboot.insideClass.repository.MessageRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,4 +24,6 @@ public class MessageService {
     public List<MessageEntity> getMessagesForConversation(ConversationEntity conversation) {
         return messageRepository.findByConversationOrderByTimestampDesc(conversation);
     }
+
+
 }

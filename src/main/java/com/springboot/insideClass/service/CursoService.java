@@ -39,6 +39,16 @@ public class CursoService {
         return null;
     }
 
+    public CursoEntity findById(Long id){
+
+        try{
+            return cursoRepository.findById(id).get();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public List<CursoResponse> getCursoByEstablecimiento(long establecimiento_id){
         List<Object> listaObjetosNativos =  cursoEstablecimientoRepository.findCursoEstablecimientoByEstablecimiento(establecimiento_id);
         List<CursoResponse> listaCursos =  new ArrayList<>();
@@ -56,4 +66,6 @@ public class CursoService {
         }
         return listaCursos;
     }
+
+
 }

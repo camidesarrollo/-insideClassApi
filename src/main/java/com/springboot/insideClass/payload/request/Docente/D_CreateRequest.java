@@ -1,6 +1,9 @@
-package com.springboot.insideClass.payload.request;
+package com.springboot.insideClass.payload.request.Docente;
 
-public class AddDocenteRequest {
+import com.springboot.insideClass.payload.request.DocenteCursoRequest;
+import com.springboot.insideClass.payload.request.PersonaRequest;
+
+public class D_CreateRequest {
 
     private PersonaRequest persona;
 

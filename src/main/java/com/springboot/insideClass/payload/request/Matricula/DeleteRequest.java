@@ -1,17 +1,17 @@
 package com.springboot.insideClass.payload.request.Matricula;
 
-public class EliminarRequest {
-    String curso_agno;
+public class DeleteRequest {
+    Integer curso_agno;
 
     String curso_nombre;
     Integer establecimiento_id;
     String rut_alumno;
 
-    public String getCurso_agno() {
+    public Integer getCurso_agno() {
         return curso_agno;
     }
 
-    public void setCurso_agno(String curso_agno) {
+    public void setCurso_agno(Integer curso_agno) {
         this.curso_agno = curso_agno;
     }
 

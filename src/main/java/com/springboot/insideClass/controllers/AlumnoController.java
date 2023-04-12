@@ -1,13 +1,16 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.logisticRegression.CalificarAlumno;
-import com.springboot.insideClass.payload.response.MessageResponse;
+import com.springboot.insideClass.payload.request.Alumno.GetByApoderadoRequest;
 import com.springboot.insideClass.service.AlumnoService;
+import com.springboot.insideClass.service.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -16,18 +19,8 @@ public class AlumnoController {
     @Autowired
     private AlumnoService alumnoService;
 
-
-    @PostMapping("/Get")
-    public ResponseEntity<Object> tablaAlumno(@RequestParam("id_establecimient") String id_establecimient) {
-
-        try {
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(alumnoService.getInfoAlumno(id_establecimient));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logro obtener la informacion requerida!"));
-
-        }
-    }
+    @Autowired
+    private MatriculaService matriculaService;
 
     @GetMapping("/predict-repetition")
     public ResponseEntity<Double> predictRepetition(
@@ -45,4 +38,14 @@ public class AlumnoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    public ResponseEntity<?> obtenerAlmunosByApoderado(@Valid @RequestBody GetByApoderadoRequest request) {
+        try{
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                    .body(matriculaService.getInfoAlumno(request.getEstablecimiento_id(),"-1", -1, 1, request.getApoderado_run()));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }

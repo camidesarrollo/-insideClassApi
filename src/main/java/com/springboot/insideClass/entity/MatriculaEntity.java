@@ -1,8 +1,6 @@
 package com.springboot.insideClass.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "T_MATRICULA", uniqueConstraints = {@UniqueConstraint(columnNames =  "matricula_id")})
@@ -24,16 +22,14 @@ public class MatriculaEntity {
     @JoinColumn(name = "matricula_curso_establ_id", nullable = false)
     CursoEstablecimientoEntity cursoEstablecimientoEntity;
 
-    @NotBlank
-    @Size(max = 200)
-    String curso_agno;
+    Integer curso_agno;
     
     boolean  matricula_vigencia;
 
     public MatriculaEntity() {
     }
 
-    public MatriculaEntity(AlumnoEntity alumnoEntity, ApoderadoEntity apoderadoEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, String curso_agno) {
+    public MatriculaEntity(AlumnoEntity alumnoEntity, ApoderadoEntity apoderadoEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, Integer curso_agno) {
         this.alumnoEntity = alumnoEntity;
         this.apoderadoEntity = apoderadoEntity;
         this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
@@ -72,11 +68,11 @@ public class MatriculaEntity {
         this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
     }
 
-    public String getCurso_agno() {
+    public Integer getCurso_agno() {
         return curso_agno;
     }
 
-    public void setCurso_agno(String curso_agno) {
+    public void setCurso_agno(Integer curso_agno) {
         this.curso_agno = curso_agno;
     }
 

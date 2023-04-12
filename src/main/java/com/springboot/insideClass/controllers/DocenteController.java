@@ -1,7 +1,11 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.entity.*;
-import com.springboot.insideClass.payload.request.*;
+import com.springboot.insideClass.payload.request.Docente.D_CreateRequest;
+import com.springboot.insideClass.payload.request.Docente.D_TraerRequest;
+import com.springboot.insideClass.payload.request.DocenteAsignaturaRequest;
+import com.springboot.insideClass.payload.request.DocenteCursoRequest;
+import com.springboot.insideClass.payload.request.DocenteEstablecimientoRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.repository.*;
 import com.springboot.insideClass.service.*;
@@ -93,9 +97,12 @@ public class DocenteController {
     @Autowired
     private CursoService cursoService;
 
-    @PostMapping("Create/agregarDocente")
-    public ResponseEntity<MessageResponse> agregarDocente(@Valid @RequestBody AddDocenteRequest addDocenteRequest) throws ParseException {
+    @PostMapping("Create")
+    public ResponseEntity<MessageResponse> agregarDocente(@Valid @RequestBody D_CreateRequest addDocenteRequest) throws ParseException {
         try{
+            if(addDocenteRequest.getCurso() == 0){
+                System.out.println("Error");
+            }
             if (personaSer.findByRun(addDocenteRequest.getPersona().getPersona_run()) == null) {
                 PersonaEntity personaEntity = new PersonaEntity(addDocenteRequest.getPersona().getPersona_run(),
                         addDocenteRequest.getPersona().getPersona_nombre(),
@@ -106,6 +113,7 @@ public class DocenteController {
                         addDocenteRequest.getPersona().getPersona_numero_telefonico(),
                         addDocenteRequest.getPersona().getPersona_numero_celular());
                 personaSer.save(personaEntity);
+                System.out.println("Se guardo la persona");
             } else {
                 System.out.println("No se guardo a la persona");
             }
@@ -118,6 +126,7 @@ public class DocenteController {
                 docente.setPersonaEntity(persona);
 
                 docenteRepo.save(docente);
+                System.out.println("Se guardo el docente");
             } else {
                 System.out.println("No se guardo el docente");
             }
@@ -131,6 +140,9 @@ public class DocenteController {
 
                DocenteCursoEntity docenteCurso = new DocenteCursoEntity();
 
+               System.out.println(addDocenteRequest.getCurso());
+               System.out.println(addDocenteRequest.getEstablecimiento());
+
                 if (cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
                         addDocenteRequest.getCurso(), addDocenteRequest.getEstablecimiento()) != null) {
 
@@ -139,7 +151,7 @@ public class DocenteController {
                     docenteCurso.setDocente_curso_fecha_inicio(addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio());
                     docenteCurso.setDocente_cuso_fecha_fin(addDocenteRequest.getDocenteCurso().getDocente_cuso_fecha_fin());
                     docenteCursoRepo.save(docenteCurso);
-
+                    System.out.println("Se guardo el docente-curso");
                 } else {
                     System.out.println("No se pudo insertar Curso Establecimiento");
                 }
@@ -172,6 +184,7 @@ public class DocenteController {
                 asignaturaDocente1.setAsignatura_doc_inicio(addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio());
                 asignaturaDocente1.setAsignatura_doc_fin(addDocenteRequest.getDocenteCurso().getDocente_cuso_fecha_fin());
                 asignaturaDocenteRepository.save(asignaturaDocente1);
+                       System.out.println("Se guardo el asignatura-docente");
             } else {
                 System.out.println("No se pudo insertar Asignatura Docente");
             }
@@ -185,13 +198,14 @@ public class DocenteController {
 
                 // Create new user's account
                 usuarioService.createUsuario(perfil, vigencia, persona, addDocenteRequest.getPersona().getCorreo());
-
-
+                 System.out.println("Se guardo el usuario");
+                 return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
             } else {
                 System.out.println("No se pudo insertar usuario");
             }
-            return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
         }
 
@@ -262,11 +276,11 @@ public class DocenteController {
     }
 
     @PostMapping("/Traer")
-    public ResponseEntity<Object> obtenerDocente(@Valid @RequestBody DocenteRequest docenteRequest) throws ParseException {
+    public ResponseEntity<Object> obtenerDocente(@Valid @RequestBody D_TraerRequest docenteRequest) throws ParseException {
 
         try {
             return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(docenteService.findDocenteByIdCursoEstablecimiento(docenteRequest.getEstablecimiento(), docenteRequest.getPersona().getPersona_run(), docenteRequest.getCurso()));
+                    .body(docenteService.findDocenteByIdCursoEstablecimiento(docenteRequest.getEstablecimiento(), docenteRequest.getDocente_run(), docenteRequest.getCurso()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logro obtener la informacion requerida!"));
 

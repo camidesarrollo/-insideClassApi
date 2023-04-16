@@ -82,9 +82,6 @@ public class DocenteController {
     @Autowired
     private PersonaRepository personaRepository;
 
-
-
-
     @Autowired
     PerfilService perfilService;
 
@@ -213,14 +210,14 @@ public class DocenteController {
 
     @PostMapping("/Get")
     public ResponseEntity<Object> tablaDocente(@RequestParam("id_establecimient") long id_establecimient) {
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                .body(docenteService.getInfoDocente(id_establecimient, "-1", -1));
-        /*try {
 
+        try {
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                    .body(docenteService.getInfoDocente(id_establecimient, "-1", -1));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logro obtener la informacion requerida!"));
 
-        }*/
+        }
     }
 
     @PostMapping("/Create/DocenteAsignatura")

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -24,9 +25,8 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
     @Query(value = "select * from t_usuario where username = ?", nativeQuery = true)
     Optional<UsuarioEntity> OpfindByUsername(String username);
 
-    @Query(value = "  select * from t_usuario where t_usuario.usuario_persona_run = ? and t_usuario.usuario_perfil_id = ?", nativeQuery = true)
-    UsuarioEntity findByRunAndPerfil(@Param("usuario_persona_run") String usuario_persona_run, @Param("usuario_perfil_id") long usuario_perfil_id);
-
+    @Query(value = "SELECT * FROM t_usuario WHERE t_usuario.usuario_persona_run = :usuario_persona_run AND (t_usuario.usuario_perfil_id = :usuario_perfil_id OR -1 = :usuario_perfil_id)", nativeQuery = true)
+    List<UsuarioEntity> findByRunAndPerfil(@Param("usuario_persona_run") String usuario_persona_run, @Param("usuario_perfil_id") long usuario_perfil_id);
     Optional<UsuarioEntity> findByEmail(String email);
 
 }

@@ -14,8 +14,7 @@ public interface MatriculaRepository extends JpaRepository<MatriculaEntity, Long
             "\t\t\tand t_matricula.matricula_vigencia = 1 \n" +
             "\t\t\tand t_matricula.curso_agno = ?")
     MatriculaEntity findEstablecimientoByAll(@Param("matricula_curso_establ_id") long matricula_curso_establ_id,
-                                            @Param("matricula_alumno_id") long matricula_alumno_id
-                                             ,
+                                            @Param("matricula_alumno_id") long matricula_alumno_id,
                                             @Param("curso_agno") Integer curso_agno);
 
     @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoAlumno(:establecimiento, :persona_run, :curso_id, :vigencia, :apoderado_run)")

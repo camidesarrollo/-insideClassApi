@@ -21,4 +21,13 @@ public interface AsignaturaDocenteRepository extends JpaRepository<AsignaturaDoc
             "where curso_establ_establ_id = ? and d.docente_persona_run = ?")
     List<AsignaturaDocenteEntity> findDocenteCursoByRunAndEstablecimiento(@Param("curso_establ_establ_id") long establecimiento_id, @Param("docuente_run") String docente_persona_run);
 
+    @Query(nativeQuery = true, value = "select ad.* from t_curso c\n" +
+            "    inner join t_curso_establ ce on c.curso_id = ce.curso_establ_curso_id\n" +
+            "    inner join t_docente_curso dc on ce.curso_establ_id = dc.docente_curso_establ_id\n" +
+            "    inner join t_asignatura_docente ad on ad.asignatura_doc_docente_establ_id = dc.docente_curso_id\n" +
+            "    where c.curso_id = ? and dc.docente_curso_docente_id = ? and ad.asignatura_doc_asignatura_id = ? and ad.asignatura_doc_id not in  (SELECT asignatura_nota_asignatura_doc_id \n" +
+            "  FROM t_asignatura_nota) ")
+    AsignaturaDocenteEntity findDocenteCursoByCursoAsignatura(@Param("curso_id") long curso_id, @Param("docente_curso_docente_id") long docente_curso_docente_id, @Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id);
+
+
 }

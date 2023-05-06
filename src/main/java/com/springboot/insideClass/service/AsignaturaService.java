@@ -23,6 +23,18 @@ public class AsignaturaService {
         return null;
     }
 
+    public AsignaturaEntity findAsignaturaByName(String asignatura_nombre){
+
+        try{
+            return asignaturaRepository.findAsignaturaByName(asignatura_nombre);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
+
     public List<AsignaturaEntity> findAll(){
         try{
             return asignaturaRepository.findAll();

@@ -1,8 +1,6 @@
 package com.springboot.insideClass.controllers;
 
-import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
-import com.springboot.insideClass.entity.AsignaturaEntity;
-import com.springboot.insideClass.entity.DocenteCursoEntity;
+import com.springboot.insideClass.entity.*;
 import com.springboot.insideClass.payload.request.Curso.DC_CreateRequest;
 import com.springboot.insideClass.payload.request.Curso.DC_DeleteRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.ParseException;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -133,12 +132,26 @@ public class CursoController {
         }
     }
 
-    @DeleteMapping("/docente-curso//Delete")
-    public void eliminarDocente(@Valid @RequestBody DC_DeleteRequest eliminarRequest) {
+    @DeleteMapping("/docente-curso/Delete")
+    public ResponseEntity<?> eliminarDocente(@Valid @RequestBody DC_DeleteRequest eliminarRequest) {
         try {
+            CursoEntity curso = cursoService.findCursoByName(eliminarRequest.getCurso_nombre());
+            AsignaturaEntity asignatura = asignaturaService.findAsignaturaByName(eliminarRequest.getAsignatura_nombre());
+            DocenteEntity docente = docenteService.findDocenteByRun(eliminarRequest.getPersona_run());
+            if (docente != null) {
+                AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByCursoAsignatura(curso.getCurso_id(), docente.getDocente_id(), asignatura.getAsignatura_id());
+                if(asignaturaDocente != null){
+                    asignaturaDocenteRepository.delete(asignaturaDocente);
+                    return ResponseEntity.ok().body(new MessageResponse("Se ha eliminado con exito"));
+                }
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado docente en el sistema!"));
 
+
+            } else {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado docente en el sistema!"));
+            }
         } catch (Exception e) {
-
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha podido eliminar curso del sistema!"));
         }
     }
 

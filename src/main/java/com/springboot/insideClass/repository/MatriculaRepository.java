@@ -17,9 +17,20 @@ public interface MatriculaRepository extends JpaRepository<MatriculaEntity, Long
                                             @Param("matricula_alumno_id") long matricula_alumno_id,
                                             @Param("curso_agno") Integer curso_agno);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoAlumno(:establecimiento, :persona_run, :curso_id, :vigencia, :apoderado_run)")
+    @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoAlumno(:establecimiento,:persona_run, :curso_id, :vigencia, :apoderado_run )")
     List<Object> fn_InfoMatricula(@Param("establecimiento") Long establecimiento, @Param("persona_run") String persona_run,
                                   @Param("curso_id") Integer curso_id, @Param("vigencia") Integer vigencia, @Param("apoderado_run") String apoderado_run);
+
+
+
+    @Query(nativeQuery = true, value = "select m.* from t_matricula m \n" +
+            "inner join t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id\n" +
+            "inner join t_alumno a on a.alumno_id = m.matricula_id\n" +
+            "where a.alumno_persona_run = ? and curso_agno = ? and ce.curso_establ_establ_id = ?")
+    MatriculaEntity findMatriculaByRunAndCurso(@Param("alumno_persona_run") String alumno_persona_run,
+                                             @Param("curso_agno") Integer curso_agno,
+                                             @Param("curso_establ_establ_id") Long curso_establ_establ_id);
+
 }
 
 

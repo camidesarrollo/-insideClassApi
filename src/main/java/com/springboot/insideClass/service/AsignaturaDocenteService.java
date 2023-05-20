@@ -4,7 +4,6 @@ import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
 import com.springboot.insideClass.repository.AsignaturaDocenteRepository;
 import com.springboot.insideClass.repository.AsignaturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +50,21 @@ public class AsignaturaDocenteService {
 
         try{
             return asignaturaDocenteRepository.findDocenteCursoByCursoAsignatura(curso_id,docente_curso_docente_id,asignatura_doc_asignatura_id);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
+    public AsignaturaDocenteEntity findDocenteCursoByRunAndAsignaturaAndEstablecimiento(String docente_persona_run, long asignatura_id, long curso_id,  Integer docente_cuso_fecha_fin){
+
+        try{
+            System.out.println(docente_persona_run);
+            System.out.println(asignatura_id);
+            System.out.println(curso_id);
+            System.out.println(docente_cuso_fecha_fin);
+            return asignaturaDocenteRepository.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(docente_persona_run,asignatura_id,curso_id,docente_cuso_fecha_fin);
         }catch (Exception e){
             System.out.println(e);
         }

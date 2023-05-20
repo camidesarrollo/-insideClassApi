@@ -13,7 +13,7 @@ public class AsistenciasRequest {
     }
 
     public void setMatricula(List<Long> matricula) {
-        matricula = matricula;
+        this.matricula = matricula;
     }
 
     public Date getFecha() {

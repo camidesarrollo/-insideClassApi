@@ -1,8 +1,5 @@
-package com.springboot.insideClass.payload.request;
+package com.springboot.insideClass.payload.request.Persona;
 
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.sql.Date;
 
 public class PersonaRequest {
@@ -26,7 +23,6 @@ public class PersonaRequest {
     private String persona_numero_celular;
 
     private String correo;
-
     public String getPersona_run() {
         return persona_run;
     }

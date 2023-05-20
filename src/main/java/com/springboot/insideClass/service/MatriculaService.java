@@ -77,5 +77,14 @@ public class MatriculaService {
 
         return null;
     }
+
+
+    public MatriculaEntity findMatriculaByRunAndCurso(String alumno_persona_run,Integer curso_agno, Long curso_establ_establ_id){
+        System.out.println(alumno_persona_run);
+        System.out.println(curso_agno);
+        System.out.println(curso_establ_establ_id);
+        return matriculaRepository.findMatriculaByRunAndCurso(alumno_persona_run, curso_agno, curso_establ_establ_id);
+    }
+
 }
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de Anotación</title>
+</head>
+<body>
+<h1>Informe de Anotación</h1>
+<p>Estimado Apoderado,</p>
+<p>Le informamos que se ha registrado una anotación para su hijo/a <strong th:text="${nombreAlumno}"></strong>  en el sistema.</p>
+
+<h2>Detalles de la Anotación:</h2>
+<p>Fecha: <strong th:text="${fecha}"></strong></p>
+<p>Asignatura: <strong th:text="${asignatura}"></strong></p>
+<p>Descripción: <strong th:text="${descripcion}"></strong></p>
+<p>Gravedad: <strong th:text="${gravedad}"></strong></p>
+
+<p>Por favor, tenga en cuenta esta información y comuníquese con nosotros si tiene alguna pregunta o inquietud.</p>
+
+<p>Atentamente,</p>
+<p th:text="${nombreProfesor}"></p>
+</body>
+</html>

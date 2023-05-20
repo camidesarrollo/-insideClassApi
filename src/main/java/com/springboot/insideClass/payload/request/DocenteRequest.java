@@ -1,5 +1,7 @@
 package com.springboot.insideClass.payload.request;
 
+import com.springboot.insideClass.payload.request.Persona.PersonaRequest;
+
 import java.sql.Time;
 import java.util.Date;
 

@@ -1,5 +1,7 @@
 package com.springboot.insideClass.payload.request;
 
+import com.springboot.insideClass.payload.request.Persona.PersonaRequest;
+
 public class MatriculaRequest {
 
     private PersonaRequest alumno;

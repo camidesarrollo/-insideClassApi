@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.ParseException;
-import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -135,6 +134,7 @@ public class CursoController {
     @DeleteMapping("/docente-curso/Delete")
     public ResponseEntity<?> eliminarDocente(@Valid @RequestBody DC_DeleteRequest eliminarRequest) {
         try {
+            System.out.println(eliminarRequest.getPersona_run());
             CursoEntity curso = cursoService.findCursoByName(eliminarRequest.getCurso_nombre());
             AsignaturaEntity asignatura = asignaturaService.findAsignaturaByName(eliminarRequest.getAsignatura_nombre());
             DocenteEntity docente = docenteService.findDocenteByRun(eliminarRequest.getPersona_run());

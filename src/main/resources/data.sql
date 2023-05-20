@@ -1815,7 +1815,7 @@ INSERT INTO [dbo].[t_asignatura]
 	('Religión'),
 	('Tecnología');
 
-INSERT INTO [dbo].[t_docente]
+/*INSERT INTO [dbo].[t_docente]
            ([docente_persona_run])
      VALUES
 ('10253981-8'),
@@ -2218,7 +2218,7 @@ INSERT INTO [dbo].[t_docente]
 ('14341357-8'),
 ('14363025-0'),
 ('14370588-9'),
-('14379776-7');
+('14379776-7');*/
 
 INSERT INTO [dbo].[t_curso_establ]
            ([curso_establ_curso_id]
@@ -2824,7 +2824,7 @@ INSERT INTO [dbo].[t_curso_establ]
 (25,19,1),
 (26,19,1);
 
-INSERT INTO [dbo].[t_docente_curso]
+/*INSERT INTO [dbo].[t_docente_curso]
            ([docente_cuso_fecha_fin]
            ,[docente_curso_fecha_inicio]
            ,[docente_curso_establ_id]
@@ -4033,7 +4033,7 @@ INSERT INTO [dbo].[t_asignatura_docente]
 ('2032-4-8','2007-3-4',2,595),
 ('2039-8-21','2002-12-18',8,596),
 ('2035-6-24','2011-7-16',12,597),
-('2033-6-10','2000-9-16',10,598);
+('2033-6-10','2000-9-16',10,598);*/
 
 INSERT INTO [dbo].[t_director]
            ([director_establ_id]
@@ -4332,7 +4332,7 @@ INSERT INTO [dbo].[t_persona]
 ('9963123-6','Henríquez','Ramírez','2011-4-22','AINHOA','+56985426029','(2) 249833923','F'),
 ('9991768-7','Saavedra','Carrasco','2012-2-1','OLGA','+56963719937','(2) 283762745','F');
 
-INSERT INTO [dbo].[t_alumno]
+/*INSERT INTO [dbo].[t_alumno]
            ([alumno_persona_run])
      VALUES
 ('10108517-1'),
@@ -5504,7 +5504,7 @@ INSERT INTO [dbo].[t_matricula]
 (2023,124,301,25,1),
 (2023,135,368,3,1),
 (2023,191,66,184,1),
-(2023,225,131,176,1);
+(2023,225,131,176,1);*/
 
 INSERT INTO [dbo].[t_perfil]
            ([perfil_nombre])
@@ -5545,7 +5545,7 @@ INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (20, N'Director_Cesar_14386@gmail.com', N'$2a$10$jZV5M.q/E6/wdZU5moXfVO/BHaNhBLsOH/ML1wrlnaz.Vulf06pK6', N'Director_Cesar_14386', 3, N'14386647-5 ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (21, N'Director_Dora_14420@gmail.com', N'$2a$10$2HFqlA2V7r8vwkpWhjgk7OOX7K7EqXk3Iy5orWRhW5tqOb9ed1uxC', N'Director_Dora_14420', 3, N'14420070-5 ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (22, N'Director_Hugo_14422@gmail.com', N'$2a$10$3phP7OEwvZTq.m4SL29nXumqBTKXnFjswXmX7L.cKy9j9iU1o/l6O', N'Director_Hugo_14422', 3, N'14422764-6 ', 1)
-INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (23, N'Apoderado_Rafa_13263@gmail.com', N'$2a$10$1CtFaS3zY6nE7QQGuA.izufPPoHqsnU76NLHyO8dixWFzTyDR6.ja', N'Apoderado_Rafa_13263', 1, N'13263940-k ', 1)
+/*INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (23, N'Apoderado_Rafa_13263@gmail.com', N'$2a$10$1CtFaS3zY6nE7QQGuA.izufPPoHqsnU76NLHyO8dixWFzTyDR6.ja', N'Apoderado_Rafa_13263', 1, N'13263940-k ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (24, N'Apoderado_Celestina_13269@gmail.com', N'$2a$10$Nhgzz3V.D9hAkq1JQW.pw.EFtnLIPp4BY5xcHn5u6u1l23vSg5hDi', N'Apoderado_Celes_13269', 1, N'13269124-k ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (25, N'Apoderado_Francisco_13276@gmail.com', N'$2a$10$Bcl45trWafTud/ABi8LgHeGwVyDbNhsnjjvHYUi6fMAehy8YzRjLO', N'Apoderado_Franc_13276', 1, N'13276952-4 ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (26, N'Apoderado_Alex_13283@gmail.com', N'$2a$10$mIQCeeGYAvXk81oBZJMU5OlkdXkW.Gh66LOR6NmiZ2M9TVDrLFu3S', N'Apoderado_Alex_13283', 1, N'13283228-5 ', 1)
@@ -6650,7 +6650,7 @@ INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1114, N'Docente_Tecla_14341@gmail.com', N'$2a$10$wt7xIZ5bIGstDQqbl.657er.3QsdPYhepm0gtF881R8dPCoM7JFRi', N'Docente_Tecla_14341_2023', 2, N'14341357-8 ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1115, N'Docente_Teodoro_14363@gmail.com', N'$2a$10$jXlo32OhDXu9KdeaaXJz0.x7mu3lC/Yy2pSE/85XjqHZq3ycyfp36', N'Docente_Teodo_14363_2023', 2, N'14363025-0 ', 1)
 INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1116, N'Docente_Lucas_14370@gmail.com', N'$2a$10$rhz0f1.ON9ppgV4Xh65YRukWJfcSNIdMXmrrZS6kZHHZI3P0g2tui', N'Docente_Lucas_14370_2023', 2, N'14370588-9 ', 1)
-INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1117, N'Docente_Eligia_14379@gmail.com', N'$2a$10$8kZdDmUKbKdxWQ4BPCISNePZhmltyYDjaFei2Cf0BCcdBgdiCcT2C', N'Docente_Eligi_14379_2023', 2, N'14379776-7 ', 1)
+INSERT [dbo].[t_usuario] ([id], [email], [password], [username], [usuario_perfil_id], [usuario_persona_run], [usuario_vigencia_id]) VALUES (1117, N'Docente_Eligia_14379@gmail.com', N'$2a$10$8kZdDmUKbKdxWQ4BPCISNePZhmltyYDjaFei2Cf0BCcdBgdiCcT2C', N'Docente_Eligi_14379_2023', 2, N'14379776-7 ', 1)*/
 SET IDENTITY_INSERT [dbo].[t_usuario] OFF;
 
 IF EXISTS (
@@ -6698,11 +6698,12 @@ CREATE FUNCTION fn_InfoDocente (@establecimiento bigint, @persona_run varchar(10
     )
         DROP FUNCTION fn_InfoAlumno;
 
-    	CREATE FUNCTION [dbo].[fn_InfoAlumno]  (@establecimiento bigint, @persona_run varchar(100), @curso_id bigint, @vigencia bigint)  RETURNS TABLE AS RETURN( select p.persona_run as alumno_rut, p.persona_nombre as alumno_nombre, p.persona_apellido_paterno as alumno_apellido_paterno, p.persona_apellido_materno as alumno_materno, apoderado.apoderado_persona_run as apoderado_run, apoderado.persona_nombre as apoderado_nombre, apoderado.persona_apellido_paterno as apoderado_apellido_paterno, apoderado.persona_apellido_materno as apoderado_apellido_materno, c.curso_nombre, e.establ_nombre from t_alumno a inner join t_persona p on a.alumno_persona_run = p.persona_run inner join t_matricula m on a.alumno_id = m.matricula_alumno_id inner join (select * from t_apoderado apo inner join t_persona per on apo.apoderado_persona_run = per.persona_run) apoderado on apoderado.apoderado_id = m.matricula_apoderado_id inner join t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id inner join t_curso c on c.curso_id = ce.curso_establ_curso_id inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+    	CREATE FUNCTION [dbo].[fn_InfoAlumno]  (@establecimiento bigint, @persona_run varchar(100), @curso_id bigint, @vigencia bigint, @apoderado_run  varchar(100) )  RETURNS TABLE AS RETURN( select p.persona_run as alumno_rut, p.persona_nombre as alumno_nombre, p.persona_apellido_paterno as alumno_apellido_paterno, p.persona_apellido_materno as alumno_materno, apoderado.apoderado_persona_run as apoderado_run, apoderado.persona_nombre as apoderado_nombre, apoderado.persona_apellido_paterno as apoderado_apellido_paterno, apoderado.persona_apellido_materno as apoderado_apellido_materno, c.curso_nombre, e.establ_nombre from t_alumno a inner join t_persona p on a.alumno_persona_run = p.persona_run inner join t_matricula m on a.alumno_id = m.matricula_alumno_id inner join (select * from t_apoderado apo inner join t_persona per on apo.apoderado_persona_run = per.persona_run) apoderado on apoderado.apoderado_id = m.matricula_apoderado_id inner join t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id inner join t_curso c on c.curso_id = ce.curso_establ_curso_id inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
     where
     (@establecimiento = -1 or e.establ_id = @establecimiento)
     and (@vigencia = -1 or m.matricula_vigencia  = @vigencia )
     and (@persona_run = '-1' or a.alumno_persona_run  = @persona_run)
+    and (@apoderado_run = '-1' or apoderado.apoderado_persona_run = @apoderado_run)
     and (@curso_id = -1 or c.curso_id = @curso_id)
     and m.curso_agno = YEAR(CURRENT_TIMESTAMP));
 
@@ -6721,3 +6722,150 @@ CREATE FUNCTION fn_InfoDocente (@establecimiento bigint, @persona_run varchar(10
                   --,1
                   --,'10007672-1 '
                   --,1);
+
+                  	IF EXISTS (
+                                            SELECT * FROM sysobjects WHERE name = 'fn_InfoAnotaciones'
+                                        )
+                                            DROP FUNCTION fn_InfoAnotaciones;
+
+                                    Create FUNCTION [dbo].[fn_InfoAnotaciones] (
+                                               @run varchar(100),
+                                               @curso_id bigint,
+                                               @asignatura_id bigint,
+                                               @establ_id bigint,
+                                               @fecha varchar(100)
+                                           ) RETURNS TABLE AS RETURN (
+                                               SELECT
+                                                   a.*, p.*, c.*, dp.*, asi.*
+                                               FROM
+                                                   t_anotaciones a
+                                                   INNER JOIN t_matricula m ON a.matricula_id = m.matricula_id
+                                                   INNER JOIN t_alumno al ON m.matricula_alumno_id = al.alumno_id
+                                                   INNER JOIN t_persona p ON p.persona_run = al.alumno_persona_run
+                                                   INNER JOIN t_asignatura_docente ad ON a.asignatura_docente_id = ad.asignatura_doc_asignatura_id
+                                                   INNER JOIN t_asignatura asi ON ad.asignatura_doc_asignatura_id = asi.asignatura_id
+                                                   INNER JOIN t_docente_curso dc ON ad.asignatura_doc_docente_establ_id = dc.docente_curso_establ_id
+                                                   INNER JOIN t_curso c ON dc.docente_curso_id = c.curso_id
+                                                   INNER JOIN t_establ es ON ad.asignatura_doc_docente_establ_id = es.establ_id
+                                                   INNER JOIN (
+                                                       SELECT
+                                                           d.docente_id AS docente_id,
+                                                           p.persona_run AS docente_run,
+                                                           p.persona_nombre AS docente_nombre,
+                                                           p.persona_apellido_paterno AS docente_apellido_paterno,
+                                                           p.persona_apellido_materno AS docente_apellido_materno
+                                                       FROM
+                                                           t_docente d
+                                                           INNER JOIN t_persona p ON d.docente_persona_run = p.persona_run
+                                                   ) dp ON dp.docente_id = dc.docente_curso_docente_id
+                                               WHERE
+                                                   (p.persona_run = @run OR @run = '-1')
+                                                   AND (es.establ_id = @establ_id OR @establ_id = -1)
+                                                   AND (asi.asignatura_id = @asignatura_id OR @asignatura_id = -1)
+                                                 AND (ISDATE(@fecha) = 1
+                                                 and (TRY_CONVERT(DATE, @fecha, 103) IS NOT NULL AND fecha = TRY_CONVERT(DATE, @fecha, 103))
+                                                 OR @fecha = '-1'
+                                                 ));
+
+                  IF EXISTS (
+                                            SELECT * FROM sysobjects WHERE name = 'fn_InfoAsistencia'
+                                        )
+                                            DROP FUNCTION fn_InfoAsistencia;
+
+                  CREATE FUNCTION fn_InfoAsistencia
+                                           (   @run varchar(100),
+                                           	@establ_id bigint,
+                                           	    @fecha varchar(100)
+                                           )
+                                           RETURNS TABLE
+                                           AS
+                                           RETURN
+                                           (
+                                           	-- Add the SELECT statement with parameter references here
+                                           select a.*, al.*, e.* from t_asistencia a
+                                           INNER JOIN t_matricula m ON a.asistencia_matricula_id = m.matricula_id
+                                           INNER JOIN t_alumno al ON m.matricula_alumno_id = al.alumno_id
+                                           INNER JOIN t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id
+                                           inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+                                           where(
+                                               (al.alumno_persona_run = @run OR @run = '-1') and
+                                           	(e.establ_id = @establ_id OR @establ_id = '-1')
+                                               --AND (
+                                                   -- ( (ISDATE(@fecha) = 1 AND a.fecha = CONVERT(DATE, @fecha, 101)) OR @fecha = '-1' )
+
+                                               --)
+                                           )
+                                           );
+
+                  IF EXISTS (
+                                         SELECT * FROM sysobjects WHERE name = 'fn_InfoComunicaciones'
+                                     )
+                                         DROP FUNCTION fn_InfoComunicaciones;
+
+
+                  CREATE FUNCTION fn_InfoComunicaciones
+                  (
+                  	-- Add the parameters for the function here
+                    @persona_run varchar(100),
+                    @curso_id bigint,
+                    @establ_id bigint,
+                    @fecha varchar(100)
+                  )
+                  RETURNS TABLE
+                  AS
+                  RETURN
+                  (
+                  	select c.*, cu.*, p.*, e.* from t_comunicaciones c
+                  	inner join t_curso_establ ce on c.curso_establ_id = ce.curso_establ_establ_id
+                  	inner join t_matricula m  on ce.curso_establ_id = m.matricula_curso_establ_id
+                  	inner join t_curso cu on cu.curso_id = ce.curso_establ_curso_id
+                  	inner join t_alumno a on m.matricula_alumno_id = a.alumno_id
+                  	inner join t_persona p on a.alumno_persona_run = p.persona_run
+                  	inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+                  	where
+                  	(@establ_id = -1 or e.establ_id = @establ_id)
+                  	and (@persona_run = '-1' or a.alumno_persona_run  = @persona_run)
+                  	and (@curso_id = -1 or cu.curso_id = @curso_id)
+                  	AND ( ( (ISDATE(@fecha) = 1 AND c.fecha = CONVERT(DATE, @fecha, 101)) OR @fecha = '-1' ) ) );
+
+
+
+                  IF EXISTS (
+                                         SELECT * FROM sysobjects WHERE name = 'fn_InfoNotas'
+                                     )
+                                         DROP FUNCTION fn_InfoNotas;
+
+
+
+CREATE FUNCTION fn_InfoNotas
+(
+	-- Add the parameters for the function here
+	@run varchar(100), @docente_run varchar(100), @establ_id bigint,  @asignatura bigint,  @fecha varchar(100)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+	-- Add the SELECT statement with parameter references here
+SELECT e.*, an.*, a.*, al.alumno_id, p.persona_run, p.persona_nombre, p.persona_apellido_paterno, p.persona_apellido_materno, pd.*
+FROM t_asignatura_nota an
+INNER JOIN t_asignatura_docente ad ON an.asignatura_nota_asignatura_doc_id = ad.asignatura_doc_asignatura_id
+INNER JOIN t_asignatura a ON ad.asignatura_doc_asignatura_id = a.asignatura_id
+INNER JOIN t_matricula m ON m.matricula_alumno_id = an.asignatura_nota_matricula_id
+INNER JOIN t_alumno al ON al.alumno_id = m.matricula_alumno_id
+INNER JOIN t_persona p ON p.persona_run = al.alumno_persona_run
+INNER JOIN t_docente_curso dc ON ad.asignatura_doc_docente_establ_id = dc.docente_curso_id
+INNER JOIN t_curso_establ ce on m.matricula_curso_establ_id = ce.curso_establ_id
+inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+INNER JOIN (
+  SELECT d1.docente_id, p1.persona_run AS docente_run, p1.persona_nombre AS docente_nombre, p1.persona_apellido_paterno AS docente_paterno, p1.persona_apellido_materno AS docente_materno
+  FROM t_persona p1
+  INNER JOIN t_docente d1 ON p1.persona_run = d1.docente_persona_run
+) pd ON pd.docente_id = dc.docente_curso_docente_id
+WHERE
+  (a.asignatura_id = @asignatura or @asignatura = -1)
+  AND (al.alumno_persona_run = @run or @run = '-1')
+    AND (pd.docente_run = @docente_run or @docente_run = '-1')
+  AND (e.establ_id = @establ_id or @establ_id  = -1)
+AND (ISDATE(@fecha) = 1 and (TRY_CONVERT(DATE, @fecha, 103) IS NOT NULL AND YEAR(TRY_CONVERT(DATE, @fecha, 103)) = m.curso_agno) OR @fecha = '-1')
+)

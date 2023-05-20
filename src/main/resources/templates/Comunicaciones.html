@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Informativa de Comunicaciones</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333333;
+        }
+        p {
+            color: #555555;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Informativa de Comunicaciones</h1>
+<p>Estimado(a) Apoderado(a),</p>
+<p>Le informamos sobre la siguiente comunicación:</p>
+<table>
+  <tr>
+    <th>Fecha</th>
+    <th>Tipo</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td th:text="${fecha}"></td>
+    <td th:text="${tipo}"></td>
+    <td th:text="${descripcion}"></td>
+  </tr>
+</table>
+<p>Gracias por su atención.</p>
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.springboot.insideClass.payload.request.Matricula;
 
-import com.springboot.insideClass.payload.request.PersonaRequest;
+import com.springboot.insideClass.payload.request.Persona.PersonaRequest;
 
 public class M_CreateRequest {
     private PersonaRequest alumno;

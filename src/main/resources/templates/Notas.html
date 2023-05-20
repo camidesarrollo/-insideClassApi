@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de Evaluación</title>
+</head>
+<body>
+<h1>Informe de Evaluación</h1>
+<p>Estimado Apoderado,</p>
+<p>Le informamos que su hijo/a <strong th:text="${nombreAlumno}"></strong> ha sido evaluado en la asignatura de <strong th:text="${asignatura}"></strong>.</p>
+<p>La evaluación tuvo lugar el día <strong th:text="${Fecha}"></strong> y la nota obtenida fue <strong th:text="${nota}"></strong>.</p>
+<p>Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con nosotros.</p>
+<p>Atentamente,</p>
+<p th:text="${nombreProfesor}"></p>
+</body>
+</html>

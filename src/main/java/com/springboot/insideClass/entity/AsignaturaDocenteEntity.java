@@ -70,4 +70,8 @@ public class AsignaturaDocenteEntity {
     public void setDocenteCursoEntity(DocenteCursoEntity docenteCursoEntity) {
         this.docenteCursoEntity = docenteCursoEntity;
     }
+
+    public DocenteCursoEntity getDocenteCursoEntity() {
+        return docenteCursoEntity;
+    }
 }

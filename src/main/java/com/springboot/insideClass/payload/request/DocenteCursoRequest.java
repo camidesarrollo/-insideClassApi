@@ -1,6 +1,5 @@
 package com.springboot.insideClass.payload.request;
 
-import java.sql.Time;
 import java.util.Date;
 
 public class DocenteCursoRequest {
@@ -14,6 +13,8 @@ public class DocenteCursoRequest {
     String curso_establ_hora_fin;
 
     String dia;
+
+    boolean profesorJefe;
 
     public Date getDocente_curso_fecha_inicio() {
         return docente_curso_fecha_inicio;
@@ -53,5 +54,13 @@ public class DocenteCursoRequest {
 
     public void setDia(String dia) {
         this.dia = dia;
+    }
+
+    public boolean isProfesorJefe() {
+        return profesorJefe;
+    }
+
+    public void setProfesorJefe(boolean profesorJefe) {
+        this.profesorJefe = profesorJefe;
     }
 }

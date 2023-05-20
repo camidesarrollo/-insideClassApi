@@ -1,23 +1,18 @@
 package com.springboot.insideClass.controllers;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
-
+import com.springboot.insideClass.configuration.security.jwt.JwtUtils;
 import com.springboot.insideClass.entity.PerfilEntity;
 import com.springboot.insideClass.entity.PersonaEntity;
-import com.springboot.insideClass.entity.VigenciaEntity;
 import com.springboot.insideClass.entity.UsuarioEntity;
+import com.springboot.insideClass.entity.VigenciaEntity;
 import com.springboot.insideClass.payload.request.LoginRequest;
 import com.springboot.insideClass.payload.request.SignupRequest;
 import com.springboot.insideClass.payload.response.DirectorInfoResponse;
+import com.springboot.insideClass.payload.response.DocenteInfoResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.payload.response.UserInfoResponse;
-import com.springboot.insideClass.configuration.security.jwt.JwtUtils;
-import com.springboot.insideClass.service.*;
 import com.springboot.insideClass.repository.UsuarioRepository;
+import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -27,11 +22,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -65,6 +61,12 @@ public class AuthController {
   @Autowired
   DirectorService directorService;
 
+    @Autowired
+    DocenteService docenteService;
+
+    @Autowired
+    UsuarioService usuarioService;
+
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -97,11 +99,14 @@ public class AuthController {
               jwtCookie.toString());
     }else{
       System.out.println("Aqui aca");
-      arr[0] = new UserInfoResponse(userDetails.getId(),
-              userDetails.getUsername(),
-              userDetails.getEmail(),
-              roles,
-              jwtCookie.toString());
+      UsuarioEntity usuario = usuarioService.findById(userDetails.getId());
+        List<DocenteInfoResponse> docenteInfoResponses = docenteService.getInfoDocente(-1, usuario.getPersonaEntity().getPersona_run(), -1);
+        arr[0] = docenteInfoResponses;
+        arr[1] = new UserInfoResponse(userDetails.getId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                roles,
+                jwtCookie.toString());
     }
 
     System.out.println(arr[0] );
@@ -119,8 +124,7 @@ public class AuthController {
     if (userRepository.existsByEmail(signUpRequest.getEmail()) > 0) {
       return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
     }
-
-    // Create new user's account
+System.out.println(signUpRequest.getPassword());    // Create new user's account
     UsuarioEntity user = new UsuarioEntity(signUpRequest.getUsername(),
                          signUpRequest.getEmail(),
                          encoder.encode(signUpRequest.getPassword()));

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -67,8 +66,11 @@ public class UsuarioController {
         }
 
 
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE).body(usuarios.get(0));
+        if(usuarios.size() > 0){
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE).body(usuarios.get(0));
+        }
 
+        return ResponseEntity.ok().body(new MessageResponse("No se ha encontrado usuario con ese rut"));
 
         /*try {
 

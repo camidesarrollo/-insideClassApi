@@ -6,6 +6,7 @@ import com.springboot.insideClass.payload.request.Docente.D_TraerRequest;
 import com.springboot.insideClass.payload.request.DocenteAsignaturaRequest;
 import com.springboot.insideClass.payload.request.DocenteCursoRequest;
 import com.springboot.insideClass.payload.request.DocenteEstablecimientoRequest;
+import com.springboot.insideClass.payload.request.Persona.PersonaRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.repository.*;
 import com.springboot.insideClass.service.*;
@@ -97,6 +98,13 @@ public class DocenteController {
     @PostMapping("Create")
     public ResponseEntity<MessageResponse> agregarDocente(@Valid @RequestBody D_CreateRequest addDocenteRequest) throws ParseException {
         try{
+            System.out.println("Imprimiendo el run");
+            System.out.println(addDocenteRequest.getPersona().getPersona_run());
+
+            if(addDocenteRequest.getPersona().getPersona_run() == null){
+                return ResponseEntity.ok(new MessageResponse("Error!"));
+            }
+
             if(addDocenteRequest.getCurso() == 0){
                 System.out.println("Error");
             }
@@ -147,6 +155,7 @@ public class DocenteController {
                     docenteCurso.setCursoEstablecimientoEntity(cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(addDocenteRequest.getCurso(), addDocenteRequest.getEstablecimiento()));
                     docenteCurso.setDocente_curso_fecha_inicio(addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio());
                     docenteCurso.setDocente_cuso_fecha_fin(addDocenteRequest.getDocenteCurso().getDocente_cuso_fecha_fin());
+                    docenteCurso.setDocente_jefe(true);
                     docenteCursoRepo.save(docenteCurso);
                     System.out.println("Se guardo el docente-curso");
                 } else {
@@ -185,22 +194,24 @@ public class DocenteController {
             } else {
                 System.out.println("No se pudo insertar Asignatura Docente");
             }
+                   System.out.println(addDocenteRequest.getPersona().getPersona_run());
+                    PerfilEntity perfil = perfilService.findByName("Docente");
+                   List<UsuarioEntity> usuario = usuarioService.findByRunAndPerfil(addDocenteRequest.getPersona().getPersona_run(), perfil.getPerfil_id());
+                
+                   System.out.println(usuario.size());
+             if (usuario.size() == 0) {
 
-             if (usuarioService.findByRunAndPerfil(addDocenteRequest.getPersona().getPersona_run(), 1L) == null) {
 
-                PerfilEntity perfil = perfilService.findByName("Docente");
-                VigenciaEntity vigencia = vigenciaService.findByName("Vigente");
-                PersonaEntity persona = personaService.findByRun(addDocenteRequest.getPersona().getPersona_run());
+                 VigenciaEntity vigencia = vigenciaService.findByName("Vigente");
+                 PersonaEntity persona = personaService.findByRun(addDocenteRequest.getPersona().getPersona_run());
 
 
-                // Create new user's account
-                usuarioService.createUsuario(perfil, vigencia, persona, addDocenteRequest.getPersona().getCorreo());
+                 // Create new user's account
+                 usuarioService.createUsuario(perfil, vigencia, persona, addDocenteRequest.getPersona().getCorreo());
                  System.out.println("Se guardo el usuario");
                  return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
-            } else {
-                System.out.println("No se pudo insertar usuario");
-            }
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
+             }
+            return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
@@ -324,4 +335,40 @@ public class DocenteController {
 
         }
     }
+    @PutMapping("/Update")
+    public ResponseEntity<?> modificarDocente(@Valid @RequestBody PersonaRequest docente) {
+        try {
+            List<UsuarioEntity> usuario =  usuarioService.findByRunPerfil(docente.getPersona_run(), 1L);
+
+            if(usuario != null  || usuario.size() > 0){
+                usuario.get(0).setEmail(docente.getCorreo());
+
+                usuarioService.save(usuario.get(0));
+            }
+
+            PersonaEntity persona = personaService.findByRun(docente.getPersona_run());
+
+            persona.setPersona_nombre(docente.getPersona_nombre());
+            persona.setPersona_apellido_paterno(docente.getPersona_apellido_paterno());
+            persona.setPersona_apellido_materno(docente.getPersona_apellido_materno());
+            persona.setPersona_fecha_nacimiento(docente.getPersona_fecha_nacimiento());
+            persona.setPersona_sexo(docente.getPersona_sexo());
+            persona.setPersona_numero_telefonico(docente.getPersona_numero_telefonico());
+            persona.setPersona_numero_celular(docente.getPersona_numero_celular());
+            persona.setPersona_numero_celular(docente.getPersona_numero_celular());
+
+            personaService.save(persona);
+
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                    .body(new MessageResponse("Docente modificado  con exito"));
+
+        } catch (Exception e) {
+            System.out.println("Error:");
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().body(new MessageResponse("No se encontro matricula vigente!"));
+
+        }
+    }
+
+
 }

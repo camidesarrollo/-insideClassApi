@@ -73,6 +73,8 @@ public class UsuarioService {
         user.setVigenciaEntity(vigencia);
         user.setPersonaEntity(persona);
 
+        System.out.println(pass);
+
         usurepo.save(user);
 
     }
@@ -103,4 +105,5 @@ public class UsuarioService {
     public List<UsuarioEntity> findByRunPerfil(String run, long perfil){
         return usurepo.findByRunAndPerfil(run, perfil);
     }
+
 }

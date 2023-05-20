@@ -1,7 +1,7 @@
 package com.springboot.insideClass.payload.request.Docente;
 
 import com.springboot.insideClass.payload.request.DocenteCursoRequest;
-import com.springboot.insideClass.payload.request.PersonaRequest;
+import com.springboot.insideClass.payload.request.Persona.PersonaRequest;
 
 public class D_CreateRequest {
 

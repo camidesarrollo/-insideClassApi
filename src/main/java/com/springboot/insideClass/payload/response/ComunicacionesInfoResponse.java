@@ -1,37 +1,35 @@
 package com.springboot.insideClass.payload.response;
 
-import java.util.Date;
-
 public class ComunicacionesInfoResponse {
-    private Long comunicacionesId;
+    private String comunicacionesId;
     private String descripcion;
-    private Date fecha;
+    private String fecha;
     private String tipo;
-    private Long cursoEstablId;
-    private Long cursoId;
+    private String cursoEstablId;
+    private String cursoId;
     private String cursoNivel;
     private String cursoNombre;
     private String personaRun;
     private String personaApellidoMaterno;
     private String personaApellidoPaterno;
-    private Date personaFechaNacimiento;
+    private String personaFechaNacimiento;
     private String personaNombre;
     private String personaNumeroCelular;
     private String personaNumeroTelefonico;
     private String personaSexo;
-    private Long establId;
+    private String establId;
     private String establCodArea;
     private String establNombre;
     private String establNumeroTelefonico;
-    private Long establDependId;
-    private Long establDireccionId;
-    private Long establSostId;
+    private String establDependId;
+    private String establDireccionId;
+    private String establSostId;
 
-    public Long getComunicacionesId() {
+    public String getComunicacionesId() {
         return comunicacionesId;
     }
 
-    public void setComunicacionesId(Long comunicacionesId) {
+    public void setComunicacionesId(String comunicacionesId) {
         this.comunicacionesId = comunicacionesId;
     }
 
@@ -43,11 +41,11 @@ public class ComunicacionesInfoResponse {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -59,19 +57,19 @@ public class ComunicacionesInfoResponse {
         this.tipo = tipo;
     }
 
-    public Long getCursoEstablId() {
+    public String getCursoEstablId() {
         return cursoEstablId;
     }
 
-    public void setCursoEstablId(Long cursoEstablId) {
+    public void setCursoEstablId(String cursoEstablId) {
         this.cursoEstablId = cursoEstablId;
     }
 
-    public Long getCursoId() {
+    public String getCursoId() {
         return cursoId;
     }
 
-    public void setCursoId(Long cursoId) {
+    public void setCursoId(String cursoId) {
         this.cursoId = cursoId;
     }
 
@@ -115,11 +113,11 @@ public class ComunicacionesInfoResponse {
         this.personaApellidoPaterno = personaApellidoPaterno;
     }
 
-    public Date getPersonaFechaNacimiento() {
+    public String getPersonaFechaNacimiento() {
         return personaFechaNacimiento;
     }
 
-    public void setPersonaFechaNacimiento(Date personaFechaNacimiento) {
+    public void setPersonaFechaNacimiento(String personaFechaNacimiento) {
         this.personaFechaNacimiento = personaFechaNacimiento;
     }
 
@@ -155,11 +153,11 @@ public class ComunicacionesInfoResponse {
         this.personaSexo = personaSexo;
     }
 
-    public Long getEstablId() {
+    public String getEstablId() {
         return establId;
     }
 
-    public void setEstablId(Long establId) {
+    public void setEstablId(String establId) {
         this.establId = establId;
     }
 
@@ -187,27 +185,27 @@ public class ComunicacionesInfoResponse {
         this.establNumeroTelefonico = establNumeroTelefonico;
     }
 
-    public Long getEstablDependId() {
+    public String getEstablDependId() {
         return establDependId;
     }
 
-    public void setEstablDependId(Long establDependId) {
+    public void setEstablDependId(String establDependId) {
         this.establDependId = establDependId;
     }
 
-    public Long getEstablDireccionId() {
+    public String getEstablDireccionId() {
         return establDireccionId;
     }
 
-    public void setEstablDireccionId(Long establDireccionId) {
+    public void setEstablDireccionId(String establDireccionId) {
         this.establDireccionId = establDireccionId;
     }
 
-    public Long getEstablSostId() {
+    public String getEstablSostId() {
         return establSostId;
     }
 
-    public void setEstablSostId(Long establSostId) {
+    public void setEstablSostId(String establSostId) {
         this.establSostId = establSostId;
     }
 }

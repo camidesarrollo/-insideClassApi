@@ -4,9 +4,9 @@ import com.springboot.insideClass.componet.Correo;
 import com.springboot.insideClass.entity.ComunicacionesEntity;
 import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
 import com.springboot.insideClass.entity.EstablecimientoEntity;
-import com.springboot.insideClass.payload.request.Comunicacion.CreateRequest;
-import com.springboot.insideClass.payload.request.Comunicacion.EditRequest;
-import com.springboot.insideClass.payload.request.Comunicacion.GetRequest;
+import com.springboot.insideClass.payload.request.Comunicacion.CreateComunicacionesRequest;
+import com.springboot.insideClass.payload.request.Comunicacion.EditComunicacionesRequest;
+import com.springboot.insideClass.payload.request.Comunicacion.GetComunicacionesRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.ComunicacionesService;
 import com.springboot.insideClass.service.CursoEstablecimientoService;
@@ -18,6 +18,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -38,7 +42,7 @@ public class ComunicacionesController {
     private Correo correo;
 
     @PostMapping("/Get")
-    public ResponseEntity<?> obtenerComunicacion(@Valid @RequestBody GetRequest request) {
+    public ResponseEntity<?> obtenerComunicacion(@Valid @RequestBody GetComunicacionesRequest request) {
         try{
             return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
                     .body(comunicacionesService.obtenerInfoComunicaciones(request.getRun(), request.getId_curos(), request.getId_establecimiento(), request.getFecha()));
@@ -48,7 +52,8 @@ public class ComunicacionesController {
     }
 
     @PostMapping("/Create")
-    public ResponseEntity<?> ingresarComunicacion(@Valid @RequestBody CreateRequest comunicacionRequest) {
+    public ResponseEntity<?> ingresarComunicacion(@Valid @RequestBody CreateComunicacionesRequest comunicacionRequest) {
+
 
         try{
             EstablecimientoEntity establecimiento = establecimientoService.findEstablecimientoById(comunicacionRequest.getEstablecimiento());
@@ -65,14 +70,18 @@ public class ComunicacionesController {
 
             ComunicacionesEntity comunicaciones = new ComunicacionesEntity();
             comunicaciones.setCursoEstablecimiento(cursoEstablecimiento);
-            comunicaciones.setTipo(comunicaciones.getTipo());
-            comunicaciones.setFecha(comunicaciones.getFecha());
-            comunicaciones.setDescripcion(comunicaciones.getDescripcion());
+            comunicaciones.setTipo(comunicacionRequest.getTipo());
+            comunicaciones.setFecha(comunicacionRequest.getFecha());
+            comunicaciones.setDescripcion(comunicacionRequest.getDescripcion());
 
             comunicacionesService.save(comunicaciones);
 
+            LocalDate localDate = comunicaciones.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE MMMM yyyy", new Locale("es", "ES"));
+            String fecha = localDate.format(formatter);
+            System.out.println(fecha);
 
-            correo.enviarCorreoComunicacion(comunicaciones.getFecha().toString(), comunicaciones.getTipo(), comunicaciones.getDescripcion());
+           /* correo.enviarCorreoComunicacion(fecha, comunicaciones.getTipo(), comunicaciones.getDescripcion());*/
 
             return ResponseEntity.ok(new MessageResponse("Se ha registrado comunicación con exito!"));
 
@@ -85,7 +94,7 @@ public class ComunicacionesController {
     }
 
     @PutMapping("/Edit")
-    public ResponseEntity<?> editarComunicacion(@Valid @RequestBody EditRequest editRequest) {
+    public ResponseEntity<?> editarComunicacion(@Valid @RequestBody EditComunicacionesRequest editRequest) {
 
         try{
 
@@ -113,7 +122,7 @@ public class ComunicacionesController {
     }
 
     @DeleteMapping("/Delete")
-    public ResponseEntity<?> deleteComunicacion(@Valid @RequestBody EditRequest editRequest) {
+    public ResponseEntity<?> deleteComunicacion(@Valid @RequestBody EditComunicacionesRequest editRequest) {
 
         try{
 

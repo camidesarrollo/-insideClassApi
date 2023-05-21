@@ -85,6 +85,9 @@ public class AuthController {
 
     System.out.println(roles.get(0));
 
+    roles.forEach(role -> System.out.println(role));
+
+
     Object[] arr = new Object[2];
 
     if(Objects.equals(roles.get(0), "Director")){

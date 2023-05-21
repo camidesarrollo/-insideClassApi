@@ -6847,8 +6847,20 @@ AS
 RETURN
 (
 	-- Add the SELECT statement with parameter references here
-SELECT e.*, an.*, a.*, al.alumno_id, p.persona_run, p.persona_nombre, p.persona_apellido_paterno, p.persona_apellido_materno, pd.*
-FROM t_asignatura_nota an
+Select e.*, an.*, a.*, al.alumno_id, p.persona_run, p.persona_nombre, p.persona_apellido_paterno, p.persona_apellido_materno, pd.*
+from t_establ e
+inner JOIN t_curso_establ ce on e.establ_id = ce.curso_establ_id
+inner JOIN t_docente_curso dc ON ce.curso_establ_id = dc.docente_curso_docente_id
+inner  JOIN t_asignatura_docente ad on ad.asignatura_doc_docente_establ_id = e.establ_id
+inner JOIN t_asignatura a ON ad.asignatura_doc_asignatura_id = a.asignatura_id
+left JOIN ( SELECT d1.docente_id, p1.persona_run AS docente_run, p1.persona_nombre AS docente_nombre, p1.persona_apellido_paterno AS docente_paterno,
+p1.persona_apellido_materno AS docente_materno FROM t_persona p1 INNER JOIN t_docente d1 ON p1.persona_run = d1.docente_persona_run ) pd
+ON pd.docente_id = dc.docente_curso_docente_id
+inner join t_matricula m on ce.curso_establ_id = m.matricula_curso_establ_id
+left join t_asignatura_nota an  on  m.matricula_alumno_id = an.asignatura_nota_matricula_id
+inner JOIN t_alumno al ON al.alumno_id = m.matricula_alumno_id
+inner JOIN t_persona p ON p.persona_run = al.alumno_persona_run 
+/*FROM t_asignatura_nota an
 INNER JOIN t_asignatura_docente ad ON an.asignatura_nota_asignatura_doc_id = ad.asignatura_doc_asignatura_id
 INNER JOIN t_asignatura a ON ad.asignatura_doc_asignatura_id = a.asignatura_id
 INNER JOIN t_matricula m ON m.matricula_alumno_id = an.asignatura_nota_matricula_id
@@ -6861,7 +6873,8 @@ INNER JOIN (
   SELECT d1.docente_id, p1.persona_run AS docente_run, p1.persona_nombre AS docente_nombre, p1.persona_apellido_paterno AS docente_paterno, p1.persona_apellido_materno AS docente_materno
   FROM t_persona p1
   INNER JOIN t_docente d1 ON p1.persona_run = d1.docente_persona_run
-) pd ON pd.docente_id = dc.docente_curso_docente_id
+) pd ON pd.docente_id = dc.docente_curso_docente_id*/
+
 WHERE
   (a.asignatura_id = @asignatura or @asignatura = -1)
   AND (al.alumno_persona_run = @run or @run = '-1')

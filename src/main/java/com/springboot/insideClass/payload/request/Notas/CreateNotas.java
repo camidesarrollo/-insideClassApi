@@ -14,6 +14,16 @@ public class CreateNotas {
 
     private String nota;
 
+    public String getPosicion_nota() {
+        return posicion_nota;
+    }
+
+    public void setPosicion_nota(String posicion_nota) {
+        this.posicion_nota = posicion_nota;
+    }
+
+    private String posicion_nota;
+
     private Date fecha;
 
     public String getRun() {

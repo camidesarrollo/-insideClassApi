@@ -6,6 +6,7 @@ import com.springboot.insideClass.repository.ComunicacionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,29 +31,22 @@ public class ComunicacionesService {
                 fila = (Object[]) item;
 
                 // Establecer los valores correspondientes en el objeto ComunicacionesInfoResponse
-                comunicacionesInfoResponse.setComunicacionesId((Long) fila[0]);
+                comunicacionesInfoResponse.setComunicacionesId(fila[0] != null ? ((BigInteger) fila[0]).toString() : "");
                 comunicacionesInfoResponse.setDescripcion((String) fila[1]);
-                comunicacionesInfoResponse.setFecha((Date) fila[2]);
+                comunicacionesInfoResponse.setFecha(fila[2] != null ? ((Date) fila[2]).toString() : "");
                 comunicacionesInfoResponse.setTipo((String) fila[3]);
-                comunicacionesInfoResponse.setCursoEstablId((Long) fila[4]);
-                comunicacionesInfoResponse.setCursoId((Long) fila[5]);
+                comunicacionesInfoResponse.setCursoEstablId(fila[4] != null ? ((BigInteger) fila[4]).toString() : "");
+                comunicacionesInfoResponse.setCursoId(fila[5] != null ? ((BigInteger) fila[5]).toString() : "");
                 comunicacionesInfoResponse.setCursoNivel((String) fila[6]);
                 comunicacionesInfoResponse.setCursoNombre((String) fila[7]);
                 comunicacionesInfoResponse.setPersonaRun((String) fila[8]);
                 comunicacionesInfoResponse.setPersonaApellidoMaterno((String) fila[9]);
                 comunicacionesInfoResponse.setPersonaApellidoPaterno((String) fila[10]);
-                comunicacionesInfoResponse.setPersonaFechaNacimiento((Date) fila[11]);
                 comunicacionesInfoResponse.setPersonaNombre((String) fila[12]);
                 comunicacionesInfoResponse.setPersonaNumeroCelular((String) fila[13]);
                 comunicacionesInfoResponse.setPersonaNumeroTelefonico((String) fila[14]);
-                comunicacionesInfoResponse.setPersonaSexo((String) fila[15]);
-                comunicacionesInfoResponse.setEstablId((Long) fila[16]);
-                comunicacionesInfoResponse.setEstablCodArea((String) fila[17]);
                 comunicacionesInfoResponse.setEstablNombre((String) fila[18]);
-                comunicacionesInfoResponse.setEstablNumeroTelefonico((String) fila[19]);
-                comunicacionesInfoResponse.setEstablDependId((Long) fila[20]);
-                comunicacionesInfoResponse.setEstablDireccionId((Long) fila[21]);
-                comunicacionesInfoResponse.setEstablSostId((Long) fila[22]);
+
 
                 listaAnotacion.add(comunicacionesInfoResponse);
             }

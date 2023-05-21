@@ -61,20 +61,21 @@ public class AsignaturaNotaService {
                 notasInfoRequest.setEstablSostId(fila[6] != null ? ((BigInteger) fila[6]).toString() : "");
                 notasInfoRequest.setAsignaturaNotaId(fila[7] != null ? ((BigInteger) fila[7]).toString() : "");
                 notasInfoRequest.setAsignaturaNotaNota(fila[8] != null ? (String) fila[8] : "");
-                notasInfoRequest.setAsignaturaNotaAsignaturaDocId(fila[9] != null ? ((BigInteger) fila[9]).toString() : "");
-                notasInfoRequest.setAsignaturaNotaMatriculaId(fila[10] != null ? ((BigInteger) fila[10]).toString() : "");
-                notasInfoRequest.setAsignaturaId(fila[11] != null ? ((BigInteger) fila[11]).toString() : "");
-                notasInfoRequest.setAsignaturaNombre(fila[12] != null ? (String) fila[12] : "");
-                notasInfoRequest.setAlumnoId(fila[13] != null ? ((BigInteger) fila[13]).toString() : "");
-                notasInfoRequest.setPersonaRun(fila[14] != null ? (String) fila[14] : "");
-                notasInfoRequest.setPersonaNombre(fila[15] != null ? (String) fila[15] : "");
-                notasInfoRequest.setPersonaApellidoPaterno(fila[16] != null ? (String) fila[16] : "");
-                notasInfoRequest.setPersonaApellidoMaterno(fila[17] != null ? (String) fila[17] : "");
-                notasInfoRequest.setDocenteId(fila[18] != null ? ((BigInteger) fila[18]).toString() : "");
-                notasInfoRequest.setDocenteRun(fila[19] != null ? (String) fila[19] : "");
-                notasInfoRequest.setDocenteNombre(fila[20] != null ? (String) fila[20] : "");
-                notasInfoRequest.setDocenteApellidoPaterno(fila[21] != null ? (String) fila[21] : "");
-                notasInfoRequest.setDocenteApellidoMaterno(fila[22] != null ? (String) fila[22] : "");
+                notasInfoRequest.setAsignaturaNotaPosicion(fila[9] != null ? (String) fila[9] : "");
+                notasInfoRequest.setAsignaturaNotaAsignaturaDocId(fila[10] != null ? ((BigInteger) fila[10]).toString() : "");
+                notasInfoRequest.setAsignaturaNotaMatriculaId(fila[11] != null ? ((BigInteger) fila[11]).toString() : "");
+                notasInfoRequest.setAsignaturaId(fila[12] != null ? ((BigInteger) fila[12]).toString() : "");
+                notasInfoRequest.setAsignaturaNombre(fila[13] != null ? (String) fila[13] : "");
+                notasInfoRequest.setAlumnoId(fila[14] != null ? ((BigInteger) fila[14]).toString() : "");
+                notasInfoRequest.setPersonaRun(fila[15] != null ? (String) fila[15] : "");
+                notasInfoRequest.setPersonaNombre(fila[16] != null ? (String) fila[16] : "");
+                notasInfoRequest.setPersonaApellidoPaterno(fila[17] != null ? (String) fila[16] : "");
+                notasInfoRequest.setPersonaApellidoMaterno(fila[18] != null ? (String) fila[18] : "");
+                notasInfoRequest.setDocenteId(fila[19] != null ? ((BigInteger) fila[19]).toString() : "");
+                notasInfoRequest.setDocenteRun(fila[20] != null ? (String) fila[20] : "");
+                notasInfoRequest.setDocenteNombre(fila[21] != null ? (String) fila[21] : "");
+                notasInfoRequest.setDocenteApellidoPaterno(fila[22] != null ? (String) fila[22] : "");
+                notasInfoRequest.setDocenteApellidoMaterno(fila[23] != null ? (String) fila[23] : "");
 
                 listanotas.add(notasInfoRequest);
             }

@@ -2,7 +2,7 @@ package com.springboot.insideClass.payload.request.Comunicacion;
 
 import java.util.Date;
 
-public class EditRequest {
+public class EditComunicacionesRequest {
 
     private Long id_comunicacion;
     private Date fecha;

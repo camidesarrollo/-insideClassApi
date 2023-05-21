@@ -12,6 +12,8 @@ public class NotasInfoRequest {
     private String asignaturaNotaNota;
     private String asignaturaNotaAsignaturaDocId;
     private String asignaturaNotaMatriculaId;
+
+    private String asignaturaNotaPosicion;
     private String asignaturaId;
     private String asignaturaNombre;
     private String alumnoId;
@@ -213,6 +215,14 @@ public class NotasInfoRequest {
 
     public void setDocenteApellidoMaterno(String docenteApellidoMaterno) {
         this.docenteApellidoMaterno = docenteApellidoMaterno;
+    }
+
+    public String getAsignaturaNotaPosicion() {
+        return asignaturaNotaPosicion;
+    }
+
+    public void setAsignaturaNotaPosicion(String asignaturaNotaPosicion) {
+        this.asignaturaNotaPosicion = asignaturaNotaPosicion;
     }
 
     // Override del método toString()

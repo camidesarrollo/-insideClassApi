@@ -86,9 +86,12 @@ public class EmailSenderService {
                  content = templateEngine.process("Notas.html", context);
             }else if(tipoCorreo == 2){
                  content = templateEngine.process("Anotacion.html", context);
-            }else{
+            }else if(tipoCorreo == 3){
                 content = templateEngine.process("Comunicaciones.html", context);
+            }else if(tipoCorreo == 4){
+                content = templateEngine.process("Asistencia.html", context);
             }
+
 
 
 

@@ -113,7 +113,7 @@ public class NotasController {
         nota.setMatriculaEntity(matricula);
         nota.setAsignaturaDocenteEntity(asignaturaDocente);
         nota.setAsignatura_nota_nota(notaRequest.getNota());
-
+        nota.setPosicion_nota_nota(notaRequest.getPosicion_nota());
         // Guardar la nueva entidad en la base de datos
         asignaturaNotaService.save(nota);
 
@@ -123,7 +123,7 @@ public class NotasController {
     }
 
 
-    @PutMapping("/Edit")
+    @PutMapping("/Update")
     public ResponseEntity<?> editarNota(@Valid @RequestBody EditNotas notaRequest) {
 
         try{

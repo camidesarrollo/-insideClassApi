@@ -1,5 +1,6 @@
 package com.springboot.insideClass.controllers;
 
+import com.springboot.insideClass.componet.Correo;
 import com.springboot.insideClass.entity.AsistenciaEntity;
 import com.springboot.insideClass.entity.MatriculaEntity;
 import com.springboot.insideClass.payload.request.Asistencia.EditAsistencia;
@@ -29,6 +30,9 @@ public class AsistenciaController {
     @Autowired
     MatriculaService matriculaService;
 
+    @Autowired
+    private Correo correo;
+
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerAsistencia(@Valid @RequestBody GetAsistenciaRequest request) {
         try{
@@ -52,6 +56,9 @@ public class AsistenciaController {
                 System.out.println(matricula);
                 MatriculaEntity matriculaenty = matriculaService.findMatriculaById(matricula);
                 AsistenciaEntity asistencia1 = new AsistenciaEntity(matriculaenty, asistenciaRequest.getFecha());
+
+                correo.enviarCorreoAsistencia(matriculaenty.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),asistenciaRequest.getFecha().toString(), "Asistio", matriculaenty.getCursoEstablecimientoEntity().getEstablecimientoEntity().getEstabl_nombre());
+
                 asistenciaService.save(asistencia1);
             }
 

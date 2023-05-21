@@ -1,6 +1,6 @@
 package com.springboot.insideClass.payload.request.Comunicacion;
 
-public class GetRequest {
+public class GetComunicacionesRequest {
     Long id_establecimiento;
     Long id_curos;
     String fecha;

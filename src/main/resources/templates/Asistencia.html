@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Comunicación de Asistencia de Alumno</title>
+</head>
+<body>
+<h1>Comunicación de Asistencia de Alumno</h1>
+<p>Estimado Apoderado,</p>
+
+<p>Le informamos sobre la asistencia de su hijo/a  <strong th:text="${nombreAlumno}"></strong>   </p>
+
+<h2>Detalles de la Asistencia:</h2>
+<p>Fecha: <strong th:text="${fecha}"></strong></p>
+<p>Alumno/a: <strong th:text="${nombreAlumno}"></strong></p>
+<p>Estado de Asistencia: <strong th:text="${estadoAsistencia}"></strong></p>
+
+<p>Por favor, tenga en cuenta esta información y comuníquese con nosotros si tiene alguna pregunta o inquietud.</p>
+
+<p>Atentamente,</p>
+<p th:text="${nombreEstablecimiento}"></p>
+</body>
+</html>

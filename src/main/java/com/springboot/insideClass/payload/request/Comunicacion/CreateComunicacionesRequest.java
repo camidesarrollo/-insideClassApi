@@ -2,7 +2,7 @@ package com.springboot.insideClass.payload.request.Comunicacion;
 
 import java.util.Date;
 
-public class CreateRequest {
+public class CreateComunicacionesRequest {
 
     private Long establecimiento;
 

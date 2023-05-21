@@ -61,6 +61,21 @@ public class Correo {
         emailSenderService.sendEmailWithTemplate(recipientEmail, subject, templateVariables, 3);
     }
 
+    public void enviarCorreoAsistencia(String nombreAlumno, String fecha, String estadoAsistencia, String nombreEstablecimiento) {
+        String recipientEmail = "correo_destino@example.com";
+        String subject = "Asistencia";
+
+        // Variables para reemplazar en la plantilla
+        Map<String, Object> templateVariables = new HashMap<>();
+        templateVariables.put("fecha", fecha);
+        templateVariables.put("nombreAlumno", nombreAlumno);
+        templateVariables.put("estadoAsistencia", estadoAsistencia);
+        templateVariables.put("nombreEstablecimiento", nombreEstablecimiento);
+
+        emailSenderService.sendEmailWithTemplate(recipientEmail, subject, templateVariables, 4);
+    }
+
+
 
     public void enviarCorreoConPlantilla() {
         String recipientEmail = "correo_destino@example.com";

@@ -24,6 +24,10 @@ public class AsignaturaNotaEntity {
     @Size(max = 200)
     String asignatura_nota_nota;
 
+    @NotBlank
+    @Size(max = 200)
+    String posicion_nota_nota;
+
     public AsignaturaNotaEntity() {
     }
 
@@ -56,5 +60,13 @@ public class AsignaturaNotaEntity {
 
     public void setAsignatura_nota_nota(String asignatura_nota_nota) {
         this.asignatura_nota_nota = asignatura_nota_nota;
+    }
+
+    public String getPosicion_nota_nota() {
+        return posicion_nota_nota;
+    }
+
+    public void setPosicion_nota_nota(String posicion_nota_nota) {
+        this.posicion_nota_nota = posicion_nota_nota;
     }
 }

@@ -5,6 +5,8 @@ import com.springboot.insideClass.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonaService {
 
@@ -38,6 +40,17 @@ public class PersonaService {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+   public List<PersonaEntity> findAlumnosByApoderado(String apoderado_run, String matricula_vigencia, String establ_id){
+
+        try{
+            System.out.println(apoderado_run);
+            return personaRepo.findAlumnosByApoderado(apoderado_run, matricula_vigencia, establ_id);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
     }
 
 }

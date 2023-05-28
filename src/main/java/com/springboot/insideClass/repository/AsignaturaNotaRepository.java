@@ -10,7 +10,16 @@ import java.util.List;
 @Repository
 public interface AsignaturaNotaRepository extends JpaRepository<AsignaturaNotaEntity, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoNotas(:run, :docente_run, :establ_id, :asignatura, :fecha)")
-    List<Object> fn_Notas( @Param("run") String persona_run, @Param("docente_run") String docente_run, @Param("establ_id") Long establecimiento,
-                                @Param("asignatura") Long asignatura_id, @Param("fecha") String fecha);
+    @Query(nativeQuery = true, value = " SELECT * FROM fn_InfoNotas(:run,:docente_run, :establ_id,:asignatura,:fecha,:curso)")
+    List<Object> fn_Notas(
+           @Param("run") String run,
+            @Param("docente_run") String docente_run,
+           @Param("establ_id") Long establ_id,
+           @Param("asignatura") Long asignatura,
+            @Param("fecha") String fecha,
+             @Param("curso") Long curso
+            );
+
+    @Query(nativeQuery = true, value = "SELECT * FROM t_asignatura_nota ORDER BY asignatura_nota_id DESC")
+    List<AsignaturaNotaEntity> findLast();
 }

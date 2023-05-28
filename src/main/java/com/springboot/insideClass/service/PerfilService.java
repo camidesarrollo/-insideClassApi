@@ -22,6 +22,18 @@ public class PerfilService {
         return null;
     }
 
+    public List<PerfilEntity> findByUsuarioRun(String usuario_nick_name){
+
+        try{
+            return perfilRepository.findByUsuarioRun(usuario_nick_name);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
+
     public PerfilEntity findByName(String findByName) {
         try{
             return perfilRepository.findByName(findByName);

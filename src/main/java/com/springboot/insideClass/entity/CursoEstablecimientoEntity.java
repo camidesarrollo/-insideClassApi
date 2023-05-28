@@ -25,15 +25,20 @@ public class CursoEstablecimientoEntity {
 
     Boolean vigencia;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "curso_establ_matricula_id", nullable = false)
+    MatriculaEntity matriculaEntity;
+
     public CursoEstablecimientoEntity() {
     }
 
-    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Date curso_establ_fecha_inicio, Date curso_establ_fecha_fin, Boolean vigencia) {
+    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Date curso_establ_fecha_inicio, Date curso_establ_fecha_fin, Boolean vigencia, MatriculaEntity matriculaEntity) {
         this.cursoEntity = cursoEntity;
         this.establecimientoEntity = establecimientoEntity;
         this.curso_establ_fecha_inicio = curso_establ_fecha_inicio;
         this.curso_establ_fecha_fin = curso_establ_fecha_fin;
         this.vigencia = vigencia;
+        this.matriculaEntity = matriculaEntity;
     }
 
     public Long getCurso_establ_id() {
@@ -82,5 +87,13 @@ public class CursoEstablecimientoEntity {
 
     public void setVigencia(Boolean vigencia) {
         this.vigencia = vigencia;
+    }
+
+    public MatriculaEntity getMatriculaEntity() {
+        return matriculaEntity;
+    }
+
+    public void setMatriculaEntity(MatriculaEntity matriculaEntity) {
+        this.matriculaEntity = matriculaEntity;
     }
 }

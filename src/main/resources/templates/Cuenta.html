@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Generación de cuenta</title>
+</head>
+<body>
+<h2>Generación de cuenta</h2>
+<p>Estimado(a) <span th:text="${nombrePersona}"></span></p>
+<p>Se ha generado una nueva cuenta para usted con los siguientes detalles:</p>
+<ul>
+    <li><strong>Nombre de usuario:</strong> <span th:text="${nombreUsuario}"></span></li>
+    <li><strong>Contraseña:</strong>  <span th:text="${contrasena}"></span></li>
+    <li><strong>Tipo de perfil:</strong><span th:text="${tipoPerfil}"></span></li>
+</ul>
+<p>Por favor, acceda a nuestro sistema utilizando estas credenciales para comenzar a utilizar su cuenta.</p>
+<p>Si tiene alguna pregunta o necesita ayuda, no dude en contactarnos.</p>
+<p>¡Gracias!</p>
+</body>
+</html>

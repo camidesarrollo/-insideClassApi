@@ -38,4 +38,24 @@ public class DeleteRequest {
     public void setRut_alumno(String rut_alumno) {
         this.rut_alumno = rut_alumno;
     }
+
+    public boolean IsValid() {
+        if (curso_agno == null || curso_agno <= 0) {
+            return false;
+        }
+
+        if (curso_nombre == null || curso_nombre.isEmpty()) {
+            return false;
+        }
+
+        if (establecimiento_id == null || establecimiento_id <= 0) {
+            return false;
+        }
+
+        if (rut_alumno == null || rut_alumno.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
 }

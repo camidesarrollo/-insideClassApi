@@ -11,8 +11,14 @@ import java.util.List;
 
 @Repository
 public interface AsignaturaDocenteRepository extends JpaRepository<AsignaturaDocenteEntity, Long> {
-    @Query(nativeQuery = true, value = "select * from t_asignatura_docente where asignatura_doc_asignatura_id = ? and asignatura_doc_docente_establ_id = ?")
-    AsignaturaDocenteEntity findAsignaturaDocenteByAsignaturaAndDocente(@Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id, @Param("asignatura_doc_docente_establ_id") long asignatura_doc_docente_establ_id);
+    @Query(nativeQuery = true, value = "select * from t_asignatura_docente \n" +
+            "where \n" +
+            "asignatura_doc_asignatura_id = ?\n" +
+            "and asignatura_doc_docente_id = ?\n" +
+            "and year(asignatura_doc_inicio) = ? \n" +
+            "and year(asignatura_doc_fin) = ?")
+    AsignaturaDocenteEntity findAsignaturaDocenteByAsignaturaAndDocente(@Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id, @Param("asignatura_doc_docente_id") long asignatura_doc_docente_id,@Param("asignatura_doc_inicio") Integer asignatura_doc_inicio,
+                                                                        @Param("asignatura_doc_fin")  Integer asignatura_doc_fin);
 
     @Query(nativeQuery = true, value = "select ad.* from t_docente d\n" +
             "inner join t_docente_curso dc on d.docente_id = dc.docente_curso_docente_id \n" +
@@ -30,16 +36,20 @@ public interface AsignaturaDocenteRepository extends JpaRepository<AsignaturaDoc
     AsignaturaDocenteEntity findDocenteCursoByCursoAsignatura(@Param("curso_id") long curso_id, @Param("docente_curso_docente_id") long docente_curso_docente_id, @Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id);
 
 
-    @Query(nativeQuery = true, value = "select ad.* from \n" +
-            "t_docente d inner join t_docente_curso dc on d.docente_id = dc.docente_curso_docente_id \n" +
-            "inner join t_curso_establ ce on dc.docente_curso_establ_id = ce.curso_establ_id \n" +
-            "inner join t_curso c on ce.curso_establ_curso_id = c.curso_id \n" +
-            "inner join t_establ e on ce.curso_establ_establ_id = e.establ_id \n" +
-            "inner join t_asignatura_docente ad on dc.docente_curso_id = ad.asignatura_doc_docente_establ_id \n" +
-            "inner join t_asignatura a on ad.asignatura_doc_asignatura_id = a.asignatura_id \n" +
-            "inner join t_persona p on d.docente_persona_run = p.persona_run \n" +
-            "where d.docente_persona_run = ? and a.asignatura_id = ? and c.curso_id = ? and year(dc.docente_cuso_fecha_fin) = ?")
-    AsignaturaDocenteEntity findDocenteCursoByRunAndAsignaturaAndEstablecimiento(@Param("docente_persona_run") String docente_persona_run, @Param("asignatura_id") long asignatura_id, @Param("curso_id") long curso_id, @Param("docente_cuso_fecha_fin") Integer docente_cuso_fecha_fin);
+    @Query(nativeQuery = true, value = "SELECT ae.* FROM t_asignatura_docente ae " +
+            "INNER JOIN t_asig_nota_establcurso ane ON ae.asignatura_doc_id = ane.asig_nota_establecurso_docente_asignatura_id  " +
+            "INNER JOIN t_docente d ON d.docente_id = ae.asignatura_doc_id " +
+            "INNER JOIN t_curso_establ ce ON ane.asig_nota_establecurso_curso_id = ce.curso_establ_id " +
+            "WHERE YEAR(ae.asignatura_doc_inicio) = :asignatura_doc_inicio AND YEAR(ae.asignatura_doc_fin) = :asignatura_doc_fin " +
+            "AND d.docente_persona_run = :docente_persona_run AND ce.curso_establ_establ_id = :curso_establ_establ_id " +
+            "AND ae.asignatura_doc_asignatura_id = :asignatura_doc_asignatura_id")
+    AsignaturaDocenteEntity findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
+            @Param("asignatura_doc_inicio") long asignatura_doc_inicio,
+            @Param("asignatura_doc_fin") Integer asignatura_doc_fin,
+            @Param("docente_persona_run") String docente_persona_run,
+            @Param("curso_establ_establ_id") long curso_establ_establ_id,
+            @Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id
+    );
 
 
 

@@ -38,4 +38,9 @@ public class GetRequest {
     public void setVigencia(Integer vigencia) {
         this.vigencia = vigencia;
     }
+
+    public boolean isValid() {
+        return establecimiento != null && persona_run != null && curso_id != null && vigencia != null
+                && !persona_run.isEmpty();
+    }
 }

@@ -17,10 +17,10 @@ public class AsignaturaDocenteService {
     private AsignaturaRepository asignaturaRepository;
 
 
-    public AsignaturaDocenteEntity findAsignaturaDocenteByAsignaturaAndDocente(long asignatura_doc_asignatura_id, long asignatura_doc_docente_establ_id){
+    public AsignaturaDocenteEntity findAsignaturaDocenteByAsignaturaAndDocente(long asignatura_doc_asignatura_id, long asignatura_doc_docente_establ_id, Integer inicio, Integer fin){
 
         try{
-            return asignaturaDocenteRepository.findAsignaturaDocenteByAsignaturaAndDocente(asignatura_doc_asignatura_id, asignatura_doc_docente_establ_id);
+            return asignaturaDocenteRepository.findAsignaturaDocenteByAsignaturaAndDocente(asignatura_doc_asignatura_id, asignatura_doc_docente_establ_id, inicio, fin);
         }catch (Exception e){
             System.out.println(e);
         }
@@ -57,14 +57,15 @@ public class AsignaturaDocenteService {
     }
 
 
-    public AsignaturaDocenteEntity findDocenteCursoByRunAndAsignaturaAndEstablecimiento(String docente_persona_run, long asignatura_id, long curso_id,  Integer docente_cuso_fecha_fin){
-
+    public AsignaturaDocenteEntity findDocenteCursoByRunAndAsignaturaAndEstablecimiento( Integer asignatura_doc_inicio,
+                                                                                         Integer asignatura_doc_fin,
+                                                                                       String docente_persona_run,
+                                                                              long curso_establ_establ_id,
+                                                                               long asignatura_doc_asignatura_id){
+System.out.println(asignatura_doc_inicio + " - " + asignatura_doc_fin + " - " + docente_persona_run + " - " + curso_establ_establ_id + " - " +  asignatura_doc_asignatura_id);
         try{
-            System.out.println(docente_persona_run);
-            System.out.println(asignatura_id);
-            System.out.println(curso_id);
-            System.out.println(docente_cuso_fecha_fin);
-            return asignaturaDocenteRepository.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(docente_persona_run,asignatura_id,curso_id,docente_cuso_fecha_fin);
+
+            return asignaturaDocenteRepository.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(asignatura_doc_inicio,asignatura_doc_fin,docente_persona_run,curso_establ_establ_id,asignatura_doc_asignatura_id );
         }catch (Exception e){
             System.out.println(e);
         }

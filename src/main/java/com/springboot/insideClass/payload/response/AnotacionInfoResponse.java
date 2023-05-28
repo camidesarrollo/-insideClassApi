@@ -217,4 +217,5 @@ public class AnotacionInfoResponse {
     public void setAsignaturaNombre(String asignaturaNombre) {
         this.asignaturaNombre = asignaturaNombre;
     }
+
 }

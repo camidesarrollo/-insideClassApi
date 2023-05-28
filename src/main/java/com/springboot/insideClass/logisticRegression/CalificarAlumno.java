@@ -24,23 +24,33 @@ public class CalificarAlumno {
         classifier.buildClassifier(data);
     }
 
-    public double predict(double age, double math_grade, double science_grade, double literature_grade) throws Exception {
-        // crear instancia de prueba
-        ArrayList<Attribute> attributes = new ArrayList<>();
-        attributes.add(new Attribute("age"));
-        attributes.add(new Attribute("math_grade"));
-        attributes.add(new Attribute("science_grade"));
-        attributes.add(new Attribute("literature_grade"));
-        Instances data = new Instances("TestInstance", attributes, 1);
-        data.setClassIndex(data.numAttributes() - 1);
-        DenseInstance instance = new DenseInstance(4);
-        instance.setValue(attributes.get(0), age);
-        instance.setValue(attributes.get(1), math_grade);
-        instance.setValue(attributes.get(2), science_grade);
-        instance.setValue(attributes.get(3), literature_grade);
-        data.add(instance);
+    public double predict(double age, double math_grade, double science_grade, double literature_grade) {
+        try {
+            ArrayList<Attribute> attributes = new ArrayList<>();
+            attributes.add(new Attribute("age"));
+            attributes.add(new Attribute("math_grade"));
+            attributes.add(new Attribute("science_grade"));
+            attributes.add(new Attribute("literature_grade"));
 
-        // hacer predicción
-        return classifier.distributionForInstance(data.firstInstance())[1];
+            ArrayList<String> classValues = new ArrayList<>();
+            classValues.add("yes");
+            classValues.add("no");
+            attributes.add(new Attribute("repetition", classValues));
+
+            Instances data = new Instances("TestInstance", attributes, 1);
+            data.setClassIndex(data.numAttributes() - 1);
+
+            DenseInstance instance = new DenseInstance(5);
+            instance.setValue(attributes.get(0), age);
+            instance.setValue(attributes.get(1), math_grade);
+            instance.setValue(attributes.get(2), science_grade);
+            instance.setValue(attributes.get(3), literature_grade);
+            data.add(instance);
+
+            return classifier.distributionForInstance(data.firstInstance())[0];
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0.0;
+        }
     }
 }

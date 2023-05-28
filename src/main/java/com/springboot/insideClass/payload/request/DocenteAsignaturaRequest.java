@@ -1,17 +1,15 @@
 package com.springboot.insideClass.payload.request;
 
 import java.util.Date;
-import java.util.List;
 
 public class DocenteAsignaturaRequest {
 
-    Long asignatura_doc_id;
 
     long curso_id;
 
     long establecimiento_id;
-
-    long docente_id;
+long docente_asignatura;
+    String docente_run;
 
     Date fecha_inicio;
 
@@ -34,6 +32,22 @@ public class DocenteAsignaturaRequest {
         this.establecimiento_id = establecimiento_id;
     }
 
+    public long getDocente_asignatura() {
+        return docente_asignatura;
+    }
+
+    public void setDocente_asignatura(long docente_asignatura) {
+        this.docente_asignatura = docente_asignatura;
+    }
+
+    public String getDocente_run() {
+        return docente_run;
+    }
+
+    public void setDocente_run(String docente_run) {
+        this.docente_run = docente_run;
+    }
+
     public Date getFecha_inicio() {
         return fecha_inicio;
     }
@@ -48,22 +62,5 @@ public class DocenteAsignaturaRequest {
 
     public void setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
-    }
-
-
-    public Long getAsignatura_doc_id() {
-        return asignatura_doc_id;
-    }
-
-    public void setAsignatura_doc_id(Long asignatura_doc_id) {
-        this.asignatura_doc_id = asignatura_doc_id;
-    }
-
-    public long getDocente_id() {
-        return docente_id;
-    }
-
-    public void setDocente_id(long docente_id) {
-        this.docente_id = docente_id;
     }
 }

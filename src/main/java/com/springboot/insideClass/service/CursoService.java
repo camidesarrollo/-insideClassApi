@@ -7,7 +7,6 @@ import com.springboot.insideClass.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,11 +55,9 @@ public class CursoService {
         Object[] fila;
 
         for (Object item : listaObjetosNativos) {
-            CursoResponse cursos = new CursoResponse();
+
             fila = (Object[]) item;
-            cursos.setId_curso(((BigInteger) fila[2]).longValue());
-            cursos.setCurso((String)fila[3]);
-            cursos.setDocente_jefe(fila[4] == null ? false : (boolean) fila[4]);
+            CursoResponse cursos = new CursoResponse((String)fila[2], (String)fila[3], fila[4] == null ? false : (boolean) fila[4]);
             listaCursos.add(cursos);
 
         }

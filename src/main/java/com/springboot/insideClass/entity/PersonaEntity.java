@@ -1,9 +1,6 @@
 package com.springboot.insideClass.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.sql.Date;
@@ -36,8 +33,6 @@ public class PersonaEntity {
     @NotBlank
     @Size(max = 200)
     String persona_numero_celular;
-
-
     public PersonaEntity() {
     }
 
@@ -115,4 +110,6 @@ public class PersonaEntity {
     public void setPersona_numero_celular(String persona_numero_celular) {
         this.persona_numero_celular = persona_numero_celular;
     }
+
+
 }

@@ -1,13 +1,12 @@
 package com.springboot.insideClass;
 
 
-import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
-import com.springboot.insideClass.entity.EstablecimientoEntity;
-import com.springboot.insideClass.payload.request.AsignaturaDocenteRequest;
 import com.springboot.insideClass.repository.AsignaturaDocenteRepository;
 import com.springboot.insideClass.repository.EstablecimientoRepository;
-import com.springboot.insideClass.service.AsignaturaDocenteService;
-import com.springboot.insideClass.service.DocenteService;
+import com.springboot.insideClass.service.PerfilService;
+import com.springboot.insideClass.service.PersonaService;
+import com.springboot.insideClass.service.UsuarioService;
+import com.springboot.insideClass.service.VigenciaService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
@@ -40,7 +39,18 @@ public class InsideClassApplication {
 	@Autowired
 	private EstablecimientoRepository establecimientoRepository;
 
+	@Autowired
+	private UsuarioService usuarioService;
 
+	@Autowired
+	private PerfilService perfilService;
+
+	@Autowired
+	private VigenciaService vigenciaService;
+
+
+	@Autowired
+	private PersonaService personaService;
 	public static void main(String[] args) {
 		SpringApplication.run(InsideClassApplication.class, args);
 	}
@@ -50,6 +60,7 @@ public class InsideClassApplication {
 		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
 		resourceDatabasePopulator.addScript(new ClassPathResource("data.sql"));
 		resourceDatabasePopulator.execute(dataSource);
+		usuarioService.createUsuario(perfilService.findByName("Docente"), vigenciaService.findByName("Vigente"), personaService.findByRun("14422764-6"), "prueba@gmail.com");
 	}
 
 }

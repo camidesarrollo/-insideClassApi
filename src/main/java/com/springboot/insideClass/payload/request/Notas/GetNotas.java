@@ -1,12 +1,13 @@
 package com.springboot.insideClass.payload.request.Notas;
 
 public class GetNotas {
+    public String run;
+    public String docente_run;
+    public Long id_establecimiento;
+    public Long id_asignatura;
+    public String fecha;
 
-    private String run;
-    private String docente_run;
-    private Long id_establecimiento;
-    private Long id_asignatura;
-    private String fecha;
+    public Long curso;
 
 
     public String getRun() {
@@ -48,6 +49,15 @@ public class GetNotas {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public Long getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Long curso) {
+        this.curso = curso;
+    }
+
 }
 
 

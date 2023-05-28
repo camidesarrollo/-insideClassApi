@@ -16,23 +16,23 @@ public class AsignaturaDocenteEntity {
     AsignaturaEntity asignaturaEntity;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = " asignatura_doc_docente_establ_id", nullable = false)
-    DocenteCursoEntity docenteCursoEntity;
+    @JoinColumn(name = "asignatura_doc_docente_id", nullable = false)
+    DocenteEntity docenteEntity;
 
 
+    //Determinar vigencia --> año
     Date asignatura_doc_inicio;
 
     Date asignatura_doc_fin;
 
-
-    public AsignaturaDocenteEntity() {
-    }
-
-    public AsignaturaDocenteEntity(Date asignatura_doc_inicio, Date asignatura_doc_fin, AsignaturaEntity asignaturaEntity, DocenteCursoEntity docenteCursoEntity) {
+    public AsignaturaDocenteEntity(AsignaturaEntity asignaturaEntity, DocenteEntity docenteEntity, Date asignatura_doc_inicio, Date asignatura_doc_fin) {
+        this.asignaturaEntity = asignaturaEntity;
+        this.docenteEntity = docenteEntity;
         this.asignatura_doc_inicio = asignatura_doc_inicio;
         this.asignatura_doc_fin = asignatura_doc_fin;
-        this.asignaturaEntity = asignaturaEntity;
-        this.docenteCursoEntity = docenteCursoEntity;
+    }
+
+    public AsignaturaDocenteEntity() {
     }
 
     public Long getAsignatura_doc_id() {
@@ -41,6 +41,22 @@ public class AsignaturaDocenteEntity {
 
     public void setAsignatura_doc_id(Long asignatura_doc_id) {
         this.asignatura_doc_id = asignatura_doc_id;
+    }
+
+    public AsignaturaEntity getAsignaturaEntity() {
+        return asignaturaEntity;
+    }
+
+    public void setAsignaturaEntity(AsignaturaEntity asignaturaEntity) {
+        this.asignaturaEntity = asignaturaEntity;
+    }
+
+    public DocenteEntity getDocenteEntity() {
+        return docenteEntity;
+    }
+
+    public void setDocenteEntity(DocenteEntity docenteEntity) {
+        this.docenteEntity = docenteEntity;
     }
 
     public Date getAsignatura_doc_inicio() {
@@ -57,21 +73,5 @@ public class AsignaturaDocenteEntity {
 
     public void setAsignatura_doc_fin(Date asignatura_doc_fin) {
         this.asignatura_doc_fin = asignatura_doc_fin;
-    }
-
-    public AsignaturaEntity getAsignaturaEntity() {
-        return asignaturaEntity;
-    }
-
-    public void setAsignaturaEntity(AsignaturaEntity asignaturaEntity) {
-        this.asignaturaEntity = asignaturaEntity;
-    }
-
-    public void setDocenteCursoEntity(DocenteCursoEntity docenteCursoEntity) {
-        this.docenteCursoEntity = docenteCursoEntity;
-    }
-
-    public DocenteCursoEntity getDocenteCursoEntity() {
-        return docenteCursoEntity;
     }
 }

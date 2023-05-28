@@ -18,9 +18,6 @@ public class MatriculaEntity {
     @JoinColumn(name = "matricula_apoderado_id", nullable = false)
     ApoderadoEntity apoderadoEntity;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "matricula_curso_establ_id", nullable = false)
-    CursoEstablecimientoEntity cursoEstablecimientoEntity;
 
     Integer curso_agno;
     
@@ -29,11 +26,12 @@ public class MatriculaEntity {
     public MatriculaEntity() {
     }
 
-    public MatriculaEntity(AlumnoEntity alumnoEntity, ApoderadoEntity apoderadoEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, Integer curso_agno) {
+
+    public MatriculaEntity(AlumnoEntity alumnoEntity, ApoderadoEntity apoderadoEntity, Integer curso_agno, boolean matricula_vigencia) {
         this.alumnoEntity = alumnoEntity;
         this.apoderadoEntity = apoderadoEntity;
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
         this.curso_agno = curso_agno;
+        this.matricula_vigencia = matricula_vigencia;
     }
 
     public Long getMatricula_id() {
@@ -60,13 +58,6 @@ public class MatriculaEntity {
         this.apoderadoEntity = apoderadoEntity;
     }
 
-    public CursoEstablecimientoEntity getCursoEstablecimientoEntity() {
-        return cursoEstablecimientoEntity;
-    }
-
-    public void setCursoEstablecimientoEntity(CursoEstablecimientoEntity cursoEstablecimientoEntity) {
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
-    }
 
     public Integer getCurso_agno() {
         return curso_agno;
@@ -83,4 +74,6 @@ public class MatriculaEntity {
     public void setMatricula_vigencia(boolean matricula_vigencia) {
         this.matricula_vigencia = matricula_vigencia;
     }
+
+
 }

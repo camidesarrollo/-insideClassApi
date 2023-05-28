@@ -19,4 +19,16 @@ public class EditNotas {
     public void setNota(String nota) {
         this.nota = nota;
     }
+
+    public boolean IsValid() {
+        if (asignatura_nota_id == null || asignatura_nota_id <= 0) {
+            return false;
+        }
+
+        if (nota == null || nota.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
 }

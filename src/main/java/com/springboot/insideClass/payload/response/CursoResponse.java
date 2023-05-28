@@ -4,9 +4,16 @@ public class CursoResponse {
 
     private String  curso;
 
-    private long id_curso;
+    private String id_curso;
 
     private boolean docente_jefe;
+
+
+    public CursoResponse(String curso, String id_curso, boolean docente_jefe) {
+        this.curso = curso;
+        this.id_curso = id_curso;
+        this.docente_jefe = docente_jefe;
+    }
 
     public String getCurso() {
         return curso;
@@ -16,11 +23,11 @@ public class CursoResponse {
         this.curso = curso;
     }
 
-    public long getId_curso() {
+    public String getId_curso() {
         return id_curso;
     }
 
-    public void setId_curso(long id_curso) {
+    public void setId_curso(String id_curso) {
         this.id_curso = id_curso;
     }
 

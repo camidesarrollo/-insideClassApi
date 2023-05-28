@@ -12,14 +12,6 @@ public class AsignaturaNotaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long asignatura_nota_id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "asignatura_nota_matricula_id", nullable = false)
-    MatriculaEntity matriculaEntity;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = " asignatura_nota_asignatura_doc_id", nullable = false)
-    AsignaturaDocenteEntity asignaturaDocenteEntity;
-
     @NotBlank
     @Size(max = 200)
     String asignatura_nota_nota;
@@ -28,13 +20,12 @@ public class AsignaturaNotaEntity {
     @Size(max = 200)
     String posicion_nota_nota;
 
-    public AsignaturaNotaEntity() {
+    public AsignaturaNotaEntity(String asignatura_nota_nota, String posicion_nota_nota) {
+        this.asignatura_nota_nota = asignatura_nota_nota;
+        this.posicion_nota_nota = posicion_nota_nota;
     }
 
-    public AsignaturaNotaEntity(MatriculaEntity matriculaEntity, AsignaturaDocenteEntity asignaturaDocenteEntity, String asignatura_nota_nota) {
-        this.matriculaEntity = matriculaEntity;
-        this.asignaturaDocenteEntity = asignaturaDocenteEntity;
-        this.asignatura_nota_nota = asignatura_nota_nota;
+    public AsignaturaNotaEntity() {
     }
 
     public Long getAsignatura_nota_id() {
@@ -45,14 +36,6 @@ public class AsignaturaNotaEntity {
         this.asignatura_nota_id = asignatura_nota_id;
     }
 
-
-    public void setMatriculaEntity(MatriculaEntity matriculaEntity) {
-        this.matriculaEntity = matriculaEntity;
-    }
-
-    public void setAsignaturaDocenteEntity(AsignaturaDocenteEntity asignaturaDocenteEntity) {
-        this.asignaturaDocenteEntity = asignaturaDocenteEntity;
-    }
 
     public String getAsignatura_nota_nota() {
         return asignatura_nota_nota;

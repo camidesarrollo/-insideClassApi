@@ -37,15 +37,13 @@ public class ComunicacionesService {
                 comunicacionesInfoResponse.setTipo((String) fila[3]);
                 comunicacionesInfoResponse.setCursoEstablId(fila[4] != null ? ((BigInteger) fila[4]).toString() : "");
                 comunicacionesInfoResponse.setCursoId(fila[5] != null ? ((BigInteger) fila[5]).toString() : "");
-                comunicacionesInfoResponse.setCursoNivel((String) fila[6]);
-                comunicacionesInfoResponse.setCursoNombre((String) fila[7]);
-                comunicacionesInfoResponse.setPersonaRun((String) fila[8]);
-                comunicacionesInfoResponse.setPersonaApellidoMaterno((String) fila[9]);
-                comunicacionesInfoResponse.setPersonaApellidoPaterno((String) fila[10]);
-                comunicacionesInfoResponse.setPersonaNombre((String) fila[12]);
-                comunicacionesInfoResponse.setPersonaNumeroCelular((String) fila[13]);
-                comunicacionesInfoResponse.setPersonaNumeroTelefonico((String) fila[14]);
-                comunicacionesInfoResponse.setEstablNombre((String) fila[18]);
+                comunicacionesInfoResponse.setCursoNombre((String) fila[6]);
+                comunicacionesInfoResponse.setPersonaRun((String) fila[7]);
+                comunicacionesInfoResponse.setPersonaApellidoMaterno((String) fila[10]);
+                comunicacionesInfoResponse.setPersonaApellidoPaterno((String) fila[9]);
+                comunicacionesInfoResponse.setPersonaNombre((String) fila[8]);
+
+                comunicacionesInfoResponse.setEstablNombre((String) fila[12]);
 
 
                 listaAnotacion.add(comunicacionesInfoResponse);

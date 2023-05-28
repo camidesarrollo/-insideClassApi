@@ -94,4 +94,32 @@ public class PersonaRequest {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public boolean IsValid() {
+        if (persona_run == null || persona_run.isEmpty()) {
+            return false;
+        }
+
+        if (persona_nombre == null || persona_nombre.isEmpty()) {
+            return false;
+        }
+
+        if (persona_apellido_paterno == null || persona_apellido_paterno.isEmpty()) {
+            return false;
+        }
+
+        if (persona_fecha_nacimiento == null) {
+            return false;
+        }
+
+        if (persona_sexo == null) {
+            return false;
+        }
+
+        if (correo == null || correo.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
 }

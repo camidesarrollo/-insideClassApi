@@ -39,7 +39,7 @@ public class UsuarioEntity {
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "usuario_persona_run", nullable = false)
-  private PersonaEntity personaEntity;
+  PersonaEntity personaEntity;
 
   public UsuarioEntity() {
   }
@@ -105,4 +105,5 @@ public class UsuarioEntity {
   public void setPersonaEntity(PersonaEntity personaEntity) {
     this.personaEntity = personaEntity;
   }
+
 }

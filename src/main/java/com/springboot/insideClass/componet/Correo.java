@@ -75,7 +75,18 @@ public class Correo {
         emailSenderService.sendEmailWithTemplate(recipientEmail, subject, templateVariables, 4);
     }
 
+    public void enviarCorreoGeneracionCuenta(String nombreUsuario, String contraseña, String tipoPerfil, String recipientEmail, String nombrePersona) {
+        String subject = "Generación de cuenta";
 
+        // Variables para reemplazar en la plantilla
+        Map<String, Object> templateVariables = new HashMap<>();
+        templateVariables.put("nombreUsuario", nombreUsuario);
+        templateVariables.put("contrasena", contraseña);
+        templateVariables.put("tipoPerfil", tipoPerfil);
+        templateVariables.put("nombrePersona", nombrePersona);
+
+        emailSenderService.sendEmailWithTemplate(recipientEmail, subject, templateVariables, 5);
+    }
 
     public void enviarCorreoConPlantilla() {
         String recipientEmail = "correo_destino@example.com";

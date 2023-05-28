@@ -2,7 +2,6 @@ package com.springboot.insideClass.repository;
 
 
 import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
-import com.springboot.insideClass.entity.DocenteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,8 +11,21 @@ import java.util.List;
 
 @Repository
 public interface CursoEstablecimientoRepository extends JpaRepository<CursoEstablecimientoEntity, Long> {
-    @Query(nativeQuery = true, value = "select * from t_curso_establ where t_curso_establ.curso_establ_curso_id = ? and t_curso_establ.curso_establ_establ_id = ? and t_curso_establ.vigencia = 1")
-    CursoEstablecimientoEntity findCursoEstablecimientoByCursoAndEstablecimiento(@Param("curso_establ_curso_id") long curso_establ_curso_id, @Param("curso_establ_establ_id") long curso_establ_establ_id);
+    @Query(nativeQuery = true, value = "SELECT * FROM t_curso_establ " +
+            "WHERE (t_curso_establ.curso_establ_curso_id = :curso_establ_curso_id or -1 = :curso_establ_curso_id ) " +
+            "AND (t_curso_establ.curso_establ_establ_id = :curso_establ_establ_id or -1 = :curso_establ_establ_id) " +
+            "AND t_curso_establ.vigencia = 1 " +
+            "AND (t_curso_establ.curso_establ_matricula_id = :curso_establ_matricula_id OR :curso_establ_matricula_id = -1) " +
+            "AND YEAR(curso_establ_fecha_fin) = :curso_establ_fecha_fin " +
+            "AND YEAR(curso_establ_fecha_inicio) = :curso_establ_fecha_inicio")
+    List<CursoEstablecimientoEntity> findCursoEstablecimientoByCursoAndEstablecimiento(
+            @Param("curso_establ_curso_id") long curso_establ_curso_id,
+            @Param("curso_establ_establ_id") long curso_establ_establ_id,
+            @Param("curso_establ_matricula_id") Integer curso_establ_matricula_id,
+            @Param("curso_establ_fecha_inicio") Integer curso_establ_fecha_inicio,
+            @Param("curso_establ_fecha_fin") Integer curso_establ_fecha_fin);
+
+
 
     @Query(nativeQuery = true, value = "SELECT e.establ_id, \n" +
             "       e.establ_nombre,\n" +

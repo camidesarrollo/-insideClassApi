@@ -39,4 +39,9 @@ public class GetAlumnoRequest {
     public void setAgno(Integer agno) {
         this.agno = agno;
     }
+
+    public boolean isValid() {
+        return establecimiento != null && persona_run != null && curso_nombre != null && agno != null
+                && !persona_run.isEmpty() && !curso_nombre.isEmpty();
+    }
 }

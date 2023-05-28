@@ -13,6 +13,7 @@ import com.springboot.insideClass.service.AnotacionesService;
 import com.springboot.insideClass.service.AsignaturaDocenteService;
 import com.springboot.insideClass.service.CursoEstablecimientoService;
 import com.springboot.insideClass.service.MatriculaService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -43,10 +44,19 @@ public class AnotacionesController {
 
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerAnotaciones(@Valid @RequestBody GetAnotacion request) {
-        try{
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+        try {
+            // Validar campos fecha y run
+            if (StringUtils.isEmpty(request.getFecha())) {
+                return ResponseEntity.badRequest().body("El campo 'fecha' no puede estar vacío");
+            }
+            if (StringUtils.isEmpty(request.getRun())) {
+                return ResponseEntity.badRequest().body("El campo 'run' no puede estar vacío");
+            }
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.SET_COOKIE)
                     .body(anotacionesService.obtenerInfoAnotaciones(request.getRun(), request.getId_curos(), request.getId_asignatura(), request.getId_establecimiento(),  request.getFecha()));
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -56,32 +66,45 @@ public class AnotacionesController {
 
         try{
 
+            // Validar campos obligatorios
+            if (StringUtils.isEmpty(anotacionRequest.getRun())
+                    || anotacionRequest.getEstablecimiento() == null
+                    || anotacionRequest.getAsignatura() == null
+                    || anotacionRequest.getFecha() == null
+                    || StringUtils.isEmpty(anotacionRequest.getDescripcion())
+                    || StringUtils.isEmpty(anotacionRequest.getGravedad())
+                    || StringUtils.isEmpty(anotacionRequest.getRun_docente())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+            }
+
             LocalDate localDate = anotacionRequest.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             int year = localDate.getYear();
 
             MatriculaEntity matricula = matriculaService.findMatriculaByRunAndCurso(anotacionRequest.getRun(), year, anotacionRequest.getEstablecimiento());
 
             if(matricula == null){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar asistencia!"));
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
 
-            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findById(matricula.getCursoEstablecimientoEntity().getCurso_establ_id());
+           CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientosByCursoAndEstablecimientos(-1, anotacionRequest.getEstablecimiento(), matricula.getMatricula_id().intValue(), matricula.getCurso_agno(), matricula.getCurso_agno()).get(0);
 
             if(cursoEstablecimiento == null){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar asistencia!"));
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
-
-            AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(anotacionRequest.getRun_docente(), anotacionRequest.getAsignatura(), cursoEstablecimiento.getCursoEntity().getCurso_id(), year);
+         AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
+                 year,
+                 year,
+                 anotacionRequest.getRun_docente(), anotacionRequest.getEstablecimiento(), anotacionRequest.getAsignatura() );
 
 
             if(asignaturaDocente == null){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar asistencia!"));
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
 
-            // Crear nueva entidad AnotacionesEntity
+             // Crear nueva entidad AnotacionesEntity
                     AnotacionesEntity anotacion = new AnotacionesEntity();
                     anotacion.setMatriculaEntity(matricula);
                     anotacion.setAsignaturaDocenteEntity(asignaturaDocente);
@@ -106,7 +129,14 @@ public class AnotacionesController {
     @PutMapping("/Edit")
     public ResponseEntity<?> editarAnotacion(@Valid @RequestBody EditAnotacion anotacionRequest) {
 
-        try{
+        try {
+            // Validar campos obligatorios
+            if (anotacionRequest.getId_anotacion() == null
+                    || anotacionRequest.getFecha() == null
+                    || StringUtils.isEmpty(anotacionRequest.getDescripcion())
+                    || StringUtils.isEmpty(anotacionRequest.getGravedad())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+            }
 
             // Editar nueva entidad AnotacionesEntity
             AnotacionesEntity anotacion = anotacionesService.findById(anotacionRequest.getId_anotacion());
@@ -119,11 +149,8 @@ public class AnotacionesController {
 
             return ResponseEntity.ok(new MessageResponse("Se ha editado anotacion con exito!"));
 
-
-        }catch (Exception e){
-
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar anotacion!"));
-
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar anotacion!"));
         }
     }
 
@@ -131,6 +158,13 @@ public class AnotacionesController {
     public ResponseEntity<?> deleteAnotacion(@Valid @RequestBody EditAnotacion anotacionRequest) {
 
         try{
+
+            if (anotacionRequest.getId_anotacion() == null
+                    || anotacionRequest.getFecha() == null
+                    || StringUtils.isEmpty(anotacionRequest.getDescripcion())
+                    || StringUtils.isEmpty(anotacionRequest.getGravedad())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+            }
 
             // Crear nueva entidad AnotacionesEntity
             AnotacionesEntity anotacion = anotacionesService.findById(anotacionRequest.getId_anotacion());

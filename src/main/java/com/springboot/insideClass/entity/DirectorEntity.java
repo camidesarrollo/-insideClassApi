@@ -11,7 +11,7 @@ public class DirectorEntity {
     Long director_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "director_persona_id", nullable = false)
+    @JoinColumn(name = "director_persona_run", nullable = false)
     PersonaEntity personaEntity;
 
     @ManyToOne(optional = false)

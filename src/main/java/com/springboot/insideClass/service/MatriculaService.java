@@ -1,6 +1,7 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.MatriculaEntity;
+import com.springboot.insideClass.payload.request.Matricula.M_CreateRequest;
 import com.springboot.insideClass.payload.response.AlumnoInfoResponse;
 import com.springboot.insideClass.repository.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,9 @@ public class MatriculaService {
         return listaAlumno;
     }
 
-    public MatriculaEntity findEstablecimientoByAll(long curso_establecimiento, long alumno_id, Integer curso_agno){
-        System.out.println("Imprimiendo variables");
-        System.out.println(curso_establecimiento);
-        System.out.println(alumno_id);
-        System.out.println(curso_agno);
-        return matriculaRepository.findEstablecimientoByAll(curso_establecimiento, alumno_id, curso_agno);
+    public MatriculaEntity findEstablecimientoByAll(long matricula_alumno_id, long matricula_vigencia, Integer curso_agno,long curso_id,long establ_id){
+
+        return matriculaRepository.findEstablecimientoByAll(matricula_alumno_id, matricula_vigencia, curso_agno,curso_id, establ_id);
         /*try{
 
         }catch (Exception e){
@@ -84,6 +82,13 @@ public class MatriculaService {
         System.out.println(curso_agno);
         System.out.println(curso_establ_establ_id);
         return matriculaRepository.findMatriculaByRunAndCurso(alumno_persona_run, curso_agno, curso_establ_establ_id);
+    }
+
+    public boolean isValidCreate(M_CreateRequest createRequest) {
+        return createRequest.getAlumno() != null
+                && createRequest.getApoderado() != null
+                && createRequest.getAgno() != null
+                && createRequest.getAgno() > 0;
     }
 
 }

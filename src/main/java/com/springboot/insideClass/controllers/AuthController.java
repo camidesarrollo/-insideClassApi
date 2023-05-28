@@ -7,8 +7,6 @@ import com.springboot.insideClass.entity.UsuarioEntity;
 import com.springboot.insideClass.entity.VigenciaEntity;
 import com.springboot.insideClass.payload.request.LoginRequest;
 import com.springboot.insideClass.payload.request.SignupRequest;
-import com.springboot.insideClass.payload.response.DirectorInfoResponse;
-import com.springboot.insideClass.payload.response.DocenteInfoResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.payload.response.UserInfoResponse;
 import com.springboot.insideClass.repository.UsuarioRepository;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -67,11 +64,21 @@ public class AuthController {
     @Autowired
     UsuarioService usuarioService;
 
-  @PostMapping("/signin")
+    @Autowired
+    ApoderadoService apoderadoService;
+
+
+  @PostMapping("/signin") //LOGIN
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
+    UsuarioEntity usuario = usuarioService.VerificaIngresor(loginRequest.getUsername());
+    String userName = loginRequest.getUsername();
+    if(usuario != null){
+        System.out.println("Usuario no da null " + usuario.getUsername());
+        userName = usuario.getUsername();
+    }
     Authentication authentication = authenticationManager
-        .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        .authenticate(new UsernamePasswordAuthenticationToken(userName, loginRequest.getPassword()));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -88,31 +95,26 @@ public class AuthController {
     roles.forEach(role -> System.out.println(role));
 
 
-    Object[] arr = new Object[2];
+    Object[] arr = new Object[4];
 
-    if(Objects.equals(roles.get(0), "Director")){
 
-      System.out.println("Aqui entro");
-      List<DirectorInfoResponse> directorInfoResponse = directorService.findDirectorEstablecimientoByUsuario(userDetails.getId());
-      arr[0] = directorInfoResponse;
-      arr[1] = new UserInfoResponse(userDetails.getId(),
-              userDetails.getUsername(),
-              userDetails.getEmail(),
-              roles,
-              jwtCookie.toString());
-    }else{
-      System.out.println("Aqui aca");
-      UsuarioEntity usuario = usuarioService.findById(userDetails.getId());
-        List<DocenteInfoResponse> docenteInfoResponses = docenteService.getInfoDocente(-1, usuario.getPersonaEntity().getPersona_run(), -1);
-        arr[0] = docenteInfoResponses;
-        arr[1] = new UserInfoResponse(userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
-                roles,
-                jwtCookie.toString());
-    }
 
-    System.out.println(arr[0] );
+    PersonaEntity personaEntity = personaService.findByRun(usuario.getPersonaEntity().getPersona_run());
+    List<PerfilEntity> perfilList = perfilService.findByUsuarioRun(usuario.getPersonaEntity().getPersona_run());
+
+      List<String> roles2 = perfilList.stream()
+              .map(PerfilEntity::getPerfil_nombre)
+              .collect(Collectors.toList());
+
+
+      arr[0] = new UserInfoResponse(userDetails.getId(),
+            userDetails.getUsername(),
+            userDetails.getEmail(),
+              roles2,
+            jwtCookie.toString() );
+      arr[1] = personaEntity;
+      arr[2] = usuario.getPerfilEntity();
+
 
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
         .body(arr);

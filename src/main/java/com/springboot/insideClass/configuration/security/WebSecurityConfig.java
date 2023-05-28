@@ -6,19 +6,19 @@ import com.springboot.insideClass.service.UsuarioDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 
 @Configuration
@@ -27,7 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
     // securedEnabled = true,
     // jsr250Enabled = true,
     prePostEnabled = true)
-public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig implements WebSocketMessageBrokerConfigurer { // extends WebSecurityConfigurerAdapter {
   @Autowired
   UsuarioDetailsServiceImpl userDetailsService;
 
@@ -68,6 +68,9 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
             .antMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
             .antMatchers("/api/auth/**").permitAll()
             .antMatchers("/api/anotaciones/**").permitAll()
+            .antMatchers("/api/chat/**").permitAll()
+            .antMatchers("/api/apoderado/**").permitAll()
+            .antMatchers("/api/establecimiento/**").permitAll()
             .antMatchers("/api/predicciones/**").permitAll()
             .antMatchers("/api/comunicaciones/**").permitAll()
             .antMatchers("/api/notas/**").permitAll()
@@ -90,5 +93,20 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     return http.build();
   }
 
+  //En el método registerStompEndpoints, se registra un punto final (endpoint) para los clientes WebSocket.
+  // En este caso, el punto final se configura en /ws y se permite el acceso desde cualquier origen (setAllowedOriginPatterns("*")).
+  // También se utiliza withSockJS() para habilitar la compatibilidad con navegadores que no admiten directamente WebSocket,
+  // ya que SockJS proporciona una capa de abstracción para la comunicación WebSocket.
+  @Override
+  public void registerStompEndpoints(StompEndpointRegistry registry) {
+    registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS();
+  }
+
+  @Override
+  public void configureMessageBroker(MessageBrokerRegistry registry) {
+    registry.setApplicationDestinationPrefixes("/app");
+    registry.enableSimpleBroker("/chatroom","/user");
+    registry.setUserDestinationPrefix("/user");
+  }
 
 }

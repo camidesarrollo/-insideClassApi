@@ -37,26 +37,21 @@ public class AnotacionesService {
                 anotacionInfoResponse.setDescripcion(fila[1] != null ? (String) fila[1] : "");
                 anotacionInfoResponse.setFecha(fila[2] != null ? new SimpleDateFormat("yyyy-MM-dd").format(fila[2]) : "");
                 anotacionInfoResponse.setGravedad(fila[3] != null ? (String) fila[3] : "");
+
                 anotacionInfoResponse.setAsignaturaDocenteId(fila[4] != null ? ((BigInteger) fila[4]).toString() : "");
                 anotacionInfoResponse.setMatriculaId(fila[5] != null ? ((BigInteger) fila[5]).toString() : "");
                 anotacionInfoResponse.setPersonaRun(fila[6] != null ? (String) fila[6] : "");
                 anotacionInfoResponse.setPersonaApellidoMaterno(fila[7] != null ? (String) fila[7] : "");
                 anotacionInfoResponse.setPersonaApellidoPaterno(fila[8] != null ? (String) fila[8] : "");
-                anotacionInfoResponse.setPersonaFechaNacimiento(fila[9] != null ? new SimpleDateFormat("yyyy-MM-dd").format(fila[9]) : "");
-                anotacionInfoResponse.setPersonaNombre(fila[10] != null ? (String) fila[10] : "");
-                anotacionInfoResponse.setPersonaNumeroCelular(fila[11] != null ? (String) fila[11] : "");
-                anotacionInfoResponse.setPersonaNumeroTelefonico(fila[12] != null ? (String) fila[12] : "");
-                anotacionInfoResponse.setPersonaSexo(fila[13] != null ? fila[13].toString() : "");
-                anotacionInfoResponse.setCursoId(fila[14] != null ? ((BigInteger) fila[14]).toString() : "");
-                anotacionInfoResponse.setCursoNivel(fila[15] != null ? (String) fila[15] : "");
-                anotacionInfoResponse.setCursoNombre(fila[16] != null ? (String) fila[16] : "");
-                anotacionInfoResponse.setDocenteId(fila[17] != null ? ((BigInteger) fila[17]).toString() : "");
-                anotacionInfoResponse.setDocenteRun(fila[18] != null ? (String) fila[18] : "");
-                anotacionInfoResponse.setDocenteNombre(fila[19] != null ? (String) fila[19] : "");
-                anotacionInfoResponse.setDocenteApellidoPaterno(fila[20] != null ? (String) fila[19] : "");
-                anotacionInfoResponse.setDocenteApellidoMaterno(fila[21] != null ? (String) fila[19] : "");
-                anotacionInfoResponse.setAsignaturaId(fila[22] != null ? (String) fila[19] : "");
-                anotacionInfoResponse.setAsignaturaNombre(fila[23] != null ? (String) fila[19] : "");
+
+                anotacionInfoResponse.setCursoNombre(fila[10] != null ? (String) fila[10] : "");
+
+                anotacionInfoResponse.setDocenteRun(fila[13] != null ? (String) fila[13] : "");
+                anotacionInfoResponse.setDocenteNombre(fila[14] != null ? (String) fila[14] : "");
+                anotacionInfoResponse.setDocenteApellidoPaterno(fila[15] != null ? (String) fila[15] : "");
+                anotacionInfoResponse.setDocenteApellidoMaterno(fila[16] != null ? (String) fila[16] : "");
+                anotacionInfoResponse.setAsignaturaId(fila[20] != null ? (String) fila[20] : "");
+                anotacionInfoResponse.setAsignaturaNombre(fila[21] != null ? (String) fila[21] : "");
 
                 listaAnotacion.add(anotacionInfoResponse);
             }

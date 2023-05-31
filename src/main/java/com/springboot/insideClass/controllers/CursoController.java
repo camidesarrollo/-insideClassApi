@@ -1,6 +1,10 @@
 package com.springboot.insideClass.controllers;
 
-import com.springboot.insideClass.entity.*;
+import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
+import com.springboot.insideClass.entity.AsignaturaEntity;
+import com.springboot.insideClass.entity.CursoEntity;
+import com.springboot.insideClass.entity.DocenteEntity;
+import com.springboot.insideClass.payload.request.Curso.CursoGetRequest;
 import com.springboot.insideClass.payload.request.Curso.DC_CreateRequest;
 import com.springboot.insideClass.payload.request.Curso.DC_DeleteRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
@@ -167,4 +171,10 @@ public class CursoController {
         }
     }
 
+    @PostMapping("/GetByEstablecimientoPerfil")
+    public ResponseEntity<?> obtenerCursosXEstablecimientoXPerfil(@Valid @RequestBody CursoGetRequest cursos) {
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                .body(cursoService.findCursoByDocenteXEstablecimiento(cursos.establecimiento, cursos.persona_run,cursos.curso_id ));
+
+    }
 }

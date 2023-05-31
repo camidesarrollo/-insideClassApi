@@ -39,16 +39,13 @@ public class EstablecimientoService {
             System.out.println(perfil1.getPerfil_id());
             if("Docente".equals(perfil1.getPerfil_nombre())){
                 var listaObjetosNativos =  docenteRepository.getInfoDocente(establemiento,run, curso);
-
+                System.out.println(listaObjetosNativos.size());
                 Object[] fila;
                 for (Object item : listaObjetosNativos) {
                     EstablecimientoEntity establecimiento = new EstablecimientoEntity();
 
                     fila = (Object[]) item;
 
-                    System.out.println(Long.parseLong(fila[11].toString()));
-                    System.out.println(Long.parseLong(fila[12].toString()));
-                    System.out.println(fila[13].toString());
 
                     establecimiento.setEstabl_id(Long.parseLong(fila[11].toString()));
                     establecimiento.setEstabl_cod_area(Long.parseLong(fila[12].toString()));
@@ -64,9 +61,9 @@ public class EstablecimientoService {
                 for (Object item : listaObjetosNativos) {
                     EstablecimientoEntity establecimiento = new EstablecimientoEntity();
                     fila = (Object[]) item;
-                    establecimiento.setEstabl_id(Long.parseLong(fila[9].toString()));
-                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[10].toString()));
-                    establecimiento.setEstabl_nombre(fila[11].toString());
+                    establecimiento.setEstabl_id(Long.parseLong(fila[11].toString()));
+                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[12].toString()));
+                    establecimiento.setEstabl_nombre(fila[13].toString());
 
                     establecimientos.add(establecimiento);
 

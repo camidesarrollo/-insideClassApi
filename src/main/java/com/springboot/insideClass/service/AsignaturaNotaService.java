@@ -56,13 +56,15 @@ public class AsignaturaNotaService {
     public List<NotasInfoRequest> obtenerInfoNotas( String personaRun, String docente_run,  Long asignaturaId, Long establecimiento,String fecha, Long cursoId) {
         System.out.println("Entramos al metodo");
         List<NotasInfoRequest> listanotas =  new ArrayList<>();
+
         List<Object> listaObjetosNativos =   asignaturaNotaRepository.fn_Notas(personaRun,docente_run,establecimiento,asignaturaId, fecha,cursoId );
         Object[] fila;
         System.out.println(listaObjetosNativos.size());
         for (Object item : listaObjetosNativos) {
             NotasInfoRequest notasInfoRequest = new NotasInfoRequest();
             fila = (Object[]) item;
-
+            System.out.println(fila[7]);
+            System.out.println(fila[8]);
             // Establecer los valores de cada campo con los datos de la fila correspondiente
             notasInfoRequest.setEstablId(fila[0] != null ? ((BigInteger) fila[0]).toString() : "");
             notasInfoRequest.setEstablNombre(fila[2] != null ? (String) fila[2] : "");

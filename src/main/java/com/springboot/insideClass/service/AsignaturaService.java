@@ -43,4 +43,13 @@ public class AsignaturaService {
         }
         return null;
     }
+
+    public List<AsignaturaEntity> findAsignaturaEstablecimientoXPerfil( long establecimiento, String persona_run, long curso_id){
+        try{
+            return asignaturaRepository.findAsignaturaEstablecimientoXPerfil(establecimiento,persona_run, curso_id);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
 }

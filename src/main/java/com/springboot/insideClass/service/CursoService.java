@@ -64,5 +64,13 @@ public class CursoService {
         return listaCursos;
     }
 
+    public List<CursoEntity> findCursoByDocenteXEstablecimiento(long establecimiento, String persona_run, long curso_id){
+        try{
+            return cursoRepository.findCursoByDocenteXEstablecimiento(establecimiento,persona_run, curso_id);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
 
 }

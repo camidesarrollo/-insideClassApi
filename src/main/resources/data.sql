@@ -2521,7 +2521,8 @@ INSERT INTO [dbo].[t_utp]
                       and (@persona_run = '-1' or a.alumno_persona_run  = @persona_run)
                       and (@curso_id = -1 or c.curso_id = @curso_id)
                       and (@apoderado_run = '-1' or apoderado.apoderado_persona_run = @apoderado_run)
-                      and m.curso_agno = YEAR(CURRENT_TIMESTAMP));
+                      and m.curso_agno = YEAR(CURRENT_TIMESTAMP)
+                      );
 
 IF EXISTS (
                    SELECT * FROM sysobjects WHERE name = 'fn_InfoDocente'
@@ -2529,8 +2530,8 @@ IF EXISTS (
                    DROP FUNCTION fn_InfoDocente;
 
               CREATE FUNCTION [dbo].[fn_InfoDocente] (@establecimiento bigint, @persona_run varchar(100), @curso_id bigint) RETURNS TABLE AS RETURN(
-                 select p.persona_run, p.persona_nombre, p.persona_apellido_paterno, p.persona_apellido_materno, p.persona_numero_celular, p.persona_numero_telefonico,
-                              p.persona_fecha_nacimiento, p.persona_sexo, u.email, a.*, e.*, c.*, 'false' as docente_jefe, d.docente_id from t_docente d
+                 select distinct p.persona_run, p.persona_nombre, p.persona_apellido_paterno, p.persona_apellido_materno, p.persona_numero_celular, p.persona_numero_telefonico,
+                              p.persona_fecha_nacimiento, p.persona_sexo, u.email, e.*, c.*, 'false' as docente_jefe, d.docente_id from t_docente d
                           inner join t_asignatura_docente ad on  d.docente_id = ad.asignatura_doc_docente_id
                		  inner join t_asignatura a on ad.asignatura_doc_asignatura_id = a.asignatura_id
                		inner join t_asig_nota_establcurso ane on ane.asig_nota_establecurso_docente_asignatura_id = ad.asignatura_doc_id
@@ -2547,29 +2548,25 @@ IF EXISTS (
 
 
                   	IF EXISTS (
-                       SELECT * FROM sysobjects WHERE name = 'fn_InfoAlumno'
+                       SELECT * FROM sysobjects WHERE name = 'fn_InfoNotas'
                    )
-                       DROP FUNCTION fn_InfoAlumno;
+                       DROP FUNCTION fn_InfoNotas;
 
-                   	CREATE FUNCTION [dbo].[fn_InfoAlumno]  (@establecimiento bigint, @persona_run varchar(100), @curso_id bigint, @vigencia bigint, @apoderado_run  varchar(100) )  RETURNS TABLE AS RETURN(
-                   	    	select  p.persona_run as alumno_rut, p.persona_nombre as alumno_nombre, p.persona_apellido_paterno as alumno_apellido_paterno,
-                                                            	p.persona_apellido_materno as alumno_materno, apoderado.apoderado_persona_run as apoderado_run, apoderado.persona_nombre as apoderado_nombre,
-                                                            	apoderado.persona_apellido_paterno as apoderado_apellido_paterno, apoderado.persona_apellido_materno as apoderado_apellido_materno,
-                                                            	c.curso_nombre, e.establ_nombre,  e.establ_id from t_alumno a inner join t_persona p on a.alumno_persona_run = p.persona_run
-                                        	 inner join t_matricula m on a.alumno_id = m.matricula_alumno_id
-                                        	  inner join (select * from t_apoderado apo
-                                        	  inner join t_persona per on apo.apoderado_persona_run = per.persona_run) apoderado on apoderado.apoderado_id = m.matricula_apoderado_id
-                                        	            inner join t_curso_establ ce on ce.curso_establ_matricula_id = m.matricula_id
-                                     inner join t_curso c on c.curso_id = ce.curso_establ_curso_id
-                                     inner join t_establ e on ce.curso_establ_establ_id = e.establ_id
+                   	CREATE FUNCTION [dbo].[fn_InfoNotas] ( @run varchar(100), @docente_run varchar(100), @establ_id bigint, @asignatura bigint, @fecha varchar(100), @curso bigint ) RETURNS TABLE AS RETURN (
+                           Select t1.establ_id, t1.establ_cod_area, t1.establ_nombre, t1.establ_numero_telefonico, t1.establ_depend_id, t1.establ_direccion_id,
+                           t1.establ_sost_id, an.*, ane.asig_nota_establecurso_docente_asignatura_id, t2.matricula_id, a.asignatura_id, a.asignatura_nombre,
+                           t2.alumno_id, t2.alumno_rut, t2.alumno_nombre, t2.alumno_apellido_paterno, t2.alumno_materno, t1.docente_id, t1.persona_run,
+                           t1.persona_nombre, t1.persona_apellido_paterno, t1.persona_apellido_materno from t_asignatura_nota an
+                                                                                                            inner join t_asig_nota_establcurso ane on an.asignatura_nota_id = ane.asig_nota_establecurso_asignatura_nota
+                                                                                                            inner join t_asignatura_docente ad on ane.asig_nota_establecurso_docente_asignatura_id = ad.asignatura_doc_id
+                                                                                                            inner join fn_InfoDocente(@establ_id ,@docente_run, @curso ) t1 on ad.asignatura_doc_docente_id = t1.docente_id
 
-                   where
-                   (@establecimiento = -1 or e.establ_id = @establecimiento)
-                   and (@vigencia = -1 or m.matricula_vigencia  = @vigencia )
-                   and (@persona_run = '-1' or a.alumno_persona_run  = @persona_run)
-                   and (@apoderado_run = '-1' or apoderado.apoderado_persona_run = @apoderado_run)
-                   and (@curso_id = -1 or c.curso_id = @curso_id)
-                   and m.curso_agno = YEAR(CURRENT_TIMESTAMP));
+                                                                                                            inner join t_asignatura a on ad.asignatura_doc_asignatura_id = a.asignatura_id
+                                                                                                            inner join (select * from fn_InfoMatricula(@establ_id ,'-1',@curso ,1,'-1')) t2 on t1.establ_nombre = t2.establ_nombre
+                                                                                                            WHERE (t2.alumno_rut = @run or @run ='-1') AND (t1.establ_id = @establ_id or @establ_id = -1)
+                                                                                                            AND (a.asignatura_id = @asignatura or @asignatura = -1) AND (ISDATE(@fecha) = 1
+                                                                                                            and (TRY_CONVERT(DATE, @fecha, 103) IS NOT NULL AND YEAR(TRY_CONVERT(DATE, @fecha, 103)) = t2.curso_agno) OR @fecha = '-1')
+                                                                                                            );
 
 
                       --INSERT INTO [dbo].[t_usuario]
@@ -2586,7 +2583,7 @@ IF EXISTS (
                                  --,'10007672-1 '
                                  --,1);
 
-                            IF EXISTS (
+             IF EXISTS (
                                       SELECT * FROM sysobjects WHERE name = 'fn_InfoAnotaciones'
                                   )
                                       DROP FUNCTION fn_InfoAnotaciones;
@@ -2602,89 +2599,40 @@ IF EXISTS (
                                   RETURNS TABLE
                                   AS
                                   RETURN (
-                                      SELECT a.*,
-                                          t2.alumno_rut,
-                                          t2.alumno_nombre,
-                                          t2.alumno_apellido_paterno,
-                                          t2.alumno_materno,
-                                          t2.curso_nombre,
-                                          t2.curso_agno,
-                                          t1.persona_run,
-                                          t1.persona_nombre,
-                                          t1.persona_apellido_paterno,
-                                          t1.persona_apellido_materno,
-                                          t1.persona_numero_celular,
-                                          t1.persona_numero_telefonico,
-                                          t1.persona_fecha_nacimiento,
-                                          t1.persona_sexo,
-                                          t1.asignatura_id,
-                                          t1.asignatura_nombre
-                                      FROM fn_InfoDocente(-1, '-1', -1) t1
-                                      INNER JOIN (SELECT * FROM fn_InfoMatricula(-1, '-1', -1, -1, -1)) t2 ON t1.establ_nombre = t2.establ_nombre AND t1.curso_nombre = t2.curso_nombre
-                                      INNER JOIN t_anotaciones a ON a.matricula_id = t2.matricula_id
+                                       SELECT a.*,
+                                                                                t2.alumno_rut,
+                                                                                t2.alumno_nombre,
+                                                                                t2.alumno_apellido_paterno,
+                                                                                t2.alumno_materno,
+                                                                                t2.curso_nombre,
+                                                                                t2.curso_agno,
+                                                                                t1.persona_run,
+                                                                                t1.persona_nombre,
+                                                                                t1.persona_apellido_paterno,
+                                                                                t1.persona_apellido_materno,
+                                                                                t1.persona_numero_celular,
+                                                                                t1.persona_numero_telefonico,
+                                                                                t1.persona_fecha_nacimiento,
+                                                                                t1.persona_sexo,
+                                                                                asig.asignatura_id,
+                                                                                asig.asignatura_nombre
+                                                                            FROM  t_asignatura_nota an
+                                                                               inner join t_asig_nota_establcurso ane on an.asignatura_nota_id = ane.asig_nota_establecurso_asignatura_nota -- AsignaturaNotaEntity
+                                                                               inner join t_asignatura_docente ad on ane.asig_nota_establecurso_docente_asignatura_id = ad.asignatura_doc_id --AsignaturaDocenteEntity
+                                                                               inner join t_curso_establ ce on ane.asig_nota_establecurso_curso_id = ce.curso_establ_id--cursoEstablecimientoEntity
+                                                                                inner join fn_InfoDocente(@establ_id ,@run, @curso_id ) t1 on ad.asignatura_doc_docente_id = t1.docente_id
+                                                                               inner join t_asignatura asig on ad.asignatura_doc_asignatura_id = asig.asignatura_id
+                                                                               inner join  fn_InfoMatricula(@establ_id ,'-1',@curso_id ,1,'-1') t2 on t1.establ_nombre = t2.establ_nombre and t2.curso_id = t1.curso_id
+                                                                             INNER JOIN t_anotaciones a ON a.matricula_id = t2.matricula_id
+
                                       WHERE (t1.persona_run = @run OR @run = '-1')
                                           AND (t1.establ_id = @establ_id OR @establ_id = -1)
-                                          AND (t1.asignatura_id = @asignatura_id OR @asignatura_id = -1)
+                                          AND (asig.asignatura_id = @asignatura_id OR @asignatura_id = -1)
                                           AND (ISDATE(@fecha) = 1 AND (TRY_CONVERT(DATE, @fecha, 103) IS NOT NULL AND a.fecha = TRY_CONVERT(DATE, @fecha, 103))
                                           OR @fecha = '-1')
                                   );
 
-
-
-
-                               IF EXISTS (
-                                                        SELECT * FROM sysobjects WHERE name = 'fn_InfoNotas'
-                                                    )
-                                                        DROP FUNCTION fn_InfoNotas;
-
-
-
-                CREATE FUNCTION fn_InfoNotas (
-                                              @run varchar(100),
-                                              @docente_run varchar(100),
-                                              @establ_id bigint,
-                                              @asignatura bigint,
-                                              @fecha varchar(100),
-                                              @curso bigint
-                                              ) RETURNS TABLE AS RETURN (
-                                             Select
-                                             t1.establ_id, --0
-                                             t1.establ_cod_area,--1
-                                             t1.establ_nombre, --2
-                                             t1.establ_numero_telefonico, --3
-                                             t1.establ_depend_id, --4
-                                             t1.establ_direccion_id, --5
-                                             t1.establ_sost_id,--6
-                                             an.*, --7 8 9
-                                             ane.asig_nota_establecurso_docente_asignatura_id, --10
-                                             t2.matricula_id, --11
-                                             t1.asignatura_id, --12
-                                             t1.asignatura_nombre, --13
-                                             t2.alumno_id,
-                                             t2.alumno_rut,
-                                             t2.alumno_nombre,
-                                             t2.alumno_apellido_paterno,
-                                             t2.alumno_materno,
-                                             t1.docente_id,
-                                             t1.persona_run,
-                                             t1.persona_nombre,
-                                             t1.persona_apellido_paterno,
-                                             t1.persona_apellido_materno
-                                              							from t_asignatura_nota an
-                                              							inner join t_asig_nota_establcurso ane on an.asignatura_nota_id = ane.asig_nota_establecurso_docente_asignatura_id
-                                              							inner join t_asignatura_docente ad on ane.asig_nota_establecurso_docente_asignatura_id = ad.asignatura_doc_id
-                                              							inner join fn_InfoDocente(-1,'-1', -1 ) t1 on ad.asignatura_doc_docente_id = t1.docente_id
-                                              							inner join (select * from fn_InfoMatricula(-1 ,'-1',-1 ,1,'-1')) t2 on t1.establ_nombre = t2.establ_nombre
-                                              							WHERE
-                                                                             (t2.alumno_rut =  @run or  @run = -1)
-                                                                             and  (t2.alumno_rut =  @docente_run or  @docente_run = -1)
-                                                                             AND (t1.persona_run = @docente_run or @docente_run = '-1')
-                                                                             AND (t1.establ_id = @establ_id or @establ_id = -1)
-                                                                             AND (ISDATE(@fecha) = 1 and (TRY_CONVERT(DATE, @fecha, 103)
-                                                                             IS NOT NULL AND YEAR(TRY_CONVERT(DATE, @fecha, 103)) = t2.curso_agno) OR @fecha = '-1'));
-
-
-     IF EXISTS (
+                IF EXISTS (
                 SELECT * FROM sysobjects WHERE name = 'fn_InfoComunicaciones'
             )
                 DROP FUNCTION fn_InfoComunicaciones;
@@ -2722,8 +2670,7 @@ IF EXISTS (
 
 
 
-
-                                       IF EXISTS (
+                      IF EXISTS (
                                                            SELECT * FROM sysobjects WHERE name = 'fn_InfoAsistencia'
                                                        )
                                                            DROP FUNCTION fn_InfoAsistencia;
@@ -2752,7 +2699,7 @@ IF EXISTS (
               SELECT * FROM sysobjects WHERE name = 'fn_InfoApoderado'
           )
               DROP FUNCTION fn_InfoApoderado;
- 
+
           CREATE FUNCTION fn_InfoApoderado (
               @establecimiento bigint,
               @vigencia bigint,

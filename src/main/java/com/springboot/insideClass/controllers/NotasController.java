@@ -1,10 +1,7 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.componet.Correo;
-import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
-import com.springboot.insideClass.entity.AsignaturaNotaEntity;
-import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
-import com.springboot.insideClass.entity.MatriculaEntity;
+import com.springboot.insideClass.entity.*;
 import com.springboot.insideClass.payload.request.Notas.CreateNotas;
 import com.springboot.insideClass.payload.request.Notas.EditNotas;
 import com.springboot.insideClass.payload.request.Notas.GetNotas;
@@ -40,6 +37,9 @@ public class NotasController {
     private AlumnoService alumnoService;
 
     @Autowired
+    private AsigNotaEstablCursoService asigNotaEstablCursoService;
+
+    @Autowired
     private Correo correo;
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerNota(@Valid @RequestBody GetNotas notaRequest) {
@@ -53,7 +53,7 @@ public class NotasController {
 
             return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
                     .body(asignaturaNotaService.obtenerInfoNotas(notaRequest.getRun(), notaRequest.getDocente_run(),
-                            notaRequest.getId_establecimiento(),notaRequest.getId_asignatura(), notaRequest.getFecha(), notaRequest.getCurso()));
+                            notaRequest.getId_asignatura(),  notaRequest.getId_establecimiento(), notaRequest.getFecha(), notaRequest.getCurso()));
         }
         return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota!"));
 
@@ -107,6 +107,9 @@ public class NotasController {
             // Guardar la nueva entidad en la base de datos
             asignaturaNotaService.save(nota);
 
+            //Falta indicar la relacion t_asignatura_docente
+            AsigNotaEstablCursoEntity asignaturaDocente1 = new AsigNotaEstablCursoEntity(cursoEstablecimiento,asignaturaDocente, nota);
+            asigNotaEstablCursoService.save(asignaturaDocente1);
        //     correo.enviarCorreoNota(matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(), asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), notaRequest.getNota(), "test", new Date().toString());
 
             return ResponseEntity.ok(new MessageResponse("Se ha registrado la nota con éxito!"));

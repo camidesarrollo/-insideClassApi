@@ -45,11 +45,13 @@ public class EstablecimientoService {
                     EstablecimientoEntity establecimiento = new EstablecimientoEntity();
 
                     fila = (Object[]) item;
+                  /*  for(var i = 0; i<= fila.length; i++){
+                        System.out.println("El indice es " + i + "y el valor es: " + fila[i].toString());
+                    }*/
 
-
-                    establecimiento.setEstabl_id(Long.parseLong(fila[11].toString()));
-                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[12].toString()));
-                    establecimiento.setEstabl_nombre(fila[13].toString());
+                    establecimiento.setEstabl_id(Long.parseLong(fila[9].toString()));
+                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[10].toString()));
+                    establecimiento.setEstabl_nombre(fila[11].toString());
                     establecimientos.add(establecimiento);
                 }
             }

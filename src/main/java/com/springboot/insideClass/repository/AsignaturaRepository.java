@@ -16,7 +16,7 @@ public interface AsignaturaRepository extends JpaRepository<AsignaturaEntity, Lo
     @Query(nativeQuery = true, value = "select * from t_asignatura where t_asignatura.asignatura_nombre = ?")
     AsignaturaEntity findAsignaturaByName(@Param("asignatura_nombre") String asignatura_nombre);
 
-    @Query(nativeQuery = true, value = "select a.* from\n" +
+    @Query(nativeQuery = true, value = "select distinct a.* from\n" +
             "        t_docente d\n" +
             "        inner join t_asignatura_docente ad on d.docente_id = ad.asignatura_doc_docente_id\n" +
             "        inner join t_asignatura a on ad.asignatura_doc_asignatura_id = a.asignatura_id\n" +

@@ -13,7 +13,7 @@ public interface CursoRepository extends JpaRepository<CursoEntity, Long> {
     @Query(nativeQuery = true, value = "select * from t_curso c where c.curso_nombre = ? ")
     CursoEntity findCursoByName(@Param("nombre_curso") String nombre_curso);
 
-    @Query(nativeQuery = true, value = "select c.* from \n" +
+    @Query(nativeQuery = true, value = "select distinct c.* from \n" +
             "t_docente d\n" +
             "inner join t_asignatura_docente ad on d.docente_id = ad.asignatura_doc_docente_id \n" +
             "inner join t_asignatura a on ad.asignatura_doc_asignatura_id = a.asignatura_id \n" +

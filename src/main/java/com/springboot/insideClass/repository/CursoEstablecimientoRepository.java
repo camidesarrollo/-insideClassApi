@@ -31,8 +31,8 @@ public interface CursoEstablecimientoRepository extends JpaRepository<CursoEstab
             "and ce.curso_establ_fecha_inicio = :fecha_inicio and ce.curso_establ_fecha_fin = :fecha_fin ")
     CursoEstablecimientoEntity findCursoEstablecimientoByEstablecimiento(@Param("establecimiento") long establecimiento, @Param("curso") long curso, @Param("fecha_inicio") Date fecha_inicio,@Param("fecha_fin") Date fecha_fin);
 
-    @Query(nativeQuery = true, value = "SELECT *\n" +
-            "FROM [insideClass].[dbo].[t_curso_establ]\n" +
+    @Query(nativeQuery = true, value = "SELECT *  " +
+            "FROM [insideClass].[dbo].[t_curso_establ] "+
             "WHERE\n" +
             "    (curso_establ_id = :curso_establ_id OR :curso_establ_id = -1)\n" +
             "    AND (curso_establ_fecha_fin = :curso_establ_fecha_fin OR :curso_establ_fecha_fin IS NULL)\n" +

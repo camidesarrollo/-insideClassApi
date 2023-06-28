@@ -85,6 +85,10 @@ public class MatriculaService {
     }
 
    public MatriculaEntity findAllFilter(long alumno_id, long apoderado_id, boolean vigencia, long curso_agno){
+        System.out.println(alumno_id);
+       System.out.println(apoderado_id);
+       System.out.println(vigencia);
+       System.out.println(curso_agno);
         return matriculaRepository.findAllFilter(alumno_id, apoderado_id, vigencia, curso_agno);
     }
 

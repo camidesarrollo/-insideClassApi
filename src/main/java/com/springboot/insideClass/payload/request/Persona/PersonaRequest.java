@@ -23,6 +23,19 @@ public class PersonaRequest {
     private String persona_numero_celular;
 
     private String correo;
+
+    public PersonaRequest(String persona_run, String persona_nombre, String persona_apellido_paterno, String persona_apellido_materno, Date persona_fecha_nacimiento, Character persona_sexo, String persona_numero_telefonico, String persona_numero_celular, String correo) {
+        this.persona_run = persona_run;
+        this.persona_nombre = persona_nombre;
+        this.persona_apellido_paterno = persona_apellido_paterno;
+        this.persona_apellido_materno = persona_apellido_materno;
+        this.persona_fecha_nacimiento = persona_fecha_nacimiento;
+        this.persona_sexo = persona_sexo;
+        this.persona_numero_telefonico = persona_numero_telefonico;
+        this.persona_numero_celular = persona_numero_celular;
+        this.correo = correo;
+    }
+
     public String getPersona_run() {
         return persona_run;
     }

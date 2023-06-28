@@ -46,25 +46,25 @@ public class DocenteService {
                     fila[0] != null ? (String) fila[0] : ""   // persona_run
             );
             EstablecimientoResponse establecimientoResponse = new EstablecimientoResponse(
-                    fila[11] != null ? ((BigInteger) fila[11]).toString() : "", // establ_id
-                    fila[13] != null ? (String) fila[13] : "",  // establ_nombre
-                    fila[14] != null ? ((BigInteger) fila[14]).toString()  : ""   // establ_numero_telefonico
+                    fila[9] != null ? ((BigInteger) fila[9]).toString() : "", // establ_id
+                    fila[11] != null ? (String) fila[11] : "",  // establ_nombre
+                    fila[12] != null ? ((BigInteger) fila[12]).toString()  : ""   // establ_numero_telefonico
             );
             DireccionResponse direccionResponse = new DireccionResponse();
             CursoResponse cursoResponse = new CursoResponse(
-                   "",   // curso_nivel
-                    fila[18] != null ? ((BigInteger) fila[16]).toString() : "",  // curso_id
-                     false // docente_jefe
+                    fila[17] != null ? (String) fila[17] : "" ,   // curso_nivel
+                    fila[16] != null ? ((BigInteger) fila[16]).toString() : "",  // curso_id
+                    fila[19] != null ? ((Boolean) fila[19]) : false// docente_jefe
             );
             AsignaturaResponse asignaturaResponse = new AsignaturaResponse(
-                    fila[10] != null ? (String) fila[10] : "",  // asignatura_nombre
-                    fila[9] != null ? ((BigInteger) fila[9]).toString()  : ""    // asignatura_id
+                    "",  // asignatura_nombre
+                    ""  // asignatura_id
             );
 
             DocenteInfoResponse docenteInfoResponse = new DocenteInfoResponse(
                     personaResponse, establecimientoResponse, direccionResponse, asignaturaResponse,
                     cursoResponse, fila[8] != null ? (String) fila[8] : "",  // persona_fecha_nacimiento
-                    fila[21] != null ? fila[21].toString() : "false"   // docente_jefe
+                    fila[19] != null ? ((Boolean) fila[19]).toString() : "false"   // docente_jefe
             );
 
             listaDocente.add(docenteInfoResponse);

@@ -17,7 +17,7 @@ public class MatriculaService {
     MatriculaRepository matriculaRepository;
 
     public List<AlumnoInfoResponse> getInfoAlumno(Long establecimiento, String persona_run,
-                                                  Integer curso_id, Integer vigencia, String apoderado_run){
+                                                  long curso_id, Integer vigencia, String apoderado_run){
 
         List<Object> listaObjetosNativos =  matriculaRepository.fn_InfoMatricula(establecimiento,persona_run, curso_id, vigencia, apoderado_run );
         List<AlumnoInfoResponse> listaAlumno =  new ArrayList<>();
@@ -45,6 +45,14 @@ public class MatriculaService {
 
     public MatriculaEntity findEstablecimientoByAll(long matricula_alumno_id, long matricula_vigencia, Integer curso_agno,long curso_id,long establ_id){
 
+        System.out.println("select  * from t_matricula m left join t_curso_matricula cm on m.matricula_id = cm.curso_establ_matricula_id \" +\n" +
+                "            \" inner join t_curso_establ ce on cm.curso_establ_id = ce.curso_establ_id  inner join t_curso c on c.curso_id = ce.curso_establ_curso_id   \" +\n" +
+                "            \"inner join t_establ e on ce.curso_establ_id = e.establ_id  \" +\n" +
+                "            \"where m.matricula_alumno_id = "+matricula_alumno_id+
+                "            \"\\t\\t   and m.matricula_vigencia = "+matricula_vigencia+
+                "            \"\\t\\t   and m.curso_agno ="+curso_agno+
+                "            \"\\t\\t   and c.curso_id = "+curso_id+
+                "            \"\\t\\t   and e.establ_id ="+establ_id);
         return matriculaRepository.findEstablecimientoByAll(matricula_alumno_id, matricula_vigencia, curso_agno,curso_id, establ_id);
         /*try{
 
@@ -74,6 +82,10 @@ public class MatriculaService {
         }
 
         return null;
+    }
+
+   public MatriculaEntity findAllFilter(long alumno_id, long apoderado_id, boolean vigencia, long curso_agno){
+        return matriculaRepository.findAllFilter(alumno_id, apoderado_id, vigencia, curso_agno);
     }
 
 

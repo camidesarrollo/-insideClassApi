@@ -20,6 +20,10 @@ public class EstablecimientoService {
     DocenteRepository docenteRepository;
 
     @Autowired
+    MatriculaService matriculaService;
+
+
+    @Autowired
     PerfilService perfilService;
 
     public EstablecimientoEntity findEstablecimientoById(Long id){
@@ -57,15 +61,15 @@ public class EstablecimientoService {
             }
 
             if("Apoderado".equals(perfil1.getPerfil_nombre())){
-                var listaObjetosNativos =  docenteRepository.getInfoDocente(establemiento,run, curso);
+                var listaObjetosNativos =  matriculaService.getInfoAlumno(establemiento,"-1", curso, 1, run);
 
                 Object[] fila;
                 for (Object item : listaObjetosNativos) {
                     EstablecimientoEntity establecimiento = new EstablecimientoEntity();
                     fila = (Object[]) item;
-                    establecimiento.setEstabl_id(Long.parseLong(fila[11].toString()));
-                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[12].toString()));
-                    establecimiento.setEstabl_nombre(fila[13].toString());
+                    establecimiento.setEstabl_id(Long.parseLong(fila[14].toString()));
+                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[16].toString()));
+                    establecimiento.setEstabl_nombre(fila[9].toString());
 
                     establecimientos.add(establecimiento);
 
@@ -74,8 +78,6 @@ public class EstablecimientoService {
 
             if("Director".equals(perfil1.getPerfil_nombre())){
                 establecimientos =  establecimientoRepository.findEstablecimientoByDirector(run);
-
-
             }
 
             return establecimientos;

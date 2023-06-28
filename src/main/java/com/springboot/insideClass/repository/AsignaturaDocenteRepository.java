@@ -36,21 +36,21 @@ public interface AsignaturaDocenteRepository extends JpaRepository<AsignaturaDoc
     AsignaturaDocenteEntity findDocenteCursoByCursoAsignatura(@Param("curso_id") long curso_id, @Param("docente_curso_docente_id") long docente_curso_docente_id, @Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id);
 
 
-    @Query(nativeQuery = true, value = "SELECT ae.* FROM t_asignatura_docente ae " +
-            "INNER JOIN t_asig_nota_establcurso ane ON ae.asignatura_doc_id = ane.asig_nota_establecurso_docente_asignatura_id  " +
-            "INNER JOIN t_docente d ON d.docente_id = ae.asignatura_doc_id " +
-            "INNER JOIN t_curso_establ ce ON ane.asig_nota_establecurso_curso_id = ce.curso_establ_id " +
-            "WHERE YEAR(ae.asignatura_doc_inicio) = :asignatura_doc_inicio AND YEAR(ae.asignatura_doc_fin) = :asignatura_doc_fin " +
-            "AND d.docente_persona_run = :docente_persona_run AND ce.curso_establ_establ_id = :curso_establ_establ_id " +
+    @Query(nativeQuery = true, value = "SELECT ae.* FROM t_asignatura_docente ae \n" +
+            "INNER JOIN t_docente d ON d.docente_id = ae.asignatura_doc_docente_id" +
+            " \n" +
+            "WHERE YEAR(ae.asignatura_doc_inicio) = :asignatura_doc_inicio AND YEAR(ae.asignatura_doc_fin) = :asignatura_doc_fin AND d.docente_persona_run = :docente_persona_run \n" +
             "AND ae.asignatura_doc_asignatura_id = :asignatura_doc_asignatura_id")
     AsignaturaDocenteEntity findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
             @Param("asignatura_doc_inicio") long asignatura_doc_inicio,
             @Param("asignatura_doc_fin") Integer asignatura_doc_fin,
             @Param("docente_persona_run") String docente_persona_run,
-            @Param("curso_establ_establ_id") long curso_establ_establ_id,
             @Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id
     );
 
-
-
+    @Query(nativeQuery = true, value = "SELECT *\n" +
+            "FROM t_asignatura_docente\n" +
+            "WHERE (t_asignatura_docente.asignatura_doc_asignatura_id = :asignatura_doc_asignatura_id OR :asignatura_doc_asignatura_id = -1)\n" +
+            "  AND (t_asignatura_docente.asignatura_doc_docente_id = :asignatura_doc_docente_id OR :asignatura_doc_docente_id = -1)")
+    List<AsignaturaDocenteEntity> findAllFilter(@Param("asignatura_doc_asignatura_id") long asignatura_doc_asignatura_id, @Param("asignatura_doc_docente_id") long asignatura_doc_docente_id);
 }

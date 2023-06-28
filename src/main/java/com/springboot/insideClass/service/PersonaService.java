@@ -1,6 +1,7 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.PersonaEntity;
+import com.springboot.insideClass.payload.request.Persona.PersonaRequest;
 import com.springboot.insideClass.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,19 @@ public class PersonaService {
             System.out.println(e);
         }
         return null;
+    }
+
+    public static boolean validarPersonaRequest(PersonaRequest personaRequest) {
+        return personaRequest != null &&
+                !personaRequest.getPersona_run().isEmpty() &&
+                !personaRequest.getPersona_nombre().isEmpty() &&
+                !personaRequest.getPersona_apellido_paterno().isEmpty() &&
+                !personaRequest.getPersona_apellido_materno().isEmpty() &&
+                personaRequest.getPersona_fecha_nacimiento() != null &&
+                personaRequest.getPersona_sexo() != null &&
+                !personaRequest.getPersona_numero_telefonico().isEmpty() &&
+                !personaRequest.getPersona_numero_celular().isEmpty() &&
+                !personaRequest.getCorreo().isEmpty();
     }
 
 }

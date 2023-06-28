@@ -107,7 +107,6 @@ public class ComunicacionesController {
 
             CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
                     comunicacionRequest.getCurso(),
-                    establecimiento.getEstabl_id(),
                     -1,
                     year,
                     yearFin);

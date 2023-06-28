@@ -18,6 +18,15 @@ public class D_CreateRequest {
 
     private long asignatura;
 
+    public D_CreateRequest(PersonaRequest persona, DocenteCursoRequest docenteCurso, String perfil, long establecimiento, long curso, long asignatura) {
+        this.persona = persona;
+        this.docenteCurso = docenteCurso;
+        this.perfil = perfil;
+        this.establecimiento = establecimiento;
+        this.curso = curso;
+        this.asignatura = asignatura;
+    }
+
     public PersonaRequest getPersona() {
         return persona;
     }

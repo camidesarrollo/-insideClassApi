@@ -96,7 +96,7 @@ public class AnotacionesController {
          AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
                  year,
                  year,
-                 anotacionRequest.getRun_docente(), anotacionRequest.getEstablecimiento(), anotacionRequest.getAsignatura() );
+                 anotacionRequest.getRun_docente(),anotacionRequest.getAsignatura() );
 
 
             if(asignaturaDocente == null){

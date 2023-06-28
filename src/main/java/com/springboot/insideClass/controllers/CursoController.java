@@ -55,7 +55,7 @@ public class CursoController {
     @PostMapping("/GetByEstablecimiento")
     public ResponseEntity<?> obtenerCursoByEstablecimiento(@RequestParam("id_establecimient") long id_establecimient) throws ParseException {
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                .body(cursoService.getCursoByEstablecimiento(id_establecimient));
+                .body("OK");
 
     }
 

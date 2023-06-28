@@ -29,7 +29,7 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
     List<UsuarioEntity> findByRunAndPerfil(@Param("usuario_persona_run") String usuario_persona_run, @Param("usuario_perfil_id") long usuario_perfil_id);
     Optional<UsuarioEntity> findByEmail(String email);
 
-    @Query(value = "select top 1 * from t_usuario where usuario_persona_run like ?", nativeQuery = true)
+    @Query(value = "select top 1 * from t_usuario where usuario_persona_run = ?", nativeQuery = true)
     UsuarioEntity findByRun(String usuario_persona_run);
 
 }

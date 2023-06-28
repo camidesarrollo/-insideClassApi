@@ -1,13 +1,13 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.CursoEntity;
-import com.springboot.insideClass.payload.response.CursoResponse;
+import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
 import com.springboot.insideClass.repository.CursoEstablecimientoRepository;
 import com.springboot.insideClass.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,20 +48,9 @@ public class CursoService {
         return null;
     }
 
-    public List<CursoResponse> getCursoByEstablecimiento(long establecimiento_id){
-        List<Object> listaObjetosNativos =  cursoEstablecimientoRepository.findCursoEstablecimientoByEstablecimiento(establecimiento_id);
-        List<CursoResponse> listaCursos =  new ArrayList<>();
+    public CursoEstablecimientoEntity getCursoByEstablecimiento(long establecimiento, long curso, Date fecha_inicio, Date fecha_fin){
+        return cursoEstablecimientoRepository.findCursoEstablecimientoByEstablecimiento(establecimiento, curso, fecha_inicio,  fecha_fin);
 
-        Object[] fila;
-
-        for (Object item : listaObjetosNativos) {
-
-            fila = (Object[]) item;
-            CursoResponse cursos = new CursoResponse((String)fila[2], (String)fila[3], fila[4] == null ? false : (boolean) fila[4]);
-            listaCursos.add(cursos);
-
-        }
-        return listaCursos;
     }
 
     public List<CursoEntity> findCursoByDocenteXEstablecimiento(long establecimiento, String persona_run, long curso_id){

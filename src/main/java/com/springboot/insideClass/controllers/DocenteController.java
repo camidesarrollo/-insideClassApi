@@ -98,151 +98,126 @@ public class DocenteController {
     @Autowired
     private AsignaturaNotaService asignaturaNotaSer;
 
+    @Autowired DocenteECAService docenteECAService;
+
+
     @PostMapping("Create")
     public ResponseEntity<MessageResponse> agregarDocente(@Valid @RequestBody D_CreateRequest addDocenteRequest) {
 
-        System.out.println("Imprimiendo el run");
-        System.out.println(addDocenteRequest.getPersona().getPersona_run());
-
-        PersonaRequest personaRequest = addDocenteRequest.getPersona();
-        if (personaRequest == null ||
-                personaRequest.getPersona_run() == null ||
-                personaRequest.getPersona_run().isEmpty() ||
-                personaRequest.getPersona_nombre() == null ||
-                personaRequest.getPersona_nombre().isEmpty() ||
-                personaRequest.getPersona_apellido_paterno() == null ||
-                personaRequest.getPersona_apellido_paterno().isEmpty() ||
-                personaRequest.getPersona_apellido_materno() == null ||
-                personaRequest.getPersona_apellido_materno().isEmpty() ||
-                personaRequest.getPersona_fecha_nacimiento() == null ||
-                personaRequest.getPersona_sexo() == null ||
-                personaRequest.getPersona_numero_telefonico() == null ||
-                personaRequest.getPersona_numero_telefonico().isEmpty() ||
-                personaRequest.getPersona_numero_celular() == null ||
-                personaRequest.getPersona_numero_celular().isEmpty() ||
-                personaRequest.getCorreo() == null ||
-                personaRequest.getCorreo().isEmpty()) {
-            return ResponseEntity.ok(new MessageResponse("Error:  Datos de persona incompletos!"));
-        }
-
-        DocenteCursoRequest docenteCursoRequest = addDocenteRequest.getDocenteCurso();
-        if (docenteCursoRequest == null ||
-                docenteCursoRequest.getDocente_curso_fecha_inicio() == null ||
-                docenteCursoRequest.getDocente_cuso_fecha_fin() == null ||
-                docenteCursoRequest.getCurso_establ_hora_inicio() == null ||
-                docenteCursoRequest.getCurso_establ_hora_inicio().isEmpty() ||
-                docenteCursoRequest.getCurso_establ_hora_fin() == null ||
-                docenteCursoRequest.getCurso_establ_hora_fin().isEmpty() ||
-                docenteCursoRequest.getDia() == null ||
-                docenteCursoRequest.getDia().isEmpty()) {
-            return ResponseEntity.ok(new MessageResponse("Error: Datos de curso incompletos!"));
-        }
-
-
-
-
-        if(addDocenteRequest.getPersona().getPersona_run() == null){
-            return ResponseEntity.ok(new MessageResponse("Error!"));
-        }
-
-        if(addDocenteRequest.getCurso() == 0){
-            System.out.println("Error");
-        }
-        if (personaSer.findByRun(addDocenteRequest.getPersona().getPersona_run()) == null) {
-            PersonaEntity personaEntity = new PersonaEntity(addDocenteRequest.getPersona().getPersona_run(),
-                    addDocenteRequest.getPersona().getPersona_nombre(),
-                    addDocenteRequest.getPersona().getPersona_apellido_paterno(),
-                    addDocenteRequest.getPersona().getPersona_apellido_materno(),
-                    addDocenteRequest.getPersona().getPersona_fecha_nacimiento(),
-                    addDocenteRequest.getPersona().getPersona_sexo(),
-                    addDocenteRequest.getPersona().getPersona_numero_telefonico(),
-                    addDocenteRequest.getPersona().getPersona_numero_celular());
-            personaSer.save(personaEntity);
-            System.out.println("Se guardo la persona");
-        } else {
-            System.out.println("No se guardo a la persona");
-        }
-
-        DocenteEntity docente = new DocenteEntity();
-
-        if (docenteService.findDocenteByRun(addDocenteRequest.getPersona().getPersona_run()) == null) {
-            PersonaEntity persona = personaSer.findByRun(addDocenteRequest.getPersona().getPersona_run());
-
-
-            docente.setPersonaEntity(persona);
-            System.out.println("-----------------INSERTAMOS EL DOCNETE-----------------------------");
-            docenteRepo.save(docente);
-            System.out.println("Se guardo el docente");
-        } else {
-            System.out.println("No se guardo el docente");
-        }
 
         Date fechaInicio = addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaInicio);
         int year = calendar.get(Calendar.YEAR);
 
-        Date fechaFin =addDocenteRequest.getDocenteCurso().getDocente_cuso_fecha_fin();
+        Date fechaFin =addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin();
         calendar.setTime(fechaFin);
         int yearFin = calendar.get(Calendar.YEAR);
 
-
-
-        CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
-                addDocenteRequest.getCurso(),
-                addDocenteRequest.getEstablecimiento(),
-                -1,year, yearFin);
-
-        if(cursoEstablecimiento != null){
-
-            //Docente asignatura año en un estableimiento en particulas
-            AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
-                    year,
-                    yearFin,
-                    addDocenteRequest.getPersona().getPersona_run(),
-                    addDocenteRequest.getCurso(),
-                    addDocenteRequest.getAsignatura()
-            );
-
-            AsignaturaDocenteEntity asignaturaDocente1 = null;
-            if(asignaturaDocente == null){
-
-                AsignaturaEntity asignatura = asignaturaService.findAsignaturaById(addDocenteRequest.getAsignatura());
-                DocenteEntity docente1 = docenteService.findDocenteByRun(addDocenteRequest.getPersona().getPersona_run());
-                asignaturaDocente1 = new AsignaturaDocenteEntity(asignatura, docente1, addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(), addDocenteRequest.getDocenteCurso().getDocente_cuso_fecha_fin());
-                System.out.println("-----------------INSERTAMOS LA ASIGNATURA DEL DOCENTE-----------------------------");
-                asignaturaDocenteService.save(asignaturaDocente1);
-            }
-
-            //Docente AsigNotaEstablCursoEntity
-            //Obtener todos los alumnos en el establecimiento. curso matricula
-            List<CursoEstablecimientoEntity> cursoEstablecimiento1 = cursoEstablecimientoService.findCursoEstablecimientosByCursoAndEstablecimientos(addDocenteRequest.getCurso(),
-                    addDocenteRequest.getEstablecimiento(),-1,
-                    year, yearFin
-            );
-
-
-
-            for (CursoEstablecimientoEntity cusE : cursoEstablecimiento1) {
-                // Acceder a las propiedades o realizar las operaciones deseadas para cada elemento
-                // Ejemplo: Imprimir el ID de cada elemento
-                asignaturaNotaSer.save(new AsignaturaNotaEntity("1.0", "1"));
-
-                asigNotaEstablCursoService.save(new AsigNotaEstablCursoEntity(
-                        cusE,
-                        asignaturaDocente1,
-                        asignaturaNotaSer.findLast().get(0)
-                ));
-
-
-            }
-
+        // Validar datos de persona
+        PersonaRequest personaRequest = addDocenteRequest.getPersona();
+        if (!PersonaService.validarPersonaRequest(personaRequest)) {
+            return ResponseEntity.ok(new MessageResponse("Error: Datos de persona incompletos."));
         }
+
+        // Validar datos de curso
+        DocenteCursoRequest docenteCursoRequest = addDocenteRequest.getDocenteCurso();
+        if (!CursoEstablecimientoService.validarCursoEstablecimiento(docenteCursoRequest)) {
+            return ResponseEntity.ok(new MessageResponse("Error: Datos de curso incompletos."));
+        }
+
+        // Obtener y guardar entidad Persona si no existe
+        PersonaEntity personaEntity = obtenerPersonaEntity(personaRequest);
+        if (personaEntity == null) {
+            return ResponseEntity.ok(new MessageResponse("Error: No se pudo guardar la persona."));
+        }
+
+        // Obtener y guardar entidad CursoEstablecimiento si no existe
+        obtenerCursoEstablecimientoEntity(addDocenteRequest);
+
+
+        // Guardar entidad Docente
+        DocenteEntity docente = guardarDocente(personaEntity);
+        if (docente == null) {
+            return ResponseEntity.ok(new MessageResponse("Error: No se pudo guardar el docente."));
+        }
+
+        CursoEstablecimientoEntity cursoEstablecimientoEntity = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(addDocenteRequest.getCurso(), addDocenteRequest.getEstablecimiento(),year, yearFin);
+        if(cursoEstablecimientoEntity == null){
+            return ResponseEntity.ok(new MessageResponse("Error: No se pudo obtener el curso establecimiento."));
+        }
+
+        DocenteEntity docenteEntity =  docenteService.findDocenteByRun(addDocenteRequest.getPersona().getPersona_run());
+        if(docenteEntity == null){
+            return ResponseEntity.ok(new MessageResponse("Error: No se pudo obtener el docente."));
+        }
+
+        AsignaturaEntity asignaturaEntity = asignaturaService.findAsignaturaById(addDocenteRequest.getAsignatura());
+        if(asignaturaEntity == null){
+            return ResponseEntity.ok(new MessageResponse("Error: No se pudo obtener la asignatura."));
+        }
+        AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
+                year,
+                yearFin,
+                addDocenteRequest.getPersona().getPersona_run(),
+                asignaturaEntity.getAsignatura_id()
+        );
+
+        AsignaturaDocenteEntity asignaturaDocente1 = null;
+        System.out.println(asignaturaDocente == null);
+
+        if(asignaturaDocente == null){
+
+            AsignaturaEntity asignatura = asignaturaService.findAsignaturaById(addDocenteRequest.getAsignatura());
+            DocenteEntity docente1 = docenteService.findDocenteByRun(addDocenteRequest.getPersona().getPersona_run());
+            asignaturaDocente1 = new AsignaturaDocenteEntity(asignatura, docente1, addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                    addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin());
+            System.out.println("-----------------INSERTAMOS LA ASIGNATURA DEL DOCENTE-----------------------------");
+            asignaturaDocenteService.save(asignaturaDocente1);
+        }
+
 
         System.out.println(addDocenteRequest.getPersona().getPersona_run());
         PerfilEntity perfil = perfilService.findByName("Docente");
         List<UsuarioEntity> usuario = usuarioService.findByRunAndPerfil(addDocenteRequest.getPersona().getPersona_run(), perfil.getPerfil_id());
 
+       List<AsignaturaDocenteEntity> asignaturaDocente2 = asignaturaDocenteService.findAllFilter(
+               asignaturaEntity.getAsignatura_id(),
+               docenteEntity.getDocente_id(),
+               addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+               addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin()
+        );
+
+      if(asignaturaDocente2 == null || asignaturaDocente2.size() == 0){
+            return ResponseEntity.ok(new MessageResponse("Error: No se pudo encontrar la asignatura del docente."));
+        }
+        asignaturaDocente = asignaturaDocente2.get(0);
+
+
+        CursoEstablecimientoEntity cursoEstablecimientoEntities =  cursoService.getCursoByEstablecimiento(addDocenteRequest.getEstablecimiento(),
+                addDocenteRequest.getCurso(),
+                addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin());
+
+        System.out.println("findAllFilter");
+        System.out.println(asignaturaDocente.getAsignatura_doc_id());
+        System.out.println(addDocenteRequest.getEstablecimiento());
+        System.out.println(addDocenteRequest.getCurso());
+        System.out.println(addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio());
+        System.out.println( addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin());
+
+        if(docenteECAService.findAllFilter(asignaturaDocente.getAsignatura_doc_id(),
+                cursoService.getCursoByEstablecimiento(addDocenteRequest.getEstablecimiento(), addDocenteRequest.getCurso(),
+                        addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                        addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin()).getCurso_establ_id()) == null){
+
+            docenteECAService.save(new DocenteECAEntity(
+                    cursoEstablecimientoEntities,
+                    asignaturaDocente,
+                    addDocenteRequest.getDocenteCurso().isProfesorJefe()
+            ));
+        }
+        System.out.println("Cantidad registrado del usuario");
         System.out.println(usuario.size());
         if (usuario.size() == 0) {
 
@@ -257,15 +232,12 @@ public class DocenteController {
 
             return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
         }
-        return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
-     /*   try{
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
-        }*/
+
+        return ResponseEntity.ok(new MessageResponse("Docente registrado con exito!"));
 
     }
+
 
     @PostMapping("/Get")
     public ResponseEntity<Object> tablaDocente(@RequestParam("id_establecimient") long id_establecimient) {
@@ -282,71 +254,135 @@ public class DocenteController {
     @PostMapping("/Create/DocenteAsignatura")
     public ResponseEntity<MessageResponse> agregarDocenteAsignatura(@Valid @RequestBody DocenteAsignaturaRequest docenteAsignaturaRequest){
 
-        try{
+     try{
+
+         System.out.println(docenteAsignaturaRequest.getFecha_inicio());
+         System.out.println(docenteAsignaturaRequest.getFecha_fin());
+         System.out.println(docenteAsignaturaRequest.getCurso_establ_hora_inicio());
+         System.out.println(docenteAsignaturaRequest.getCurso_establ_hora_fin());
+         System.out.println(docenteAsignaturaRequest.getDia());
+         System.out.println(docenteAsignaturaRequest.getDocente_jefe());
+         System.out.println(docenteAsignaturaRequest.getEstablecimiento_id());
+         System.out.println(docenteAsignaturaRequest.getCurso_id());
+
+         DocenteCursoRequest docenteCursoRequest = new DocenteCursoRequest(
+                 docenteAsignaturaRequest.getFecha_inicio(),
+                 docenteAsignaturaRequest.getFecha_fin(),
+                 docenteAsignaturaRequest.getCurso_establ_hora_inicio(),
+                 docenteAsignaturaRequest.getCurso_establ_hora_fin(),
+                 docenteAsignaturaRequest.getDia(),
+                 docenteAsignaturaRequest.getDocente_jefe()
+         );
+         PersonaEntity persona = personaService.findByRun(docenteAsignaturaRequest.getDocente_run());
+
+         PersonaRequest personaRequest = new PersonaRequest(
+                 persona.getPersona_run(),
+                 persona.getPersona_nombre(),
+                 persona.getPersona_apellido_paterno(),
+                 persona.getPersona_apellido_materno(),
+                 persona.getPersona_fecha_nacimiento(),
+                 persona.getPersona_sexo(),
+                 persona.getPersona_numero_telefonico(),
+                 persona.getPersona_numero_celular(),
+                 ""
+         );
+
+         D_CreateRequest addDocenteRequest = new D_CreateRequest(personaRequest, docenteCursoRequest, "Docente", docenteAsignaturaRequest.getEstablecimiento_id(),
+                 docenteAsignaturaRequest.getCurso_id(), docenteAsignaturaRequest.getDocente_asignatura());
+         addDocenteRequest.setDocenteCurso(docenteCursoRequest);
 
 
+         Date fechaInicio = addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio();
+         Calendar calendar = Calendar.getInstance();
+         calendar.setTime(fechaInicio);
+         int year = calendar.get(Calendar.YEAR);
 
-            Date fechaInicio = docenteAsignaturaRequest.getFecha_inicio();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(fechaInicio);
-            int year = calendar.get(Calendar.YEAR);
-
-            Date fechaFin =docenteAsignaturaRequest.getFecha_fin();
-            calendar.setTime(fechaFin);
-            int yearFin = calendar.get(Calendar.YEAR);
-
-            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
-                    docenteAsignaturaRequest.getCurso_id(),
-                    docenteAsignaturaRequest.getEstablecimiento_id(),
-                    -1,year, yearFin);
-
-            if(cursoEstablecimiento != null){
-
-                //Docente asignatura año en un estableimiento en particulas
-                AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
-                        year,
-                        yearFin,
-                        docenteAsignaturaRequest.getDocente_run(),
-                        docenteAsignaturaRequest.getCurso_id(),
-                        docenteAsignaturaRequest.getDocente_asignatura()
-                );
-
-                AsignaturaDocenteEntity asignaturaDocente1 = null;
-                if(asignaturaDocente == null){
-
-                    AsignaturaEntity asignatura = asignaturaService.findAsignaturaById(docenteAsignaturaRequest.getDocente_asignatura());
-                    DocenteEntity docente1 = docenteService.findDocenteByRun( docenteAsignaturaRequest.getDocente_run());
-                    asignaturaDocente1 = new AsignaturaDocenteEntity(asignatura, docente1, docenteAsignaturaRequest.getFecha_inicio(), docenteAsignaturaRequest.getFecha_fin());
-                    System.out.println("-----------------INSERTAMOS LA ASIGNATURA DEL DOCENTE-----------------------------");
-                    asignaturaDocenteService.save(asignaturaDocente1);
-                }
-
-                //Docente AsigNotaEstablCursoEntity
-                //Obtener todos los alumnos en el establecimiento. curso matricula
-                List<CursoEstablecimientoEntity> cursoEstablecimiento1 = cursoEstablecimientoService.findCursoEstablecimientosByCursoAndEstablecimientos(docenteAsignaturaRequest.getCurso_id(),
-                        docenteAsignaturaRequest.getEstablecimiento_id(),-1,
-                        year, yearFin
-                );
+         Date fechaFin =addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin();
+         calendar.setTime(fechaFin);
+         int yearFin = calendar.get(Calendar.YEAR);
 
 
-
-                for (CursoEstablecimientoEntity cusE : cursoEstablecimiento1) {
-                    // Acceder a las propiedades o realizar las operaciones deseadas para cada elemento
-                    // Ejemplo: Imprimir el ID de cada elemento
-                    asignaturaNotaSer.save(new AsignaturaNotaEntity("1.0", "1"));
-
-                    asigNotaEstablCursoService.save(new AsigNotaEstablCursoEntity(
-                            cusE,
-                            asignaturaDocente1,
-                            asignaturaNotaSer.findLast().get(0)
-                    ));
+         // Obtener y guardar entidad CursoEstablecimiento si no existe
+         obtenerCursoEstablecimientoEntity(addDocenteRequest);
 
 
-                }
+         CursoEstablecimientoEntity cursoEstablecimientoEntity = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(addDocenteRequest.getCurso(), addDocenteRequest.getEstablecimiento(),year, yearFin);
+         if(cursoEstablecimientoEntity == null){
+             return ResponseEntity.ok(new MessageResponse("Error: No se pudo obtener el curso establecimiento."));
+         }
 
-            }
+         DocenteEntity docenteEntity =  docenteService.findDocenteByRun(addDocenteRequest.getPersona().getPersona_run());
+         if(docenteEntity == null){
+             return ResponseEntity.ok(new MessageResponse("Error: No se pudo obtener el docente."));
+         }
 
-            return ResponseEntity.ok(new MessageResponse("Docente asignado correctamente a la asignatura!"));
+         AsignaturaEntity asignaturaEntity = asignaturaService.findAsignaturaById(addDocenteRequest.getAsignatura());
+         if(asignaturaEntity == null){
+             return ResponseEntity.ok(new MessageResponse("Error: No se pudo obtener la asignatura."));
+         }
+         AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
+                 year,
+                 yearFin,
+                 addDocenteRequest.getPersona().getPersona_run(),
+                 asignaturaEntity.getAsignatura_id()
+         );
+
+         AsignaturaDocenteEntity asignaturaDocente1 = null;
+         System.out.println(asignaturaDocente == null);
+
+         if(asignaturaDocente == null){
+
+             AsignaturaEntity asignatura = asignaturaService.findAsignaturaById(addDocenteRequest.getAsignatura());
+             DocenteEntity docente1 = docenteService.findDocenteByRun(addDocenteRequest.getPersona().getPersona_run());
+             asignaturaDocente1 = new AsignaturaDocenteEntity(asignatura, docente1, addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                     addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin());
+             System.out.println("-----------------INSERTAMOS LA ASIGNATURA DEL DOCENTE-----------------------------");
+             asignaturaDocenteService.save(asignaturaDocente1);
+         }
+
+
+         System.out.println(addDocenteRequest.getPersona().getPersona_run());
+         PerfilEntity perfil = perfilService.findByName("Docente");
+         List<UsuarioEntity> usuario = usuarioService.findByRunAndPerfil(addDocenteRequest.getPersona().getPersona_run(), perfil.getPerfil_id());
+
+         List<AsignaturaDocenteEntity> asignaturaDocente2 = asignaturaDocenteService.findAllFilter(
+                 asignaturaEntity.getAsignatura_id(),
+                 docenteEntity.getDocente_id(),
+                 addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                 addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin()
+         );
+
+         if(asignaturaDocente2 == null || asignaturaDocente2.size() == 0){
+             return ResponseEntity.ok(new MessageResponse("Error: No se pudo encontrar la asignatura del docente."));
+         }
+         asignaturaDocente = asignaturaDocente2.get(0);
+
+
+         CursoEstablecimientoEntity cursoEstablecimientoEntities =  cursoService.getCursoByEstablecimiento(addDocenteRequest.getEstablecimiento(),
+                 addDocenteRequest.getCurso(),
+                 addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                 addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin());
+
+         System.out.println("findAllFilter");
+         System.out.println(asignaturaDocente.getAsignatura_doc_id());
+         System.out.println(addDocenteRequest.getEstablecimiento());
+         System.out.println(addDocenteRequest.getCurso());
+         System.out.println(addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio());
+         System.out.println( addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin());
+
+         if(docenteECAService.findAllFilter(asignaturaDocente.getAsignatura_doc_id(),
+                 cursoService.getCursoByEstablecimiento(addDocenteRequest.getEstablecimiento(), addDocenteRequest.getCurso(),
+                         addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                         addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin()).getCurso_establ_id()) == null){
+
+             docenteECAService.save(new DocenteECAEntity(
+                     cursoEstablecimientoEntities,
+                     asignaturaDocente,
+                     addDocenteRequest.getDocenteCurso().isProfesorJefe()
+             ));
+         }
+
+         return ResponseEntity.ok(new MessageResponse("Docente asignado correctamente a la asignatura!"));
         }catch (Exception e){
             return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar docente!"));
         }
@@ -433,8 +469,10 @@ public class DocenteController {
 
                 for (AsignaturaDocenteEntity asignaturaDocenteEntity : docenteAsignatura) {
 
+
                     asignaturaDocenteEntity.setAsignatura_doc_fin(fechaSql);
                     asignaturaDocenteService.save(asignaturaDocenteEntity);
+
                 }
 
                 return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
@@ -485,6 +523,60 @@ public class DocenteController {
 
         }
     }
+
+    private PersonaEntity obtenerPersonaEntity(PersonaRequest personaRequest) {
+        PersonaEntity personaEntity = personaSer.findByRun(personaRequest.getPersona_run());
+        if (personaEntity == null) {
+            personaEntity = new PersonaEntity(personaRequest.getPersona_run(), personaRequest.getPersona_nombre(),
+                    personaRequest.getPersona_apellido_paterno(), personaRequest.getPersona_apellido_materno(),
+                    personaRequest.getPersona_fecha_nacimiento(), personaRequest.getPersona_sexo(),
+                    personaRequest.getPersona_numero_telefonico(), personaRequest.getPersona_numero_celular());
+            personaSer.save(personaEntity);
+            System.out.println("Se guardó la persona");
+        } else {
+            System.out.println("No se guardó a la persona");
+        }
+        return personaEntity;
+    }
+
+    private void obtenerCursoEstablecimientoEntity(D_CreateRequest addDocenteRequest) {
+        List<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.findAllFilter(-1,
+                addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin(),
+                addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                addDocenteRequest.getDocenteCurso().getDia(),
+                addDocenteRequest.getDocenteCurso().getCurso_establ_hora_fin(),
+                addDocenteRequest.getDocenteCurso().getCurso_establ_hora_inicio(),
+                true,
+                cursoService.findById(addDocenteRequest.getCurso()).getCurso_id(),
+                establecimientoService.findEstablecimientoById(addDocenteRequest.getEstablecimiento()).getEstabl_id()
+        );
+
+        if (cursoEstablecimiento == null || cursoEstablecimiento.size() < 1) {
+            cursoEstablecimientoService.save(new CursoEstablecimientoEntity(
+                    cursoService.findById(addDocenteRequest.getCurso()),
+                    establecimientoService.findEstablecimientoById(addDocenteRequest.getEstablecimiento()),
+                    addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_inicio(),
+                    addDocenteRequest.getDocenteCurso().getDocente_curso_fecha_fin(),
+                    addDocenteRequest.getDocenteCurso().getCurso_establ_hora_inicio(),
+                    addDocenteRequest.getDocenteCurso().getCurso_establ_hora_fin(),
+                    addDocenteRequest.getDocenteCurso().getDia(), true
+            ));
+        }
+    }
+
+    private DocenteEntity guardarDocente(PersonaEntity personaEntity) {
+        DocenteEntity docente = docenteService.findDocenteByRun(personaEntity.getPersona_run());
+        if (docente == null) {
+            docente = new DocenteEntity();
+            docente.setPersonaEntity(personaEntity);
+            docenteRepo.save(docente);
+            System.out.println("Se guardó el docente");
+        } else {
+            System.out.println("No se guardó el docente");
+        }
+        return docente;
+    }
+
 
 
 }

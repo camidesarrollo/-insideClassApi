@@ -14,7 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -50,6 +52,8 @@ public class MatriculaController {
     @Autowired
     EstablecimientoService establecimientoService;
 
+    @Autowired
+    CursoMatriculaService cursoMatri;
 
 
     @PostMapping("/alumno/Get")
@@ -59,7 +63,7 @@ public class MatriculaController {
 
             if(curso != null && getAlumnoRequest.getEstablecimiento() != null){
                 CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
-                        curso.getCurso_id(), getAlumnoRequest.getEstablecimiento(), -1, getAlumnoRequest.getAgno(), getAlumnoRequest.getAgno());
+                        curso.getCurso_id(), getAlumnoRequest.getEstablecimiento(), getAlumnoRequest.getAgno(), getAlumnoRequest.getAgno());
                 if(cursoEstablecimiento != null){
                     AlumnoEntity alumno = alumnoService.findAlumnoByRun(getAlumnoRequest.getPersona_run());
                     if(alumno != null){
@@ -145,9 +149,23 @@ public class MatriculaController {
 
 
                 ApoderadoEntity apoderado = apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run());
-                System.out.println("-----------------Busqueda los datos del establecimiento curso matricula-----------------------------");
-                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento(), -1,matriculaRequest.getAgno(), matriculaRequest.getAgno());
+               System.out.println("-----------------Busqueda los datos del establecimiento curso matricula-----------------------------");
 
+                List<CursoEstablecimientoEntity> cursoEstablecimientoFind = cursoEstablecimientoService.findAllFilter(-1, null, null, null, null,
+                        null, true, matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento());
+
+                CursoEstablecimientoEntity cursoEstablecimiento = null;
+                int agno = matriculaRequest.getAgno();
+
+                for (CursoEstablecimientoEntity item : cursoEstablecimientoFind) {
+                    LocalDate fechaInicio = item.getCurso_establ_fecha_inicio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    LocalDate fechaFin = item.getCurso_establ_fecha_fin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                    if (fechaInicio.getYear() == agno && fechaFin.getYear() == agno) {
+                        cursoEstablecimiento = item;
+                        break;
+                    }
+                }
                 System.out.println("-----------------Busqueda la matricula para el año curso y estableimiento y alumno-----------------------------");
                 MatriculaEntity matricula = matriculaService.findEstablecimientoByAll(
                         alumno.getAlumno_id(),
@@ -158,34 +176,30 @@ public class MatriculaController {
 
                 PerfilEntity perfil = perfilService.findByName("Apoderado");
 
-
                 if(matricula == null){
                     System.out.println("-----------------Insertamos la matriucla-----------------------------");
                     MatriculaEntity matricula1 = new MatriculaEntity(alumno, apoderado, matriculaRequest.getAgno(), true);
                     matriculaService.save(matricula1);
 
+
+                    MatriculaEntity matriculaEntity =  matriculaService.findAllFilter(alumnoService.findAlumnoByRun(matriculaRequest.getAlumno().getPersona_run()).getAlumno_id(),
+                            apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run()).getApoderado_id(), true, matriculaRequest.getAgno());
+
+                    if(matriculaEntity != null){
+                        System.out.println("-----------------Buscamos si existe una curso y establecimiento sin esa matricula-----------------------------");
+                        //Insertar en curso_establecimiento_matricula
+                        CursoMatriculaEntity cursoMatriculaEntity = new CursoMatriculaEntity(
+                                cursoEstablecimiento,
+                                matriculaEntity
+                        );
+
+                        cursoMatri.guardarCursoMatricula(cursoMatriculaEntity);
+                    }else{
+                        System.out.println("-----------------NO SE LOGRO ENCONTRAR LA MATRICULA-----------------------------");
+                    }
                     VigenciaEntity vigencia = vigenciaService.findByName("Vigente");
                     PersonaEntity persona = personaService.findByRun(apoderado.getPersonaEntity().getPersona_run());
-                    System.out.println("-----------------Buscamos si existe una curso y establecimiento sin esa matricula-----------------------------");
-                    //Insertar en curso_establecimiento matricula
-                    CursoEstablecimientoEntity cursoEstablecimiento1 = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(),
-                            matriculaRequest.getEstablecimiento(), matricula1.getMatricula_id().intValue(), matriculaRequest.getAgno(), matriculaRequest.getAgno()
-                    );
 
-
-                    if(cursoEstablecimiento1 == null){
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                        System.out.println("-----------------Insertamos el  curso estambleimiento matricula-----------------------------");
-                        CursoEstablecimientoEntity cursoEstablecimiento2 = new CursoEstablecimientoEntity(
-                                cursoService.findById(matriculaRequest.getCurso()),
-                                establecimientoService.findEstablecimientoById(matriculaRequest.getEstablecimiento()),
-                                dateFormat.parse( matriculaRequest.getAgno() + "/01/01"),
-                                dateFormat.parse( matriculaRequest.getAgno() + "/12/01"),
-                                true,
-                                matricula1
-                                );
-                        cursoEstablecimientoService.save(cursoEstablecimiento2);
-                    }
 
                     // Create new user's account
                     usuarioService.createUsuario(perfil, vigencia, persona, matriculaRequest.getApoderado().getCorreo());
@@ -211,7 +225,7 @@ public class MatriculaController {
                 MatriculaEntity matricula = new MatriculaEntity();
                 if(curso != null && matriculaRequest.getEstablecimiento() != 0){
                     CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(),
-                            matriculaRequest.getEstablecimiento(),-1, matriculaRequest.getAgno(), matriculaRequest.getAgno());
+                            matriculaRequest.getEstablecimiento(),matriculaRequest.getAgno(), matriculaRequest.getAgno());
                     if(cursoEstablecimiento != null){
                         AlumnoEntity alumno = alumnoService.findAlumnoByRun(matriculaRequest.getAlumno().getPersona_run());
                         if(alumno != null){
@@ -263,7 +277,7 @@ public class MatriculaController {
                 apoderado = apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run());
 
 
-                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento(),-1, matriculaRequest.getAgno(), matriculaRequest.getAgno());
+                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento(),matriculaRequest.getAgno(), matriculaRequest.getAgno());
 
                 if(cursoEstablecimiento == null){
                     return ResponseEntity.badRequest().body(new MessageResponse("Error: El curso establecimiento con ID " + matriculaRequest.getEstablecimiento() + " no existe!"));
@@ -296,7 +310,7 @@ public class MatriculaController {
                 System.out.println(eliminarMatricula.getCurso_nombre());
                 CursoEntity curso = cursoService.findCursoByName(eliminarMatricula.getCurso_nombre());
                 if(curso != null){
-                    CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), eliminarMatricula.getEstablecimiento_id(),-1, eliminarMatricula.getCurso_agno(), eliminarMatricula.getCurso_agno());
+                    CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), eliminarMatricula.getEstablecimiento_id(), eliminarMatricula.getCurso_agno(), eliminarMatricula.getCurso_agno());
                     if(cursoEstablecimiento != null){
                         AlumnoEntity alumno = alumnoService.findAlumnoByRun(eliminarMatricula.getRut_alumno());
                         if(alumno != null){

@@ -4,41 +4,45 @@ package com.springboot.insideClass.entity;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "T_CURSO_ESTABL", uniqueConstraints = {@UniqueConstraint(columnNames =  "curso_establ_id")})
-public class CursoEstablecimientoEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long curso_establ_id;
+    @Entity
+    @Table(name = "T_CURSO_ESTABL", uniqueConstraints = {@UniqueConstraint(columnNames =  "curso_establ_id")})
+    public class CursoEstablecimientoEntity {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        Long curso_establ_id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "curso_establ_curso_id", nullable = false)
-    CursoEntity cursoEntity;
+        @ManyToOne(optional = false)
+        @JoinColumn(name = "curso_establ_curso_id", nullable = false)
+        CursoEntity cursoEntity;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "curso_establ_establ_id", nullable = false)
-    EstablecimientoEntity establecimientoEntity;
+        @ManyToOne(optional = false)
+        @JoinColumn(name = "curso_establ_establ_id", nullable = false)
+        EstablecimientoEntity establecimientoEntity;
 
-    Date curso_establ_fecha_inicio;
+        Date curso_establ_fecha_inicio;
 
-    Date curso_establ_fecha_fin;
+        Date curso_establ_fecha_fin;
 
-    Boolean vigencia;
+        String horaInicio;
+        String horaFin;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "curso_establ_matricula_id", nullable = false)
-    MatriculaEntity matriculaEntity;
+        String dia;
 
-    public CursoEstablecimientoEntity() {
-    }
+        Boolean vigencia;
 
-    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Date curso_establ_fecha_inicio, Date curso_establ_fecha_fin, Boolean vigencia, MatriculaEntity matriculaEntity) {
+        public CursoEstablecimientoEntity() {
+            // Constructor por defecto sin argumentos
+        }
+
+    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Date curso_establ_fecha_inicio, Date curso_establ_fecha_fin, String horaInicio, String horaFin, String dia, Boolean vigencia) {
         this.cursoEntity = cursoEntity;
         this.establecimientoEntity = establecimientoEntity;
         this.curso_establ_fecha_inicio = curso_establ_fecha_inicio;
         this.curso_establ_fecha_fin = curso_establ_fecha_fin;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.dia = dia;
         this.vigencia = vigencia;
-        this.matriculaEntity = matriculaEntity;
     }
 
     public Long getCurso_establ_id() {
@@ -81,19 +85,35 @@ public class CursoEstablecimientoEntity {
         this.curso_establ_fecha_fin = curso_establ_fecha_fin;
     }
 
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public String getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(String horaFin) {
+        this.horaFin = horaFin;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
     public Boolean getVigencia() {
         return vigencia;
     }
 
     public void setVigencia(Boolean vigencia) {
         this.vigencia = vigencia;
-    }
-
-    public MatriculaEntity getMatriculaEntity() {
-        return matriculaEntity;
-    }
-
-    public void setMatriculaEntity(MatriculaEntity matriculaEntity) {
-        this.matriculaEntity = matriculaEntity;
     }
 }

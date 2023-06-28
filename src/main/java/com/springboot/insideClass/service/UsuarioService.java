@@ -138,7 +138,7 @@ public class UsuarioService {
             System.out.println("Como usuario buscado por correo da run" +data );
             return usuario3;
         }
-        System.out.println("No se encontro nadad ");
+        System.out.println("No se encontro nada");
         return null;
     }
 

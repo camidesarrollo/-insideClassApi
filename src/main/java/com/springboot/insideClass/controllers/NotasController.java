@@ -84,7 +84,6 @@ public class NotasController {
 
 
             CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(-1, notaRequest.getEstablecimiento(),
-                    matricula.getMatricula_id().intValue(),
                     year, year);
             if (cursoEstablecimiento == null) {
                 return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado encontrar matricula !"));
@@ -94,7 +93,6 @@ public class NotasController {
                   year,
                   year,
                   notaRequest.getDocente_run(),
-                  notaRequest.getEstablecimiento(),
                   notaRequest.getAsignatura());
             if (asignaturaDocente == null) {
                 return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota!"));

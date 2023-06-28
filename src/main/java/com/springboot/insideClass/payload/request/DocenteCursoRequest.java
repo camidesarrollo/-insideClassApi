@@ -6,7 +6,7 @@ public class DocenteCursoRequest {
 
     Date docente_curso_fecha_inicio;
 
-    Date docente_cuso_fecha_fin;
+    Date docente_curso_fecha_fin;
 
     String curso_establ_hora_inicio;
 
@@ -16,6 +16,16 @@ public class DocenteCursoRequest {
 
     boolean profesorJefe;
 
+
+    public DocenteCursoRequest(Date docente_curso_fecha_inicio, Date docente_curso_fecha_fin, String curso_establ_hora_inicio, String curso_establ_hora_fin, String dia, boolean profesorJefe) {
+        this.docente_curso_fecha_inicio = docente_curso_fecha_inicio;
+        this.docente_curso_fecha_fin = docente_curso_fecha_fin;
+        this.curso_establ_hora_inicio = curso_establ_hora_inicio;
+        this.curso_establ_hora_fin = curso_establ_hora_fin;
+        this.dia = dia;
+        this.profesorJefe = profesorJefe;
+    }
+
     public Date getDocente_curso_fecha_inicio() {
         return docente_curso_fecha_inicio;
     }
@@ -24,12 +34,12 @@ public class DocenteCursoRequest {
         this.docente_curso_fecha_inicio = docente_curso_fecha_inicio;
     }
 
-    public Date getDocente_cuso_fecha_fin() {
-        return docente_cuso_fecha_fin;
+    public Date getDocente_curso_fecha_fin() {
+        return docente_curso_fecha_fin;
     }
 
-    public void setDocente_cuso_fecha_fin(Date docente_cuso_fecha_fin) {
-        this.docente_cuso_fecha_fin = docente_cuso_fecha_fin;
+    public void setDocente_curso_fecha_fin(Date docente_curso_fecha_fin) {
+        this.docente_curso_fecha_fin = docente_curso_fecha_fin;
     }
 
     public String getCurso_establ_hora_inicio() {

@@ -61,6 +61,7 @@ public class InsideClassApplication {
 		resourceDatabasePopulator.addScript(new ClassPathResource("data.sql"));
 		resourceDatabasePopulator.execute(dataSource);
 		usuarioService.createUsuario(perfilService.findByName("Docente"), vigenciaService.findByName("Vigente"), personaService.findByRun("14422764-6"), "prueba@gmail.com");
+		usuarioService.createUsuario(perfilService.findByName("Director"), vigenciaService.findByName("Vigente"), personaService.findByRun("14218894-5"), "pruebaDir@gmail.com");
 	}
 
 }

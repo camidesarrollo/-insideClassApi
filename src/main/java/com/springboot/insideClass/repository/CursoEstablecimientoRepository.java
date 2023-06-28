@@ -16,12 +16,10 @@ public interface CursoEstablecimientoRepository extends JpaRepository<CursoEstab
             "WHERE (t_curso_establ.curso_establ_curso_id = :curso_establ_curso_id or -1 = :curso_establ_curso_id ) " +
             "AND (t_curso_establ.curso_establ_establ_id = :curso_establ_establ_id or -1 = :curso_establ_establ_id) " +
             "AND t_curso_establ.vigencia = 1 " +
-            "AND YEAR(curso_establ_fecha_fin) = :curso_establ_fecha_fin " +
-            "AND YEAR(curso_establ_fecha_inicio) = :curso_establ_fecha_inicio")
+            "AND YEAR(curso_establ_fecha_fin) = :curso_establ_fecha_fin ")
     List<CursoEstablecimientoEntity> findCursoEstablecimientoByCursoAndEstablecimiento(
             @Param("curso_establ_curso_id") long curso_establ_curso_id,
             @Param("curso_establ_establ_id") long curso_establ_establ_id,
-            @Param("curso_establ_fecha_inicio") Integer curso_establ_fecha_inicio,
             @Param("curso_establ_fecha_fin") Integer curso_establ_fecha_fin);
 
 

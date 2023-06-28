@@ -112,7 +112,7 @@ public class ComunicacionesController {
                     yearFin);
 
             if (cursoEstablecimiento == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación!"));
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación_1!"));
             }
 
             ComunicacionesEntity comunicaciones = new ComunicacionesEntity();
@@ -132,7 +132,7 @@ public class ComunicacionesController {
 
             return ResponseEntity.ok(new MessageResponse("Se ha registrado comunicación con éxito!"));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación_2!"));
         }
     }
 

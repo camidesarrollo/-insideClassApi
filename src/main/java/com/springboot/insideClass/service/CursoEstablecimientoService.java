@@ -36,16 +36,16 @@ public class CursoEstablecimientoService {
                                                                                         Integer fecha_inicio,
                                                                                         Integer fecha_fin){
         System.out.println(curso + " - " + id_establecimiento + " - " + fecha_inicio + " - " + fecha_fin);
-        System.out.println("SELECT * FROM t_curso_establ WHERE t_curso_establ.curso_establ_curso_id = " + curso +
-                "         AND t_curso_establ.curso_establ_establ_id =  " + id_establecimiento +
-                "          AND t_curso_establ.vigencia = 1 " +
-                "            AND YEAR(curso_establ_fecha_fin) = "  + fecha_fin +
-                "         AND YEAR(curso_establ_fecha_inicio) = "  + fecha_inicio );
+        System.out.println("SELECT * FROM t_curso_establ " +
+                "WHERE (t_curso_establ.curso_establ_curso_id = "+curso+" or -1 = "+curso+" ) " +
+                "AND (t_curso_establ.curso_establ_establ_id = "+id_establecimiento+"  or -1 = "+id_establecimiento+") " +
+                "AND t_curso_establ.vigencia =  1"+
+                "AND YEAR(curso_establ_fecha_fin) ="+fecha_inicio +
+                "AND YEAR(curso_establ_fecha_inicio) = "+fecha_fin );
 
         List<CursoEstablecimientoEntity> cursoEsta = cursoEstablecimientoRepository.findCursoEstablecimientoByCursoAndEstablecimiento(
                 curso,
                 id_establecimiento,
-                fecha_inicio,
                 fecha_fin);
         System.out.println("oBTENIENDO LA CANTIDAD");
         System.out.println(cursoEsta.size());
@@ -63,7 +63,7 @@ public class CursoEstablecimientoService {
     public List<CursoEstablecimientoEntity> findCursoEstablecimientosByCursoAndEstablecimientos(long curso, long id_establecimiento, Integer matricula,Integer fecha_inicio, Integer fecha_fin){
 
         try{
-            return cursoEstablecimientoRepository.findCursoEstablecimientoByCursoAndEstablecimiento(curso, id_establecimiento, fecha_inicio, fecha_fin);
+            return cursoEstablecimientoRepository.findCursoEstablecimientoByCursoAndEstablecimiento(curso, id_establecimiento, fecha_fin);
         }catch (Exception e){
             System.out.println(e);
         }

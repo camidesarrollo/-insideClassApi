@@ -44,10 +44,13 @@ public class UsuarioEntity {
   public UsuarioEntity() {
   }
 
-  public UsuarioEntity(String username, String email, String password) {
+  public UsuarioEntity(String username, String email, String password, PerfilEntity perfilEntity, VigenciaEntity vigenciaEntity, PersonaEntity personaEntity) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.perfilEntity = perfilEntity;
+    this.vigenciaEntity = vigenciaEntity;
+    this.personaEntity = personaEntity;
   }
 
   public Long getId() {

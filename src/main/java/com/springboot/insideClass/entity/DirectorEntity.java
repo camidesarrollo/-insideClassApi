@@ -15,7 +15,7 @@ public class DirectorEntity {
     PersonaEntity personaEntity;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "director_establ_id", nullable = false)
+    @JoinColumn(name = "director_establecimiento_id", nullable = false)
     EstablecimientoEntity establecimientoEntity;
 
     public DirectorEntity() {

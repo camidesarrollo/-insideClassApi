@@ -1,14 +1,12 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.CursoEntity;
-import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
-import com.springboot.insideClass.repository.CursoEstablecimientoRepository;
 import com.springboot.insideClass.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CursoService {
@@ -16,50 +14,54 @@ public class CursoService {
     @Autowired
     CursoRepository cursoRepository;
 
-    @Autowired
-    CursoEstablecimientoRepository cursoEstablecimientoRepository;
-    public List<CursoEntity> get(){
-
-        try{
-            return cursoRepository.findAll();
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public List<CursoEntity> obtenerTodosLosCursos() {
+        return cursoRepository.findAll();
     }
 
-    public CursoEntity findCursoByName(String name){
-
-        try{
-            return cursoRepository.findCursoByName(name);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public Optional<CursoEntity> obtenerCursoPorId(Long id) {
+        return cursoRepository.findById(id);
     }
 
-    public CursoEntity findById(Long id){
-
-        try{
-            return cursoRepository.findById(id).get();
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public List<CursoEntity> obtenerCursoPorFiltro(Long curso_id, String curso_nombre, String curso_nivel){
+        return cursoRepository.findByFilters(curso_id, curso_nombre, curso_nivel);
     }
 
-    public CursoEstablecimientoEntity getCursoByEstablecimiento(long establecimiento, long curso, Date fecha_inicio, Date fecha_fin){
-        return cursoEstablecimientoRepository.findCursoEstablecimientoByEstablecimiento(establecimiento, curso, fecha_inicio,  fecha_fin);
-
+    public CursoEntity guardarCurso(CursoEntity apoderado) {
+        return cursoRepository.save(apoderado);
     }
 
-    public List<CursoEntity> findCursoByDocenteXEstablecimiento(long establecimiento, String persona_run, long curso_id){
-        try{
-            return cursoRepository.findCursoByDocenteXEstablecimiento(establecimiento,persona_run, curso_id);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public void eliminarCurso(Long id) {
+        cursoRepository.deleteById(id);
     }
 
+    public List<CursoEntity> obtenerPorDocente(Long docente_asignatura_docente_id,
+                                               Long docente_asignatura_id_asignatura_id,
+                                                String fecha_fin,
+                                               boolean vigencia,
+                                                              Long curso_establecimiento_curso_id,
+                                                              Long curso_establecimiento_establecimiento_id) {
+
+        System.out.println("Select  c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id" +
+                "inner join t_docente_asignatura_curso_establecimiento dace on ce.curso_establecimiento_id = dace.dace_curso_establecimiento_id" +
+                "inner join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_id" +
+                "where (da.docente_asignatura_docente_id = "+docente_asignatura_docente_id+" or "+docente_asignatura_docente_id+" = -1)" +
+                "and (da.docente_asignatura_id_asignatura_id = "+docente_asignatura_id_asignatura_id+" or "+docente_asignatura_id_asignatura_id+" = -1)" +
+                "AND ((ISDATE("+fecha_fin+") = 1 AND (TRY_CONVERT(date,dace.fecha_fin) >= TRY_CONVERT(date,"+fecha_fin.toString()+")) OR "+fecha_fin.toString()+"= '-1'))" +
+                "AND ("+vigencia+" = '-1' OR ce.vigencia = "+vigencia+")" +
+                "AND ("+curso_establecimiento_curso_id+" =  -1 OR ce.curso_establecimiento_curso_id = "+curso_establecimiento_curso_id+")" +
+                "AND ("+curso_establecimiento_establecimiento_id+" =  -1 OR ce.curso_establecimiento_establecimiento_id = "+curso_establecimiento_establecimiento_id+")");
+        return cursoRepository.findByDocente(docente_asignatura_docente_id,docente_asignatura_id_asignatura_id,
+                fecha_fin, vigencia, curso_establecimiento_curso_id, curso_establecimiento_establecimiento_id);
+    }
+
+    public List<CursoEntity> obtenerPorApoderado(boolean vigencia,
+    Long curso_establecimiento_curso_id,
+    Long curso_establecimiento_establecimiento_id,
+                                                 boolean vigenciaMatricula, Long curso_agno, Long matricula_apoderado_id, Long matricula_alumno_id) {
+        return cursoRepository.findByApoderado(vigencia, curso_establecimiento_curso_id, curso_establecimiento_establecimiento_id, vigenciaMatricula, curso_agno, matricula_apoderado_id, matricula_alumno_id);
+    }
+
+    public List<CursoEntity> obtenerPorDirector(  boolean vigencia, Long curso_establecimiento_curso_id, Long curso_establecimiento_establecimiento_id, String director_id, String director_persona_run) {
+        return cursoRepository.findByDirector(vigencia, curso_establecimiento_curso_id, curso_establecimiento_establecimiento_id, director_id,director_persona_run );
+    }
 }

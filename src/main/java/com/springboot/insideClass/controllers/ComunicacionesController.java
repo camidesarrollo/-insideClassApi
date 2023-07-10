@@ -1,19 +1,15 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.componet.Correo;
+import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.ComunicacionesEntity;
-import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
-import com.springboot.insideClass.entity.EstablecimientoEntity;
-import com.springboot.insideClass.payload.request.Comunicacion.CreateComunicacionesRequest;
-import com.springboot.insideClass.payload.request.Comunicacion.EditComunicacionesRequest;
-import com.springboot.insideClass.payload.request.Comunicacion.GetComunicacionesRequest;
+import com.springboot.insideClass.entity.Docente_Asignatura_Curso_EstablecimientoEntity;
+import com.springboot.insideClass.payload.request.Comunicaciones.BuscarComunicacionesRequest;
+import com.springboot.insideClass.payload.request.Comunicaciones.CrearComunicacionesRequest;
+import com.springboot.insideClass.payload.request.Comunicaciones.EditarComunicacionesRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
-import com.springboot.insideClass.service.ComunicacionesService;
-import com.springboot.insideClass.service.CursoEstablecimientoService;
-import com.springboot.insideClass.service.EstablecimientoService;
+import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,18 +18,13 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
-@RestController
-@RequestMapping("/api/comunicaciones")
 public class ComunicacionesController {
 
     @Autowired
     ComunicacionesService comunicacionesService;
-
-
     @Autowired
     private EstablecimientoService establecimientoService;
 
@@ -43,33 +34,52 @@ public class ComunicacionesController {
     @Autowired
     private Correo correo;
 
-    @PostMapping("/Get")
-    public ResponseEntity<?> obtenerComunicacion(@Valid @RequestBody GetComunicacionesRequest request) {
-        try {
-            // Validar campos obligatorios
-            if (request.getId_establecimiento() == null) {
-                return ResponseEntity.badRequest().body("El campo 'id_establecimiento' es obligatorio.");
-            }
-            if (request.getId_curos() == null) {
-                return ResponseEntity.badRequest().body("El campo 'id_curos' es obligatorio.");
-            }
-            if (request.getFecha() == null || request.getFecha().isEmpty()) {
-                return ResponseEntity.badRequest().body("El campo 'fecha' es obligatorio.");
-            }
-            if (request.getRun() == null || request.getRun().isEmpty()) {
-                return ResponseEntity.badRequest().body("El campo 'run' es obligatorio.");
-            }
+    @Autowired
+    private Docente_Asignatura_Curso_EstablecimientoService docente_asignatura_curso_establecimientoService;
 
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.SET_COOKIE)
-                    .body(comunicacionesService.obtenerInfoComunicaciones(request.getRun(), request.getId_curos(), request.getId_establecimiento(), request.getFecha()));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    @Autowired
+    private DocenteAsignaturaService docenteAsignaturaService;
+
+    @Autowired
+    private Metodos metodos;
+
+
+    @PostMapping("/obtenerTodosLosComunicaciones")
+    public List<ComunicacionesEntity> obtenerTodasLasComunicaciones() {
+        return comunicacionesService.obtenerTodasLasComunicaciones();
+    }
+
+    @PostMapping("/obtenerApoderadoPorId")
+    public ComunicacionesEntity obtenerComunicacionPorId(@Valid @RequestBody Long id) {
+        return comunicacionesService.obtenerComunicacionPorId(id);
+    }
+
+    @PostMapping("/guardarComunicaciones")
+    public ComunicacionesEntity guardarComunicacion(@RequestBody ComunicacionesEntity comunicacion) {
+        return comunicacionesService.guardarComunicacion(comunicacion);
+    }
+
+    @DeleteMapping("/eliminarComunicaciones")
+    public void eliminarComunicacion(@Valid @RequestBody Long id){
+        comunicacionesService.eliminarComunicacion(id);
+    }
+
+    @PostMapping("/Get")
+    public ResponseEntity<?> obtenerComunicacionesPorFiltro(@Valid @RequestBody BuscarComunicacionesRequest buscarComunicacionesRequest) {
+        return ResponseEntity.ok(comunicacionesService.obtenerDatosAlumnoComunicaciones(
+                buscarComunicacionesRequest.isMatricula_vigencia(),
+                buscarComunicacionesRequest.getEstablecimiento_id(),
+                buscarComunicacionesRequest.getApoderado_id(),
+                buscarComunicacionesRequest.getAlumno_run(),
+                buscarComunicacionesRequest.getComunicaciones_matricula_id(),
+                buscarComunicacionesRequest.getDocente_run(),
+                buscarComunicacionesRequest.getAsignatura_id(),
+                buscarComunicacionesRequest.getCurso_id())
+        );
     }
 
     @PostMapping("/Create")
-    public ResponseEntity<?> ingresarComunicacion(@Valid @RequestBody CreateComunicacionesRequest comunicacionRequest) {
+    public ResponseEntity<?> ingresarComunicacion(@Valid @RequestBody CrearComunicacionesRequest comunicacionRequest) {
         try {
             // Validar campos obligatorios
             if (comunicacionRequest.getEstablecimiento() == null) {
@@ -91,44 +101,32 @@ public class ComunicacionesController {
                 return ResponseEntity.badRequest().body(new MessageResponse("El campo 'tipo' es obligatorio."));
             }
 
-            EstablecimientoEntity establecimiento = establecimientoService.findEstablecimientoById(comunicacionRequest.getEstablecimiento());
+            List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntity =
+                    docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(-1L,
+                            cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
+                                    -1L, comunicacionRequest.getCurso(), comunicacionRequest.getEstablecimiento(), true
+                            ).get(0).getCurso_establecimiento_id(),
+                            docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(comunicacionRequest.getAsignatura(), "-1", -1L, comunicacionRequest.getRun_docente()).get(0).getDocente_asignatura_id(), "-1", "-1",
+            metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR),  metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR));
 
-            if (establecimiento == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación!"));
-            }
-            Date fechaInicio = comunicacionRequest.getFecha();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(fechaInicio);
-            int year = calendar.get(Calendar.YEAR);
-
-            Date fechaFin =comunicacionRequest.getFecha();
-            calendar.setTime(fechaFin);
-            int yearFin = calendar.get(Calendar.YEAR);
-
-            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
-                    comunicacionRequest.getCurso(),
-                    -1,
-                    year,
-                    yearFin);
-
-            if (cursoEstablecimiento == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación_1!"));
+            if(docente_asignatura_curso_establecimientoEntity.size() == 0){
+                return ResponseEntity.badRequest().body(new MessageResponse("No se ha encontrado docente en el establecimiento, ni curso"));
             }
 
             ComunicacionesEntity comunicaciones = new ComunicacionesEntity();
-            comunicaciones.setCursoEstablecimiento(cursoEstablecimiento);
-            comunicaciones.setTipo(comunicacionRequest.getTipo());
-            comunicaciones.setFecha(comunicacionRequest.getFecha());
-            comunicaciones.setDescripcion(comunicacionRequest.getDescripcion());
+            comunicaciones.setDocente_asignatura_curso_establecimientoEntity(docente_asignatura_curso_establecimientoEntity.get(0));
+            comunicaciones.setComunicaciones_tipo(comunicacionRequest.getTipo());
+            comunicaciones.setComunicaciones_fecha(comunicacionRequest.getFecha());
+            comunicaciones.setComunicaciones_descripcion(comunicacionRequest.getDescripcion());
 
-            comunicacionesService.save(comunicaciones);
+            comunicacionesService.guardarComunicacion(comunicaciones);
 
-            LocalDate localDate = comunicaciones.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate localDate = comunicaciones.getComunicaciones_fecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE MMMM yyyy", new Locale("es", "ES"));
             String fecha = localDate.format(formatter);
             System.out.println(fecha);
 
-            /* correo.enviarCorreoComunicacion(fecha, comunicaciones.getTipo(), comunicaciones.getDescripcion()); */
+             correo.enviarCorreoComunicacion(fecha, comunicacionRequest.getTipo(), comunicaciones.getComunicaciones_descripcion());
 
             return ResponseEntity.ok(new MessageResponse("Se ha registrado comunicación con éxito!"));
         } catch (Exception e) {
@@ -136,9 +134,8 @@ public class ComunicacionesController {
         }
     }
 
-
     @PutMapping("/Edit")
-    public ResponseEntity<?> editarComunicacion(@Valid @RequestBody EditComunicacionesRequest editRequest) {
+    public ResponseEntity<?> editarComunicacion(@Valid @RequestBody EditarComunicacionesRequest editRequest) {
         try {
             // Validar campos obligatorios
             if (editRequest.getId_comunicacion() == null) {
@@ -155,16 +152,16 @@ public class ComunicacionesController {
             }
 
             // Editar entidad ComunicacionesEntity
-            ComunicacionesEntity comunicaciones = comunicacionesService.findById(editRequest.getId_comunicacion());
+            ComunicacionesEntity comunicaciones = comunicacionesService.obtenerComunicacionPorId(editRequest.getId_comunicacion());
             if (comunicaciones == null) {
                 return ResponseEntity.badRequest().body(new MessageResponse("No se encontró la comunicación a editar."));
             }
-            comunicaciones.setFecha(editRequest.getFecha());
-            comunicaciones.setDescripcion(editRequest.getDescripcion());
-            comunicaciones.setTipo(editRequest.getTipo());
+            comunicaciones.setComunicaciones_tipo(editRequest.getTipo());
+            comunicaciones.setComunicaciones_fecha(editRequest.getFecha());
+            comunicaciones.setComunicaciones_descripcion(editRequest.getDescripcion());
 
             // Guardar la entidad editada en la base de datos
-            comunicacionesService.save(comunicaciones);
+            comunicacionesService.guardarComunicacion(comunicaciones);
 
             return ResponseEntity.ok(new MessageResponse("Se ha editado comunicación con éxito!"));
         } catch (Exception e) {
@@ -172,33 +169,20 @@ public class ComunicacionesController {
         }
     }
 
-
-    @DeleteMapping("/Delete")
-    public ResponseEntity<?> deleteComunicacion(@Valid @RequestBody EditComunicacionesRequest editRequest) {
+    @DeleteMapping("/Delete/{id}")
+    public ResponseEntity<?> deleteComunicacion(@PathVariable("id") Long id) {
 
         try{
 
             // Validar campos obligatorios
-            if (editRequest.getId_comunicacion() == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'id_comunicacion' es obligatorio."));
-            }
-            if (editRequest.getFecha() == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'fecha' es obligatorio."));
-            }
-            if (editRequest.getDescripcion() == null || editRequest.getDescripcion().isEmpty()) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'descripcion' es obligatorio."));
-            }
-            if (editRequest.getTipo() == null || editRequest.getTipo().isEmpty()) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'tipo' es obligatorio."));
-            }
 
             // Eliminar entidad ComunicacionesEntity
-            ComunicacionesEntity comunicaciones = comunicacionesService.findById(editRequest.getId_comunicacion());
+            ComunicacionesEntity comunicaciones = comunicacionesService.obtenerComunicacionPorId(id);
             if (comunicaciones == null) {
                 return ResponseEntity.badRequest().body(new MessageResponse("No se encontró la comunicación a editar."));
             }
 
-            comunicacionesService.delete(comunicaciones);
+            comunicacionesService.eliminarComunicacion(comunicaciones.getComunicaciones_id());
             return ResponseEntity.ok(new MessageResponse("Se ha eliminado comunicacion con exito!"));
 
 
@@ -208,4 +192,5 @@ public class ComunicacionesController {
 
         }
     }
+
 }

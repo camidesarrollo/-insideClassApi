@@ -1,111 +1,87 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.MatriculaEntity;
-import com.springboot.insideClass.payload.request.Matricula.M_CreateRequest;
-import com.springboot.insideClass.payload.response.AlumnoInfoResponse;
+import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.repository.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatriculaService {
 
-@Autowired
-    MatriculaRepository matriculaRepository;
+    @Autowired
+    private MatriculaRepository matriculaRepository;
 
-    public List<AlumnoInfoResponse> getInfoAlumno(Long establecimiento, String persona_run,
-                                                  long curso_id, Integer vigencia, String apoderado_run){
 
-        List<Object> listaObjetosNativos =  matriculaRepository.fn_InfoMatricula(establecimiento,persona_run, curso_id, vigencia, apoderado_run );
-        List<AlumnoInfoResponse> listaAlumno =  new ArrayList<>();
+    public List<MatriculaEntity> obtenerTodosLasMatriculas() {
+        return matriculaRepository.findAll();
+    }
 
-        Object[] fila;
+    public Optional<MatriculaEntity> obtenerMatriculaPorId(Long id) {
+        return matriculaRepository.findById(id);
+    }
+/*
+    public List<MatriculaEntity> obtenerMatriculasPorFiltro(Long curso_id, String curso_nombre, String curso_nivel){
+        return cursoRepository.findByFilters(curso_id, curso_nombre, curso_nivel);
+    }
+*/
+    public MatriculaEntity guardarMatricula(MatriculaEntity apoderado) {
+        return matriculaRepository.save(apoderado);
+    }
+
+    public void eliminarMatricula(Long id) {
+        matriculaRepository.deleteById(id);
+    }
+
+
+    public List<DatosMatriculaResponse> obtenerDatosMatricula(boolean matricula_vigencia, int curso_agno, Long apoderado_id,
+                                                              String apoderado_persona_run, Long alumno_id,
+                                                              String alumno_persona_run) {
+
+        List<DatosMatriculaResponse> listaMatricula = new ArrayList<>();
+
+        List<Object> listaObjetosNativos = matriculaRepository.findByMatricula(matricula_vigencia, curso_agno, apoderado_id,
+                apoderado_persona_run, alumno_id, alumno_persona_run);
+
         for (Object item : listaObjetosNativos) {
-            AlumnoInfoResponse alumnoInfoResponse = new AlumnoInfoResponse();
-            fila = (Object[]) item;
-            alumnoInfoResponse.setAlumno_rut((String) fila[0]);
-            alumnoInfoResponse.setAlumno_nombre((String) fila[1]);
-            alumnoInfoResponse.setAlumno_apellido_paterno((String) fila[2]);
-            alumnoInfoResponse.setAlumno_apellido_materno((String) fila[3]);
-            alumnoInfoResponse.setApoderado_run((String) fila[4]);
-            alumnoInfoResponse.setApoderado_nombre((String) fila[5]);
-            alumnoInfoResponse.setApoderado_apellido_paterno((String) fila[6]);
-            alumnoInfoResponse.setApoderado_apellido_materno((String) fila[7]);
-            alumnoInfoResponse.setEstabl_nombre((String) fila[9]);
-            alumnoInfoResponse.setCurso_nombre((String) fila[8]);
+            Object[] fila = (Object[]) item;
 
-            listaAlumno.add(alumnoInfoResponse);
+            DatosMatriculaResponse infoMatricula = new DatosMatriculaResponse();
+            infoMatricula.setPersona_run(fila[0] != null ? (String) fila[0] : "");
+            infoMatricula.setPersona_apellido_materno(fila[1] != null ? (String) fila[1] : "");
+            infoMatricula.setPersona_apellido_paterno(fila[2] != null ? (String) fila[2] : "");
+            infoMatricula.setPersona_fecha_nacimiento(fila[3] != null ? (Date) fila[3] : null);
+            infoMatricula.setPersona_nombre(fila[4] != null ? (String) fila[4] : "");
+            infoMatricula.setPersona_numero_celular(fila[5] != null ? (String) fila[5] : "");
+            infoMatricula.setPersona_numero_telefonico(fila[6] != null ? (String) fila[6] : "");
+            infoMatricula.setPersona_sexo(fila[7] != null ? (Character) fila[7] : null);
+            infoMatricula.setEstablecimiento_id(fila[8] != null ? (BigInteger) fila[8] : null);
+            infoMatricula.setEstablecimiento_codigo_area(fila[9] != null ? (BigInteger) fila[9] : null);
+            infoMatricula.setEstablecimiento_nombre(fila[10] != null ? (String) fila[10] : "");
+            infoMatricula.setEstablecimiento_telefono(fila[11] != null ? (BigInteger) fila[11] : null);
+            infoMatricula.setEstablecimiento_dependencia_id(fila[12] != null ? (BigInteger) fila[12] : null);
+            infoMatricula.setEstablecimiento_direccion_id(fila[13] != null ? (BigInteger) fila[13] : null);
+            infoMatricula.setEstablecimiento_sostenedor_id(fila[14] != null ? (BigInteger) fila[14] : null);
+            infoMatricula.setCurso_id(fila[15] != null ? (BigInteger) fila[15] : null);
+            infoMatricula.setCurso_nivel(fila[16] != null ? (String) fila[16] : "");
+            infoMatricula.setCurso_nombre(fila[17] != null ? (String) fila[17] : "");
+            infoMatricula.setMatricula_id(fila[18] != null ? (BigInteger) fila[18] : null);
+            infoMatricula.setCurso_agno(fila[19] != null ? (Integer) fila[19] : null);
+            infoMatricula.setMatricula_vigencia(fila[20] != null ? (Boolean) fila[20] : null);
+            infoMatricula.setMatricula_alumno_id(fila[21] != null ? (BigInteger) fila[21] : null);
+            infoMatricula.setMatricula_apoderado_id(fila[22] != null ? (BigInteger) fila[22] : null);
+            infoMatricula.setMatricula_curso_establecimiento_id(fila[23] != null ? (BigInteger) fila[23] : null);
 
-        }
-        return listaAlumno;
-    }
-
-    public MatriculaEntity findEstablecimientoByAll(long matricula_alumno_id, long matricula_vigencia, Integer curso_agno,long curso_id,long establ_id){
-
-        System.out.println("select  * from t_matricula m left join t_curso_matricula cm on m.matricula_id = cm.curso_establ_matricula_id \" +\n" +
-                "            \" inner join t_curso_establ ce on cm.curso_establ_id = ce.curso_establ_id  inner join t_curso c on c.curso_id = ce.curso_establ_curso_id   \" +\n" +
-                "            \"inner join t_establ e on ce.curso_establ_id = e.establ_id  \" +\n" +
-                "            \"where m.matricula_alumno_id = "+matricula_alumno_id+
-                "            \"\\t\\t   and m.matricula_vigencia = "+matricula_vigencia+
-                "            \"\\t\\t   and m.curso_agno ="+curso_agno+
-                "            \"\\t\\t   and c.curso_id = "+curso_id+
-                "            \"\\t\\t   and e.establ_id ="+establ_id);
-        return matriculaRepository.findEstablecimientoByAll(matricula_alumno_id, matricula_vigencia, curso_agno,curso_id, establ_id);
-        /*try{
-
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        */
-
-
-        /*return null;*/
-    }
-
-    public void save(MatriculaEntity matricula){
-        try{
-            matriculaRepository.save(matricula);
-        }catch (Exception e){
-            System.out.println(e);
+            listaMatricula.add(infoMatricula);
         }
 
-    }
-
-    public MatriculaEntity findMatriculaById(long id){
-        try{
-           return  matriculaRepository.findById(id).get();
-        }catch (Exception e){
-            System.out.println(e);
-        }
-
-        return null;
-    }
-
-   public MatriculaEntity findAllFilter(long alumno_id, long apoderado_id, boolean vigencia, long curso_agno){
-        System.out.println(alumno_id);
-       System.out.println(apoderado_id);
-       System.out.println(vigencia);
-       System.out.println(curso_agno);
-        return matriculaRepository.findAllFilter(alumno_id, apoderado_id, vigencia, curso_agno);
-    }
-
-
-    public MatriculaEntity findMatriculaByRunAndCurso(String alumno_persona_run,Integer curso_agno, Long curso_establ_establ_id){
-        System.out.println(alumno_persona_run);
-        System.out.println(curso_agno);
-        System.out.println(curso_establ_establ_id);
-        return matriculaRepository.findMatriculaByRunAndCurso(alumno_persona_run, curso_agno, curso_establ_establ_id);
-    }
-
-    public boolean isValidCreate(M_CreateRequest createRequest) {
-        return createRequest.getAlumno() != null
-                && createRequest.getApoderado() != null
-                && createRequest.getAgno() != null
-                && createRequest.getAgno() > 0;
+        return listaMatricula;
     }
 
 }
-

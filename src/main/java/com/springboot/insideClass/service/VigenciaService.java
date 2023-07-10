@@ -5,29 +5,32 @@ import com.springboot.insideClass.repository.VigenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class VigenciaService {
 
     @Autowired
-    VigenciaRepository vigenciaRepo;
+    private VigenciaRepository vigenciaRepository;
 
-    public VigenciaEntity findByUsername(String usuario_nick_name){
-
-        try{
-            return vigenciaRepo.findByUsername(usuario_nick_name);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public List<VigenciaEntity> obtenerTodasLasVigencias() {
+        return vigenciaRepository.findAll();
     }
 
-    public VigenciaEntity findByName(String vigencia) {
+    public Optional<VigenciaEntity> obtenerVigenciaPorId(Long id) {
+        return vigenciaRepository.findById(id);
+    }
 
-        try{
-            return vigenciaRepo.findByName(vigencia);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public List<VigenciaEntity> buscarVigenciasPorFiltro(Long vigenciaId, String vigenciaNombre) {
+        return vigenciaRepository.findByFilters(vigenciaId, vigenciaNombre);
+    }
+
+    public VigenciaEntity guardarVigencia(VigenciaEntity vigencia) {
+        return vigenciaRepository.save(vigencia);
+    }
+
+    public void eliminarVigencia(Long id) {
+        vigenciaRepository.deleteById(id);
     }
 }

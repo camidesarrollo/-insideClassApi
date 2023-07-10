@@ -2,13 +2,13 @@ package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.EstablecimientoEntity;
 import com.springboot.insideClass.entity.PerfilEntity;
-import com.springboot.insideClass.repository.DocenteRepository;
 import com.springboot.insideClass.repository.EstablecimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EstablecimientoService {
@@ -17,67 +17,63 @@ public class EstablecimientoService {
     EstablecimientoRepository establecimientoRepository;
 
     @Autowired
-    DocenteRepository docenteRepository;
-
-    @Autowired
-    MatriculaService matriculaService;
-
-
-    @Autowired
     PerfilService perfilService;
 
-    public EstablecimientoEntity findEstablecimientoById(Long id){
+    @Autowired
+    DirectorService directorService;
 
-        try{
-            return establecimientoRepository.findEstablecimientoById(id);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public List<EstablecimientoEntity> obtenerTodosLosEstablecimientos() {
+        return establecimientoRepository.findAll();
+    }
+
+    public Optional<EstablecimientoEntity> obtenerEstablecimientoPorId(Long id) {
+        return establecimientoRepository.findById(id);
+    }
+
+    public List<EstablecimientoEntity> obtenerEstablecimientoPorFiltro(Long establecimiento_id,
+                                                                       Long establecimiento_codigo_area,
+                                                                       String establecimiento_nombre,
+                                                                       Long establecimiento_telefono,
+                                                                       Long establecimiento_dependencia_id,
+                                                                       Long establecimiento_direccion_id,
+                                                                       Long establecimiento_sostenedor_id) {
+        return establecimientoRepository.findByFilters(establecimiento_id, establecimiento_codigo_area,
+                establecimiento_nombre, establecimiento_telefono, establecimiento_dependencia_id,
+                establecimiento_direccion_id, establecimiento_sostenedor_id);
+    }
+
+    public EstablecimientoEntity guardarEstablecimiento(EstablecimientoEntity establecimiento) {
+        return establecimientoRepository.save(establecimiento);
+    }
+
+    public void eliminarEstablecimiento(Long id) {
+        establecimientoRepository.deleteById(id);
     }
 
     public  List<EstablecimientoEntity> findEstablecimientoByUsuarioPerfil(long establemiento, String run, long curso, String perfil){
         try{
             List<EstablecimientoEntity> establecimientos = new ArrayList<>();
-            PerfilEntity perfil1 = perfilService.findByName(perfil);
-            System.out.println(perfil1.getPerfil_id());
-            if("Docente".equals(perfil1.getPerfil_nombre())){
-                var listaObjetosNativos =  docenteRepository.getInfoDocente(establemiento,run, curso);
-                System.out.println(listaObjetosNativos.size());
-                Object[] fila;
-                for (Object item : listaObjetosNativos) {
-                    EstablecimientoEntity establecimiento = new EstablecimientoEntity();
-
-                    fila = (Object[]) item;
-                  /*  for(var i = 0; i<= fila.length; i++){
-                        System.out.println("El indice es " + i + "y el valor es: " + fila[i].toString());
-                    }*/
-
-                    establecimiento.setEstabl_id(Long.parseLong(fila[9].toString()));
-                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[10].toString()));
-                    establecimiento.setEstabl_nombre(fila[11].toString());
-                    establecimientos.add(establecimiento);
-                }
+            System.out.println(establemiento);
+            System.out.println(run);
+            System.out.println(curso);
+            System.out.println(perfil);
+            List<PerfilEntity> perfil1 = perfilService.obtenerPerfilesPorFiltro(-1L, perfil);
+            if(perfil1.size() == 0){
+                return establecimientos;
             }
 
-            if("Apoderado".equals(perfil1.getPerfil_nombre())){
-                var listaObjetosNativos =  matriculaService.getInfoAlumno(establemiento,"-1", curso, 1, run);
-
-                Object[] fila;
-                for (Object item : listaObjetosNativos) {
-                    EstablecimientoEntity establecimiento = new EstablecimientoEntity();
-                    fila = (Object[]) item;
-                    establecimiento.setEstabl_id(Long.parseLong(fila[14].toString()));
-                    establecimiento.setEstabl_cod_area(Long.parseLong(fila[16].toString()));
-                    establecimiento.setEstabl_nombre(fila[9].toString());
-
-                    establecimientos.add(establecimiento);
-
-                }
+            if("Docente".equals(perfil1.get(0).getPerfil_nombre())){
+                return establecimientoRepository.findByDocente(run);
             }
 
-            if("Director".equals(perfil1.getPerfil_nombre())){
-                establecimientos =  establecimientoRepository.findEstablecimientoByDirector(run);
+            if("Apoderado".equals(perfil1.get(0).getPerfil_nombre())){
+
+                return establecimientoRepository.findByApoderado(run, true);
+
+            }
+
+            if("Director".equals(perfil1.get(0).getPerfil_nombre())){
+                return establecimientoRepository.findByDirector(-1L, run);
             }
 
             return establecimientos;

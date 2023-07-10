@@ -11,11 +11,13 @@ public class AlumnoEntity {
     Long alumno_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "alumno_persona_run", nullable = false)
+    @JoinColumn(name = "alumno_persona_run", nullable = false, unique = true)
     PersonaEntity personaEntity;
 
     public AlumnoEntity() {
     }
+
+
 
     public AlumnoEntity(PersonaEntity personaEntity) {
         this.personaEntity = personaEntity;

@@ -1,18 +1,16 @@
 package com.springboot.insideClass.controllers;
 
-import com.springboot.insideClass.componet.Correo;
+import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.AnotacionesEntity;
-import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
 import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
-import com.springboot.insideClass.entity.MatriculaEntity;
-import com.springboot.insideClass.payload.request.Anotacion.CreateAnotacion;
-import com.springboot.insideClass.payload.request.Anotacion.EditAnotacion;
-import com.springboot.insideClass.payload.request.Anotacion.GetAnotacion;
+import com.springboot.insideClass.entity.DocenteAsignaturaEntity;
+import com.springboot.insideClass.entity.Docente_Asignatura_Curso_EstablecimientoEntity;
+import com.springboot.insideClass.payload.request.Anotaciones.BuscarAnotacionesRequest;
+import com.springboot.insideClass.payload.request.Anotaciones.CrearAnotacionRequest;
+import com.springboot.insideClass.payload.request.Anotaciones.EditarAnotacionesRequest;
+import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
-import com.springboot.insideClass.service.AnotacionesService;
-import com.springboot.insideClass.service.AsignaturaDocenteService;
-import com.springboot.insideClass.service.CursoEstablecimientoService;
-import com.springboot.insideClass.service.MatriculaService;
+import com.springboot.insideClass.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -23,46 +21,43 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/anotaciones")
 public class AnotacionesController {
-    @Autowired
-    private AnotacionesService anotacionesService;
-    @Autowired
-    private MatriculaService matriculaService;
 
-    @Autowired
-    private CursoEstablecimientoService cursoEstablecimientoService;
+    @Autowired private AnotacionesService anotacionesService;
 
-    @Autowired
-    private AsignaturaDocenteService asignaturaDocenteService;
+    @Autowired private MatriculaService matriculaService;
 
-    @Autowired
-    private Correo correo;
+    @Autowired private CursoEstablecimientoService cursoEstablecimientoService;
+
+    @Autowired private DocenteAsignaturaService docenteAsignaturaService;
+
+    @Autowired private Docente_Asignatura_Curso_EstablecimientoService docente_asignatura_curso_establecimientoService;
+
+    @Autowired private Metodos metodos;
 
     @PostMapping("/Get")
-    public ResponseEntity<?> obtenerAnotaciones(@Valid @RequestBody GetAnotacion request) {
-        try {
-            // Validar campos fecha y run
-            if (StringUtils.isEmpty(request.getFecha())) {
-                return ResponseEntity.badRequest().body("El campo 'fecha' no puede estar vacío");
-            }
-            if (StringUtils.isEmpty(request.getRun())) {
-                return ResponseEntity.badRequest().body("El campo 'run' no puede estar vacío");
-            }
-
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.SET_COOKIE)
-                    .body(anotacionesService.obtenerInfoAnotaciones(request.getRun(), request.getId_curos(), request.getId_asignatura(), request.getId_establecimiento(),  request.getFecha()));
-        } catch (Exception e) {
+    public ResponseEntity<?> obtenerAnotaciones(@Valid @RequestBody BuscarAnotacionesRequest request) {
+        try{
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                    .body(anotacionesService.obtenerDatosAlumnoAnotacion(
+                            request.isMatricula_vigencia(), request.getEstablecimiento_id(),request.getApoderado_id(),request.getAlumno_run(), request.getAnotaciones_matricula_id(),
+                            request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id())
+                    ); //
+        }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @PostMapping("/Create")
-    public ResponseEntity<?> ingresarAnotacion(@Valid @RequestBody CreateAnotacion anotacionRequest) {
+    public ResponseEntity<?> ingresarAnotacion(@Valid @RequestBody CrearAnotacionRequest anotacionRequest) {
 
         try{
 
@@ -80,42 +75,56 @@ public class AnotacionesController {
             LocalDate localDate = anotacionRequest.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             int year = localDate.getYear();
 
-            MatriculaEntity matricula = matriculaService.findMatriculaByRunAndCurso(anotacionRequest.getRun(), year, anotacionRequest.getEstablecimiento());
+            List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(true, year, -1L, "-1", -1L, anotacionRequest.getRun());
 
             if(matricula == null){
                 return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
 
-           CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientosByCursoAndEstablecimientos(-1, anotacionRequest.getEstablecimiento(), matricula.getMatricula_id().intValue(), matricula.getCurso_agno(), matricula.getCurso_agno()).get(0);
+            Optional<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.obtenerCursosEstablecimientoPorId(matricula.get(0).getMatricula_curso_establecimiento_id().longValue());
 
             if(cursoEstablecimiento == null){
                 return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
-         AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
-                 year,
-                 year,
-                 anotacionRequest.getRun_docente(),anotacionRequest.getAsignatura() );
+            List<DocenteAsignaturaEntity> asignaturaDocente = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(anotacionRequest.getAsignatura(),
+                    "-1",
+                    -1L,
+                    anotacionRequest.getRun_docente()
+         );
 
 
             if(asignaturaDocente == null){
                 return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
+            List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntities =
+                    docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(
+                    -1L,
+                    cursoEstablecimiento.get().getCurso_establecimiento_id(),
+                    asignaturaDocente.get(0).getDocente_asignatura_id(),
+                            "-1", "-1",
+                            metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR),
+                            metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR));
 
-             // Crear nueva entidad AnotacionesEntity
-                    AnotacionesEntity anotacion = new AnotacionesEntity();
-                    anotacion.setMatriculaEntity(matricula);
-                    anotacion.setAsignaturaDocenteEntity(asignaturaDocente);
-                    anotacion.setFecha(anotacionRequest.getFecha());
-                    anotacion.setDescripcion(anotacionRequest.getDescripcion());
-                    anotacion.setGravedad(anotacionRequest.getGravedad());
 
-        // Guardar la nueva entidad en la base de datos
-                    anotacionesService.save(anotacion);
+            if(docente_asignatura_curso_establecimientoEntities.size() == 0){
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
+            }
 
-           /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
+            // Crear nueva entidad AnotacionesEntity
+            AnotacionesEntity anotacion = new AnotacionesEntity();
+            anotacion.setMatriculaEntity(matriculaService.obtenerMatriculaPorId(matricula.get(0).getMatricula_id().longValue()).get());
+            anotacion.setDocente_asignatura_curso_establecimientoEntity(docente_asignatura_curso_establecimientoEntities.get(0));
+            anotacion.setFecha(anotacionRequest.getFecha());
+            anotacion.setDescripcion(anotacionRequest.getDescripcion());
+            anotacion.setGravedad(anotacionRequest.getGravedad());
+
+            // Guardar la nueva entidad en la base de datos
+            anotacionesService.guardarAnotacion(anotacion);
+
+            /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
             return ResponseEntity.ok(new MessageResponse("Se ha registrado anotacion con exito!"));
 
 
@@ -127,7 +136,7 @@ public class AnotacionesController {
     }
 
     @PutMapping("/Edit")
-    public ResponseEntity<?> editarAnotacion(@Valid @RequestBody EditAnotacion anotacionRequest) {
+    public ResponseEntity<?> editarAnotacion(@Valid @RequestBody EditarAnotacionesRequest anotacionRequest) {
 
         try {
             // Validar campos obligatorios
@@ -139,13 +148,18 @@ public class AnotacionesController {
             }
 
             // Editar nueva entidad AnotacionesEntity
-            AnotacionesEntity anotacion = anotacionesService.findById(anotacionRequest.getId_anotacion());
+            Optional<AnotacionesEntity> opanotacion = anotacionesService.obtenerAnotacionPorId(anotacionRequest.getId_anotacion());
+
+            if(opanotacion == null){
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado la anotación"));
+            }
+            AnotacionesEntity anotacion = opanotacion.get();
             anotacion.setFecha(anotacionRequest.getFecha());
             anotacion.setDescripcion(anotacionRequest.getDescripcion());
             anotacion.setGravedad(anotacionRequest.getGravedad());
 
             // Guardar la nueva entidad en la base de datos
-            anotacionesService.save(anotacion);
+            anotacionesService.guardarAnotacion(anotacion);
 
             return ResponseEntity.ok(new MessageResponse("Se ha editado anotacion con exito!"));
 
@@ -154,22 +168,20 @@ public class AnotacionesController {
         }
     }
 
-    @DeleteMapping("/Delete")
-    public ResponseEntity<?> deleteAnotacion(@Valid @RequestBody EditAnotacion anotacionRequest) {
+    @DeleteMapping("/Delete/{id}")
+    public ResponseEntity<?> deleteAnotacion(@PathVariable("id") Long id) {
 
         try{
 
-            if (anotacionRequest.getId_anotacion() == null
-                    || anotacionRequest.getFecha() == null
-                    || StringUtils.isEmpty(anotacionRequest.getDescripcion())
-                    || StringUtils.isEmpty(anotacionRequest.getGravedad())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+            // Crear nueva entidad AnotacionesEntity
+            Optional<AnotacionesEntity> anotacion = anotacionesService.obtenerAnotacionPorId(id);
+
+            if(anotacion == null){
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado la anotación"));
             }
 
-            // Crear nueva entidad AnotacionesEntity
-            AnotacionesEntity anotacion = anotacionesService.findById(anotacionRequest.getId_anotacion());
             // Guardar la nueva entidad en la base de datos
-            anotacionesService.delete(anotacion);
+            anotacionesService.eliminarAnotacion(anotacion.get().getAnotaciones_id());
 
             return ResponseEntity.ok(new MessageResponse("Se ha eliminado anotacion con exito!"));
 

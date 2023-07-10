@@ -14,7 +14,7 @@ public class UtpEntity {
     PersonaEntity personaEntity;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "utp_establ_id", nullable = false)
+    @JoinColumn(name = "utp_establecimiento_id", nullable = false)
     EstablecimientoEntity establecimientoEntity;
 
     public UtpEntity() {

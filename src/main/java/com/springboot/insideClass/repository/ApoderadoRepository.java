@@ -11,11 +11,6 @@ import java.util.List;
 @Repository
 public interface ApoderadoRepository extends JpaRepository<ApoderadoEntity, Long> {
 
-    @Query(nativeQuery = true, value = "select * from t_apoderado where t_apoderado.apoderado_persona_run = ?")
-    ApoderadoEntity findApoderadoByRun(@Param("apoderado_persona_run") String apoderado_persona_run);
-
-    @Query(nativeQuery = true, value = "SELECT * FROM fn_InfoAlumno(:establecimiento, :vigencia, :apoderado_run )")
-    List<Object> fn_InfoApoderado(@Param("establecimiento") Long establecimiento,
-                                  @Param("vigencia") Integer vigencia, @Param("apoderado_run") String apoderado_run);
-
+    @Query(value = "select * from t_apoderado a where (a.apoderado_id = :apoderado_id or :apoderado_id = -1) and (a.apoderado_persona_run = :apoderado_persona_run or :apoderado_persona_run =  '-1')", nativeQuery = true)
+    List<ApoderadoEntity> findByFilters(@Param("apoderado_id") Long alumno_id, @Param("apoderado_persona_run") String apoderado_persona_run);
 }

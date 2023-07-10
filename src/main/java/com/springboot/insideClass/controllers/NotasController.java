@@ -1,165 +1,203 @@
 package com.springboot.insideClass.controllers;
 
-import com.springboot.insideClass.componet.Correo;
+import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.*;
-import com.springboot.insideClass.payload.request.Notas.CreateNotas;
-import com.springboot.insideClass.payload.request.Notas.EditNotas;
-import com.springboot.insideClass.payload.request.Notas.GetNotas;
+import com.springboot.insideClass.payload.request.Notas.BuscarNotasRequest;
+import com.springboot.insideClass.payload.request.Notas.CrearNotasRequest;
+import com.springboot.insideClass.payload.request.Notas.EditarNotasRequest;
+import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.ZoneId;
-
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/notas")
 public class NotasController {
 
     @Autowired
-    private MatriculaService matriculaService;
+    private NotasService notasService;
 
-    @Autowired
-    private CursoEstablecimientoService cursoEstablecimientoService;
+    @Autowired private MatriculaService matriculaService;
 
-    @Autowired
-    private AsignaturaDocenteService asignaturaDocenteService;
+    @Autowired private CursoEstablecimientoService cursoEstablecimientoService;
 
-    @Autowired
-    private AsignaturaNotaService asignaturaNotaService;
+    @Autowired private DocenteAsignaturaService docenteAsignaturaService;
 
-    @Autowired
-    private AlumnoService alumnoService;
+    @Autowired private Docente_Asignatura_Curso_EstablecimientoService docente_asignatura_curso_establecimientoService;
 
-    @Autowired
-    private AsigNotaEstablCursoService asigNotaEstablCursoService;
+    @Autowired private Metodos metodos;
 
-    @Autowired
-    private Correo correo;
     @PostMapping("/Get")
-    public ResponseEntity<?> obtenerNota(@Valid @RequestBody GetNotas notaRequest) {
-
-        System.out.println(notaRequest.getDocente_run());
-        System.out.println(notaRequest.getRun());
-        System.out.println(notaRequest.getId_asignatura());
-        System.out.println(notaRequest.getId_establecimiento());
-
-        if(asignaturaNotaService.IsValid(notaRequest)){
-
+    public ResponseEntity<?> obtenerNotas(@Valid @RequestBody BuscarNotasRequest request) {
+        try{
             return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(asignaturaNotaService.obtenerInfoNotas(notaRequest.getRun(), notaRequest.getDocente_run(),
-                            notaRequest.getId_asignatura(),  notaRequest.getId_establecimiento(), notaRequest.getFecha(), notaRequest.getCurso()));
-        }
-        return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota!"));
-
-      /*  try{
-
+                    .body(notasService.obtenerDatosAlumnoNotas(
+                            request.isMatricula_vigencia(),
+                            request.getEstablecimiento_id(),
+                            request.getApoderado_id(),
+                            request.getAlumno_run(),
+                            request.getNotas_matricula_id(),
+                            request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id())
+                    ); //
         }catch (Exception e){
-
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota!"));
-
-        }*/
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PostMapping("/Create")
-    public ResponseEntity<?> ingresarNota(@Valid @RequestBody CreateNotas notaRequest) {
-       /*try {
+    public ResponseEntity<?> ingresarAnotacion(@Valid @RequestBody CrearNotasRequest notasRequest) {
 
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar la nota!" + e.getMessage()));
-        }*/
-        if(notaRequest.IsValid()){
-            LocalDate localDate = notaRequest.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        try{
+
+            // Validar campos obligatorios
+            if (StringUtils.isEmpty(notasRequest.getRun())
+                    || notasRequest.getEstablecimiento() == null
+                    || notasRequest.getAsignatura() == null
+                    || notasRequest.getNotas_fecha() == null
+                    || StringUtils.isEmpty(notasRequest.getRun_docente())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+            }
+
+            LocalDate localDate = notasRequest.getNotas_fecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             int year = localDate.getYear();
 
-            MatriculaEntity matricula = matriculaService.findMatriculaByRunAndCurso(notaRequest.getRun(), year, notaRequest.getEstablecimiento());
-            if (matricula == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado encontrar matricula!"));
+            List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(
+                    true,
+                    year,
+                    -1L,
+                    "-1",
+                    -1L, notasRequest.getRun());
+
+            if(matricula == null){
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
 
-            CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(-1, notaRequest.getEstablecimiento(),
-                    year, year);
-            if (cursoEstablecimiento == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado encontrar matricula !"));
+            Optional<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.obtenerCursosEstablecimientoPorId(matricula.get(0).getMatricula_curso_establecimiento_id().longValue());
+
+            if(cursoEstablecimiento == null){
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
-          AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByRunAndAsignaturaAndEstablecimiento(
-                  year,
-                  year,
-                  notaRequest.getDocente_run(),
-                  notaRequest.getAsignatura());
-            if (asignaturaDocente == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota!"));
+            List<DocenteAsignaturaEntity> asignaturaDocente = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
+                    notasRequest.getAsignatura(),
+                    "-1",
+                    -1L,
+                    notasRequest.getRun_docente()
+            );
+
+
+            if(asignaturaDocente == null){
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
             }
 
-            // Crear nueva entidad AsignaturaNotaEntity
-            AsignaturaNotaEntity nota = new AsignaturaNotaEntity();
-            nota.setAsignatura_nota_nota(notaRequest.getNota());
-            nota.setPosicion_nota_nota(notaRequest.getPosicion_nota());
+            List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntities =
+                    docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(
+                            -1L,
+                            cursoEstablecimiento.get().getCurso_establecimiento_id(),
+                            asignaturaDocente.get(0).getDocente_asignatura_id(),
+                            "-1", "-1",
+                            metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR),
+                            metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR));
+
+
+            if(docente_asignatura_curso_establecimientoEntities.size() == 0){
+                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
+            }
+
+            // Crear nueva entidad NotasEntity
+            NotasEntity notas = new NotasEntity();
+            notas.setMatriculaEntity(matriculaService.obtenerMatriculaPorId(matricula.get(0).getMatricula_id().longValue()).get());
+            notas.setDocente_asignatura_curso_establecimientoEntity(docente_asignatura_curso_establecimientoEntities.get(0));
+            notas.setNotas_fecha(notasRequest.getNotas_fecha());
+            notas.setNotas_posicion(notasRequest.getNotas_posicion());
+            notas.setNota(notasRequest.getNota());
+            notas.setNotas_fecha(notasRequest.getNotas_fecha());
+
             // Guardar la nueva entidad en la base de datos
-            asignaturaNotaService.save(nota);
+            notasService.guardarNota(notas);
 
-            //Falta indicar la relacion t_asignatura_docente
-            AsigNotaEstablCursoEntity asignaturaDocente1 = new AsigNotaEstablCursoEntity(cursoEstablecimiento,asignaturaDocente, nota);
-            asigNotaEstablCursoService.save(asignaturaDocente1);
-       //     correo.enviarCorreoNota(matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(), asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), notaRequest.getNota(), "test", new Date().toString());
+            /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
+            return ResponseEntity.ok(new MessageResponse("Se ha registrado anotacion con exito!"));
 
-            return ResponseEntity.ok(new MessageResponse("Se ha registrado la nota con éxito!"));
-        }
-
-        return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar la nota!" ));
-
-
-    }
-    @PutMapping("/Update")
-    public ResponseEntity<?> editarNota(@Valid @RequestBody EditNotas notaRequest) {
-
-        try{
-            if(notaRequest.IsValid()){
-                // Editar  entidad AnotacionesEntity
-                AsignaturaNotaEntity nota = asignaturaNotaService.findById(notaRequest.getAsignatura_nota_id());
-                nota.setAsignatura_nota_nota(notaRequest.getNota());
-
-                // Guardar la nueva entidad en la base de datos
-                asignaturaNotaService.save(nota);
-
-                return ResponseEntity.ok(new MessageResponse("Se ha editado nota con exito!"));
-            }
-
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar nota!"));
 
         }catch (Exception e){
 
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar nota!"));
+            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar asistencia!"));
 
         }
     }
-    @DeleteMapping("/Delete")
-    public ResponseEntity<?> deleteNota(@Valid @RequestBody EditNotas notaRequest) {
 
-        try{
-            if(notaRequest.IsValid()){
-                // Eliminar nueva entidad AnotacionesEntity
-                AsignaturaNotaEntity nota = asignaturaNotaService.findById(notaRequest.getAsignatura_nota_id());
-                // Guardar la nueva entidad en la base de datos
-                asignaturaNotaService.delete(nota);
+    @PutMapping("/Edit")
+    public ResponseEntity<?> editarNota(@Valid @RequestBody EditarNotasRequest notasRequest) {
 
-                return ResponseEntity.ok(new MessageResponse("Se ha eliminado nota con exito!"));
+        try {
+            // Validar campos obligatorios
+            if (notasRequest.getDace_notas_id() == null
+                    || notasRequest.getNotas_fecha() == null) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
             }
 
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado eliminar nota!"));
+            // Editar nueva entidad AnotacionesEntity
+            NotasEntity opanota = notasService.obtenerNotaPorId(notasRequest.getDace_notas_id());
+
+            if(opanota == null){
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado la anotación"));
+            }
+
+            opanota.setNotas_fecha(notasRequest.getNotas_fecha());
+            opanota.setNotas_posicion(notasRequest.getNotas_posicion());
+            opanota.setNota(notasRequest.getNota());
+            opanota.setNotas_fecha(notasRequest.getNotas_fecha());
+
+            // Guardar la nueva entidad en la base de datos
+            notasService.guardarNota(opanota);
+
+            return ResponseEntity.ok(new MessageResponse("Se ha editado anotacion con exito!"));
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar anotacion!"));
+        }
+    }
+
+    @DeleteMapping("/Delete/{id}")
+    public ResponseEntity<?> deleteAnotacion(@PathVariable("id") Long id) {
+
+        try{
+
+
+            // Crear nueva entidad AnotacionesEntity
+            NotasEntity nota = notasService.obtenerNotaPorId(id);
+
+            if(nota == null){
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado la anotación"));
+            }
+
+            // Guardar la nueva entidad en la base de datos
+            notasService.eliminarNota(nota.getDace_notas_id());
+
+            return ResponseEntity.ok(new MessageResponse("Se ha eliminado anotacion con exito!"));
+
 
         }catch (Exception e){
 
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado eliminar nota!"));
+            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado eliminar anotacion!"));
 
         }
     }
+
 
 }

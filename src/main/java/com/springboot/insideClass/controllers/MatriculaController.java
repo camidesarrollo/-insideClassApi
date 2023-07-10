@@ -1,22 +1,19 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.entity.*;
-import com.springboot.insideClass.payload.request.Matricula.DeleteRequest;
-import com.springboot.insideClass.payload.request.Matricula.GetAlumnoRequest;
-import com.springboot.insideClass.payload.request.Matricula.GetRequest;
-import com.springboot.insideClass.payload.request.Matricula.M_CreateRequest;
+import com.springboot.insideClass.payload.request.Matricula.BuscarDatosMatriculaRequest;
+import com.springboot.insideClass.payload.request.Matricula.CrearMatriculaRequest;
+import com.springboot.insideClass.payload.request.Matricula.EditarMatriculaRequest;
+import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
-import com.springboot.insideClass.repository.MatriculaRepository;
 import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -37,8 +34,6 @@ public class MatriculaController {
     private MatriculaService matriculaService;
     @Autowired
     private CursoService cursoService;
-    @Autowired
-    private MatriculaRepository matriculaRepository;
 
     @Autowired
     PerfilService perfilService;
@@ -53,307 +48,193 @@ public class MatriculaController {
     EstablecimientoService establecimientoService;
 
     @Autowired
-    CursoMatriculaService cursoMatri;
-
-
-    @PostMapping("/alumno/Get")
-    public ResponseEntity<?>ObtenerMatriculaByAlumno(@Valid @RequestBody GetAlumnoRequest getAlumnoRequest){
-        if(getAlumnoRequest.isValid()){
-            CursoEntity curso = cursoService.findCursoByName(getAlumnoRequest.getCurso_nombre());
-
-            if(curso != null && getAlumnoRequest.getEstablecimiento() != null){
-                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
-                        curso.getCurso_id(), getAlumnoRequest.getEstablecimiento(), getAlumnoRequest.getAgno(), getAlumnoRequest.getAgno());
-                if(cursoEstablecimiento != null){
-                    AlumnoEntity alumno = alumnoService.findAlumnoByRun(getAlumnoRequest.getPersona_run());
-                    if(alumno != null){
-                        /*return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                                .body(matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), getAlumnoRequest.getAgno()));*/
-
-                    }else{
-                        return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado alumno en el sistema!"));
-                    }
-                }else{
-                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el colegio en el sistema!"));
-
-                }
-
-            }
-
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: al momento de Obtener la matricula del alumno!"));
-        }
-
-        return ResponseEntity.badRequest().body(new MessageResponse("Error: al momento de Obtener la matricula del alumno!"));
-    }
-
+    CursoEstablecimientoService cursoMatri;
 
     @PostMapping("/Get")
-    public ResponseEntity<Object> tablaAlumno(@Valid @RequestBody GetRequest getRequest) {
+    public ResponseEntity<?> obtenerDatosMatriculaPorFiltros(@Valid @RequestBody BuscarDatosMatriculaRequest buscarDatosMatriculaRequest) {
 
-        try {
-            if(getRequest.isValid()){
-                return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                        .body(matriculaService.getInfoAlumno(getRequest.getEstablecimiento(),getRequest.getPersona_run(), getRequest.getCurso_id(), getRequest.getVigencia(), "-1"));
-            }
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: Por favor valide los datos ingresados"));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logro obtener la informacion requerida!"));
+        List<DatosMatriculaResponse> datos = matriculaService.obtenerDatosMatricula(buscarDatosMatriculaRequest.isMatricula_vigencia(),
+                buscarDatosMatriculaRequest.getCurso_agno(), buscarDatosMatriculaRequest.getApoderado_id(), buscarDatosMatriculaRequest.getApoderado_persona_run(), buscarDatosMatriculaRequest.getAlumno_id(), buscarDatosMatriculaRequest.getAlumno_persona_run());
 
-        }
+        return ResponseEntity.ok(datos);
     }
+
     @PostMapping("/Create")
-    public ResponseEntity<?> agregarMatricula(@Valid @RequestBody M_CreateRequest matriculaRequest) {
+    public ResponseEntity<?> agregarMatricula(@Valid @RequestBody CrearMatriculaRequest matriculaRequest) {
+        // Validar existencia del alumno
+        String alumnoRun = matriculaRequest.getAlumno().getPersona_run();
+        List<AlumnoEntity> alumno = alumnoService.obtenerAlumnoPorFiltro(-1L,
+                alumnoRun);
+        if (alumno == null || alumno.size() == 0) {
+            // Buscar datos de la persona del alumno
+            List<PersonaEntity> personaAlumno = personaService.obtenerPersonasPorFiltro(alumnoRun,"-1",
+                    "-1", "-1", "-1", "-1", "-1", "-1"
+            );
+            if (personaAlumno == null || personaAlumno.size() == 0) {
+                // Insertar nueva persona para el alumno
+                PersonaEntity personaEntity = new PersonaEntity(
+                        matriculaRequest.getAlumno().getPersona_run(),
+                        matriculaRequest.getAlumno().getPersona_nombre(),
+                        matriculaRequest.getAlumno().getPersona_apellido_paterno(),
+                        matriculaRequest.getAlumno().getPersona_apellido_materno(),
+                        matriculaRequest.getAlumno().getPersona_fecha_nacimiento(),
+                        matriculaRequest.getAlumno().getPersona_sexo(),
+                        matriculaRequest.getAlumno().getPersona_numero_telefonico(),
+                        matriculaRequest.getAlumno().getPersona_numero_celular()
+                );
+                personaService.guardarPersona(personaEntity);
+            }
+            // Insertar nuevo alumno
+
+            PersonaEntity per = personaService.obtenerPersonasPorFiltro(alumnoRun,"-1",
+                    "-1", "-1", "-1", "-1", "-1", "-1"
+            ).get(0);
+
+            AlumnoEntity al = new AlumnoEntity(per);
+            alumnoService.guardarAlumno(al);
+        }
+
+        // Validar existencia del apoderado
+        String apoderadoRun = matriculaRequest.getApoderado().getPersona_run();
+        List<ApoderadoEntity> apoderado = apoderadoService.obtenerApoderadoPorFiltro(-1L, apoderadoRun);
+        if (apoderado == null || apoderado.size() == 0) {
+            // Buscar datos de la persona del apoderado
+            List<PersonaEntity> personaApoderado = personaService.obtenerPersonasPorFiltro(apoderadoRun,"-1",
+                    "-1", "-1", "-1", "-1", "-1", "-1"
+            );
+            if (personaApoderado == null || personaApoderado.size() == 0) {
+                // Insertar nueva persona para el apoderado
+                PersonaEntity personaApo = new PersonaEntity(
+                        matriculaRequest.getApoderado().getPersona_run(),
+                        matriculaRequest.getApoderado().getPersona_nombre(),
+                        matriculaRequest.getApoderado().getPersona_apellido_paterno(),
+                        matriculaRequest.getApoderado().getPersona_apellido_materno(),
+                        matriculaRequest.getApoderado().getPersona_fecha_nacimiento(),
+                        matriculaRequest.getApoderado().getPersona_sexo(),
+                        matriculaRequest.getApoderado().getPersona_numero_telefonico(),
+                        matriculaRequest.getApoderado().getPersona_numero_celular()
+                );
+                personaService.guardarPersona(personaApo);
+            }
+            // Insertar nuevo apoderado
+            ApoderadoEntity apodera = new ApoderadoEntity(personaService.obtenerPersonasPorFiltro(apoderadoRun,"-1",
+                    "-1", "-1", "-1", "-1", "-1", "-1"
+            ).get(0));
+            apoderadoService.guardarApoderado(apodera);
+        }
+
+        // Buscar curso y establecimiento
+        List<CursoEstablecimientoEntity> cursoEstablecimientoFind = cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
+                -1L, matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento(), true
+        );
+
+        if (cursoEstablecimientoFind == null  || cursoEstablecimientoFind.size() == 0) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se encontró un curso y establecimiento válido."));
+        }
+
+        // Buscar matrícula
+        List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(true,matriculaRequest.getAgno(),
+                apoderadoService.obtenerApoderadoPorFiltro(-1L, matriculaRequest.getApoderado().getPersona_run()).get(0).getApoderado_id(),
+                matriculaRequest.getApoderado().getPersona_run(),
+                alumnoService.obtenerAlumnoPorFiltro(-1L, matriculaRequest.getAlumno().getPersona_run()).get(0).getAlumno_id(),
+                matriculaRequest.getAlumno().getPersona_run()
+        );
+
+
+        if (matricula == null || matricula.size() == 0) {
+            // Insertar nueva matrícula
+            MatriculaEntity matricula1 = new MatriculaEntity(
+                    alumnoService.obtenerAlumnoPorFiltro(-1L, matriculaRequest.getAlumno().getPersona_run()).get(0),
+                    apoderadoService.obtenerApoderadoPorFiltro(-1L, matriculaRequest.getApoderado().getPersona_run()).get(0),
+                    cursoEstablecimientoFind.get(0),
+                    matriculaRequest.getAgno(),
+                    true);
+            matriculaService.guardarMatricula(matricula1);
+
+            // Crear nuevo usuario
+            List<PerfilEntity> perfil = perfilService.obtenerPerfilesPorFiltro(-1L, "Apoderado");
+            List<VigenciaEntity> vigencia = vigenciaService.buscarVigenciasPorFiltro(-1L, "Vigente");
+            PersonaEntity persona = personaService.obtenerPersonasPorFiltro(apoderadoRun,"-1",
+                    "-1", "-1", "-1", "-1", "-1", "-1"
+            ).get(0);
+            usuarioService.createUsuario(perfil.get(0), vigencia.get(0), persona, matriculaRequest.getCorreo());
+        }
+
+        return ResponseEntity.ok(new MessageResponse("Alumno matriculado registrado exitosamente!"));
+    }
+
+    @PutMapping("/Edit")
+    public ResponseEntity<?> editarMatricula(@Valid @RequestBody EditarMatriculaRequest matriculaRequest) {
         try {
-            if (!matriculaService.isValidCreate(matriculaRequest)) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró obtener la información requerida!"));
+            Optional<CursoEntity> curso = cursoService.obtenerCursoPorId(matriculaRequest.getCurso());
+            Long establecimientoId = matriculaRequest.getEstablecimiento();
+            String Alumno_run = matriculaRequest.getAlumno().getPersona_run();
+            String Apoderado_run = matriculaRequest.getApoderado().getPersona_run();
+
+            if (curso == null) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado el curso en el sistema!"));
             }
 
-            // Validar existencia del alumno
-            String alumnoRun = matriculaRequest.getAlumno().getPersona_run();
-            AlumnoEntity alumno = alumnoService.findAlumnoByRun(alumnoRun);
+            List<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
+                    -1L, curso.get().getCurso_id(), establecimientoId, true);
+
+            if (cursoEstablecimiento == null) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado el curso en el colegio en el sistema!"));
+            }
+
+            List<AlumnoEntity> alumno = alumnoService.obtenerAlumnoPorFiltro(-1L, Alumno_run);
             if (alumno == null) {
-                // Buscar datos de la persona del alumno
-                PersonaEntity personaAlumno = personaService.findByRun(alumnoRun);
-                if (personaAlumno == null) {
-                    // Insertar nueva persona para el alumno
-                    personaAlumno = new PersonaEntity(
-                            matriculaRequest.getAlumno().getPersona_run(),
-                            matriculaRequest.getAlumno().getPersona_nombre(),
-                            matriculaRequest.getAlumno().getPersona_apellido_paterno(),
-                            matriculaRequest.getAlumno().getPersona_apellido_materno(),
-                            matriculaRequest.getAlumno().getPersona_fecha_nacimiento(),
-                            matriculaRequest.getAlumno().getPersona_sexo(),
-                            matriculaRequest.getAlumno().getPersona_numero_telefonico(),
-                            matriculaRequest.getAlumno().getPersona_numero_celular()
-                    );
-                    personaService.save(personaAlumno);
-                }
-                // Insertar nuevo alumno
-                alumno = new AlumnoEntity(personaAlumno);
-                alumnoService.save(alumno);
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado el alumno en el sistema!"));
             }
 
-            // Validar existencia del apoderado
-            String apoderadoRun = matriculaRequest.getApoderado().getPersona_run();
-            ApoderadoEntity apoderado = apoderadoService.findApoderadoByRun(apoderadoRun);
+            List<ApoderadoEntity> apoderado = apoderadoService.obtenerApoderadoPorFiltro(-1L, Apoderado_run);
             if (apoderado == null) {
-                // Buscar datos de la persona del apoderado
-                PersonaEntity personaApoderado = personaService.findByRun(apoderadoRun);
-                if (personaApoderado == null) {
-                    // Insertar nueva persona para el apoderado
-                    personaApoderado = new PersonaEntity(
-                            matriculaRequest.getApoderado().getPersona_run(),
+                PersonaEntity persona = personaService.obtenerPersonasPorFiltro(Apoderado_run, "-1", "-1", "-1", "-1", "-1", "-1", "-1").get(0);
+                if (persona == null) {
+                    PersonaEntity personaEntity = new PersonaEntity(Apoderado_run,
                             matriculaRequest.getApoderado().getPersona_nombre(),
                             matriculaRequest.getApoderado().getPersona_apellido_paterno(),
                             matriculaRequest.getApoderado().getPersona_apellido_materno(),
                             matriculaRequest.getApoderado().getPersona_fecha_nacimiento(),
                             matriculaRequest.getApoderado().getPersona_sexo(),
                             matriculaRequest.getApoderado().getPersona_numero_telefonico(),
-                            matriculaRequest.getApoderado().getPersona_numero_celular()
-                    );
-                    personaService.save(personaApoderado);
+                            matriculaRequest.getApoderado().getPersona_numero_celular());
+                    personaService.guardarPersona(personaEntity);
                 }
-                // Insertar nuevo apoderado
-                apoderado = new ApoderadoEntity(personaApoderado);
-                apoderadoService.save(apoderado);
+                PersonaEntity personaEntity = personaService.obtenerPersonasPorFiltro(Apoderado_run, "-1", "-1", "-1", "-1", "-1", "-1", "-1").get(0);
+                ApoderadoEntity apoderadoSave = new ApoderadoEntity(personaEntity);
+                apoderadoService.guardarApoderado(apoderadoSave);
             }
 
-            // Buscar curso y establecimiento
-            List<CursoEstablecimientoEntity> cursoEstablecimientoFind = cursoEstablecimientoService.findAllFilter(
-                    -1, null, null, null, null, null, true,
-                    matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento()
-            );
+            apoderado = apoderadoService.obtenerApoderadoPorFiltro(-1L, Apoderado_run);
 
-            CursoEstablecimientoEntity cursoEstablecimiento = null;
-            int agno = matriculaRequest.getAgno();
-            for (CursoEstablecimientoEntity item : cursoEstablecimientoFind) {
-                LocalDate fechaInicio = item.getCurso_establ_fecha_inicio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                LocalDate fechaFin = item.getCurso_establ_fecha_fin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                if (fechaFin.getYear() == agno) {
-                    cursoEstablecimiento = cursoEstablecimientoService.findById(item.getCurso_establ_id());
-                    break;
-                }
-            }
+            MatriculaEntity matricula = new MatriculaEntity();
+            matricula.setAlumnoEntity(alumno.get(0));
+            matricula.setApoderadoEntity(apoderado.get(0));
+            matricula.setCursoEstablecimientoEntity(cursoEstablecimiento.get(0));
 
-            if (cursoEstablecimiento == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se encontró un curso y establecimiento válido."));
-            }
+            matriculaService.guardarMatricula(matricula);
 
-            // Buscar matrícula
-            MatriculaEntity matricula = matriculaService.findEstablecimientoByAll(
-                    alumno.getAlumno_id(),
-                    1,
-                    matriculaRequest.getAgno(),
-                    matriculaRequest.getCurso(),
-                    matriculaRequest.getEstablecimiento()
-            );
-
-            if (matricula == null) {
-                // Insertar nueva matrícula
-                MatriculaEntity matricula1 = new MatriculaEntity(alumno, apoderado, matriculaRequest.getAgno(), true);
-                matriculaService.save(matricula1);
-
-                MatriculaEntity matriculaEntity = matriculaService.findAllFilter(
-                        alumnoService.findAlumnoByRun(matriculaRequest.getAlumno().getPersona_run()).getAlumno_id(),
-                        apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run()).getApoderado_id(),
-                        true,
-                        matriculaRequest.getAgno()
-                );
-
-                if (matriculaEntity != null) {
-                    // Insertar en curso_establecimiento_matricula
-                    CursoMatriculaEntity cursoMatriculaEntity = new CursoMatriculaEntity(
-                            cursoEstablecimiento,
-                            matriculaEntity
-                    );
-                    cursoMatri.guardarCursoMatricula(cursoMatriculaEntity);
-                } else {
-                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró encontrar la matrícula."));
-                }
-
-                // Crear nuevo usuario
-                PerfilEntity perfil = perfilService.findByName("Apoderado");
-                VigenciaEntity vigencia = vigenciaService.findByName("Vigente");
-                PersonaEntity persona = personaService.findByRun(apoderado.getPersonaEntity().getPersona_run());
-                usuarioService.createUsuario(perfil, vigencia, persona, matriculaRequest.getApoderado().getCorreo());
-            }
-
-            return ResponseEntity.ok(new MessageResponse("Alumno matriculado registrado exitosamente!"));
+            return ResponseEntity.ok(new MessageResponse("La matrícula ha sido actualizada exitosamente!"));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró obtener la información requerida!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado actualizar la matrícula!"));
         }
     }
 
+    @DeleteMapping("/Delete/{id}")
+    public ResponseEntity<?> deleteMatricula(@PathVariable("id") Long id) {
 
-    @PutMapping("/Update")
-    public ResponseEntity<?> editarMatricula(@Valid @RequestBody M_CreateRequest matriculaRequest) {
+        Optional<MatriculaEntity> matricula = matriculaService.obtenerMatriculaPorId(id);
 
-        try{
-            if(matriculaService.isValidCreate(matriculaRequest)){
-                CursoEntity curso = cursoService.findById(matriculaRequest.getCurso());
-                MatriculaEntity matricula = new MatriculaEntity();
-                if(curso != null && matriculaRequest.getEstablecimiento() != 0){
-                    CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(),
-                            matriculaRequest.getEstablecimiento(),matriculaRequest.getAgno(), matriculaRequest.getAgno());
-                    if(cursoEstablecimiento != null){
-                        AlumnoEntity alumno = alumnoService.findAlumnoByRun(matriculaRequest.getAlumno().getPersona_run());
-                        if(alumno != null){
-                            System.out.println(alumno.getAlumno_id());
-                         /*  matricula = matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), matriculaRequest.getAgno(), nu);
-                            if(matricula.getMatricula_id() == null){
-                                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado matricula en el sistema!"));
-                            }*/
-                            System.out.println("Imprimir Id de matricula");
-                            System.out.println(matricula.getMatricula_id());
-                        }else{
-                            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado alumno en el sistema!"));
-                        }
-                    }else{
-                        return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el colegio en el sistema!"));
-
-                    }
-
-                }else{
-                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el sistema!"));
-
-                }
-
-                AlumnoEntity alumno = alumnoService.findAlumnoByRun(matriculaRequest.getAlumno().getPersona_run());
-
-                if(alumno == null){
-                    return ResponseEntity.badRequest().body(new MessageResponse("Error: El alumno con ID " + matriculaRequest.getAlumno().getPersona_run() + " no existe!"));
-                }
-
-                ApoderadoEntity apoderado = apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run());
-
-                if(apoderado == null){
-                    if(personaService.findByRun(matriculaRequest.getApoderado().getPersona_run()) == null){
-                        PersonaEntity personaEntity = new PersonaEntity(matriculaRequest.getApoderado().getPersona_run(),
-                                matriculaRequest.getApoderado().getPersona_nombre(),
-                                matriculaRequest.getApoderado().getPersona_apellido_paterno(),
-                                matriculaRequest.getApoderado().getPersona_apellido_materno(),
-                                matriculaRequest.getApoderado().getPersona_fecha_nacimiento(),
-                                matriculaRequest.getApoderado().getPersona_sexo(),
-                                matriculaRequest.getApoderado().getPersona_numero_telefonico(),
-                                matriculaRequest.getApoderado().getPersona_numero_celular());
-                        personaService.save(personaEntity);
-                    }
-
-                    PersonaEntity personaEntity = personaService.findByRun(matriculaRequest.getApoderado().getPersona_run());
-                    ApoderadoEntity apoderadosave = new ApoderadoEntity(personaEntity);
-                    apoderadoService.save(apoderadosave);
-                }
-                apoderado = apoderadoService.findApoderadoByRun(matriculaRequest.getApoderado().getPersona_run());
-
-
-                CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(matriculaRequest.getCurso(), matriculaRequest.getEstablecimiento(),matriculaRequest.getAgno(), matriculaRequest.getAgno());
-
-                if(cursoEstablecimiento == null){
-                    return ResponseEntity.badRequest().body(new MessageResponse("Error: El curso establecimiento con ID " + matriculaRequest.getEstablecimiento() + " no existe!"));
-                }
-
-                matricula.setAlumnoEntity(alumno);
-                matricula.setApoderadoEntity(apoderado);
-                matricula.setApoderadoEntity(apoderado);
-               /* matricula.setCursoEstablecimientoEntity(cursoEstablecimiento);*/
-                matricula.setApoderadoEntity(apoderado);
-
-
-                matriculaService.save(matricula);
-
-                return ResponseEntity.ok(new MessageResponse("La matrícula  ha sido actualizada exitosamente!"));
-            }
-
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró obtener la información requerida!"));
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró obtener la información requerida!"));
-
-        }
-    }
-
-      @DeleteMapping("/Delete")
-    public ResponseEntity<?> eliminarMatricula(@Valid @RequestBody DeleteRequest eliminarMatricula ) {
-        try{
-            if(eliminarMatricula.IsValid()){
-                System.out.println("Nombre del curso");
-                System.out.println(eliminarMatricula.getCurso_nombre());
-                CursoEntity curso = cursoService.findCursoByName(eliminarMatricula.getCurso_nombre());
-                if(curso != null){
-                    CursoEstablecimientoEntity cursoEstablecimiento = cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(curso.getCurso_id(), eliminarMatricula.getEstablecimiento_id(), eliminarMatricula.getCurso_agno(), eliminarMatricula.getCurso_agno());
-                    if(cursoEstablecimiento != null){
-                        AlumnoEntity alumno = alumnoService.findAlumnoByRun(eliminarMatricula.getRut_alumno());
-                        if(alumno != null){
-                            /*MatriculaEntity matricula = matriculaService.findEstablecimientoByAll(cursoEstablecimiento.getCurso_establ_id(), alumno.getAlumno_id(), eliminarMatricula.getCurso_agno());
-                            matricula.setMatricula_vigencia(false);
-                            matriculaRepository.save(matricula);
-                            System.out.println(matricula.getMatricula_id());*/
-                            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                                    .body(new MessageResponse("Matricula eliminada con exito"));
-
-                        }else{
-                            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado alumno en el sistema!"));
-                        }
-                    }else{
-                        return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el colegio en el sistema!"));
-
-                    }
-
-                }else{
-                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encotrado curso en el sistema!"));
-
-                }
-            }
-
-            return ResponseEntity.badRequest().body(new MessageResponse("No se encontro matricula vigente!"));
-
-        }catch (Exception e){
-            System.out.println("Error:");
-            System.out.println(e.getMessage());
-            return ResponseEntity.badRequest().body(new MessageResponse("No se encontro matricula vigente!"));
-
+        if(matricula == null){
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado matricula en el sistema!"));
         }
 
-    }
+        matricula.get().setMatricula_vigencia(false);
 
+        matriculaService.guardarMatricula(matricula.get());
+
+        return ResponseEntity.ok(new MessageResponse("La matrícula ha sido eliminado exitosamente!"));
+    }
 
 }

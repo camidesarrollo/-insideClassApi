@@ -10,13 +10,10 @@ import java.util.List;
 
 @Repository
 public interface PerfilRepository extends JpaRepository<PerfilEntity, Long> {
-    @Query(value = "select t_perfil.* from t_usuario inner join t_perfil on t_usuario.usuario_perfil_id = t_perfil.perfil_id where t_usuario.usuario_nick_name = ?", nativeQuery = true)
-    PerfilEntity findByUsuarioName(@Param("usuario_nick_name") String usuario_nick_name);
 
-    @Query(value = "select t_perfil.* from t_usuario inner join t_perfil on t_usuario.usuario_perfil_id = t_perfil.perfil_id where t_usuario.usuario_persona_run = ?", nativeQuery = true)
-    List<PerfilEntity> findByUsuarioRun(@Param("usuario_persona_run") String usuario_persona_run);
-
-
-    @Query(value = "select t_perfil.* from t_perfil  where t_perfil.perfil_nombre = ?", nativeQuery = true)
-    PerfilEntity findByName(@Param("perfil_nombre") String perfil_nombre);
+    @Query(value = "SELECT p.* FROM t_perfil p WHERE " +
+            "(:perfil_id = -1 OR p.perfil_id = :perfil_id) " +
+            "AND (:perfil_nombre = '-1' OR p.perfil_nombre = :perfil_nombre)", nativeQuery = true)
+    List<PerfilEntity> findByFilters(@Param("perfil_id") Long perfil_id,
+                                     @Param("perfil_nombre") String perfil_nombre);
 }

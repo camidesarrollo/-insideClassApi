@@ -6,11 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface VigenciaRepository extends JpaRepository<VigenciaEntity, Long> {
 
-    @Query(value = "select * from t_vigencia inner join t_usuario on t_vigencia.vigencia_id = t_usuario.usuario_vigencia_id where usuario_nick_name = ?", nativeQuery = true)
-    VigenciaEntity findByUsername(@Param("usuario_nick_name") String username);
-    @Query(value = "select * from t_vigencia where t_vigencia.vigencia_nombre = ?", nativeQuery = true)
-    VigenciaEntity findByName(String usuario_vigencia);
+    @Query(value = "SELECT * FROM t_vigencia WHERE " +
+            "(:vigencia_id = -1 OR vigencia_id = :vigencia_id) " +
+            "AND (:vigencia_nombre = '-1' OR vigencia_nombre = :vigencia_nombre)",
+            nativeQuery = true)
+    List<VigenciaEntity> findByFilters(@Param("vigencia_id") Long vigenciaId,
+                                       @Param("vigencia_nombre") String vigenciaNombre);
 }

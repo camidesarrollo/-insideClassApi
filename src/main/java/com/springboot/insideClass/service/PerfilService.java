@@ -6,49 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PerfilService {
+
     @Autowired
-    PerfilRepository perfilRepository;
+    private PerfilRepository perfilRepository;
 
-    public PerfilEntity findByUsuarioName(String usuario_nick_name){
-
-        try{
-            return perfilRepository.findByUsuarioName(usuario_nick_name);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
-    }
-
-    public List<PerfilEntity> findByUsuarioRun(String usuario_nick_name){
-
-        try{
-            return perfilRepository.findByUsuarioRun(usuario_nick_name);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
-    }
-
-
-
-    public PerfilEntity findByName(String findByName) {
-        try{
-            return perfilRepository.findByName(findByName);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
-    }
-
-    public List<PerfilEntity> getAll() {
-        try{
+        public List<PerfilEntity> obtenerTodosLosPerfiles() {
             return perfilRepository.findAll();
-        }catch (Exception e){
-            System.out.println(e);
         }
-        return null;
-    }
+
+        public Optional<PerfilEntity> obtenerPerfilPorId(Long id) {
+            return perfilRepository.findById(id);
+        }
+
+        public List<PerfilEntity> obtenerPerfilesPorFiltro(Long perfil_id, String perfil_nombre) {
+            return perfilRepository.findByFilters(perfil_id, perfil_nombre);
+        }
+
+        public PerfilEntity guardarPerfil(PerfilEntity perfil) {
+            return perfilRepository.save(perfil);
+        }
+
+        public void eliminarPerfil(Long id) {
+            perfilRepository.deleteById(id);
+        }
+
+
+
 }

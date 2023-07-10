@@ -12,12 +12,12 @@ public class AnotacionesEntity {
     Long anotaciones_id;
 
     @ManyToOne
-    @JoinColumn(name = "matricula_id")
+    @JoinColumn(name = "anotaciones_matricula_id")
     MatriculaEntity matriculaEntity;
 
     @ManyToOne
-    @JoinColumn(name = "asignatura_docente_id")
-    AsignaturaDocenteEntity asignaturaDocenteEntity;
+    @JoinColumn(name = "anotaciones_dace_id")
+    Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity;
 
     Date fecha;
 
@@ -29,6 +29,14 @@ public class AnotacionesEntity {
 
     }
 
+    public Long getAnotaciones_id() {
+        return anotaciones_id;
+    }
+
+    public void setAnotaciones_id(Long anotaciones_id) {
+        this.anotaciones_id = anotaciones_id;
+    }
+
     public MatriculaEntity getMatriculaEntity() {
         return matriculaEntity;
     }
@@ -37,12 +45,12 @@ public class AnotacionesEntity {
         this.matriculaEntity = matriculaEntity;
     }
 
-    public AsignaturaDocenteEntity getAsignaturaDocenteEntity() {
-        return asignaturaDocenteEntity;
+    public Docente_Asignatura_Curso_EstablecimientoEntity getDocente_asignatura_curso_establecimientoEntity() {
+        return docente_asignatura_curso_establecimientoEntity;
     }
 
-    public void setAsignaturaDocenteEntity(AsignaturaDocenteEntity asignaturaDocenteEntity) {
-        this.asignaturaDocenteEntity = asignaturaDocenteEntity;
+    public void setDocente_asignatura_curso_establecimientoEntity(Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity) {
+        this.docente_asignatura_curso_establecimientoEntity = docente_asignatura_curso_establecimientoEntity;
     }
 
     public Date getFecha() {
@@ -59,14 +67,6 @@ public class AnotacionesEntity {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public Long getAnotaciones_id() {
-        return anotaciones_id;
-    }
-
-    public void setAnotaciones_id(Long anotaciones_id) {
-        this.anotaciones_id = anotaciones_id;
     }
 
     public String getGravedad() {

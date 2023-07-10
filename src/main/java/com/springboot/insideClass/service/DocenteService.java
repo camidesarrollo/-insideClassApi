@@ -1,113 +1,81 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.DocenteEntity;
-import com.springboot.insideClass.payload.response.*;
+import com.springboot.insideClass.payload.response.Docente.InfoDocenteResponse;
 import com.springboot.insideClass.repository.DocenteRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
+import java.util.Optional;
 
 @Service
 public class DocenteService {
+
     @Autowired
-    DocenteRepository docenteRepo;
+    private DocenteRepository docenteRepository;
 
-    static Logger logger_2 = LogManager.getLogger();
+    public List<DocenteEntity> obtenerTodosLosDocentes() {
+        return docenteRepository.findAll();
+    }
 
-    public List<DocenteInfoResponse> getInfoDocente(long establecimiento_id, String run, long curso) {
-        List<DocenteInfoResponse> listaDocente = new ArrayList<>();
-        System.out.println("obteniendo el valor que entra en la funcion getInfoDocente");
-        System.out.println(establecimiento_id);
-        System.out.println(run);
-        System.out.println(curso);
-        List<Object> listaObjetosNativos = docenteRepo.getInfoDocente(establecimiento_id, run, curso);
-        Object[] fila;
+    public Optional<DocenteEntity> obtenerDocentePorId(Long id) {
+        return docenteRepository.findById(id);
+    }
+
+    public List<DocenteEntity> obtenerDocentesPorFiltro(Long docente_id, String docente_persona_run) {
+        return docenteRepository.findByFilters(docente_id, docente_persona_run);
+    }
+
+    public DocenteEntity guardarDocente(DocenteEntity docente) {
+        return docenteRepository.save(docente);
+    }
+
+    public void eliminarDocente(Long id) {
+        docenteRepository.deleteById(id);
+    }
+
+    public List<InfoDocenteResponse> infoDocente(long establecimiento_id, String run, long curso) {
+        List<InfoDocenteResponse> listaDocente = new ArrayList<>();
+
+        List<Object> listaObjetosNativos = docenteRepository.infoDocente(run, curso, establecimiento_id);
 
         for (Object item : listaObjetosNativos) {
-            fila = (Object[]) item;
-            System.out.println("Estamos iterando la lista");
+            Object[] fila = (Object[]) item;
 
-            System.out.println(fila[1] != null ? (String) fila[1] : "");
-            PersonaResponse personaResponse = new PersonaResponse(
-                    fila[1] != null ? (String) fila[1] : "",  // persona_nombre
-                    fila[2] != null ? (String) fila[2] : "",  // persona_apellido_paterno
-                    fila[3] != null ? (String) fila[3] : "",  // persona_apellido_materno
-                    fila[6] != null ? (Date) fila[6] : null, // persona_fecha_nacimiento
-                    fila[7] != null ? (Character) fila[7] : 'I', // persona_sexo
-                    fila[5] != null ? (String) fila[5] : "",  // email
-                    fila[4] != null ? (String) fila[4] : "",  // persona_numero_celular
-                    fila[0] != null ? (String) fila[0] : ""   // persona_run
-            );
-            EstablecimientoResponse establecimientoResponse = new EstablecimientoResponse(
-                    fila[9] != null ? ((BigInteger) fila[9]).toString() : "", // establ_id
-                    fila[11] != null ? (String) fila[11] : "",  // establ_nombre
-                    fila[12] != null ? ((BigInteger) fila[12]).toString()  : ""   // establ_numero_telefonico
-            );
-            DireccionResponse direccionResponse = new DireccionResponse();
-            CursoResponse cursoResponse = new CursoResponse(
-                    fila[17] != null ? (String) fila[17] : "" ,   // curso_nivel
-                    fila[16] != null ? ((BigInteger) fila[16]).toString() : "",  // curso_id
-                    fila[19] != null ? ((Boolean) fila[19]) : false// docente_jefe
-            );
-            AsignaturaResponse asignaturaResponse = new AsignaturaResponse(
-                    "",  // asignatura_nombre
-                    ""  // asignatura_id
+            InfoDocenteResponse infoDocenteResponse = new InfoDocenteResponse(
+                    fila[0] != null ? new BigInteger(fila[0].toString()) : BigInteger.ZERO, // docente_id
+                    fila[1] != null ? (String) fila[1] : "", // docente_persona_run
+                    fila[2] != null ? new BigInteger(fila[2].toString()) : BigInteger.ZERO, // establecimiento_id
+                    fila[3] != null ? new BigInteger(fila[3].toString()) : BigInteger.ZERO, // establecimiento_codigo_area
+                    fila[4] != null ? (String) fila[4] : "", // establecimiento_nombre
+                    fila[5] != null ? new BigInteger(fila[5].toString()) : BigInteger.ZERO, // establecimiento_telefono
+                    fila[6] != null ? new BigInteger(fila[6].toString()) : BigInteger.ZERO, // establecimiento_dependencia_id
+                    fila[7] != null ? new BigInteger(fila[7].toString()) : BigInteger.ZERO, // establecimiento_direccion_id
+                    fila[8] != null ? new BigInteger(fila[8].toString()) : BigInteger.ZERO, // establecimiento_sostenedor_id
+                    fila[9] != null ? new BigInteger(fila[9].toString()) : BigInteger.ZERO, // curso_id
+                    fila[10] != null ? (String) fila[10] : "", // curso_nivel
+                    fila[11] != null ? (String) fila[11] : "", // curso_nombre
+                    fila[12] != null ? (String) fila[12] : "", // persona_run
+                    fila[16] != null ? (String) fila[16] : "", // persona_nombre
+                    fila[13] != null ? (String) fila[14] : "", // persona_apellido_paterno
+                    fila[14] != null ? (String) fila[13] : "", // persona_apellido_materno
+                     fila[15] != null ? (Date) fila[15] : new Date(), // persona_fecha_nacimiento
+                    fila[19] != null ? (Character) fila[19] : 'I', // persona_sexo,
+                    fila[17] != null ? (String) fila[17] : "", // persona_numero_telefonico
+                    fila[18] != null ? (String) fila[18] : "" // persona_numero_celular
+
             );
 
-            DocenteInfoResponse docenteInfoResponse = new DocenteInfoResponse(
-                    personaResponse, establecimientoResponse, direccionResponse, asignaturaResponse,
-                    cursoResponse, fila[8] != null ? (String) fila[8] : "",  // persona_fecha_nacimiento
-                    fila[19] != null ? ((Boolean) fila[19]).toString() : "false"   // docente_jefe
-            );
-
-            listaDocente.add(docenteInfoResponse);
+            listaDocente.add(infoDocenteResponse);
         }
-        System.out.println("obteniendo el count");
-        System.out.println(listaDocente.size());
+
         return listaDocente;
     }
 
 
-    public DocenteEntity findDocenteByRun(String run){
 
-        try{
-            return docenteRepo.findDocenteByRun(run);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
-    }
-
-    public DocenteEntity findDocenteById(Long id_docente){
-        try{
-            return docenteRepo.findById(id_docente).get();
-        }catch (Exception e){
-            return null;
-        }
-    }
-
-    public List<DocenteInfoResponse> findDocenteByIdCursoEstablecimiento(long establecimiento, String persona, long curso) {
-
-        /*try{
-
-        }catch (Exception e){
-            System.out.println(e);
-            return null;
-        }*/
-
-        return this.getInfoDocente(establecimiento, persona, curso);
-    }
-
-    private Object getValueOrDefault(Object value, Object defaultValue) {
-        return value != null ? value : defaultValue;
-    }
 }
-
-

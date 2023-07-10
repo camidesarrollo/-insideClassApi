@@ -1,22 +1,23 @@
 package com.springboot.insideClass.controllers;
 
-import com.springboot.insideClass.entity.AsignaturaDocenteEntity;
-import com.springboot.insideClass.entity.AsignaturaEntity;
+import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.CursoEntity;
-import com.springboot.insideClass.entity.DocenteEntity;
-import com.springboot.insideClass.payload.request.Curso.CursoGetRequest;
-import com.springboot.insideClass.payload.request.Curso.DC_CreateRequest;
-import com.springboot.insideClass.payload.request.Curso.DC_DeleteRequest;
+import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
+import com.springboot.insideClass.payload.request.Curso.BuscarCursoPorApoderado;
+import com.springboot.insideClass.payload.request.Curso.BuscarCursoPorDirector;
+import com.springboot.insideClass.payload.request.Curso.BuscarCursoPorDocenteRequest;
+import com.springboot.insideClass.payload.request.Curso.BuscarCursoRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
-import com.springboot.insideClass.repository.AsignaturaDocenteRepository;
-import com.springboot.insideClass.service.*;
+import com.springboot.insideClass.service.CursoEstablecimientoService;
+import com.springboot.insideClass.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -24,157 +25,92 @@ import java.text.ParseException;
 public class CursoController {
 
     @Autowired
-    DocenteService docenteService;
+    private CursoService cursoService;
 
     @Autowired
     private CursoEstablecimientoService cursoEstablecimientoService;
 
     @Autowired
-    AsignaturaService asignaturaService;
-    @Autowired
-    CursoService cursoService;
-    @Autowired
-    private AsignaturaDocenteRepository asignaturaDocenteRepository;
-    @Autowired
-    AsignaturaDocenteService asignaturaDocenteService;
+    private Metodos metodos;
 
-    @PostMapping("/Get")
-    public ResponseEntity<?> obtenerCurso() throws ParseException {
+    @PostMapping("/obtenerTodosLosCursos")
+    public ResponseEntity<?> obtenerTodosLosCursos() {
+        return ResponseEntity.ok(cursoService.obtenerTodosLosCursos());
+    }
 
-        try {
+    @PostMapping("/obtenerCursoPorId")
+    public ResponseEntity<?> obtenerCursoPorId(@Valid @RequestBody Long id) {
+        return ResponseEntity.ok(cursoService.obtenerCursoPorId(id));
+    }
+    @PostMapping("/obtenerCursoPorFiltro")
+    public ResponseEntity<?>  obtenerCursoPorFiltro(@Valid @RequestBody BuscarCursoRequest buscarCursoRequest) {
+        return ResponseEntity.ok(cursoService.obtenerCursoPorFiltro(buscarCursoRequest.getCurso_id(), buscarCursoRequest.getCurso_nombre(), buscarCursoRequest.getCurso_nivel()));
+    }
 
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(cursoService.get());
+    @PostMapping("/guardarCurso")
+    public ResponseEntity<?> guardarCurso(@Valid @RequestBody CursoEntity curso) {
+        return ResponseEntity.ok(cursoService.guardarCurso(curso));
+    }
 
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado obtener cursos!"));
+    @PostMapping("/eliminarCurso")
+    public ResponseEntity<?> eliminarCurso(@Valid @RequestBody Long id) {
+        cursoService.eliminarCurso(id);
+        return ResponseEntity.ok(new MessageResponse("Curso eliminado con éxito!"));
+    }
+
+    @PostMapping("/obtenerCursosEstablecimiento")
+    public ResponseEntity<?>  obtenerCursosEstablecimiento(@Valid @RequestParam("id_establecimient") Long establecimiento_id) {
+
+        List<CursoEstablecimientoEntity> cursoEstablecimientoEntities = cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(-1L, -1L, establecimiento_id, true);
+
+        List<CursoEntity> curso = new ArrayList<>();
+
+        for (CursoEstablecimientoEntity cursoEstablecimiento : cursoEstablecimientoEntities){
+            Optional<CursoEntity> curso1 = cursoService.obtenerCursoPorId(cursoEstablecimiento.getCurso_establecimiento_id());
+
+            if(curso1 != null){
+                curso.add(curso1.get());
+            }
         }
 
+        return ResponseEntity.ok(curso);
     }
 
-    @PostMapping("/GetByEstablecimiento")
-    public ResponseEntity<?> obtenerCursoByEstablecimiento(@RequestParam("id_establecimient") long id_establecimient) throws ParseException {
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                .body("OK");
+    @PostMapping("/obtenerPorDocente")
+    public ResponseEntity<?>  obtenerPorDocente(@Valid @RequestBody BuscarCursoPorDocenteRequest buscarCursoPorDocenteRequest) {
 
+        List<CursoEntity> curso = cursoService.obtenerPorDocente(
+                buscarCursoPorDocenteRequest.getDocente_asignatura_docente_id(),
+                buscarCursoPorDocenteRequest.getDocente_asignatura_id_asignatura_id(),
+                metodos.formatDate(buscarCursoPorDocenteRequest.getFecha_fin()),
+                buscarCursoPorDocenteRequest.isVigencia(),
+                buscarCursoPorDocenteRequest.getCurso_establecimiento_curso_id(),
+                buscarCursoPorDocenteRequest.getCurso_establecimiento_establecimiento_id());
+
+
+        return ResponseEntity.ok(curso);
     }
 
-    @PostMapping("/docente-curso/Create")
-    public ResponseEntity<?> agregarCursoDocente(@Valid @RequestBody DC_CreateRequest docenteCursoRequest) {
-        try {
+    @PostMapping("/obtenerPorApoderado")
+    public ResponseEntity<?>  obtenerPorApoderado(@Valid @RequestBody BuscarCursoPorApoderado buscarCursoPorApoderado) {
 
-            // Validar campos obligatorios
-            if (docenteCursoRequest.getPersona_run() == null || docenteCursoRequest.getPersona_run().isEmpty()) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'persona_run' es obligatorio."));
-            }
-            if (docenteCursoRequest.getCurso_id() == 0) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'curso_id' es obligatorio."));
-            }
-            if (docenteCursoRequest.getFecha_inicio() == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'fecha_inicio' es obligatorio."));
-            }
-            if (docenteCursoRequest.getFecha_fin() == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'fecha_fin' es obligatorio."));
-            }
-            if (docenteCursoRequest.getAsignatura_id() == 0) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'asignatura_id' es obligatorio."));
-            }
-            if (docenteCursoRequest.getEstablecimiento_id() == 0) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'establecimiento_id' es obligatorio."));
-            }
-
-            /*if (docenteCursoService.findDocenteCursoByRunAndEstablecimientoByFecha(docenteService.findDocenteByRun(
-                            docenteCursoRequest.getPersona_run()).getDocente_id(),
-                    docenteCursoRequest.getEstablecimiento_id(),
-                    docenteCursoRequest.getFecha_inicio(),
-                    docenteCursoRequest.getFecha_fin()
-            ) == null) {
-
-                DocenteCursoEntity docenteCurso = new DocenteCursoEntity();
+        List<CursoEntity> curso = cursoService.obtenerPorApoderado(buscarCursoPorApoderado.getVigencia(),
+                buscarCursoPorApoderado.getCurso_establecimiento_curso_id(),
+                buscarCursoPorApoderado.getCurso_establecimiento_establecimiento_id(),
+                buscarCursoPorApoderado.getVigenciaMatricula(), buscarCursoPorApoderado.getCurso_agno(), buscarCursoPorApoderado.getMatricula_apoderado_id(), buscarCursoPorApoderado.getMatricula_alumno_id());
 
 
-                if (cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(
-                        docenteCursoRequest.getCurso_id(), docenteCursoRequest.getEstablecimiento_id()) != null) {
-
-                    docenteCurso.setDocenteEntity(docenteService.findDocenteByRun(docenteCursoRequest.getPersona_run()));
-                    docenteCurso.setCursoEstablecimientoEntity(cursoEstablecimientoService.findCursoEstablecimientoByCursoAndEstablecimiento(docenteCursoRequest.getCurso_id(), docenteCursoRequest.getEstablecimiento_id()));
-                    docenteCurso.setDocente_curso_fecha_inicio(docenteCursoRequest.getFecha_inicio());
-                    docenteCurso.setDocente_cuso_fecha_fin(docenteCursoRequest.getFecha_fin());
-                    docenteCurso.setDocente_jefe(docenteCurso.getDocente_jefe());
-                    docenteCursoRepo.save(docenteCurso);
-                    System.out.println("Se guardo el docente-curso");
-                } else {
-                    System.out.println("No se pudo insertar Curso Establecimiento");
-                }
-            }*/
-
-
-    /*        AsignaturaDocenteEntity asignaturaDocente =
-                    asignaturaDocenteService.findAsignaturaDocenteByAsignaturaAndDocente
-                            (docenteCursoRequest.getAsignatura_id(),
-                                   100
-                            );
-
-            if (asignaturaDocente == null) {
-                AsignaturaEntity asignatura = asignaturaService.findAsignaturaById(docenteCursoRequest.getAsignatura_id());
-
-                AsignaturaDocenteEntity asignaturaDocente1 = new AsignaturaDocenteEntity();
-
-                asignaturaDocente1.setAsignaturaEntity(asignatura);
-                asignaturaDocente1.setAsignatura_doc_inicio(docenteCursoRequest.getFecha_inicio());
-                asignaturaDocente1.setAsignatura_doc_fin(docenteCursoRequest.getFecha_fin());
-                asignaturaDocenteRepository.save(asignaturaDocente1);
-                System.out.println("Se guardo el asignatura-docente");
-            } else {
-                System.out.println("No se pudo insertar Asignatura Docente");
-            }
-*/
-
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(new MessageResponse("Curso agregado a docente correctamente!"));
-
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado guardar el curso correctamente!"));
-        }
+        return ResponseEntity.ok(curso);
     }
 
-    @DeleteMapping("/docente-curso/Delete")
-    public ResponseEntity<?> eliminarDocente(@Valid @RequestBody DC_DeleteRequest eliminarRequest) {
-        try {
-            // Validar campos obligatorios
-            if (eliminarRequest.getCurso_nombre() == null || eliminarRequest.getCurso_nombre().isEmpty()) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'curso_nombre' es obligatorio."));
-            }
-            if (eliminarRequest.getAsignatura_nombre() == null || eliminarRequest.getAsignatura_nombre().isEmpty()) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'asignatura_nombre' es obligatorio."));
-            }
-            if (eliminarRequest.getPersona_run() == null || eliminarRequest.getPersona_run().isEmpty()) {
-                return ResponseEntity.badRequest().body(new MessageResponse("El campo 'persona_run' es obligatorio."));
-            }
+    @PostMapping("/obtenerPorDirector")
+    public ResponseEntity<?>  obtenerPorDirector(@Valid @RequestBody BuscarCursoPorDirector buscarCursoPorDirector) {
 
-            System.out.println(eliminarRequest.getPersona_run());
-            CursoEntity curso = cursoService.findCursoByName(eliminarRequest.getCurso_nombre());
-            AsignaturaEntity asignatura = asignaturaService.findAsignaturaByName(eliminarRequest.getAsignatura_nombre());
-            DocenteEntity docente = docenteService.findDocenteByRun(eliminarRequest.getPersona_run());
-            if (docente != null) {
-                AsignaturaDocenteEntity asignaturaDocente = asignaturaDocenteService.findDocenteCursoByCursoAsignatura(curso.getCurso_id(), docente.getDocente_id(), asignatura.getAsignatura_id());
-                if (asignaturaDocente != null) {
-                    asignaturaDocenteRepository.delete(asignaturaDocente);
-                    return ResponseEntity.ok().body(new MessageResponse("Se ha eliminado con éxito"));
-                }
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado el docente en el sistema!"));
-            } else {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado el docente en el sistema!"));
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha podido eliminar el curso del sistema!"));
-        }
+        List<CursoEntity> curso = cursoService.obtenerPorDirector(buscarCursoPorDirector.getVigencia(), buscarCursoPorDirector.getCurso_establecimiento_curso_id(), buscarCursoPorDirector.getCurso_establecimiento_establecimiento_id(), buscarCursoPorDirector.getDirector_id(), buscarCursoPorDirector.getDirector_persona_run());
+
+
+        return ResponseEntity.ok(curso);
     }
 
-    @PostMapping("/GetByEstablecimientoPerfil")
-    public ResponseEntity<?> obtenerCursosXEstablecimientoXPerfil(@Valid @RequestBody CursoGetRequest cursos) {
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                .body(cursoService.findCursoByDocenteXEstablecimiento(cursos.establecimiento, cursos.persona_run,cursos.curso_id ));
 
-    }
 }

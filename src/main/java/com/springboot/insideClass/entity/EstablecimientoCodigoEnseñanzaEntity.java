@@ -3,42 +3,44 @@ package com.springboot.insideClass.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "T_ESTABL_COD_ENSE", uniqueConstraints = {@UniqueConstraint(columnNames =  "establ_cod_ense_id")})
+@Table(name = "T_ESTABLECIMIENTO_CODIGO_ENSENANZA", uniqueConstraints = {@UniqueConstraint(columnNames =  "establecimiento_codigo_ensenanza_id")})
 public class EstablecimientoCodigoEnseñanzaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long establ_cod_ense_id;
+    Long establecimiento_codigo_ensenanza_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = " establ_cod_ense_establ_id", nullable = false)
+    @JoinColumn(name = " establecimiento_codigo_ensenanza_establecimiento_id", nullable = false)
     EstablecimientoEntity establecimientoEntity;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = " establ_cod_ense_cod_ense_id", nullable = false)
+    @JoinColumn(name = " establecimiento_codigo_ensenanza_codigo_ensenanza_id", nullable = false)
     CodigoEnsenanzaEntity codigoEnsenanzaEntity;
 
     public EstablecimientoCodigoEnseñanzaEntity() {
 
     }
 
-    public EstablecimientoCodigoEnseñanzaEntity(EstablecimientoEntity establecimientoEntity, CodigoEnsenanzaEntity codigoEnsenanzaEntity) {
-        this.establecimientoEntity = establecimientoEntity;
-        this.codigoEnsenanzaEntity = codigoEnsenanzaEntity;
+    public Long getEstablecimiento_codigo_ensenanza_id() {
+        return establecimiento_codigo_ensenanza_id;
     }
 
-    public Long getEstabl_cod_ense_id() {
-        return establ_cod_ense_id;
+    public void setEstablecimiento_codigo_ensenanza_id(Long establecimiento_codigo_ensenanza_id) {
+        this.establecimiento_codigo_ensenanza_id = establecimiento_codigo_ensenanza_id;
     }
 
-    public void setEstabl_cod_ense_id(Long establ_cod_ense_id) {
-        this.establ_cod_ense_id = establ_cod_ense_id;
+    public EstablecimientoEntity getEstablecimientoEntity() {
+        return establecimientoEntity;
     }
 
     public void setEstablecimientoEntity(EstablecimientoEntity establecimientoEntity) {
         this.establecimientoEntity = establecimientoEntity;
     }
 
+    public CodigoEnsenanzaEntity getCodigoEnsenanzaEntity() {
+        return codigoEnsenanzaEntity;
+    }
 
     public void setCodigoEnsenanzaEntity(CodigoEnsenanzaEntity codigoEnsenanzaEntity) {
         this.codigoEnsenanzaEntity = codigoEnsenanzaEntity;

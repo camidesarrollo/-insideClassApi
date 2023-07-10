@@ -1,8 +1,6 @@
 package com.springboot.insideClass;
 
 
-import com.springboot.insideClass.repository.AsignaturaDocenteRepository;
-import com.springboot.insideClass.repository.EstablecimientoRepository;
 import com.springboot.insideClass.service.PerfilService;
 import com.springboot.insideClass.service.PersonaService;
 import com.springboot.insideClass.service.UsuarioService;
@@ -33,35 +31,30 @@ public class InsideClassApplication {
 	@Autowired
 	private DataSource dataSource;
 
-	@Autowired
-	private AsignaturaDocenteRepository asignaturaDocenteRepository;
+	@Autowired private UsuarioService usuarioService;
 
-	@Autowired
-	private EstablecimientoRepository establecimientoRepository;
+	@Autowired private PerfilService perfilService;
 
-	@Autowired
-	private UsuarioService usuarioService;
+	@Autowired private VigenciaService vigenciaService;
 
-	@Autowired
-	private PerfilService perfilService;
-
-	@Autowired
-	private VigenciaService vigenciaService;
+	@Autowired private PersonaService personaService;
 
 
-	@Autowired
-	private PersonaService personaService;
 	public static void main(String[] args) {
 		SpringApplication.run(InsideClassApplication.class, args);
 	}
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void loadData() {
-		ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
+	ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
 		resourceDatabasePopulator.addScript(new ClassPathResource("data.sql"));
 		resourceDatabasePopulator.execute(dataSource);
-		usuarioService.createUsuario(perfilService.findByName("Docente"), vigenciaService.findByName("Vigente"), personaService.findByRun("14422764-6"), "prueba@gmail.com");
-		usuarioService.createUsuario(perfilService.findByName("Director"), vigenciaService.findByName("Vigente"), personaService.findByRun("14218894-5"), "pruebaDir@gmail.com");
+	usuarioService.createUsuario(
+			perfilService.obtenerPerfilPorId(3L).get(),
+				vigenciaService.obtenerVigenciaPorId(1L).get(),
+				personaService.obtenerPersonasPorFiltro("14218894-5", "-1", "-1","-1", "-1", "F", "-1", "-1").get(0),
+				"prueba@gmail.com");
+		/*usuarioService.createUsuario(perfilService.findByName("Director"), vigenciaService.findByName("Vigente"), personaService.findByRun("14218894-5"), "pruebaDir@gmail.com");*/
 	}
 
 }

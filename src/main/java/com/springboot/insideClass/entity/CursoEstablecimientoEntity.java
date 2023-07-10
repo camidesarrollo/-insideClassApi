@@ -4,53 +4,45 @@ package com.springboot.insideClass.entity;
 import javax.persistence.*;
 import java.util.Date;
 
-    @Entity
-    @Table(name = "T_CURSO_ESTABL", uniqueConstraints = {@UniqueConstraint(columnNames =  "curso_establ_id")})
-    public class CursoEstablecimientoEntity {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Long curso_establ_id;
+@Entity
+@Table(name = "T_CURSO_ESTABLECIMIENTO", uniqueConstraints = {@UniqueConstraint(columnNames =  "curso_establecimiento_id")})
+public class CursoEstablecimientoEntity {
 
-        @ManyToOne(optional = false)
-        @JoinColumn(name = "curso_establ_curso_id", nullable = false)
-        CursoEntity cursoEntity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long curso_establecimiento_id;
 
-        @ManyToOne(optional = false)
-        @JoinColumn(name = "curso_establ_establ_id", nullable = false)
-        EstablecimientoEntity establecimientoEntity;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "curso_establecimiento_curso_id", nullable = false)
+    CursoEntity cursoEntity;
 
-        Date curso_establ_fecha_inicio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "curso_establecimiento_establecimiento_id", nullable = false)
+    EstablecimientoEntity establecimientoEntity;
 
-        Date curso_establ_fecha_fin;
+    Boolean vigencia;
 
-        String horaInicio;
-        String horaFin;
+    Date fecha_ingreso;
 
-        String dia;
-
-        Boolean vigencia;
-
+    Date fecha_modificacion;
         public CursoEstablecimientoEntity() {
             // Constructor por defecto sin argumentos
         }
 
-    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Date curso_establ_fecha_inicio, Date curso_establ_fecha_fin, String horaInicio, String horaFin, String dia, Boolean vigencia) {
+    public CursoEstablecimientoEntity(CursoEntity cursoEntity, EstablecimientoEntity establecimientoEntity, Boolean vigencia, Date fecha_ingreso, Date fecha_modificacion) {
         this.cursoEntity = cursoEntity;
         this.establecimientoEntity = establecimientoEntity;
-        this.curso_establ_fecha_inicio = curso_establ_fecha_inicio;
-        this.curso_establ_fecha_fin = curso_establ_fecha_fin;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.dia = dia;
         this.vigencia = vigencia;
+        this.fecha_ingreso = fecha_ingreso;
+        this.fecha_modificacion = fecha_modificacion;
     }
 
-    public Long getCurso_establ_id() {
-        return curso_establ_id;
+    public Long getCurso_establecimiento_id() {
+        return curso_establecimiento_id;
     }
 
-    public void setCurso_establ_id(Long curso_establ_id) {
-        this.curso_establ_id = curso_establ_id;
+    public void setCurso_establecimiento_id(Long curso_establecimiento_id) {
+        this.curso_establecimiento_id = curso_establecimiento_id;
     }
 
     public CursoEntity getCursoEntity() {
@@ -69,51 +61,27 @@ import java.util.Date;
         this.establecimientoEntity = establecimientoEntity;
     }
 
-    public Date getCurso_establ_fecha_inicio() {
-        return curso_establ_fecha_inicio;
-    }
-
-    public void setCurso_establ_fecha_inicio(Date curso_establ_fecha_inicio) {
-        this.curso_establ_fecha_inicio = curso_establ_fecha_inicio;
-    }
-
-    public Date getCurso_establ_fecha_fin() {
-        return curso_establ_fecha_fin;
-    }
-
-    public void setCurso_establ_fecha_fin(Date curso_establ_fecha_fin) {
-        this.curso_establ_fecha_fin = curso_establ_fecha_fin;
-    }
-
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
-    public String getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(String horaFin) {
-        this.horaFin = horaFin;
-    }
-
-    public String getDia() {
-        return dia;
-    }
-
-    public void setDia(String dia) {
-        this.dia = dia;
-    }
-
     public Boolean getVigencia() {
         return vigencia;
     }
 
     public void setVigencia(Boolean vigencia) {
         this.vigencia = vigencia;
+    }
+
+    public Date getFecha_ingreso() {
+        return fecha_ingreso;
+    }
+
+    public void setFecha_ingreso(Date fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
+    }
+
+    public Date getFecha_modificacion() {
+        return fecha_modificacion;
+    }
+
+    public void setFecha_modificacion(Date fecha_modificacion) {
+        this.fecha_modificacion = fecha_modificacion;
     }
 }

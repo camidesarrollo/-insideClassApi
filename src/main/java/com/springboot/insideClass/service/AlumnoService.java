@@ -5,39 +5,48 @@ import com.springboot.insideClass.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AlumnoService {
 
     @Autowired
-    AlumnoRepository alumnoRepo;
+    AlumnoRepository alumnoRepository;
 
-
-    public AlumnoEntity findAlumnoByRun(String run){
-
-        try{
-            return alumnoRepo.findAlumnoByRun(run);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return null;
+    public List<AlumnoEntity> obtenerTodosLosAlumnos() {
+        return alumnoRepository.findAll();
     }
 
-    public AlumnoEntity findAlumnoById(long id){
-        try{
-            return  alumnoRepo.findById(id).get();
-        }catch (Exception e){
-            System.out.println(e);
-        }
-
-        return null;
+    public Optional<AlumnoEntity> obtenerAlumnoPorId(Long id) {
+        return alumnoRepository.findById(id);
     }
 
-    public void save(AlumnoEntity alumno){
-        try{
-            alumnoRepo.save(alumno);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-
+    public List<AlumnoEntity> obtenerAlumnoPorFiltro(Long alumno_id, String alumno_persona_run){
+        return alumnoRepository.findByFilters(alumno_id, alumno_persona_run);
     }
+
+    public AlumnoEntity guardarAlumno(AlumnoEntity alumno) {
+        return alumnoRepository.save(alumno);
+    }
+
+    public void eliminarAlumno(Long id) {
+        alumnoRepository.deleteById(id);
+    }
+
+    public static boolean validarAlumnoCrear() {
+
+        return true;
+    }
+
+    public static boolean validarAlumnoEditar() {
+
+        return true;
+    }
+
+    public static boolean validarAlumnoEliminar() {
+
+        return true;
+    }
+
 }

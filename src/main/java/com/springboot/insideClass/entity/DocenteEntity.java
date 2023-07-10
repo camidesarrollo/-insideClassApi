@@ -11,10 +11,14 @@ public class DocenteEntity {
     Long docente_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "docente_persona_run", nullable = false)
+    @JoinColumn(name = "docente_persona_run", nullable = false, unique = true)
     PersonaEntity personaEntity;
 
     public DocenteEntity() {
+    }
+
+    public DocenteEntity(PersonaEntity personaEntity) {
+        this.personaEntity = personaEntity;
     }
 
     public Long getDocente_id() {

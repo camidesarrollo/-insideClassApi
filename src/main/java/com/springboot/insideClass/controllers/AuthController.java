@@ -4,12 +4,9 @@ import com.springboot.insideClass.configuration.security.jwt.JwtUtils;
 import com.springboot.insideClass.entity.PerfilEntity;
 import com.springboot.insideClass.entity.PersonaEntity;
 import com.springboot.insideClass.entity.UsuarioEntity;
-import com.springboot.insideClass.entity.VigenciaEntity;
 import com.springboot.insideClass.payload.request.LoginRequest;
-import com.springboot.insideClass.payload.request.SignupRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.payload.response.UserInfoResponse;
-import com.springboot.insideClass.repository.UsuarioRepository;
 import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +33,7 @@ public class AuthController {
   AuthenticationManager authenticationManager;
 
   @Autowired
-  UsuarioRepository userRepository;
+  UsuarioService usuarioService;
 
   @Autowired
   PasswordEncoder encoder;
@@ -55,14 +53,8 @@ public class AuthController {
   @Autowired
   EmailSenderService emailSenderService;
 
-  @Autowired
-  DirectorService directorService;
-
     @Autowired
     DocenteService docenteService;
-
-    @Autowired
-    UsuarioService usuarioService;
 
     @Autowired
     ApoderadoService apoderadoService;
@@ -71,11 +63,38 @@ public class AuthController {
   @PostMapping("/signin") //LOGIN
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-    UsuarioEntity usuario = usuarioService.VerificaIngresor(loginRequest.getUsername());
-    String userName = loginRequest.getUsername();
-    if(usuario != null){
-        System.out.println("Usuario no da null " + usuario.getUsername());
-        userName = usuario.getUsername();
+    List<UsuarioEntity> buscarUsuariosPorFiltroUserName = usuarioService.buscarUsuariosPorFiltro(-1L,
+            "-1", "-1", loginRequest.getUsername(), -1L, "-1", -1L);
+
+      List<UsuarioEntity> buscarUsuariosPorFiltroEmail = usuarioService.buscarUsuariosPorFiltro(-1L,
+              loginRequest.getUsername(), "-1", "-1", -1L, "-1", -1L);
+
+      List<UsuarioEntity> buscarUsuariosPorFiltroRun = usuarioService.buscarUsuariosPorFiltro(-1L,
+             "-1", "-1", "-1", -1L, loginRequest.getUsername(), -1L);
+
+      String userName ="";
+      PersonaEntity persona =new PersonaEntity();
+      UsuarioEntity usuario = new UsuarioEntity();
+
+      if(buscarUsuariosPorFiltroUserName.size() > 0 ){
+          userName = buscarUsuariosPorFiltroUserName.get(0).getUsername();
+          persona = buscarUsuariosPorFiltroUserName.get(0).getPersonaEntity();
+          usuario = buscarUsuariosPorFiltroUserName.get(0);
+      }
+      if(buscarUsuariosPorFiltroEmail.size() > 0 ){
+          userName = buscarUsuariosPorFiltroEmail.get(0).getUsername();
+          persona = buscarUsuariosPorFiltroEmail.get(0).getPersonaEntity();
+          usuario = buscarUsuariosPorFiltroEmail.get(0);
+      }
+
+      if(buscarUsuariosPorFiltroRun.size() > 0 ){
+          userName = buscarUsuariosPorFiltroRun.get(0).getUsername();
+          persona = buscarUsuariosPorFiltroRun.get(0).getPersonaEntity();
+          usuario = buscarUsuariosPorFiltroRun.get(0);
+      }
+
+      if(userName != ""){
+        System.out.println("Usuario no encontrado " + loginRequest.getUsername());
     }
     Authentication authentication = authenticationManager
         .authenticate(new UsernamePasswordAuthenticationToken(userName, loginRequest.getPassword()));
@@ -98,9 +117,12 @@ public class AuthController {
     Object[] arr = new Object[4];
 
 
+      List<UsuarioEntity> usuarioList = usuarioService.buscarUsuariosPorFiltro(-1L, "-1", "-1", "-1", -1L, persona.getPersona_run(), 1L);
+      List<PerfilEntity> perfilList = new ArrayList<>();
 
-    PersonaEntity personaEntity = personaService.findByRun(usuario.getPersonaEntity().getPersona_run());
-    List<PerfilEntity> perfilList = perfilService.findByUsuarioRun(usuario.getPersonaEntity().getPersona_run());
+      for (UsuarioEntity usuario1 : usuarioList) {
+          perfilList.add(usuario1.getPerfilEntity());
+      }
 
       List<String> roles2 = perfilList.stream()
               .map(PerfilEntity::getPerfil_nombre)
@@ -112,7 +134,7 @@ public class AuthController {
             userDetails.getEmail(),
               roles2,
             jwtCookie.toString() );
-      arr[1] = personaEntity;
+      arr[1] = persona;
       arr[2] = usuario.getPerfilEntity();
 
 
@@ -120,44 +142,6 @@ public class AuthController {
         .body(arr);
   }
 
-  @PostMapping("/signup")
-  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-    if (userRepository.existsByUsername(signUpRequest.getUsername())>0) {
-      return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
-    }
-
-    if (userRepository.existsByEmail(signUpRequest.getEmail()) > 0) {
-      return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
-    }
-System.out.println(signUpRequest.getPassword());    // Create new user's account
-    UsuarioEntity user = new UsuarioEntity(signUpRequest.getUsername(),
-                         signUpRequest.getEmail(),
-                         encoder.encode(signUpRequest.getPassword()));
-
-
-    PerfilEntity perfil = perfilService.findByName(signUpRequest.getPerfil());
-    VigenciaEntity vigencia = vigenciaService.findByName(signUpRequest.getVigencia());
-    PersonaEntity persona = personaService.findByRun(signUpRequest.getRut());
-    if(perfil == null){
-      return ResponseEntity.ok(new MessageResponse("No se han encontrado el perfil"));
-    }else if(vigencia == null){
-      return ResponseEntity.ok(new MessageResponse("No se han encontrado la vigencia"));
-    }else if(persona == null){
-      return ResponseEntity.ok(new MessageResponse("No se han encontrado la persona"));
-    }
-
-    user.setPerfilEntity(perfil);
-    user.setVigenciaEntity(vigencia);
-    user.setPersonaEntity(persona);
-
-    userRepository.save(user);
-
-    String body = "Creación de cuenta con exito. Username:" + signUpRequest.getUsername() + "Password: " + signUpRequest.getPassword();
-
-    emailSenderService.sendSimpleEmail(signUpRequest.getEmail(), body, "Creacion de cuenta");
-
-    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-  }
 
   @PostMapping("/signout")
   public ResponseEntity<?> logoutUser() {

@@ -1,15 +1,15 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.AnotacionesEntity;
-import com.springboot.insideClass.payload.response.AnotacionInfoResponse;
+import com.springboot.insideClass.payload.response.Anotaciones.DatosAlumnoAnotacionResponse;
 import com.springboot.insideClass.repository.AnotacionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnotacionesService {
@@ -17,83 +17,84 @@ public class AnotacionesService {
     @Autowired
     private AnotacionesRepository anotacionesRepository;
 
-    public  List<AnotacionInfoResponse> obtenerInfoAnotaciones( String personaRun, Long cursoId, Long asignaturaId, Long establecimiento,String fecha) {
-        List<AnotacionInfoResponse> listaAnotacion =  new ArrayList<>();
-        try{
-            System.out.println(personaRun);
-            System.out.println(cursoId);
-            System.out.println(asignaturaId);
-            System.out.println(establecimiento);
-            System.out.println(fecha);
-            List<Object> listaObjetosNativos =   anotacionesRepository.fn_Anotaciones(personaRun, cursoId, asignaturaId, establecimiento,  fecha);
 
-
-            Object[] fila;
-            System.out.println(listaObjetosNativos.size());
-            for (Object item : listaObjetosNativos) {
-                AnotacionInfoResponse anotacionInfoResponse = new AnotacionInfoResponse();
-                fila = (Object[]) item;
-                anotacionInfoResponse.setAnotacionesId(fila[0] != null ? ((BigInteger) fila[0]).toString() : "");
-                anotacionInfoResponse.setDescripcion(fila[1] != null ? (String) fila[1] : "");
-                anotacionInfoResponse.setFecha(fila[2] != null ? new SimpleDateFormat("yyyy-MM-dd").format(fila[2]) : "");
-                anotacionInfoResponse.setGravedad(fila[3] != null ? (String) fila[3] : "");
-
-                anotacionInfoResponse.setAsignaturaDocenteId(fila[4] != null ? ((BigInteger) fila[4]).toString() : "");
-                anotacionInfoResponse.setMatriculaId(fila[5] != null ? ((BigInteger) fila[5]).toString() : "");
-                anotacionInfoResponse.setPersonaRun(fila[6] != null ? (String) fila[6] : "");
-                anotacionInfoResponse.setPersonaApellidoMaterno(fila[7] != null ? (String) fila[7] : "");
-                anotacionInfoResponse.setPersonaApellidoPaterno(fila[8] != null ? (String) fila[8] : "");
-
-                anotacionInfoResponse.setCursoNombre(fila[10] != null ? (String) fila[10] : "");
-
-                anotacionInfoResponse.setDocenteRun(fila[13] != null ? (String) fila[13] : "");
-                anotacionInfoResponse.setDocenteNombre(fila[14] != null ? (String) fila[14] : "");
-                anotacionInfoResponse.setDocenteApellidoPaterno(fila[15] != null ? (String) fila[15] : "");
-                anotacionInfoResponse.setDocenteApellidoMaterno(fila[16] != null ? (String) fila[16] : "");
-                anotacionInfoResponse.setAsignaturaId(fila[20] != null ? (String) fila[20] : "");
-                anotacionInfoResponse.setAsignaturaNombre(fila[21] != null ? (String) fila[21] : "");
-
-                listaAnotacion.add(anotacionInfoResponse);
-            }
-
-            System.out.println("obteniendo el count");
-            System.out.println(listaAnotacion.stream().count());
-
-            return listaAnotacion;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return listaAnotacion;
-        }
+    public List<AnotacionesEntity> obtenerTodosLasAnotaciones() {
+        return anotacionesRepository.findAll();
     }
 
-    public void save(AnotacionesEntity anotaciones){
-        try{
-            anotacionesRepository.save(anotaciones);
-        }catch (Exception e){
-            System.out.println(e);
-        }
-
+    public Optional<AnotacionesEntity> obtenerAnotacionPorId(Long id) {
+        return anotacionesRepository.findById(id);
     }
 
-    public void delete(AnotacionesEntity anotaciones){
-        try{
-            anotacionesRepository.delete(anotaciones);
-        }catch (Exception e){
-            System.out.println(e);
-        }
+    /*public List<AnotacionesEntity> obtenerAnotacionPorFiltro(Long comuna_id, String comuna_nombre, Long comuna_provincia_id, Long comuna_deprov_id){
+        return anotacionesRepository.findByFilters(comuna_id, comuna_nombre, comuna_provincia_id, comuna_deprov_id);
+    }*/
 
+    public AnotacionesEntity guardarAnotacion(AnotacionesEntity anotaciones) {
+        return anotacionesRepository.save(anotaciones);
     }
 
-    public AnotacionesEntity findById(Long id){
-        try{
-            return anotacionesRepository.findById(id).get();
-        }catch (Exception e){
-            System.out.println(e);
-        }
-
-        return null;
-
+    public void eliminarAnotacion(Long id) {
+        anotacionesRepository.deleteById(id);
     }
 
+    public List<DatosAlumnoAnotacionResponse> obtenerDatosAlumnoAnotacion(boolean matricula_vigencia,
+                                                                           Long establecimiento_id,
+                                                                           Long apoderado_id,
+                                                                           String alumno_run,
+                                                                           Long anotaciones_matricula_id,
+                                                                           String docente_run,
+                                                                           Long asignatura_id,
+                                                                           Long curso_id) {
+
+        List<DatosAlumnoAnotacionResponse> listaAlumnoAnotacion = new ArrayList<>();
+
+        List<Object> listaObjetosNativos = anotacionesRepository.findByFilters( matricula_vigencia,
+         establecimiento_id,
+         apoderado_id,
+         alumno_run,
+         anotaciones_matricula_id,
+         docente_run,
+         asignatura_id,
+         curso_id);
+
+        for (Object item : listaObjetosNativos) {
+            Object[] fila = (Object[]) item;
+
+            DatosAlumnoAnotacionResponse infoAnotaciones = new DatosAlumnoAnotacionResponse();
+            infoAnotaciones.setAlumno_run(fila[0] != null ? (String) fila[0] : "");
+            /*terminame el set de cada una de las filas**/
+            infoAnotaciones.setAlumno_run(fila[0] != null ? (String) fila[0] : "");
+            infoAnotaciones.setAlumno_apellido_materno(fila[1] != null ? (String) fila[1] : "");
+            infoAnotaciones.setAlumno_apellido_paterno(fila[2] != null ? (String) fila[2] : "");
+            infoAnotaciones.setAlumno_fecha_nacimiento(fila[3] != null ? (Date) fila[3] : null);
+            infoAnotaciones.setAlumno_nombre(fila[4] != null ? (String) fila[4] : "");
+            infoAnotaciones.setAlumno_numero_celular(fila[5] != null ? (String) fila[5] : "");
+            infoAnotaciones.setAlumno_numero_telefonico(fila[6] != null ? (String) fila[6] : "");
+            infoAnotaciones.setAlumno_numero_sexo(fila[7] != null ? (String) fila[7] : "");
+            infoAnotaciones.setAnotaciones_id(fila[8] != null ? (Long) fila[8] : null);
+            infoAnotaciones.setDescripcion(fila[9] != null ? (String) fila[9] : "");
+            infoAnotaciones.setFecha(fila[10] != null ? (Date) fila[10] : null);
+            infoAnotaciones.setGravedad(fila[11] != null ? (String) fila[11] : "");
+            infoAnotaciones.setAnotaciones_dace_id(fila[12] != null ? (Long) fila[12] : null);
+            infoAnotaciones.setAnotaciones_matricula_id(fila[13] != null ? (Long) fila[13] : null);
+            infoAnotaciones.setDocente_run(fila[14] != null ? (String) fila[14] : "");
+            infoAnotaciones.setDocente_apellido_materno(fila[15] != null ? (String) fila[15] : "");
+            infoAnotaciones.setDocente_apellido_paterno(fila[16] != null ? (String) fila[16] : "");
+            infoAnotaciones.setDocente_fecha_nacimiento(fila[17] != null ? (Date) fila[17] : null);
+            infoAnotaciones.setDocente_nombre(fila[18] != null ? (String) fila[18] : "");
+            infoAnotaciones.setDocente_numero_celular(fila[19] != null ? (String) fila[19] : "");
+            infoAnotaciones.setDocente_numero_telefonico(fila[20] != null ? (String) fila[20] : "");
+            infoAnotaciones.setDocente_numero_sexo(fila[21] != null ? (String) fila[21] : "");
+            infoAnotaciones.setAsignatura_id(fila[22] != null ? (Long) fila[22] : null);
+            infoAnotaciones.setAsignatura_nombre(fila[23] != null ? (String) fila[23] : "");
+            infoAnotaciones.setCurso_id(fila[24] != null ? (Long) fila[24] : null);
+            infoAnotaciones.setCurso_nivel(fila[25] != null ? (String) fila[25] : "");
+            infoAnotaciones.setCurso_nombre(fila[26] != null ? (String) fila[26] : "");
+
+            listaAlumnoAnotacion.add(infoAnotaciones);
+        }
+
+        return listaAlumnoAnotacion;
+    }
 }
-

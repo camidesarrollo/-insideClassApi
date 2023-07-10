@@ -5,37 +5,37 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "T_DEPEND", uniqueConstraints = {@UniqueConstraint(columnNames =  "depend_id")})
+@Table(name = "T_DEPENDENCIA", uniqueConstraints = {@UniqueConstraint(columnNames =  "dependencia_id")})
 public class DependenciaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long depend_id;
+    Long dependencia_id;
 
     @NotBlank
     @Size(max = 200)
-    String depend_nombre;
+    String dependencia_nombre;
 
     public DependenciaEntity() {
     }
 
-    public DependenciaEntity(String depend_nombre) {
-        this.depend_nombre = depend_nombre;
+    public DependenciaEntity(String dependencia_nombre) {
+        this.dependencia_nombre = dependencia_nombre;
     }
 
     public Long getDependecia_id() {
-        return depend_id;
+        return dependencia_id;
     }
 
     public void setDependecia_id(Long dependecia_id) {
-        this.depend_id = dependecia_id;
+        this.dependencia_id = dependecia_id;
     }
 
     public String getNombre_dependencia() {
-        return depend_nombre;
+        return dependencia_nombre;
     }
 
     public void setNombre_dependencia(String nombre_dependencia) {
-        this.depend_nombre = nombre_dependencia;
+        this.dependencia_nombre = nombre_dependencia;
     }
 }

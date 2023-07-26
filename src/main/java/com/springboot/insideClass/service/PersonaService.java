@@ -56,4 +56,17 @@ public class PersonaService {
         }
         return null;
     }
+
+    public List<PersonaEntity> buscarAlumnosPorCursoEstablecimiento(Boolean matricula_vigencia,Long curso_establecimiento_establecimiento_id,
+                                                                    Long curso_establecimiento_curso_id){
+
+        try{
+            return personaRepo.findAlumnosByCursoEstablecimiento(matricula_vigencia, curso_establecimiento_establecimiento_id, curso_establecimiento_curso_id);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
 }

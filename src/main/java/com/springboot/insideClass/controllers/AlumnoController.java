@@ -1,6 +1,7 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.entity.AlumnoEntity;
+import com.springboot.insideClass.payload.request.Alumno.BuscarAlumnoPorCursoEstablecimientoRequest;
 import com.springboot.insideClass.payload.request.Alumno.BuscarAlumnoRequest;
 import com.springboot.insideClass.payload.request.Alumno.BuscarAlumnosPorApoderadoRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
@@ -51,6 +52,16 @@ public class AlumnoController {
         try{
             return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
                     .body(personaService.buscarAlumnosPorApoderado(request.getApoderado_run(), request.getMatricula_vigencia(), request.getEstabl_id())); //
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PostMapping("/GetByCursoEstablecimiento")
+    public ResponseEntity<?> obtenerDatosAlumnosPorCursoEstablecimiento(@Valid @RequestBody BuscarAlumnoPorCursoEstablecimientoRequest request) {
+        try{
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                    .body(personaService.buscarAlumnosPorCursoEstablecimiento(request.getMatricula_vigencia(), request.getCurso_establecimiento_establecimiento_id(), request.getCurso_establecimiento_curso_id())); //
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

@@ -12,15 +12,19 @@ public class DirectorEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "director_persona_run", nullable = false)
-    PersonaEntity personaEntity;
+    PersonaEntity persona;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "director_establecimiento_id", nullable = false)
-    EstablecimientoEntity establecimientoEntity;
+    EstablecimientoEntity establecimiento;
 
     public DirectorEntity() {
     }
 
+    public DirectorEntity(PersonaEntity persona, EstablecimientoEntity establecimiento) {
+        this.persona = persona;
+        this.establecimiento = establecimiento;
+    }
 
     public Long getDirector_id() {
         return director_id;
@@ -30,19 +34,19 @@ public class DirectorEntity {
         this.director_id = director_id;
     }
 
-    public PersonaEntity getPersonaEntity() {
-        return personaEntity;
+    public PersonaEntity getPersona() {
+        return persona;
     }
 
-    public void setPersonaEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
 
-    public EstablecimientoEntity getEstablecimientoEntity() {
-        return establecimientoEntity;
+    public EstablecimientoEntity getEstablecimiento() {
+        return establecimiento;
     }
 
-    public void setEstablecimientoEntity(EstablecimientoEntity establecimientoEntity) {
-        this.establecimientoEntity = establecimientoEntity;
+    public void setEstablecimiento(EstablecimientoEntity establecimiento) {
+        this.establecimiento = establecimiento;
     }
 }

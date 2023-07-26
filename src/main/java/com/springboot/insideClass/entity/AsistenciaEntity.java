@@ -12,15 +12,15 @@ public class AsistenciaEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "asistencia_matricula_id", nullable = false)
-    MatriculaEntity matriculaEntity;
+    MatriculaEntity matricula;
 
     Date fecha;
 
     public AsistenciaEntity() {
     }
 
-    public AsistenciaEntity(MatriculaEntity matriculaEntity, Date fecha) {
-        this.matriculaEntity = matriculaEntity;
+    public AsistenciaEntity(MatriculaEntity matricula, Date fecha) {
+        this.matricula = matricula;
         this.fecha = fecha;
     }
 
@@ -32,12 +32,12 @@ public class AsistenciaEntity {
         this.asistencia_id = asistencia_id;
     }
 
-    public MatriculaEntity getMatriculaEntity() {
-        return matriculaEntity;
+    public MatriculaEntity getMatricula() {
+        return matricula;
     }
 
-    public void setMatriculaEntity(MatriculaEntity matriculaEntity) {
-        this.matriculaEntity = matriculaEntity;
+    public void setMatricula(MatriculaEntity matricula) {
+        this.matricula = matricula;
     }
 
     public Date getFecha() {

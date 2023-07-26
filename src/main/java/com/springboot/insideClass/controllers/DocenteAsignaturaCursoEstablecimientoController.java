@@ -5,23 +5,17 @@ import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
 import com.springboot.insideClass.entity.DocenteAsignaturaEntity;
 import com.springboot.insideClass.entity.DocenteEntity;
 import com.springboot.insideClass.entity.Docente_Asignatura_Curso_EstablecimientoEntity;
-import com.springboot.insideClass.payload.request.Docente.TraerDocenteRequest;
+import com.springboot.insideClass.payload.request.DocenteAsignaturaCursoEstablecimiento.CrearRequest;
 import com.springboot.insideClass.payload.request.DocenteAsignaturaCursoEstablecimiento.EliminarDocenteAsignaturaCursoEstablecimientoRequest;
-import com.springboot.insideClass.payload.response.Docente.InfoDocenteResponse;
-import com.springboot.insideClass.payload.response.DocenteAsingaturaCursoEstablecimiento.IcursoAsignaturaEstablecimiento;
-import com.springboot.insideClass.payload.response.DocenteAsingaturaCursoEstablecimiento.InfoDocenteCursoAsignaturaResponse;
+import com.springboot.insideClass.payload.request.DocenteAsignaturaCursoEstablecimiento.ObtenerPorIndexadoRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
-import com.springboot.insideClass.service.CursoEstablecimientoService;
-import com.springboot.insideClass.service.DocenteAsignaturaService;
-import com.springboot.insideClass.service.DocenteService;
-import com.springboot.insideClass.service.Docente_Asignatura_Curso_EstablecimientoService;
+import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +30,8 @@ public class DocenteAsignaturaCursoEstablecimientoController {
     @Autowired private DocenteAsignaturaService docenteAsignaturaService;
 
     @Autowired private DocenteService docenteService;
+
+    @Autowired private AsignaturaService asignaturaService;
 
     @Autowired
     private Docente_Asignatura_Curso_EstablecimientoService docenteAsignaturaCursoEstablecimientoService;
@@ -56,9 +52,30 @@ public class DocenteAsignaturaCursoEstablecimientoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/guardar")
-    public ResponseEntity<Docente_Asignatura_Curso_EstablecimientoEntity> guardarDocenteAsignaturaCursoEstablecimiento(@Valid @RequestBody Docente_Asignatura_Curso_EstablecimientoEntity cursoEstablecimiento) {
-        Docente_Asignatura_Curso_EstablecimientoEntity nuevoCursoEstablecimiento = docenteAsignaturaCursoEstablecimientoService.guardarDocenteAsignaturaCursoEstablecimiento(cursoEstablecimiento);
+    @PostMapping("/Create")
+    public ResponseEntity<Docente_Asignatura_Curso_EstablecimientoEntity> guardarDocenteAsignaturaCursoEstablecimiento(@Valid @RequestBody CrearRequest cursoEstablecimiento) {
+
+        DocenteAsignaturaEntity docenteAsignatura = docenteAsignaturaService.guardarDocenteAsignatura(new DocenteAsignaturaEntity(
+                asignaturaService.obtenerAsignaturaPorId(cursoEstablecimiento.getAsignatura_id()).get(),
+                docenteService.obtenerDocentesPorFiltro(-1L,cursoEstablecimiento.getPersona_run()).get(0)
+        ));
+
+        CursoEstablecimientoEntity cursoEstablecimiento1 = cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
+                -1L, cursoEstablecimiento.getCurso_id(), cursoEstablecimiento.getEstablecimiento_id(), true
+        ).get(0);
+
+
+        Docente_Asignatura_Curso_EstablecimientoEntity nuevoCursoEstablecimiento = docenteAsignaturaCursoEstablecimientoService.guardarDocenteAsignaturaCursoEstablecimiento(
+                new Docente_Asignatura_Curso_EstablecimientoEntity(
+                    docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
+                            cursoEstablecimiento.getAsignatura_id(), "-1", -1L, cursoEstablecimiento.getPersona_run()
+                    ).get(0),
+                        cursoEstablecimiento1,
+                        cursoEstablecimiento.getFecha_inicio(),
+                        cursoEstablecimiento.getFecha_fin(),
+                        cursoEstablecimiento.getDocente_jefe()
+                )
+        );
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCursoEstablecimiento);
     }
 
@@ -82,7 +99,7 @@ public class DocenteAsignaturaCursoEstablecimientoController {
             return ResponseEntity.badRequest().body(new MessageResponse("no se ha encontrado docente registrado en el sistema"));
         }
 
-        List<DocenteAsignaturaEntity> docenteAsignaturaEntities = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(request.getAsignatura_id(), "-1", docenteEntities.get(0).getDocente_id(), docenteEntities.get(0).getPersonaEntity().getPersona_run() );
+        List<DocenteAsignaturaEntity> docenteAsignaturaEntities = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(request.getAsignatura_id(), "-1", docenteEntities.get(0).getDocente_id(), docenteEntities.get(0).getPersona().getPersona_run() );
 
         if(docenteAsignaturaEntities.size() == 0){
             return ResponseEntity.badRequest().body(new MessageResponse("no se ha encontrado docente registrado para la asignatura indicada"));
@@ -103,54 +120,23 @@ public class DocenteAsignaturaCursoEstablecimientoController {
     }
 
     @PostMapping("/TraerDocenteCursoAsignatura")
-    public ResponseEntity<InfoDocenteCursoAsignaturaResponse> TraerDocenteCursoAsignatura(@Valid @RequestBody TraerDocenteRequest traerDocenteRequest) {
-
-        List <IcursoAsignaturaEstablecimiento> lista = new ArrayList<>();
-        InfoDocenteResponse docente = docenteService.infoDocente(traerDocenteRequest.getEstablecimiento(), traerDocenteRequest.getDocente_run(), -1L).get(0);
-
-        List<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
-                -1L, -1L,traerDocenteRequest.getEstablecimiento(), true
-        );
+    public ResponseEntity<List<Docente_Asignatura_Curso_EstablecimientoEntity>> TraerDocenteCursoAsignatura(@Valid @RequestBody ObtenerPorIndexadoRequest traerDocenteRequest) {
 
 
-        for (CursoEstablecimientoEntity cursoEstablecimiento1 : cursoEstablecimiento) {
-            List<DocenteAsignaturaEntity> da = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
-                    -1L, "-1", docente.getDocente_id().longValue(), docente.getDocente_persona_run()
-            );
-
-            for (DocenteAsignaturaEntity docenteAsignatura : da) {
-
-                List<Docente_Asignatura_Curso_EstablecimientoEntity> dace = docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(
-                        -1L,cursoEstablecimiento1.getCurso_establecimiento_id(),
-                        docenteAsignatura.getDocente_asignatura_id(), "-1", "-1",metodos.convertirFechaACalendar(
-                                new Date()
-                        ).get(Calendar.YEAR), metodos.convertirFechaACalendar(
-                                new Date()
-                        ).get(Calendar.YEAR)
-                );
-                for (Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento : dace) {
-
-                    lista.add(new IcursoAsignaturaEstablecimiento(
-                            docente_asignatura_curso_establecimiento.getCursoEstablecimientoEntity().getCursoEntity(),
-                            docente_asignatura_curso_establecimiento.getDocenteAsignaturaEntity().getAsignaturaEntity(),
-                            docente_asignatura_curso_establecimiento.getCursoEstablecimientoEntity().getEstablecimientoEntity()
-                    ));
-                }
-
-
-
-            }
-        }
-
-
-
-        InfoDocenteCursoAsignaturaResponse infoDocenteResponse = new InfoDocenteCursoAsignaturaResponse(
-                docente.getDocente_id().longValue(),
-                docente.getPersona_run(),
-                lista
-        );
-
-        return ResponseEntity.ok(infoDocenteResponse);
+        return ResponseEntity.ok(docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(
+                traerDocenteRequest.getDocente_id(),
+                traerDocenteRequest.getDocente_persona_run(),
+                traerDocenteRequest.getAsignatura_id(),
+                traerDocenteRequest.getAsignatura_nombre(),
+                traerDocenteRequest.getCurso_id(),
+                traerDocenteRequest.getCurso_nivel(),
+                traerDocenteRequest.getCurso_nombre(),
+                traerDocenteRequest.getEstablecimiento_id(),
+                traerDocenteRequest.getEstablecimiento_nombre(),
+                traerDocenteRequest.getFecha_inicio(),
+                traerDocenteRequest.getFecha_fin(),
+                traerDocenteRequest.getAnio_incio(),
+                traerDocenteRequest.getAnio_fin()));
     }
 }
 

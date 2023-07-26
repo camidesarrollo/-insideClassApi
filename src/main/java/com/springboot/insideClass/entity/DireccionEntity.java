@@ -22,7 +22,7 @@ public class DireccionEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "direccion_comuna_id", nullable = false)
-    ComunaEntity comunaEntity;
+    ComunaEntity comuna;
 
     @NotBlank
     @Size(max = 200)
@@ -34,18 +34,18 @@ public class DireccionEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "direccion_tipo_area", nullable = false)
-    TipoAreaEntity tipoAreaEntity;
+    TipoAreaEntity tipoArea;
 
     public DireccionEntity() {
     }
 
-    public DireccionEntity(String direccion_calle, String direccion_info_adicional, ComunaEntity comunaEntity, String direccion_geo_x, String direccion_geo_y, TipoAreaEntity tipoAreaEntity) {
+    public DireccionEntity(String direccion_calle, String direccion_info_adicional, ComunaEntity comuna, String direccion_geo_x, String direccion_geo_y, TipoAreaEntity tipoArea) {
         this.direccion_calle = direccion_calle;
         this.direccion_info_adicional = direccion_info_adicional;
-        this.comunaEntity = comunaEntity;
+        this.comuna = comuna;
         this.direccion_geo_x = direccion_geo_x;
         this.direccion_geo_y = direccion_geo_y;
-        this.tipoAreaEntity = tipoAreaEntity;
+        this.tipoArea = tipoArea;
     }
 
     public Long getDireccion_id() {
@@ -64,10 +64,20 @@ public class DireccionEntity {
         this.direccion_calle = direccion_calle;
     }
 
+    public String getDireccion_info_adicional() {
+        return direccion_info_adicional;
+    }
 
+    public void setDireccion_info_adicional(String direccion_info_adicional) {
+        this.direccion_info_adicional = direccion_info_adicional;
+    }
 
-    public void setComunaEntity(ComunaEntity comunaEntity) {
-        this.comunaEntity = comunaEntity;
+    public ComunaEntity getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(ComunaEntity comuna) {
+        this.comuna = comuna;
     }
 
     public String getDireccion_geo_x() {
@@ -86,15 +96,11 @@ public class DireccionEntity {
         this.direccion_geo_y = direccion_geo_y;
     }
 
-    public String getDireccion_info_adicional() {
-        return direccion_info_adicional;
+    public TipoAreaEntity getTipoArea() {
+        return tipoArea;
     }
 
-    public void setDireccion_info_adicional(String direccion_info_adicional) {
-        this.direccion_info_adicional = direccion_info_adicional;
-    }
-
-    public void setTipoAreaEntity(TipoAreaEntity tipoAreaEntity) {
-        this.tipoAreaEntity = tipoAreaEntity;
+    public void setTipoArea(TipoAreaEntity tipoArea) {
+        this.tipoArea = tipoArea;
     }
 }

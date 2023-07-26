@@ -210,7 +210,7 @@ public class DocenteController {
                 asignatura.getAsignatura_id(),
                 asignatura.getAsignatura_nombre(),
                 docenteEntities.get(0).getDocente_id(),
-                docenteEntities.get(0).getPersonaEntity().getPersona_run()
+                docenteEntities.get(0).getPersona().getPersona_run()
         );
 
         // Si no existe, insertar en DocenteAsignatura
@@ -248,12 +248,12 @@ public class DocenteController {
                         -1L,
                         cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
                                 -1L, curso.getCurso_id(), establecimiento.getEstablecimiento_id(), true
-                        ).get(0).getCurso_establecimiento_id(),
+                        ).get(0).getEstablecimiento().getEstablecimiento_id(),
                         docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
                                 asignatura.getAsignatura_id(),
                                 asignatura.getAsignatura_nombre(),
                                 docenteEntities.get(0).getDocente_id(),
-                                docenteEntities.get(0).getPersonaEntity().getPersona_run()
+                                docenteEntities.get(0).getPersona().getPersona_run()
                         ).get(0).getDocente_asignatura_id(),
                         metodos.formatDate(docente.getFecha_inicio()),
                         metodos.formatDate(docente.getFecha_fin()),
@@ -268,7 +268,7 @@ public class DocenteController {
                             asignatura.getAsignatura_id(),
                             asignatura.getAsignatura_nombre(),
                             docenteEntities.get(0).getDocente_id(),
-                            docenteEntities.get(0).getPersonaEntity().getPersona_run()
+                            docenteEntities.get(0).getPersona().getPersona_run()
                     ).get(0), cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
                     -1L, curso.getCurso_id(), establecimiento.getEstablecimiento_id(), true
             ).get(0), docente.getFecha_inicio(), docente.getFecha_fin(), docente.getProfesorJefe());

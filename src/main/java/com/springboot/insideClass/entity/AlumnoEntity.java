@@ -12,15 +12,13 @@ public class AlumnoEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "alumno_persona_run", nullable = false, unique = true)
-    PersonaEntity personaEntity;
+    PersonaEntity persona;
 
     public AlumnoEntity() {
     }
 
-
-
-    public AlumnoEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public AlumnoEntity(PersonaEntity persona) {
+        this.persona = persona;
     }
 
     public Long getAlumno_id() {
@@ -31,11 +29,11 @@ public class AlumnoEntity {
         this.alumno_id = alumno_id;
     }
 
-    public void setPersonaEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public PersonaEntity getPersona() {
+        return persona;
     }
 
-    public PersonaEntity getPersonaEntity() {
-        return personaEntity;
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
 }

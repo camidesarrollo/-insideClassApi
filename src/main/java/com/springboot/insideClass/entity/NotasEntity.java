@@ -13,11 +13,11 @@ public class NotasEntity {
 
     @ManyToOne
     @JoinColumn(name = "notas_matricula_id")
-    MatriculaEntity matriculaEntity;
+    MatriculaEntity matricula;
 
     @ManyToOne
     @JoinColumn(name = "notas_dace_id")
-    Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity;
+    Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento;
 
     Date notas_fecha;
 
@@ -27,6 +27,18 @@ public class NotasEntity {
 
     int promedio;
 
+    public NotasEntity() {
+    }
+
+    public NotasEntity(MatriculaEntity matricula, Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento, Date notas_fecha, int notas_posicion, int nota, int promedio) {
+        this.matricula = matricula;
+        this.docente_asignatura_curso_establecimiento = docente_asignatura_curso_establecimiento;
+        this.notas_fecha = notas_fecha;
+        this.notas_posicion = notas_posicion;
+        this.nota = nota;
+        this.promedio = promedio;
+    }
+
     public Long getDace_notas_id() {
         return dace_notas_id;
     }
@@ -35,20 +47,20 @@ public class NotasEntity {
         this.dace_notas_id = dace_notas_id;
     }
 
-    public MatriculaEntity getMatriculaEntity() {
-        return matriculaEntity;
+    public MatriculaEntity getMatricula() {
+        return matricula;
     }
 
-    public void setMatriculaEntity(MatriculaEntity matriculaEntity) {
-        this.matriculaEntity = matriculaEntity;
+    public void setMatricula(MatriculaEntity matricula) {
+        this.matricula = matricula;
     }
 
-    public Docente_Asignatura_Curso_EstablecimientoEntity getDocente_asignatura_curso_establecimientoEntity() {
-        return docente_asignatura_curso_establecimientoEntity;
+    public Docente_Asignatura_Curso_EstablecimientoEntity getDocente_asignatura_curso_establecimiento() {
+        return docente_asignatura_curso_establecimiento;
     }
 
-    public void setDocente_asignatura_curso_establecimientoEntity(Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity) {
-        this.docente_asignatura_curso_establecimientoEntity = docente_asignatura_curso_establecimientoEntity;
+    public void setDocente_asignatura_curso_establecimiento(Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento) {
+        this.docente_asignatura_curso_establecimiento = docente_asignatura_curso_establecimiento;
     }
 
     public Date getNotas_fecha() {

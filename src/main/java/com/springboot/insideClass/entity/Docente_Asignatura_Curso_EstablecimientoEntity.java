@@ -14,11 +14,11 @@ public class Docente_Asignatura_Curso_EstablecimientoEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "dace_docente_asignatura_id", nullable = false)
-     DocenteAsignaturaEntity docenteAsignaturaEntity;
+     DocenteAsignaturaEntity docenteAsignatura;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "dace_curso_establecimiento_id", nullable = false)
-    CursoEstablecimientoEntity cursoEstablecimientoEntity;
+    CursoEstablecimientoEntity cursoEstablecimiento;
 
     Date fecha_inicio;
 
@@ -29,9 +29,9 @@ public class Docente_Asignatura_Curso_EstablecimientoEntity {
     public Docente_Asignatura_Curso_EstablecimientoEntity() {
     }
 
-    public Docente_Asignatura_Curso_EstablecimientoEntity(DocenteAsignaturaEntity docenteAsignaturaEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, Date fecha_inicio, Date fecha_fin, Boolean profesorJefe) {
-        this.docenteAsignaturaEntity = docenteAsignaturaEntity;
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+    public Docente_Asignatura_Curso_EstablecimientoEntity(DocenteAsignaturaEntity docenteAsignatura, CursoEstablecimientoEntity cursoEstablecimiento, Date fecha_inicio, Date fecha_fin, Boolean profesorJefe) {
+        this.docenteAsignatura = docenteAsignatura;
+        this.cursoEstablecimiento = cursoEstablecimiento;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.profesorJefe = profesorJefe;
@@ -45,20 +45,20 @@ public class Docente_Asignatura_Curso_EstablecimientoEntity {
         this.dace_id = dace_id;
     }
 
-    public DocenteAsignaturaEntity getDocenteAsignaturaEntity() {
-        return docenteAsignaturaEntity;
+    public DocenteAsignaturaEntity getDocenteAsignatura() {
+        return docenteAsignatura;
     }
 
-    public void setDocenteAsignaturaEntity(DocenteAsignaturaEntity docenteAsignaturaEntity) {
-        this.docenteAsignaturaEntity = docenteAsignaturaEntity;
+    public void setDocenteAsignatura(DocenteAsignaturaEntity docenteAsignatura) {
+        this.docenteAsignatura = docenteAsignatura;
     }
 
-    public CursoEstablecimientoEntity getCursoEstablecimientoEntity() {
-        return cursoEstablecimientoEntity;
+    public CursoEstablecimientoEntity getCursoEstablecimiento() {
+        return cursoEstablecimiento;
     }
 
-    public void setCursoEstablecimientoEntity(CursoEstablecimientoEntity cursoEstablecimientoEntity) {
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+    public void setCursoEstablecimiento(CursoEstablecimientoEntity cursoEstablecimiento) {
+        this.cursoEstablecimiento = cursoEstablecimiento;
     }
 
     public Date getFecha_inicio() {

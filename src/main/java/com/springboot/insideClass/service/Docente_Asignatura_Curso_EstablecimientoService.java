@@ -36,6 +36,37 @@ public class Docente_Asignatura_Curso_EstablecimientoService {
         return docenteAsignaturaCursoEstablecimientoRepository.findByFilters(dace_id, dace_curso_establecimiento_id, dace_docente_asignatura_id, fecha_inicio, fecha_fin, anio_inicio, anio_fin);
     }
 
+
+
+    public List<Docente_Asignatura_Curso_EstablecimientoEntity> obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(Long docente_id,
+                                                                                                                              String docente_persona_run,
+                                                                                                                              Long asignatura_id,
+                                                                                                                              String asignatura_nombre,
+                                                                                                                              Long curso_id,
+                                                                                                                              String curso_nivel,
+                                                                                                                              String curso_nombre,
+                                                                                                                              Long establecimiento_id,
+                                                                                                                              String establecimiento_nombre,
+                                                                                                                              String fecha_inicio,
+                                                                                                                              String fecha_fin,
+                                                                                                                              int anio_incio,
+                                                                                                                              int anio_fin){
+
+        return docenteAsignaturaCursoEstablecimientoRepository.findByFiltersIndex(docente_id,
+                 docente_persona_run,
+                 asignatura_id,
+                 asignatura_nombre,
+                 curso_id,
+                 curso_nivel,
+                 curso_nombre,
+                 establecimiento_id,
+                 establecimiento_nombre,
+                 fecha_inicio,
+                 fecha_fin,
+                 anio_incio,
+                 anio_fin);
+    }
+
     public Docente_Asignatura_Curso_EstablecimientoEntity guardarDocenteAsignaturaCursoEstablecimiento(Docente_Asignatura_Curso_EstablecimientoEntity cursoEstablecimiento) {
         return docenteAsignaturaCursoEstablecimientoRepository.save(cursoEstablecimiento);
     }

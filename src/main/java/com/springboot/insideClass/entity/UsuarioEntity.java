@@ -31,26 +31,26 @@ public class UsuarioEntity {
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "usuario_perfil_id", nullable = false)
-  PerfilEntity perfilEntity;
+  private PerfilEntity perfil;
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "usuario_vigencia_id", nullable = false)
-  VigenciaEntity vigenciaEntity;
+  private VigenciaEntity vigencia;
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "usuario_persona_run", nullable = false)
-  PersonaEntity personaEntity;
+  private PersonaEntity persona;
 
   public UsuarioEntity() {
   }
 
-  public UsuarioEntity(String username, String email, String password, PerfilEntity perfilEntity, VigenciaEntity vigenciaEntity, PersonaEntity personaEntity) {
+  public UsuarioEntity(String username, String email, String password, PerfilEntity perfil, VigenciaEntity vigencia, PersonaEntity persona) {
     this.username = username;
     this.email = email;
     this.password = password;
-    this.perfilEntity = perfilEntity;
-    this.vigenciaEntity = vigenciaEntity;
-    this.personaEntity = personaEntity;
+    this.perfil = perfil;
+    this.vigencia = vigencia;
+    this.persona = persona;
   }
 
   public Long getId() {
@@ -85,28 +85,27 @@ public class UsuarioEntity {
     this.password = password;
   }
 
-  public PerfilEntity getPerfilEntity() {
-    return perfilEntity;
+  public PerfilEntity getPerfil() {
+    return perfil;
   }
 
-  public void setPerfilEntity(PerfilEntity perfilEntity) {
-    this.perfilEntity = perfilEntity;
+  public void setPerfil(PerfilEntity perfil) {
+    this.perfil = perfil;
   }
 
-  public VigenciaEntity getVigenciaEntity() {
-    return vigenciaEntity;
+  public VigenciaEntity getVigencia() {
+    return vigencia;
   }
 
-  public void setVigenciaEntity(VigenciaEntity vigenciaEntity) {
-    this.vigenciaEntity = vigenciaEntity;
+  public void setVigencia(VigenciaEntity vigencia) {
+    this.vigencia = vigencia;
   }
 
-  public PersonaEntity getPersonaEntity() {
-    return personaEntity;
+  public PersonaEntity getPersona() {
+    return persona;
   }
 
-  public void setPersonaEntity(PersonaEntity personaEntity) {
-    this.personaEntity = personaEntity;
+  public void setPersona(PersonaEntity persona) {
+    this.persona = persona;
   }
-
 }

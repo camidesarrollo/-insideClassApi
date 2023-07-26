@@ -84,7 +84,7 @@ public class UsuarioController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new MessageResponse("Error: No se encontró la vigencia con el nombre especificado"));
             }
             UsuarioEntity usuario = usuarios.get();
-            usuario.setVigenciaEntity(vigencia.get(0));
+            usuario.setVigencia(vigencia.get(0));
             usuarioService.guardarUsuario(usuario);
 
             return ResponseEntity.ok(new MessageResponse("Se ha cambiado la vigencia correctamente"));

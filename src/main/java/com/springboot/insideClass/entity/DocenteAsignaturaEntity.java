@@ -12,19 +12,18 @@ public class DocenteAsignaturaEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "docente_asignatura_id_asignatura_id", nullable = false)
-    AsignaturaEntity asignaturaEntity;
+    AsignaturaEntity asignatura;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "docente_asignatura_docente_id", nullable = false)
-    DocenteEntity docenteEntity;
-
-
-    public DocenteAsignaturaEntity(AsignaturaEntity asignaturaEntity, DocenteEntity docenteEntity) {
-        this.asignaturaEntity = asignaturaEntity;
-        this.docenteEntity = docenteEntity;
-    }
+    DocenteEntity docente;
 
     public DocenteAsignaturaEntity() {
+    }
+
+    public DocenteAsignaturaEntity(AsignaturaEntity asignatura, DocenteEntity docente) {
+        this.asignatura = asignatura;
+        this.docente = docente;
     }
 
     public Long getDocente_asignatura_id() {
@@ -35,19 +34,19 @@ public class DocenteAsignaturaEntity {
         this.docente_asignatura_id = docente_asignatura_id;
     }
 
-    public AsignaturaEntity getAsignaturaEntity() {
-        return asignaturaEntity;
+    public AsignaturaEntity getAsignatura() {
+        return asignatura;
     }
 
-    public void setAsignaturaEntity(AsignaturaEntity asignaturaEntity) {
-        this.asignaturaEntity = asignaturaEntity;
+    public void setAsignatura(AsignaturaEntity asignatura) {
+        this.asignatura = asignatura;
     }
 
-    public DocenteEntity getDocenteEntity() {
-        return docenteEntity;
+    public DocenteEntity getDocente() {
+        return docente;
     }
 
-    public void setDocenteEntity(DocenteEntity docenteEntity) {
-        this.docenteEntity = docenteEntity;
+    public void setDocente(DocenteEntity docente) {
+        this.docente = docente;
     }
 }

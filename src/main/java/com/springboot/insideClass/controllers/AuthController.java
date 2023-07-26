@@ -78,18 +78,18 @@ public class AuthController {
 
       if(buscarUsuariosPorFiltroUserName.size() > 0 ){
           userName = buscarUsuariosPorFiltroUserName.get(0).getUsername();
-          persona = buscarUsuariosPorFiltroUserName.get(0).getPersonaEntity();
+          persona = buscarUsuariosPorFiltroUserName.get(0).getPersona();
           usuario = buscarUsuariosPorFiltroUserName.get(0);
       }
       if(buscarUsuariosPorFiltroEmail.size() > 0 ){
           userName = buscarUsuariosPorFiltroEmail.get(0).getUsername();
-          persona = buscarUsuariosPorFiltroEmail.get(0).getPersonaEntity();
+          persona = buscarUsuariosPorFiltroEmail.get(0).getPersona();
           usuario = buscarUsuariosPorFiltroEmail.get(0);
       }
 
       if(buscarUsuariosPorFiltroRun.size() > 0 ){
           userName = buscarUsuariosPorFiltroRun.get(0).getUsername();
-          persona = buscarUsuariosPorFiltroRun.get(0).getPersonaEntity();
+          persona = buscarUsuariosPorFiltroRun.get(0).getPersona();
           usuario = buscarUsuariosPorFiltroRun.get(0);
       }
 
@@ -121,7 +121,7 @@ public class AuthController {
       List<PerfilEntity> perfilList = new ArrayList<>();
 
       for (UsuarioEntity usuario1 : usuarioList) {
-          perfilList.add(usuario1.getPerfilEntity());
+          perfilList.add(usuario1.getPerfil());
       }
 
       List<String> roles2 = perfilList.stream()
@@ -135,7 +135,7 @@ public class AuthController {
               roles2,
             jwtCookie.toString() );
       arr[1] = persona;
-      arr[2] = usuario.getPerfilEntity();
+      arr[2] = usuario.getPerfil();
 
 
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())

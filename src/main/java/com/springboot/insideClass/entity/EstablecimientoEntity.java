@@ -22,28 +22,27 @@ public class EstablecimientoEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "establecimiento_direccion_id", nullable = false)
-    DireccionEntity direccionEntity;
+    DireccionEntity direccion;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "establecimiento_sostenedor_id", nullable = false)
-    SostenedorEntity sostenedorEntity;
+    SostenedorEntity sostenedor;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "establecimiento_dependencia_id", nullable = false)
-    DependenciaEntity dependenciaEntity;
+    DependenciaEntity dependencia;
 
 
     public EstablecimientoEntity() {
     }
 
-    public EstablecimientoEntity(Long establecimiento_id, String establecimiento_nombre, Long establecimiento_codigo_area, Long establecimiento_telefono, DireccionEntity direccionEntity, SostenedorEntity sostenedorEntity, DependenciaEntity dependenciaEntity) {
-        this.establecimiento_id = establecimiento_id;
+    public EstablecimientoEntity(String establecimiento_nombre, Long establecimiento_codigo_area, Long establecimiento_telefono, DireccionEntity direccion, SostenedorEntity sostenedor, DependenciaEntity dependencia) {
         this.establecimiento_nombre = establecimiento_nombre;
         this.establecimiento_codigo_area = establecimiento_codigo_area;
         this.establecimiento_telefono = establecimiento_telefono;
-        this.direccionEntity = direccionEntity;
-        this.sostenedorEntity = sostenedorEntity;
-        this.dependenciaEntity = dependenciaEntity;
+        this.direccion = direccion;
+        this.sostenedor = sostenedor;
+        this.dependencia = dependencia;
     }
 
     public Long getEstablecimiento_id() {
@@ -78,27 +77,27 @@ public class EstablecimientoEntity {
         this.establecimiento_telefono = establecimiento_telefono;
     }
 
-    public DireccionEntity getDireccionEntity() {
-        return direccionEntity;
+    public DireccionEntity getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionEntity(DireccionEntity direccionEntity) {
-        this.direccionEntity = direccionEntity;
+    public void setDireccion(DireccionEntity direccion) {
+        this.direccion = direccion;
     }
 
-    public SostenedorEntity getSostenedorEntity() {
-        return sostenedorEntity;
+    public SostenedorEntity getSostenedor() {
+        return sostenedor;
     }
 
-    public void setSostenedorEntity(SostenedorEntity sostenedorEntity) {
-        this.sostenedorEntity = sostenedorEntity;
+    public void setSostenedor(SostenedorEntity sostenedor) {
+        this.sostenedor = sostenedor;
     }
 
-    public DependenciaEntity getDependenciaEntity() {
-        return dependenciaEntity;
+    public DependenciaEntity getDependencia() {
+        return dependencia;
     }
 
-    public void setDependenciaEntity(DependenciaEntity dependenciaEntity) {
-        this.dependenciaEntity = dependenciaEntity;
+    public void setDependencia(DependenciaEntity dependencia) {
+        this.dependencia = dependencia;
     }
 }

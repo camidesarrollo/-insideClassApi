@@ -12,14 +12,19 @@ public class EstablecimientoCodigoEnseñanzaEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = " establecimiento_codigo_ensenanza_establecimiento_id", nullable = false)
-    EstablecimientoEntity establecimientoEntity;
+    EstablecimientoEntity establecimiento;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = " establecimiento_codigo_ensenanza_codigo_ensenanza_id", nullable = false)
-    CodigoEnsenanzaEntity codigoEnsenanzaEntity;
+    CodigoEnsenanzaEntity codigoEnsenanza;
 
     public EstablecimientoCodigoEnseñanzaEntity() {
 
+    }
+
+    public EstablecimientoCodigoEnseñanzaEntity(EstablecimientoEntity establecimiento, CodigoEnsenanzaEntity codigoEnsenanza) {
+        this.establecimiento = establecimiento;
+        this.codigoEnsenanza = codigoEnsenanza;
     }
 
     public Long getEstablecimiento_codigo_ensenanza_id() {
@@ -30,19 +35,19 @@ public class EstablecimientoCodigoEnseñanzaEntity {
         this.establecimiento_codigo_ensenanza_id = establecimiento_codigo_ensenanza_id;
     }
 
-    public EstablecimientoEntity getEstablecimientoEntity() {
-        return establecimientoEntity;
+    public EstablecimientoEntity getEstablecimiento() {
+        return establecimiento;
     }
 
-    public void setEstablecimientoEntity(EstablecimientoEntity establecimientoEntity) {
-        this.establecimientoEntity = establecimientoEntity;
+    public void setEstablecimiento(EstablecimientoEntity establecimiento) {
+        this.establecimiento = establecimiento;
     }
 
-    public CodigoEnsenanzaEntity getCodigoEnsenanzaEntity() {
-        return codigoEnsenanzaEntity;
+    public CodigoEnsenanzaEntity getCodigoEnsenanza() {
+        return codigoEnsenanza;
     }
 
-    public void setCodigoEnsenanzaEntity(CodigoEnsenanzaEntity codigoEnsenanzaEntity) {
-        this.codigoEnsenanzaEntity = codigoEnsenanzaEntity;
+    public void setCodigoEnsenanza(CodigoEnsenanzaEntity codigoEnsenanza) {
+        this.codigoEnsenanza = codigoEnsenanza;
     }
 }

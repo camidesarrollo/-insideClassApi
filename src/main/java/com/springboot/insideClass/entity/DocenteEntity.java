@@ -12,13 +12,13 @@ public class DocenteEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "docente_persona_run", nullable = false, unique = true)
-    PersonaEntity personaEntity;
+    PersonaEntity persona;
 
     public DocenteEntity() {
     }
 
-    public DocenteEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public DocenteEntity(PersonaEntity persona) {
+        this.persona = persona;
     }
 
     public Long getDocente_id() {
@@ -29,11 +29,11 @@ public class DocenteEntity {
         this.docente_id = docente_id;
     }
 
-    public PersonaEntity getPersonaEntity() {
-        return personaEntity;
+    public PersonaEntity getPersona() {
+        return persona;
     }
 
-    public void setPersonaEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
 }

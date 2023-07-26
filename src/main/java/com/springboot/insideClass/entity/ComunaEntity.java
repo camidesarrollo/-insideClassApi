@@ -18,19 +18,19 @@ public class ComunaEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "comuna_provincia_id", nullable = false)
-    ProvinciaEntity provinciaEntity;
+    ProvinciaEntity provincia;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "comuna_deprov_id", nullable = false)
-    DepartamentosProvincialesEntity departamentosProvincialesEntity;
+    DepartamentosProvincialesEntity departamentosProvinciales;
 
     public ComunaEntity() {
     }
 
-    public ComunaEntity(String comuna_nombre, ProvinciaEntity provinciaEntity, DepartamentosProvincialesEntity departamentosProvincialesEntity) {
+    public ComunaEntity(String comuna_nombre, ProvinciaEntity provincia, DepartamentosProvincialesEntity departamentosProvinciales) {
         this.comuna_nombre = comuna_nombre;
-        this.provinciaEntity = provinciaEntity;
-        this.departamentosProvincialesEntity = departamentosProvincialesEntity;
+        this.provincia = provincia;
+        this.departamentosProvinciales = departamentosProvinciales;
     }
 
     public Long getComuna_id() {
@@ -49,19 +49,19 @@ public class ComunaEntity {
         this.comuna_nombre = comuna_nombre;
     }
 
-    public ProvinciaEntity getProvinciaEntity() {
-        return provinciaEntity;
+    public ProvinciaEntity getProvincia() {
+        return provincia;
     }
 
-    public void setProvinciaEntity(ProvinciaEntity provinciaEntity) {
-        this.provinciaEntity = provinciaEntity;
+    public void setProvincia(ProvinciaEntity provincia) {
+        this.provincia = provincia;
     }
 
-    public DepartamentosProvincialesEntity getDepartamentosProvincialesEntity() {
-        return departamentosProvincialesEntity;
+    public DepartamentosProvincialesEntity getDepartamentosProvinciales() {
+        return departamentosProvinciales;
     }
 
-    public void setDepartamentosProvincialesEntity(DepartamentosProvincialesEntity departamentosProvincialesEntity) {
-        this.departamentosProvincialesEntity = departamentosProvincialesEntity;
+    public void setDepartamentosProvinciales(DepartamentosProvincialesEntity departamentosProvinciales) {
+        this.departamentosProvinciales = departamentosProvinciales;
     }
 }

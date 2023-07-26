@@ -209,9 +209,9 @@ public class MatriculaController {
             apoderado = apoderadoService.obtenerApoderadoPorFiltro(-1L, Apoderado_run);
 
             MatriculaEntity matricula = new MatriculaEntity();
-            matricula.setAlumnoEntity(alumno.get(0));
-            matricula.setApoderadoEntity(apoderado.get(0));
-            matricula.setCursoEstablecimientoEntity(cursoEstablecimiento.get(0));
+            matricula.setAlumno(alumno.get(0));
+            matricula.setApoderado(apoderado.get(0));
+            matricula.setCursoEstablecimiento(cursoEstablecimiento.get(0));
 
             matriculaService.guardarMatricula(matricula);
 

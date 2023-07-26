@@ -12,15 +12,15 @@ public class MatriculaEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "matricula_alumno_id", nullable = false)
-    AlumnoEntity alumnoEntity;
+    AlumnoEntity alumno;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "matricula_apoderado_id", nullable = false)
-    ApoderadoEntity apoderadoEntity;
+    ApoderadoEntity apoderado;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "matricula_curso_establecimiento_id", nullable = false)
-    CursoEstablecimientoEntity cursoEstablecimientoEntity;
+    CursoEstablecimientoEntity cursoEstablecimiento;
 
     Integer curso_agno;
     
@@ -29,36 +29,44 @@ public class MatriculaEntity {
     public MatriculaEntity() {
     }
 
-    public MatriculaEntity(AlumnoEntity alumnoEntity, ApoderadoEntity apoderadoEntity, CursoEstablecimientoEntity cursoEstablecimientoEntity, Integer curso_agno, boolean matricula_vigencia) {
-        this.alumnoEntity = alumnoEntity;
-        this.apoderadoEntity = apoderadoEntity;
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+    public MatriculaEntity(AlumnoEntity alumno, ApoderadoEntity apoderado, CursoEstablecimientoEntity cursoEstablecimiento, Integer curso_agno, boolean matricula_vigencia) {
+        this.alumno = alumno;
+        this.apoderado = apoderado;
+        this.cursoEstablecimiento = cursoEstablecimiento;
         this.curso_agno = curso_agno;
         this.matricula_vigencia = matricula_vigencia;
     }
 
-    public AlumnoEntity getAlumnoEntity() {
-        return alumnoEntity;
+    public Long getMatricula_id() {
+        return matricula_id;
     }
 
-    public void setAlumnoEntity(AlumnoEntity alumnoEntity) {
-        this.alumnoEntity = alumnoEntity;
+    public void setMatricula_id(Long matricula_id) {
+        this.matricula_id = matricula_id;
     }
 
-    public ApoderadoEntity getApoderadoEntity() {
-        return apoderadoEntity;
+    public AlumnoEntity getAlumno() {
+        return alumno;
     }
 
-    public void setApoderadoEntity(ApoderadoEntity apoderadoEntity) {
-        this.apoderadoEntity = apoderadoEntity;
+    public void setAlumno(AlumnoEntity alumno) {
+        this.alumno = alumno;
     }
 
-    public CursoEstablecimientoEntity getCursoEstablecimientoEntity() {
-        return cursoEstablecimientoEntity;
+    public ApoderadoEntity getApoderado() {
+        return apoderado;
     }
 
-    public void setCursoEstablecimientoEntity(CursoEstablecimientoEntity cursoEstablecimientoEntity) {
-        this.cursoEstablecimientoEntity = cursoEstablecimientoEntity;
+    public void setApoderado(ApoderadoEntity apoderado) {
+        this.apoderado = apoderado;
+    }
+
+    public CursoEstablecimientoEntity getCursoEstablecimiento() {
+        return cursoEstablecimiento;
+    }
+
+    public void setCursoEstablecimiento(CursoEstablecimientoEntity cursoEstablecimiento) {
+        this.cursoEstablecimiento = cursoEstablecimiento;
     }
 
     public Integer getCurso_agno() {

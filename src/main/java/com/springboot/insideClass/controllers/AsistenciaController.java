@@ -80,10 +80,10 @@ public class AsistenciaController {
 
                 AsistenciaEntity asistencia1 = new AsistenciaEntity(matriculaenty.get(), asistenciaRequest.getFecha());
 
-                correo.enviarCorreoAsistencia(matriculaenty.get().getAlumnoEntity().getPersonaEntity().getPersona_nombre(),
+                correo.enviarCorreoAsistencia(matriculaenty.get().getAlumno().getPersona().getPersona_nombre(),
                         asistenciaRequest.getFecha().toString(),
                         "Asistio",
-                        matriculaenty.get().getCursoEstablecimientoEntity().getEstablecimientoEntity().getEstablecimiento_nombre()
+                        matriculaenty.get().getCursoEstablecimiento().getEstablecimiento().getEstablecimiento_nombre()
                 );
 
                 asistenciaService.guardarAsistencia(asistencia1);

@@ -11,13 +11,13 @@ public class ApoderadoEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "apoderado_persona_run", nullable = false, unique = true)
-    PersonaEntity personaEntity;
+    PersonaEntity persona;
 
     public ApoderadoEntity() {
     }
 
-    public ApoderadoEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public ApoderadoEntity(PersonaEntity persona) {
+        this.persona = persona;
     }
 
     public Long getApoderado_id() {
@@ -28,11 +28,11 @@ public class ApoderadoEntity {
         this.apoderado_id = apoderado_id;
     }
 
-    public PersonaEntity getPersonaEntity() {
-        return personaEntity;
+    public PersonaEntity getPersona() {
+        return persona;
     }
 
-    public void setPersonaEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
 }

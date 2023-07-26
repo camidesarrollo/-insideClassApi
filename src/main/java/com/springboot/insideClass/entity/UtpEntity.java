@@ -11,18 +11,18 @@ public class UtpEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "utp_persona_id", nullable = false)
-    PersonaEntity personaEntity;
+    PersonaEntity persona;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "utp_establecimiento_id", nullable = false)
-    EstablecimientoEntity establecimientoEntity;
+    EstablecimientoEntity establecimiento;
 
     public UtpEntity() {
     }
 
-    public UtpEntity(PersonaEntity personaEntity, EstablecimientoEntity establecimientoEntity) {
-        this.personaEntity = personaEntity;
-        this.establecimientoEntity = establecimientoEntity;
+    public UtpEntity(PersonaEntity persona, EstablecimientoEntity establecimiento) {
+        this.persona = persona;
+        this.establecimiento = establecimiento;
     }
 
     public Long getUtp_id() {
@@ -33,11 +33,19 @@ public class UtpEntity {
         this.utp_id = utp_id;
     }
 
-    public void setPersonaEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public PersonaEntity getPersona() {
+        return persona;
     }
 
-    public void setEstablecimientoEntity(EstablecimientoEntity establecimientoEntity) {
-        this.establecimientoEntity = establecimientoEntity;
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
+    }
+
+    public EstablecimientoEntity getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(EstablecimientoEntity establecimiento) {
+        this.establecimiento = establecimiento;
     }
 }

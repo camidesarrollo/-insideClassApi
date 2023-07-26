@@ -102,7 +102,7 @@ public class AnotacionesController {
             List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntities =
                     docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(
                     -1L,
-                    cursoEstablecimiento.get().getCurso_establecimiento_id(),
+                    cursoEstablecimiento.get().getEstablecimiento().getEstablecimiento_id(),
                     asignaturaDocente.get(0).getDocente_asignatura_id(),
                             "-1", "-1",
                             metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR),
@@ -115,8 +115,8 @@ public class AnotacionesController {
 
             // Crear nueva entidad AnotacionesEntity
             AnotacionesEntity anotacion = new AnotacionesEntity();
-            anotacion.setMatriculaEntity(matriculaService.obtenerMatriculaPorId(matricula.get(0).getMatricula_id().longValue()).get());
-            anotacion.setDocente_asignatura_curso_establecimientoEntity(docente_asignatura_curso_establecimientoEntities.get(0));
+            anotacion.setMatricula(matriculaService.obtenerMatriculaPorId(matricula.get(0).getMatricula_id().longValue()).get());
+            anotacion.setDocente_asignatura_curso_establecimiento(docente_asignatura_curso_establecimientoEntities.get(0));
             anotacion.setFecha(anotacionRequest.getFecha());
             anotacion.setDescripcion(anotacionRequest.getDescripcion());
             anotacion.setGravedad(anotacionRequest.getGravedad());

@@ -18,16 +18,17 @@ public class ProvinciaEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "provincia_region_id", nullable = false)
-    RegionEntity regionEntity;
+    RegionEntity region;
 
 
 
     public ProvinciaEntity() {
     }
 
-    public ProvinciaEntity(String provincia_nombre, RegionEntity regionEntity) {
+
+    public ProvinciaEntity(String provincia_nombre, RegionEntity region) {
         this.provincia_nombre = provincia_nombre;
-        this.regionEntity = regionEntity;
+        this.region = region;
     }
 
     public Long getProvincia_id() {
@@ -46,13 +47,11 @@ public class ProvinciaEntity {
         this.provincia_nombre = provincia_nombre;
     }
 
-    public RegionEntity getRegionEntity() {
-        return regionEntity;
+    public RegionEntity getRegion() {
+        return region;
     }
 
-    public void setRegionEntity(RegionEntity regionEntity) {
-        this.regionEntity = regionEntity;
+    public void setRegion(RegionEntity region) {
+        this.region = region;
     }
-
-
 }

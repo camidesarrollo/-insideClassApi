@@ -11,24 +11,28 @@ public class RepresentanteLegalEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "representante_legal_persona_run", nullable = false)
-    PersonaEntity personaEntity;
+    PersonaEntity persona;
 
     public RepresentanteLegalEntity() {
     }
 
-    public RepresentanteLegalEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public RepresentanteLegalEntity(PersonaEntity persona) {
+        this.persona = persona;
     }
 
-    public Long getRep_legal_id() {
+    public Long getRepresentante_legal_id() {
         return representante_legal_id;
     }
 
-    public void setRep_legal_id(Long rep_legal_id) {
-        this.representante_legal_id = rep_legal_id;
+    public void setRepresentante_legal_id(Long representante_legal_id) {
+        this.representante_legal_id = representante_legal_id;
     }
 
-    public void setPersonaEntity(PersonaEntity personaEntity) {
-        this.personaEntity = personaEntity;
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
 }

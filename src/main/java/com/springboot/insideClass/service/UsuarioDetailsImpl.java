@@ -1,16 +1,15 @@
 package com.springboot.insideClass.service;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springboot.insideClass.entity.UsuarioEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class UsuarioDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
@@ -38,7 +37,7 @@ public class UsuarioDetailsImpl implements UserDetails {
 
   public static UsuarioDetailsImpl build(UsuarioEntity user) {
 
-    List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getPerfilEntity().getPerfil_nombre()));
+    List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getPerfil().getPerfil_nombre()));
 
     return new UsuarioDetailsImpl(
         user.getId(), 

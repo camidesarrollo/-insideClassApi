@@ -10,20 +10,23 @@ public class HorarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long horario_id;
 
-    String Dia;
+    String dia;
 
-    String Hora_inicio;
+    String hora_inicio;
 
-    String Hora_fin;
+    String hora_fin;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "dace_id", nullable = false)
     Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity;
 
+    public HorarioEntity() {
+    }
+
     public HorarioEntity(String dia, String hora_inicio, String hora_fin, Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity) {
-        Dia = dia;
-        Hora_inicio = hora_inicio;
-        Hora_fin = hora_fin;
+        this.dia = dia;
+        this.hora_inicio = hora_inicio;
+        this.hora_fin = hora_fin;
         this.docente_asignatura_curso_establecimientoEntity = docente_asignatura_curso_establecimientoEntity;
     }
 
@@ -36,27 +39,27 @@ public class HorarioEntity {
     }
 
     public String getDia() {
-        return Dia;
+        return dia;
     }
 
     public void setDia(String dia) {
-        Dia = dia;
+        this.dia = dia;
     }
 
     public String getHora_inicio() {
-        return Hora_inicio;
+        return hora_inicio;
     }
 
     public void setHora_inicio(String hora_inicio) {
-        Hora_inicio = hora_inicio;
+        this.hora_inicio = hora_inicio;
     }
 
     public String getHora_fin() {
-        return Hora_fin;
+        return hora_fin;
     }
 
     public void setHora_fin(String hora_fin) {
-        Hora_fin = hora_fin;
+        this.hora_fin = hora_fin;
     }
 
     public Docente_Asignatura_Curso_EstablecimientoEntity getDocente_asignatura_curso_establecimientoEntity() {

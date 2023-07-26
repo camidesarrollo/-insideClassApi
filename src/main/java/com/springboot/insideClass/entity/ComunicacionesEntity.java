@@ -16,11 +16,23 @@ public class ComunicacionesEntity {
 
     @ManyToOne
     @JoinColumn(name = "comunicaciones_dace_id")
-    Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity;
+    Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento;
 
     @ManyToOne
     @JoinColumn(name = "comunicaciones_matricula_id")
     MatriculaEntity matricula;
+
+
+    public ComunicacionesEntity() {
+    }
+
+    public ComunicacionesEntity(Date comunicaciones_fecha, String comunicaciones_tipo, String comunicaciones_descripcion, Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento, MatriculaEntity matricula) {
+        this.comunicaciones_fecha = comunicaciones_fecha;
+        this.comunicaciones_tipo = comunicaciones_tipo;
+        this.comunicaciones_descripcion = comunicaciones_descripcion;
+        this.docente_asignatura_curso_establecimiento = docente_asignatura_curso_establecimiento;
+        this.matricula = matricula;
+    }
 
     public Long getComunicaciones_id() {
         return comunicaciones_id;
@@ -54,12 +66,12 @@ public class ComunicacionesEntity {
         this.comunicaciones_descripcion = comunicaciones_descripcion;
     }
 
-    public Docente_Asignatura_Curso_EstablecimientoEntity getDocente_asignatura_curso_establecimientoEntity() {
-        return docente_asignatura_curso_establecimientoEntity;
+    public Docente_Asignatura_Curso_EstablecimientoEntity getDocente_asignatura_curso_establecimiento() {
+        return docente_asignatura_curso_establecimiento;
     }
 
-    public void setDocente_asignatura_curso_establecimientoEntity(Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimientoEntity) {
-        this.docente_asignatura_curso_establecimientoEntity = docente_asignatura_curso_establecimientoEntity;
+    public void setDocente_asignatura_curso_establecimiento(Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento) {
+        this.docente_asignatura_curso_establecimiento = docente_asignatura_curso_establecimiento;
     }
 
     public MatriculaEntity getMatricula() {

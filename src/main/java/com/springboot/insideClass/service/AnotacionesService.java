@@ -6,6 +6,7 @@ import com.springboot.insideClass.repository.AnotacionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -71,13 +72,13 @@ public class AnotacionesService {
             infoAnotaciones.setAlumno_nombre(fila[4] != null ? (String) fila[4] : "");
             infoAnotaciones.setAlumno_numero_celular(fila[5] != null ? (String) fila[5] : "");
             infoAnotaciones.setAlumno_numero_telefonico(fila[6] != null ? (String) fila[6] : "");
-            infoAnotaciones.setAlumno_numero_sexo(fila[7] != null ? (String) fila[7] : "");
-            infoAnotaciones.setAnotaciones_id(fila[8] != null ? (Long) fila[8] : null);
+            infoAnotaciones.setAlumno_numero_sexo(fila[7] != null ? ((Character) fila[7]).toString() : "");
+            infoAnotaciones.setAnotaciones_id(fila[8] != null ? ((BigInteger) fila[8]).longValue() : null);
             infoAnotaciones.setDescripcion(fila[9] != null ? (String) fila[9] : "");
             infoAnotaciones.setFecha(fila[10] != null ? (Date) fila[10] : null);
             infoAnotaciones.setGravedad(fila[11] != null ? (String) fila[11] : "");
-            infoAnotaciones.setAnotaciones_dace_id(fila[12] != null ? (Long) fila[12] : null);
-            infoAnotaciones.setAnotaciones_matricula_id(fila[13] != null ? (Long) fila[13] : null);
+            infoAnotaciones.setAnotaciones_dace_id(fila[12] != null ?  ((BigInteger) fila[12]).longValue()  : null);
+            infoAnotaciones.setAnotaciones_matricula_id(fila[13] != null ? ((BigInteger) fila[13]).longValue() : null);
             infoAnotaciones.setDocente_run(fila[14] != null ? (String) fila[14] : "");
             infoAnotaciones.setDocente_apellido_materno(fila[15] != null ? (String) fila[15] : "");
             infoAnotaciones.setDocente_apellido_paterno(fila[16] != null ? (String) fila[16] : "");
@@ -85,10 +86,10 @@ public class AnotacionesService {
             infoAnotaciones.setDocente_nombre(fila[18] != null ? (String) fila[18] : "");
             infoAnotaciones.setDocente_numero_celular(fila[19] != null ? (String) fila[19] : "");
             infoAnotaciones.setDocente_numero_telefonico(fila[20] != null ? (String) fila[20] : "");
-            infoAnotaciones.setDocente_numero_sexo(fila[21] != null ? (String) fila[21] : "");
-            infoAnotaciones.setAsignatura_id(fila[22] != null ? (Long) fila[22] : null);
+            infoAnotaciones.setDocente_numero_sexo(fila[21] != null ? ((Character) fila[21]).toString() : "");
+            infoAnotaciones.setAsignatura_id(fila[22] != null ? ((BigInteger) fila[22]).longValue()  : null);
             infoAnotaciones.setAsignatura_nombre(fila[23] != null ? (String) fila[23] : "");
-            infoAnotaciones.setCurso_id(fila[24] != null ? (Long) fila[24] : null);
+            infoAnotaciones.setCurso_id(fila[24] != null ? ((BigInteger) fila[24]).longValue() : null);
             infoAnotaciones.setCurso_nivel(fila[25] != null ? (String) fila[25] : "");
             infoAnotaciones.setCurso_nombre(fila[26] != null ? (String) fila[26] : "");
 

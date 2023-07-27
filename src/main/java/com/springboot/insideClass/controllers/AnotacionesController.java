@@ -50,10 +50,12 @@ public class AnotacionesController {
                     .body(anotacionesService.obtenerDatosAlumnoAnotacion(
                             request.isMatricula_vigencia(), request.getEstablecimiento_id(),request.getApoderado_id(),request.getAlumno_run(), request.getAnotaciones_matricula_id(),
                             request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id())
-                    ); //
+                    );
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+
+
     }
 
     @PostMapping("/Create")

@@ -23,6 +23,10 @@ public class DocenteAsignaturaService {
     }
 
     public List<DocenteAsignaturaEntity> obtenerDocenteAsignaturaPorFiltro(Long asignatura_id, String asignatura_nombre, Long docente_id, String docente_persona_run) {
+        System.out.println(asignatura_id);
+        System.out.println(asignatura_nombre);
+        System.out.println(docente_id);
+        System.out.println(docente_persona_run);
         return docenteAsignaturaRepository.findByFilters(asignatura_id, asignatura_nombre, docente_id, docente_persona_run);
     }
 

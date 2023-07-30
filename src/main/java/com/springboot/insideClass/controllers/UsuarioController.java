@@ -116,7 +116,7 @@ public class UsuarioController {
         List<PerfilEntity> perfil1 = perfilService.obtenerPerfilesPorFiltro(-1L,nombre_perfil);
 
         if (nombre_perfil.equals("-1")) {
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE).body(usuarios);
+            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE).body(usuarios.get(0));
         }
 
         if (usuarios.size() > 0) {

@@ -7,6 +7,9 @@ public class BuscarDatosMatriculaRequest {
     String apoderado_persona_run; Long alumno_id;
     String alumno_persona_run;
 
+    Long  establecimiento_id;
+
+
     public boolean isMatricula_vigencia() {
         return matricula_vigencia;
     }
@@ -53,5 +56,13 @@ public class BuscarDatosMatriculaRequest {
 
     public void setAlumno_persona_run(String alumno_persona_run) {
         this.alumno_persona_run = alumno_persona_run;
+    }
+
+    public Long getEstablecimiento_id() {
+        return establecimiento_id;
+    }
+
+    public void setEstablecimiento_id(Long establecimiento_id) {
+        this.establecimiento_id = establecimiento_id;
     }
 }

@@ -77,7 +77,7 @@ public class AnotacionesController {
         LocalDate localDate = anotacionRequest.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int year = localDate.getYear();
 
-        List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(true, year, -1L, "-1", -1L, anotacionRequest.getRun());
+        List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(true, year, -1L, "-1", -1L, anotacionRequest.getRun(), anotacionRequest.getEstablecimiento());
 
         if(matricula == null){
             return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!1"));

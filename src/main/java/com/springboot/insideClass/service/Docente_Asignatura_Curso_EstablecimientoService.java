@@ -67,7 +67,38 @@ public class Docente_Asignatura_Curso_EstablecimientoService {
                  anio_fin);
     }
 
+    public List<Docente_Asignatura_Curso_EstablecimientoEntity> obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroVigente(Long docente_id,
+                                                                                                                              String docente_persona_run,
+                                                                                                                              Long asignatura_id,
+                                                                                                                              String asignatura_nombre,
+                                                                                                                              Long curso_id,
+                                                                                                                              String curso_nivel,
+                                                                                                                              String curso_nombre,
+                                                                                                                              Long establecimiento_id,
+                                                                                                                              String establecimiento_nombre,
+                                                                                                                              String fecha_inicio,
+                                                                                                                              String fecha_fin,
+                                                                                                                              int anio_incio,
+                                                                                                                              int anio_fin){
+
+        return docenteAsignaturaCursoEstablecimientoRepository.findByFiltersVigente(docente_id,
+                docente_persona_run,
+                asignatura_id,
+                asignatura_nombre,
+                curso_id,
+                curso_nivel,
+                curso_nombre,
+                establecimiento_id,
+                establecimiento_nombre,
+                fecha_inicio,
+                fecha_fin,
+                anio_incio,
+                anio_fin);
+    }
+
     public Docente_Asignatura_Curso_EstablecimientoEntity guardarDocenteAsignaturaCursoEstablecimiento(Docente_Asignatura_Curso_EstablecimientoEntity cursoEstablecimiento) {
+        System.out.println(cursoEstablecimiento.getCursoEstablecimiento().getCurso_establecimiento_id());
+        System.out.println(cursoEstablecimiento.getDocenteAsignatura().getDocente_asignatura_id());
         return docenteAsignaturaCursoEstablecimientoRepository.save(cursoEstablecimiento);
     }
 

@@ -23,7 +23,6 @@ public class PersonaEntity {
     @Size(max = 200)
     String persona_apellido_paterno;
 
-    @NotBlank
     @Size(max = 200)
     String persona_apellido_materno;
 

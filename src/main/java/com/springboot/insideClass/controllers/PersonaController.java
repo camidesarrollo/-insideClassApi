@@ -3,6 +3,7 @@ package com.springboot.insideClass.controllers;
 import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.PersonaEntity;
 import com.springboot.insideClass.payload.request.Persona.BuscarPersonaRequest;
+import com.springboot.insideClass.payload.request.Persona.CrearPersonaRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,4 +90,46 @@ public class PersonaController {
 
         }
     }
+
+    @PutMapping("/Update")
+    public ResponseEntity<?> editarPersona(@Valid @RequestBody CrearPersonaRequest persona) {
+        /*try {
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró editar la información requerida!"));
+        } */
+
+        PersonaEntity personaEntity = new PersonaEntity();
+
+        // Verificar y asignar valores solo si no están vacíos
+        String nombre = persona.getPersona_nombre();
+        if (nombre != null && !nombre.isEmpty()) {
+            personaEntity.setPersona_nombre(nombre);
+        }
+
+        String apellidoPaterno = persona.getPersona_apellido_paterno();
+        if (apellidoPaterno != null && !apellidoPaterno.isEmpty()) {
+            personaEntity.setPersona_apellido_paterno(apellidoPaterno);
+        }
+
+
+        if (persona.getPersona_fecha_nacimiento() != null) {
+            personaEntity.setPersona_fecha_nacimiento(persona.getPersona_fecha_nacimiento());
+        }
+
+        String apellidoMaterno = persona.getPersona_apellido_materno();
+        if (apellidoMaterno != null && !apellidoMaterno.isEmpty()) {
+            personaEntity.setPersona_apellido_materno(apellidoMaterno);
+        }
+
+        personaEntity.setPersona_run(persona.getPersona_run());
+        personaEntity.setPersona_sexo(persona.getPersona_sexo());
+        personaEntity.setPersona_numero_telefonico(persona.getPersona_numero_telefonico());
+        personaEntity.setPersona_numero_celular(persona.getPersona_numero_celular());
+
+        personaService.guardarPersona(personaEntity);
+        return ResponseEntity.ok().body(new MessageResponse("Se ha modificado la persona con éxito"));
+
+    }
+
 }

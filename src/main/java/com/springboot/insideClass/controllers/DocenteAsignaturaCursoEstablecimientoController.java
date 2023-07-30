@@ -37,7 +37,10 @@ public class DocenteAsignaturaCursoEstablecimientoController {
     private Docente_Asignatura_Curso_EstablecimientoService docenteAsignaturaCursoEstablecimientoService;
 
     @Autowired private Docente_Asignatura_Curso_EstablecimientoService docente_asignatura_curso_establecimientoService;
+    @Autowired private ComunicacionesService comunicacionesService;
+
     @Autowired private Metodos metodos;
+
 
     @PostMapping("/obtenerTodos")
     public ResponseEntity<List<Docente_Asignatura_Curso_EstablecimientoEntity>> obtenerTodosLosDocenteAsignaturaCursoEstablecimiento() {
@@ -55,21 +58,22 @@ public class DocenteAsignaturaCursoEstablecimientoController {
     @PostMapping("/Create")
     public ResponseEntity<Docente_Asignatura_Curso_EstablecimientoEntity> guardarDocenteAsignaturaCursoEstablecimiento(@Valid @RequestBody CrearRequest cursoEstablecimiento) {
 
-        DocenteAsignaturaEntity docenteAsignatura = docenteAsignaturaService.guardarDocenteAsignatura(new DocenteAsignaturaEntity(
-                asignaturaService.obtenerAsignaturaPorId(cursoEstablecimiento.getAsignatura_id()).get(),
-                docenteService.obtenerDocentesPorFiltro(-1L,cursoEstablecimiento.getPersona_run()).get(0)
-        ));
+        if(docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(cursoEstablecimiento.getAsignatura_id(), "-1", -1L, cursoEstablecimiento.getPersona_run()).size() == 0){
+            DocenteAsignaturaEntity docenteAsignatura = docenteAsignaturaService.guardarDocenteAsignatura(new DocenteAsignaturaEntity(
+                    asignaturaService.obtenerAsignaturaPorId(cursoEstablecimiento.getAsignatura_id()).get(),
+                    docenteService.obtenerDocentesPorFiltro(-1L,cursoEstablecimiento.getPersona_run()).get(0)
+            ));
+        }
 
         CursoEstablecimientoEntity cursoEstablecimiento1 = cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
                 -1L, cursoEstablecimiento.getCurso_id(), cursoEstablecimiento.getEstablecimiento_id(), true
         ).get(0);
 
+        System.out.println(cursoEstablecimiento1.getCurso_establecimiento_id());
 
         Docente_Asignatura_Curso_EstablecimientoEntity nuevoCursoEstablecimiento = docenteAsignaturaCursoEstablecimientoService.guardarDocenteAsignaturaCursoEstablecimiento(
                 new Docente_Asignatura_Curso_EstablecimientoEntity(
-                    docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
-                            cursoEstablecimiento.getAsignatura_id(), "-1", -1L, cursoEstablecimiento.getPersona_run()
-                    ).get(0),
+                        docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(cursoEstablecimiento.getAsignatura_id(), "-1", -1L, cursoEstablecimiento.getPersona_run()).get(0),
                         cursoEstablecimiento1,
                         cursoEstablecimiento.getFecha_inicio(),
                         cursoEstablecimiento.getFecha_fin(),
@@ -124,6 +128,26 @@ public class DocenteAsignaturaCursoEstablecimientoController {
 
 
         return ResponseEntity.ok(docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(
+                traerDocenteRequest.getDocente_id(),
+                traerDocenteRequest.getDocente_persona_run(),
+                traerDocenteRequest.getAsignatura_id(),
+                traerDocenteRequest.getAsignatura_nombre(),
+                traerDocenteRequest.getCurso_id(),
+                traerDocenteRequest.getCurso_nivel(),
+                traerDocenteRequest.getCurso_nombre(),
+                traerDocenteRequest.getEstablecimiento_id(),
+                traerDocenteRequest.getEstablecimiento_nombre(),
+                traerDocenteRequest.getFecha_inicio(),
+                traerDocenteRequest.getFecha_fin(),
+                traerDocenteRequest.getAnio_incio(),
+                traerDocenteRequest.getAnio_fin()));
+    }
+
+    @PostMapping("/TraerDocenteCursoAsignaturaVigente")
+    public ResponseEntity<List<Docente_Asignatura_Curso_EstablecimientoEntity>> TraerDocenteCursoAsignaturaVigente(@Valid @RequestBody ObtenerPorIndexadoRequest traerDocenteRequest) {
+
+
+        return ResponseEntity.ok(docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroVigente(
                 traerDocenteRequest.getDocente_id(),
                 traerDocenteRequest.getDocente_persona_run(),
                 traerDocenteRequest.getAsignatura_id(),

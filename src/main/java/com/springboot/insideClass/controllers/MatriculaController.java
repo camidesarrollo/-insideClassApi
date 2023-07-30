@@ -54,7 +54,7 @@ public class MatriculaController {
     public ResponseEntity<?> obtenerDatosMatriculaPorFiltros(@Valid @RequestBody BuscarDatosMatriculaRequest buscarDatosMatriculaRequest) {
 
         List<DatosMatriculaResponse> datos = matriculaService.obtenerDatosMatricula(buscarDatosMatriculaRequest.isMatricula_vigencia(),
-                buscarDatosMatriculaRequest.getCurso_agno(), buscarDatosMatriculaRequest.getApoderado_id(), buscarDatosMatriculaRequest.getApoderado_persona_run(), buscarDatosMatriculaRequest.getAlumno_id(), buscarDatosMatriculaRequest.getAlumno_persona_run());
+                buscarDatosMatriculaRequest.getCurso_agno(), buscarDatosMatriculaRequest.getApoderado_id(), buscarDatosMatriculaRequest.getApoderado_persona_run(), buscarDatosMatriculaRequest.getAlumno_id(), buscarDatosMatriculaRequest.getAlumno_persona_run(), buscarDatosMatriculaRequest.getEstablecimiento_id());
 
         return ResponseEntity.ok(datos);
     }
@@ -137,7 +137,7 @@ public class MatriculaController {
                 apoderadoService.obtenerApoderadoPorFiltro(-1L, matriculaRequest.getApoderado().getPersona_run()).get(0).getApoderado_id(),
                 matriculaRequest.getApoderado().getPersona_run(),
                 alumnoService.obtenerAlumnoPorFiltro(-1L, matriculaRequest.getAlumno().getPersona_run()).get(0).getAlumno_id(),
-                matriculaRequest.getAlumno().getPersona_run()
+                matriculaRequest.getAlumno().getPersona_run(), matriculaRequest.getEstablecimiento()
         );
 
 

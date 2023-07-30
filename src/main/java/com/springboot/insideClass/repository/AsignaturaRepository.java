@@ -15,7 +15,7 @@ public interface AsignaturaRepository extends JpaRepository<AsignaturaEntity, Lo
             "and (a.asignatura_nombre = :asignatura_nombre or :asignatura_nombre =  '-1')", nativeQuery = true)
     List<AsignaturaEntity> findByFilters(@Param("asignatura_id") Long asignatura_id, @Param("asignatura_nombre") String asignatura_nombre);
 
-    @Query(value = "  Select asi.* from  t_docente_asignatura_curso_establecimiento dace\n" +
+    @Query(value = "  Select distinct asi.* from  t_docente_asignatura_curso_establecimiento dace\n" +
             "        inner join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_docente_id\n" +
             "        inner join t_asignatura asi on da.docente_asignatura_id_asignatura_id = asi.asignatura_id\n" +
             "        inner join t_curso_establecimiento ce on dace.dace_curso_establecimiento_id = ce.curso_establecimiento_id\n" +

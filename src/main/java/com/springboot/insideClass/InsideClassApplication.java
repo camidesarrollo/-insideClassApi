@@ -54,6 +54,11 @@ public class InsideClassApplication {
 				vigenciaService.obtenerVigenciaPorId(1L).get(),
 				personaService.obtenerPersonasPorFiltro("14218894-5", "-1", "-1","-1", "-1", "F", "-1", "-1").get(0),
 				"prueba@gmail.com");
+
+
+
+
+
 		/*usuarioService.createUsuario(perfilService.findByName("Director"), vigenciaService.findByName("Vigente"), personaService.findByRun("14218894-5"), "pruebaDir@gmail.com");*/
 	}
 

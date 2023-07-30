@@ -2484,3 +2484,202 @@ INSERT INTO [dbo].[t_establecimiento]
                         VALUES
                               ('Vigente'),
                            ('No Vigente');
+
+
+
+
+--Prueba
+
+INSERT INTO [dbo].[t_docente]
+       ([docente_persona_run])
+VALUES
+       ('10007672-1'),
+       ('10020197-6'),
+       ('10023418-1'),
+       ('10028406-5'),
+       ('10030941-6'),
+       ('10033211-6'),
+       ('10042303-0'),
+       ('10045179-4'),
+       ('10069276-7'),
+       ('10078762-8'),
+       ('10087828-3'),
+       ('10141047-1'),
+       ('10145326-k'),
+       ('10156977-2'),
+       ('10158382-1'),
+       ('10170629-k'),
+       ('10207401-7'),
+       ('10224802-3'),
+       ('10241265-6'),
+       ('10253981-8'),
+       ('10258276-4'),
+       ('10282003-7'),
+       ('10283850-5'),
+       ('10284435-1'),
+       ('10289034-5'),
+       ('10294702-9'),
+       ('10307783-4'),
+       ('10309856-4');
+
+INSERT INTO [dbo].[t_usuario]
+       ([email]
+       ,[password]
+       ,[username]
+       ,[usuario_perfil_id]
+       ,[usuario_persona_run]
+       ,[usuario_vigencia_id])
+VALUES
+ ('prueba1@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'juanperez123', 2, '10007672-1', 1),
+       ('prueba2@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'anagomez456', 2, '10020197-6', 1),
+       ('prueba3@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'carloslopez789', 2, '10023418-1', 1),
+       ('prueba4@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'lauragonzalez123', 2, '10028406-5', 1),
+       ('prueba5@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'pedromartinez456', 2, '10030941-6', 1),
+       ('prueba6@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'mariasilva789', 2, '10033211-6', 1),
+       ('prueba7@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'jorgelopez123', 2, '10042303-0', 1),
+       ('prueba8@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'aliciagonzalez456', 2, '10045179-4', 1),
+       ('prueba9@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'carlosrodriguez789', 2, '10069276-7', 1),
+       ('prueba10@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'lauramartinez123', 2, '10078762-8', 1),
+       ('prueba11@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'robertosilva456', 2, '10087828-3', 1),
+       ('prueba12@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'monicagonzalez789', 2, '10141047-1', 1),
+       ('prueba13@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'pablosilva123', 2, '10145326-k', 1),
+       ('prueba14@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'sofiarodriguez456', 2, '10156977-2', 1),
+       ('prueba15@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'juanrodriguez789', 2, '10158382-1', 1),
+       ('prueba16@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'mariagonzalez123', 2, '10170629-k', 1),
+       ('prueba17@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'pedrorodriguez456', 2, '10207401-7', 1),
+       ('prueba18@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'luciamartinez789', 2, '10224802-3', 1),
+       ('prueba19@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'robertosilva123', 2, '10241265-6', 1),
+       ('prueba20@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'andreamartinez456', 2, '10258276-4', 1);
+
+       INSERT INTO [dbo].[t_docente_asignatura]
+                  ([docente_asignatura_id_asignatura_id]
+                  ,[docente_asignatura_docente_id])
+            VALUES
+                  (1
+                  ,1), (2
+                  ,2), (3
+                  ,3), (4
+                  ,4), (5
+                  ,5), (6
+                  ,6), (7
+                  ,7), (8
+                  ,8), (9
+                  ,9), (10
+                  ,10);
+
+
+                  INSERT INTO [dbo].[t_docente_asignatura]
+                             ([docente_asignatura_id_asignatura_id]
+                             ,[docente_asignatura_docente_id])
+                       VALUES
+                             (1
+                             ,1), (2
+                             ,2), (3
+                             ,3), (4
+                             ,4), (5
+                             ,5), (6
+                             ,6), (7
+                             ,7), (8
+                             ,8), (9
+                             ,9), (10
+                             ,10), (11
+                             ,11), (12
+                             ,12), (13
+                             ,13), (14
+                             ,14),(1
+                             ,15),(2
+                             ,16),(3
+                             ,17),(4
+                             ,18),(5
+                             ,19),(6
+                             ,20);
+
+                             INSERT INTO [dbo].[t_docente_asignatura_curso_establecimiento]
+                                        ([fecha_fin]
+                                        ,[fecha_inicio]
+                                        ,[profesor_jefe]
+                                        ,[dace_curso_establecimiento_id]
+                                        ,[dace_docente_asignatura_id])
+                                  VALUES
+                                        ('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,1
+                                        ,1
+                                        ,1), ('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,2),
+                             		   ('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,3),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,4),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,5),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,6),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,7),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,8),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,9),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,1
+                                        ,10),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,1
+                                        ,235
+                                        ,11),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,12),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,13),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,14),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,15),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,16),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,17),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,18),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,19),('2023-12-31'
+                                        ,'2023-01-01'
+                                        ,0
+                                        ,235
+                                        ,20);

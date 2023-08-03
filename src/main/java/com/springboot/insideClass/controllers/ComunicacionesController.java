@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.List;
-
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/comunicaciones")
 public class ComunicacionesController {
 
     @Autowired
@@ -133,7 +135,7 @@ public class ComunicacionesController {
         }
     }
 
-    @PutMapping("/Edit")
+    @PutMapping("/Update")
     public ResponseEntity<?> editarComunicacion(@Valid @RequestBody EditarComunicacionesRequest editRequest) {
         try {
             // Validar campos obligatorios

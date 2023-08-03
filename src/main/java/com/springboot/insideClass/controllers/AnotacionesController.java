@@ -148,7 +148,7 @@ public class AnotacionesController {
 
     }
 
-    @PutMapping("/Edit")
+    @PutMapping("/Update")
     public ResponseEntity<?> editarAnotacion(@Valid @RequestBody EditarAnotacionesRequest anotacionRequest) {
 
         try {

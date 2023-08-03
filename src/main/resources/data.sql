@@ -2683,3 +2683,70 @@ VALUES
                                         ,0
                                         ,235
                                         ,20);
+
+INSERT INTO [dbo].[t_persona] (
+    [persona_run],
+    [persona_apellido_materno],
+    [persona_apellido_paterno],
+    [persona_fecha_nacimiento],
+    [persona_nombre],
+    [persona_numero_celular],
+    [persona_numero_telefonico],
+    [persona_sexo]
+)
+VALUES
+    ('12345678-9', 'González', 'Muñoz', '2017-08-03', 'Sofía', '912345678', '212345678', 'F'),
+    ('87654321-0', 'Rodríguez', 'López', '2016-07-15', 'Mateo', '956789123', '256789123', 'M'),
+    ('12378945-6', 'González', 'Martínez', '2015-12-25', 'Valentina', '987654321', '298765432', 'F'),
+    ('98765432-1', 'Rodríguez', 'Gómez', '2016-02-10', 'Benjamín', '933452345', '233452345', 'M'),
+    ('32145678-9', 'González', 'Hernández', '2015-09-01', 'Sebastián', '922222222', '222222222', 'M'),
+    ('56789123-4', 'García', 'Pérez', '2016-04-12', 'Lucía', '944444444', '244444444', 'F'),
+    ('90817263-5', 'García', 'Gutiérrez', '2017-10-22', 'Dylan', '955555555', '255555555', 'M'),
+    ('23456789-0', 'González', 'Torres', '2016-05-20', 'Emma', '966666666', '266666666', 'F'),
+    ('34567890-1', 'Rodríguez', 'Ortiz', '2016-06-07', 'Miguel', '977777777', '277777777', 'M'),
+    ('89012345-6', 'García', 'Vargas', '2017-11-18', 'Mía', '988888888', '288888888', 'F');
+
+
+INSERT INTO [dbo].[t_alumno] ([alumno_persona_run])
+VALUES
+    ('12345678-9'),
+    ('87654321-0'),
+    ('12378945-6'),
+    ('98765432-1'),
+    ('32145678-9'),
+    ('56789123-4'),
+    ('90817263-5'),
+    ('23456789-0'),
+    ('34567890-1'),
+    ('89012345-6');
+
+INSERT INTO [dbo].[t_apoderado] ([apoderado_persona_run])
+VALUES
+    ('10007672-1'),
+    ('10020197-6'),
+    ('10023418-1'),
+    ('10028406-5'),
+    ('10030941-6'),
+    ('10033211-6'),
+    ('10042303-0'),
+    ('10045179-4'),
+    ('10069276-7'),
+    ('10078762-8');
+
+INSERT INTO [dbo].[t_matricula]
+           ([curso_agno]
+           ,[matricula_vigencia]
+           ,[matricula_alumno_id]
+           ,[matricula_apoderado_id]
+           ,[matricula_curso_establecimiento_id])
+     VALUES
+           (2023,1,1,1,1),
+		   (2023,1,2,2,1),
+		   (2023,1,3,3,1),
+		   (2023,1,4,4,1),
+		   (2023,1,5,5,1),
+		   (2023,1,6,6,1),
+		   (2023,1,7,7,1),
+		   (2023,1,8,8,1),
+		   (2023,1,9,9,1),
+		   (2023,1,10,10,1);

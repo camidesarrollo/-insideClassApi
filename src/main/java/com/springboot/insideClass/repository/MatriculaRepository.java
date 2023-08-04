@@ -19,8 +19,8 @@ public interface MatriculaRepository extends JpaRepository<MatriculaEntity, Long
             "where (m.matricula_vigencia = :matricula_vigencia or :matricula_vigencia  = -1) and (e.establecimiento_id = :establecimiento_id or :establecimiento_id = -1 )" +
             "and (m.curso_agno = :curso_agno or :curso_agno = -1) and (a.apoderado_persona_run = :apoderado_persona_run or :apoderado_persona_run  = '-1')\n" +
             "or (a.apoderado_id = :apoderado_id or :apoderado_id = -1) and (al.alumno_id = :alumno_id or :alumno_id = -1) " +
-            " and (al.alumno_persona_run = :alumno_persona_run or :alumno_persona_run  = '-1')", nativeQuery = true)
+            " and (al.alumno_persona_run = :alumno_persona_run or :alumno_persona_run  = '-1') and (c.curso_id = :curso_id or :curso_id = '-1')", nativeQuery = true)
     List<Object> findByMatricula(@Param("matricula_vigencia") boolean matricula_vigencia,@Param("curso_agno") int  curso_agno, @Param("apoderado_id") Long  apoderado_id,
                                  @Param("apoderado_persona_run") String  apoderado_persona_run
-            , @Param("alumno_id") Long  alumno_id, @Param("alumno_persona_run") String  alumno_persona_run, @Param("establecimiento_id") Long  establecimiento_id);
+            , @Param("alumno_id") Long  alumno_id, @Param("alumno_persona_run") String  alumno_persona_run, @Param("establecimiento_id") Long  establecimiento_id, @Param("curso_id") Long  curso_id);
 }

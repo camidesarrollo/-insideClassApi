@@ -9,6 +9,7 @@ public class BuscarDatosMatriculaRequest {
 
     Long  establecimiento_id;
 
+    Long curso_id;
 
     public boolean isMatricula_vigencia() {
         return matricula_vigencia;
@@ -64,5 +65,13 @@ public class BuscarDatosMatriculaRequest {
 
     public void setEstablecimiento_id(Long establecimiento_id) {
         this.establecimiento_id = establecimiento_id;
+    }
+
+    public Long getCurso_id() {
+        return curso_id;
+    }
+
+    public void setCurso_id(Long curso_id) {
+        this.curso_id = curso_id;
     }
 }

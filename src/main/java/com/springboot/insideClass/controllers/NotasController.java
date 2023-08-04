@@ -83,7 +83,7 @@ public class NotasController {
                     year,
                     -1L,
                     "-1",
-                    -1L, notasRequest.getRun(), notasRequest.getEstablecimiento());
+                    -1L, notasRequest.getRun(), notasRequest.getEstablecimiento(),-1L);
 
             if(matricula == null){
                 return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));

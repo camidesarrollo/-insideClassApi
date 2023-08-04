@@ -10,9 +10,14 @@ public class ComunicacionesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long comunicaciones_id;
+
+    String comunicaciones_titulo;
+
     Date comunicaciones_fecha;
     String comunicaciones_tipo;
     String comunicaciones_descripcion;
+
+    Integer comunicaciones_correlativo;
 
     @ManyToOne
     @JoinColumn(name = "comunicaciones_dace_id")
@@ -26,10 +31,12 @@ public class ComunicacionesEntity {
     public ComunicacionesEntity() {
     }
 
-    public ComunicacionesEntity(Date comunicaciones_fecha, String comunicaciones_tipo, String comunicaciones_descripcion, Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento, MatriculaEntity matricula) {
+    public ComunicacionesEntity(String comunicaciones_titulo, Date comunicaciones_fecha, String comunicaciones_tipo, String comunicaciones_descripcion, Integer comunicaciones_correlativo, Docente_Asignatura_Curso_EstablecimientoEntity docente_asignatura_curso_establecimiento, MatriculaEntity matricula) {
+        this.comunicaciones_titulo = comunicaciones_titulo;
         this.comunicaciones_fecha = comunicaciones_fecha;
         this.comunicaciones_tipo = comunicaciones_tipo;
         this.comunicaciones_descripcion = comunicaciones_descripcion;
+        this.comunicaciones_correlativo = comunicaciones_correlativo;
         this.docente_asignatura_curso_establecimiento = docente_asignatura_curso_establecimiento;
         this.matricula = matricula;
     }
@@ -80,5 +87,21 @@ public class ComunicacionesEntity {
 
     public void setMatricula(MatriculaEntity matricula) {
         this.matricula = matricula;
+    }
+
+    public String getComunicaciones_titulo() {
+        return comunicaciones_titulo;
+    }
+
+    public void setComunicaciones_titulo(String comunicaciones_titulo) {
+        this.comunicaciones_titulo = comunicaciones_titulo;
+    }
+
+    public Integer getComunicaciones_correlativo() {
+        return comunicaciones_correlativo;
+    }
+
+    public void setComunicaciones_correlativo(Integer comunicaciones_correlativo) {
+        this.comunicaciones_correlativo = comunicaciones_correlativo;
     }
 }

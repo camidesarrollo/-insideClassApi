@@ -7,6 +7,7 @@ import com.springboot.insideClass.entity.Docente_Asignatura_Curso_Establecimient
 import com.springboot.insideClass.payload.request.Comunicaciones.BuscarComunicacionesRequest;
 import com.springboot.insideClass.payload.request.Comunicaciones.CrearComunicacionesRequest;
 import com.springboot.insideClass.payload.request.Comunicaciones.EditarComunicacionesRequest;
+import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/comunicaciones")
@@ -107,32 +113,54 @@ public class ComunicacionesController {
                                     -1L, comunicacionRequest.getCurso(), comunicacionRequest.getEstablecimiento(), true
                             ).get(0).getEstablecimiento().getEstablecimiento_id(),
                             docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(comunicacionRequest.getAsignatura(), "-1", -1L, comunicacionRequest.getRun_docente()).get(0).getDocente_asignatura_id(), "-1", "-1",
-            metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR),  metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR));
+                            metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR), metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR));
 
-            if(docente_asignatura_curso_establecimientoEntity.size() == 0){
+            if (docente_asignatura_curso_establecimientoEntity.size() == 0) {
                 return ResponseEntity.badRequest().body(new MessageResponse("No se ha encontrado docente en el establecimiento, ni curso"));
             }
 
-      /*      MatriculaEntity matricula = matriculaService.
 
-                    ComunicacionesEntity
-            comunicaciones = new ComunicacionesEntity(comunicacionRequest.getFecha(), comunicacionRequest.getTipo(),
-                    comunicacionRequest.getDescripcion(),  docente_asignatura_curso_establecimientoEntity.get(0), matriculaService.obtenerDatosMatricula(true, metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR), -1L, "-1", -1L).get(0).getMatricula_id());
+            List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(true, metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR), -1L, "-1", -1L, "-1", comunicacionRequest.getEstablecimiento(), comunicacionRequest.getCurso());
+            List<ComunicacionesEntity> comuni = comunicacionesService.ObtenerUltimaComunicacion();
+
+            Integer correlativo = 1;
+
+            if(comuni.size() > 0){
+                correlativo = comuni.get(0).getComunicaciones_correlativo() +1;
+            }
 
 
-            comunicacionesService.guardarComunicacion(comunicaciones);
+            for (DatosMatriculaResponse ma:
+                    matricula) {
 
-            LocalDate localDate = comunicaciones.getComunicaciones_fecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE MMMM yyyy", new Locale("es", "ES"));
-            String fecha = localDate.format(formatter);
-            System.out.println(fecha);
+                ComunicacionesEntity
+                        comunicaciones = new ComunicacionesEntity(  comunicacionRequest.getTitulo(),
+                        comunicacionRequest.getFecha(),
+                        comunicacionRequest.getTipo(),
+                        comunicacionRequest.getDescripcion(),
+                        correlativo,
+                        docente_asignatura_curso_establecimientoEntity.get(0),
+                        matriculaService.obtenerMatriculaPorId(ma.getMatricula_id().longValue()).get()
+                );
 
-             correo.enviarCorreoComunicacion(fecha, comunicacionRequest.getTipo(), comunicaciones.getComunicaciones_descripcion());*/
+
+                comunicacionesService.guardarComunicacion(comunicaciones);
+
+                LocalDate localDate = comunicaciones.getComunicaciones_fecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE MMMM yyyy", new Locale("es", "ES"));
+                String fecha = localDate.format(formatter);
+                System.out.println(fecha);
+
+                //correo.enviarCorreoComunicacion(fecha, comunicacionRequest.getTipo(), comunicaciones.getComunicaciones_descripcion());
+            }
+
 
             return ResponseEntity.ok(new MessageResponse("Se ha registrado comunicación con éxito!"));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar comunicación_2!"));
         }
+
+
     }
 
     @PutMapping("/Update")

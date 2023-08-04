@@ -58,4 +58,8 @@ public interface ComunicacionesRepository extends JpaRepository<ComunicacionesEn
             @Param("asignatura_id") Long asignatura_id,
             @Param("curso_id") Long curso_id
     );
+
+
+    @Query(value = "SELECT * FROM t_comunicaciones order by comunicaciones_correlativo desc", nativeQuery = true)
+    List<ComunicacionesEntity> ObtenerUltimaComunicacion();
 }

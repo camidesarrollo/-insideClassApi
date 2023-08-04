@@ -99,4 +99,8 @@ public class ComunicacionesService {
         return listaAlumnoComunicaciones;
     }
 
+
+    public List<ComunicacionesEntity> ObtenerUltimaComunicacion() {
+        return comunicacionesRepository.ObtenerUltimaComunicacion();
+    }
 }

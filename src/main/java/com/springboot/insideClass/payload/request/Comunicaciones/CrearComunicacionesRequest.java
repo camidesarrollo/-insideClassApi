@@ -16,6 +16,8 @@ public class CrearComunicacionesRequest {
 
     private String descripcion;
 
+    private String titulo;
+
     private String tipo;
 
     public Long getEstablecimiento() {
@@ -72,5 +74,13 @@ public class CrearComunicacionesRequest {
 
     public void setAsignatura(Long asignatura) {
         this.asignatura = asignatura;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }

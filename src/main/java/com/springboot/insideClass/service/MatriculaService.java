@@ -43,12 +43,12 @@ public class MatriculaService {
 
     public List<DatosMatriculaResponse> obtenerDatosMatricula(boolean matricula_vigencia, int curso_agno, Long apoderado_id,
                                                               String apoderado_persona_run, Long alumno_id,
-                                                              String alumno_persona_run, long  establecimiento_id) {
+                                                              String alumno_persona_run, long  establecimiento_id, long curso_id) {
 
         List<DatosMatriculaResponse> listaMatricula = new ArrayList<>();
 
         List<Object> listaObjetosNativos = matriculaRepository.findByMatricula(matricula_vigencia, curso_agno, apoderado_id,
-                apoderado_persona_run, alumno_id, alumno_persona_run, establecimiento_id);
+                apoderado_persona_run, alumno_id, alumno_persona_run, establecimiento_id, curso_id);
 
         for (Object item : listaObjetosNativos) {
             Object[] fila = (Object[]) item;

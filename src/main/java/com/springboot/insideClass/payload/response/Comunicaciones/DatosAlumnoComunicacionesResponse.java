@@ -28,7 +28,7 @@ public class DatosAlumnoComunicacionesResponse {
     private Long asignaturaId;
     private String asignaturaNombre;
     private Long cursoId;
-    private int cursoNivel;
+    private String cursoNivel;
     private String cursoNombre;
 
     public String getAlumnoRun() {
@@ -231,11 +231,11 @@ public class DatosAlumnoComunicacionesResponse {
         this.cursoId = cursoId;
     }
 
-    public int getCursoNivel() {
+    public String getCursoNivel() {
         return cursoNivel;
     }
 
-    public void setCursoNivel(int cursoNivel) {
+    public void setCursoNivel(String cursoNivel) {
         this.cursoNivel = cursoNivel;
     }
 

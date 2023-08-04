@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ComunicacionesRepository extends JpaRepository<ComunicacionesEntity, Long> {
 
-    @Query(value = "Select pa.persona_run as alumno_run,\n" +
+    @Query(value = "Select distinct pa.persona_run as alumno_run,\n" +
             "                    pa.persona_apellido_materno as alumno_apellido_materno,\n" +
             "                    pa.persona_apellido_paterno as alumno_apellido_paterno,\n" +
             "                    pa.persona_fecha_nacimiento as alumno_fecha_nacimiento,\n" +
@@ -26,7 +26,7 @@ public interface ComunicacionesRepository extends JpaRepository<ComunicacionesEn
             "                   pd.persona_nombre as docente_nombre,\n" +
             "                    pd.persona_numero_celular as docente_numero_celular,\n" +
             "                    pd.persona_numero_telefonico as docente_numero_telefonico,\n" +
-            "                    pd.persona_sexo as docente_numero_sexo, asi.*, c.*  \n" +
+            "                    pd.persona_sexo as docente_numero_sexo, asi.*, comuni.*  \n" +
             "\t\t\t\n" +
             "\t\t\tfrom  t_comunicaciones com inner join t_matricula m on m.matricula_id = com.comunicaciones_matricula_id\n" +
             "                    inner join t_docente_asignatura_curso_establecimiento dace on com.comunicaciones_dace_id = dace.dace_id\n" +
@@ -38,6 +38,7 @@ public interface ComunicacionesRepository extends JpaRepository<ComunicacionesEn
             "                   inner join t_alumno al on m.matricula_alumno_id = al.alumno_id\n" +
             "                    inner join t_persona pd on pd.persona_run = d.docente_persona_run\n" +
             "                   inner join t_persona pa on pa.persona_run = al.alumno_persona_run" +
+            "\t\t\t\t   inner join t_comunicaciones comuni on m.matricula_id = comuni.comunicaciones_matricula_id" +
             "   WHERE\n" +
             "                   (m.matricula_vigencia = :matricula_vigencia OR :matricula_vigencia = -1)" +
             "                    AND (ce.curso_establecimiento_establecimiento_id = :establecimiento_id OR :establecimiento_id = -1)" +

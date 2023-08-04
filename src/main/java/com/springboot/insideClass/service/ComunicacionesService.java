@@ -6,6 +6,7 @@ import com.springboot.insideClass.repository.ComunicacionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -58,32 +59,38 @@ public class ComunicacionesService {
 
             DatosAlumnoComunicacionesResponse infoComunicaciones = new DatosAlumnoComunicacionesResponse();
             infoComunicaciones.setAlumnoRun(fila[0] != null ? (String) fila[0] : "");
-            infoComunicaciones.setAlumnoApellidoMaterno(fila[1] != null ? (String) fila[1] : "");
-            infoComunicaciones.setAlumnoApellidoPaterno(fila[2] != null ? (String) fila[2] : "");
+            infoComunicaciones.setAlumnoApellidoMaterno(fila[2] != null ? (String) fila[2] : "");
+            infoComunicaciones.setAlumnoApellidoPaterno(fila[1] != null ? (String) fila[1] : "");
             infoComunicaciones.setAlumnoFechaNacimiento(fila[3] != null ? (Date) fila[3] : null);
             infoComunicaciones.setAlumnoNombre(fila[4] != null ? (String) fila[4] : "");
             infoComunicaciones.setAlumnoNumeroCelular(fila[5] != null ? (String) fila[5] : "");
             infoComunicaciones.setAlumnoNumeroTelefonico(fila[6] != null ? (String) fila[6] : "");
-            infoComunicaciones.setAlumnoNumeroSexo(fila[7] != null ? (String) fila[7] : "");
-            infoComunicaciones.setComunicacionesId(fila[8] != null ? (Long) fila[8] : 0);
-            infoComunicaciones.setComunicacionesDescripcion(fila[9] != null ? (String) fila[9] : "");
-            infoComunicaciones.setComunicacionesFecha(fila[10] != null ? (Date) fila[10] : null);
-            infoComunicaciones.setComunicacionesTipo(fila[11] != null ? (String) fila[11] : "");
-            infoComunicaciones.setComunicacionesDaceId(fila[12] != null ? (Long) fila[12] : 0);
-            infoComunicaciones.setComunicacionesMatriculaId(fila[13] != null ? (Long) fila[13] : 0);
-            infoComunicaciones.setDocenteRun(fila[14] != null ? (String) fila[14] : "");
-            infoComunicaciones.setDocenteApellidoMaterno(fila[15] != null ? (String) fila[15] : "");
-            infoComunicaciones.setDocenteApellidoPaterno(fila[16] != null ? (String) fila[16] : "");
-            infoComunicaciones.setDocenteFechaNacimiento(fila[17] != null ? (Date) fila[17] : null);
-            infoComunicaciones.setDocenteNombre(fila[18] != null ? (String) fila[18] : "");
-            infoComunicaciones.setDocenteNumeroCelular(fila[19] != null ? (String) fila[19] : "");
-            infoComunicaciones.setDocenteNumeroTelefonico(fila[20] != null ? (String) fila[20] : "");
-            infoComunicaciones.setDocenteNumeroSexo(fila[21] != null ? (String) fila[21] : "");
-            infoComunicaciones.setAsignaturaId(fila[22] != null ? (Long) fila[22] : 0);
-            infoComunicaciones.setAsignaturaNombre(fila[23] != null ? (String) fila[23] : "");
-            infoComunicaciones.setCursoId(fila[24] != null ? (Long) fila[24] : 0);
-            infoComunicaciones.setCursoNivel(fila[25] != null ? (int) fila[25] : 0);
-            infoComunicaciones.setCursoNombre(fila[26] != null ? (String) fila[26] : "");
+            infoComunicaciones.setAlumnoNumeroSexo(fila[7] != null ? ((Character) fila[7]).toString() : "");
+
+            infoComunicaciones.setCursoId(fila[8] != null ? ((BigInteger ) fila[8]).longValue() : 0);
+            infoComunicaciones.setCursoNivel(fila[9] != null ? (String) fila[9] : "");
+            infoComunicaciones.setCursoNombre(fila[10] != null ? (String) fila[10] : "");
+
+            infoComunicaciones.setDocenteRun(fila[11] != null ? (String) fila[11] : "");
+            infoComunicaciones.setDocenteApellidoMaterno(fila[13] != null ? (String) fila[13] : "");
+            infoComunicaciones.setDocenteApellidoPaterno(fila[12] != null ? (String) fila[12] : "");
+            infoComunicaciones.setDocenteFechaNacimiento(fila[14] != null ? (Date) fila[14] : null);
+            infoComunicaciones.setDocenteNombre(fila[15] != null ? (String) fila[15] : "");
+            infoComunicaciones.setDocenteNumeroCelular(fila[16] != null ? (String) fila[16] : "");
+            infoComunicaciones.setDocenteNumeroTelefonico(fila[17] != null ? (String) fila[17] : "");
+            infoComunicaciones.setDocenteNumeroSexo(fila[18] != null ? ((Character) fila[18]).toString() : "");
+
+            infoComunicaciones.setAsignaturaId(fila[19] != null ? ((BigInteger ) fila[19]).longValue() : 0);
+            infoComunicaciones.setAsignaturaNombre(fila[20] != null ? (String) fila[20] : "");
+
+
+            infoComunicaciones.setComunicacionesId(fila[21] != null ? ((BigInteger) fila[21]).longValue() : 0);
+            infoComunicaciones.setComunicacionesDescripcion(fila[22] != null ? (String) fila[22] : "");
+            infoComunicaciones.setComunicacionesFecha(fila[23] != null ? (Date) fila[23] : null);
+            infoComunicaciones.setComunicacionesTipo(fila[24] != null ? (String) fila[24] : "");
+            infoComunicaciones.setComunicacionesDaceId(fila[25] != null ? ((BigInteger ) fila[25]).longValue() : 0);
+            infoComunicaciones.setComunicacionesMatriculaId(fila[26] != null ? ((BigInteger ) fila[26]).longValue() : 0);
+
 
 
             listaAlumnoComunicaciones.add(infoComunicaciones);

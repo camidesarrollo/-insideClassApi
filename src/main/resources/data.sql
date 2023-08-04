@@ -2750,3 +2750,22 @@ INSERT INTO [dbo].[t_matricula]
 		   (2023,1,8,8,1),
 		   (2023,1,9,9,1),
 		   (2023,1,10,10,1);
+
+
+INSERT INTO [dbo].[t_dace_notas]
+           ([nota]
+           ,[notas_fecha]
+           ,[notas_posicion]
+           ,[promedio]
+           ,[notas_dace_id]
+           ,[notas_matricula_id])
+     VALUES
+           (7
+           ,'2023-08-03'
+           ,1
+           ,7
+           ,1
+           ,1),(5,'2023-08-03' ,2
+                          ,6
+                          ,1
+                          ,1);

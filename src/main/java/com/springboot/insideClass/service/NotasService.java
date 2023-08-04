@@ -6,6 +6,7 @@ import com.springboot.insideClass.repository.NotasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,14 +65,14 @@ public class NotasService {
             infoNotas.setAlumno_nombre(fila[4] != null ? (String) fila[4] : "");
             infoNotas.setAlumno_numero_celular(fila[5] != null ? (String) fila[5] : "");
             infoNotas.setAlumno_numero_telefonico(fila[6] != null ? (String) fila[6] : "");
-            infoNotas.setAlumno_numero_sexo(fila[7] != null ? (String) fila[7] : "");
-            infoNotas.setDace_notas_id(fila[8] != null ? (Long) fila[8] : 0);
-            infoNotas.setNota(fila[9] != null ? (Double) fila[9] : 0.0);
+            infoNotas.setAlumno_numero_sexo(fila[7] != null ? ((Character) fila[7]).toString() : "");
+            infoNotas.setDace_notas_id(fila[8] != null ? ((BigInteger) fila[8]).longValue() : 0);
+            infoNotas.setNota(fila[9] != null ? (Integer) fila[9] : 0);
             infoNotas.setNotas_fecha(fila[10] != null ? (Date) fila[10] : null);
             infoNotas.setNotas_posicion(fila[11] != null ? (Integer) fila[11] : 0);
-            infoNotas.setPromedio(fila[12] != null ? (Double) fila[12] : 0.0);
-            infoNotas.setNotas_dace_id(fila[13] != null ? (Long) fila[13] : 0);
-            infoNotas.setNotas_matricula_id(fila[14] != null ? (Long) fila[14] : 0);
+            infoNotas.setPromedio(fila[12] != null ? (Integer) fila[12] : 0);
+            infoNotas.setNotas_dace_id(fila[13] != null ? ((BigInteger) fila[13]).longValue() : 0);
+            infoNotas.setNotas_matricula_id(fila[14] != null ? ((BigInteger) fila[14]).longValue() : 0);
             infoNotas.setDocente_run(fila[15] != null ? (String) fila[15] : "");
             infoNotas.setDocente_apellido_materno(fila[16] != null ? (String) fila[16] : "");
             infoNotas.setDocente_apellido_paterno(fila[17] != null ? (String) fila[17] : "");
@@ -79,11 +80,11 @@ public class NotasService {
             infoNotas.setDocente_nombre(fila[19] != null ? (String) fila[19] : "");
             infoNotas.setDocente_numero_celular(fila[20] != null ? (String) fila[20] : "");
             infoNotas.setDocente_numero_telefonico(fila[21] != null ? (String) fila[21] : "");
-            infoNotas.setDocente_numero_sexo(fila[22] != null ? (String) fila[22] : "");
-            infoNotas.setAsignatura_id(fila[23] != null ? (Long) fila[23] : 0);
+            infoNotas.setDocente_numero_sexo(fila[22] != null ?  ((Character) fila[22]).toString() : "");
+            infoNotas.setAsignatura_id(fila[23] != null ? ((BigInteger) fila[23]).longValue() : 0);
             infoNotas.setAsignatura_nombre(fila[24] != null ? (String) fila[24] : "");
-            infoNotas.setCurso_id(fila[25] != null ? (Long) fila[25] : 0);
-            infoNotas.setCurso_nivel(fila[26] != null ? (Long) fila[26] : 0);
+            infoNotas.setCurso_id(fila[25] != null ? ((BigInteger) fila[25]).longValue() : 0);
+            infoNotas.setCurso_nivel(fila[26] != null ? (String) fila[26]  : "");
             infoNotas.setCurso_nombre(fila[27] != null ? (String) fila[27] : "");
 
 

@@ -1,7 +1,10 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.componet.Metodos;
-import com.springboot.insideClass.entity.*;
+import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
+import com.springboot.insideClass.entity.DocenteAsignaturaEntity;
+import com.springboot.insideClass.entity.Docente_Asignatura_Curso_EstablecimientoEntity;
+import com.springboot.insideClass.entity.NotasEntity;
 import com.springboot.insideClass.payload.request.Notas.BuscarNotasRequest;
 import com.springboot.insideClass.payload.request.Notas.CrearNotasRequest;
 import com.springboot.insideClass.payload.request.Notas.EditarNotasRequest;
@@ -11,7 +14,6 @@ import com.springboot.insideClass.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,19 +44,21 @@ public class NotasController {
 
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerNotas(@Valid @RequestBody BuscarNotasRequest request) {
-        try{
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(notasService.obtenerDatosAlumnoNotas(
-                            request.isMatricula_vigencia(),
-                            request.getEstablecimiento_id(),
-                            request.getApoderado_id(),
-                            request.getAlumno_run(),
-                            request.getNotas_matricula_id(),
-                            request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id())
-                    ); //
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                .body(notasService.obtenerDatosAlumnoNotas(
+                        request.isMatricula_vigencia(),
+                        request.getEstablecimiento_id(),
+                        request.getApoderado_id(),
+                        request.getAlumno_run(),
+                        request.getNotas_matricula_id(),
+                        request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id())
+                ); //
+
+       /* try{
+
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        }*/
     }
 
     @PostMapping("/Create")

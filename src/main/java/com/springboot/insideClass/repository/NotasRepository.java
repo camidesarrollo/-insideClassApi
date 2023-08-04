@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface NotasRepository extends JpaRepository<NotasEntity, Long> {
-    @Query(value = "Select pa.persona_run as alumno_run,\n" +
+    @Query(value = "Select distinct pa.persona_run as alumno_run,\n" +
             "                    pa.persona_apellido_materno as alumno_apellido_materno,\n" +
             "                    pa.persona_apellido_paterno as alumno_apellido_paterno,\n" +
             "                    pa.persona_fecha_nacimiento as alumno_fecha_nacimiento,\n" +

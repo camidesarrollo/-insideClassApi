@@ -2769,3 +2769,16 @@ INSERT INTO [dbo].[t_dace_notas]
                           ,6
                           ,1
                           ,1);
+
+                          INSERT INTO [dbo].[t_comunicaciones]
+                                     ([comunicaciones_descripcion]
+                                     ,[comunicaciones_fecha]
+                                     ,[comunicaciones_tipo]
+                                     ,[comunicaciones_dace_id]
+                                     ,[comunicaciones_matricula_id])
+                               VALUES
+                                     ('test'
+                                     ,'07-01-2023'
+                                     ,'test'
+                                     ,1
+                                     ,1);

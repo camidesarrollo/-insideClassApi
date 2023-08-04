@@ -12,6 +12,8 @@ public class DatosAlumnoComunicacionesResponse {
     private String alumnoNumeroTelefonico;
     private String alumnoNumeroSexo;
     private Long comunicacionesId;
+    private Integer comunicacionesCorrelativo;
+    private String comunicacionesTitulo;
     private String comunicacionesDescripcion;
     private Date comunicacionesFecha;
     private String comunicacionesTipo;
@@ -245,5 +247,21 @@ public class DatosAlumnoComunicacionesResponse {
 
     public void setCursoNombre(String cursoNombre) {
         this.cursoNombre = cursoNombre;
+    }
+
+    public String getComunicacionesTitulo() {
+        return comunicacionesTitulo;
+    }
+
+    public void setComunicacionesTitulo(String comunicacionesTitulo) {
+        this.comunicacionesTitulo = comunicacionesTitulo;
+    }
+
+    public Integer getComunicacionesCorrelativo() {
+        return comunicacionesCorrelativo;
+    }
+
+    public void setComunicacionesCorrelativo(Integer comunicacionesCorrelativo) {
+        this.comunicacionesCorrelativo = comunicacionesCorrelativo;
     }
 }

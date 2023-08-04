@@ -85,11 +85,13 @@ public class ComunicacionesService {
 
 
             infoComunicaciones.setComunicacionesId(fila[21] != null ? ((BigInteger) fila[21]).longValue() : 0);
-            infoComunicaciones.setComunicacionesDescripcion(fila[22] != null ? (String) fila[22] : "");
-            infoComunicaciones.setComunicacionesFecha(fila[23] != null ? (Date) fila[23] : null);
-            infoComunicaciones.setComunicacionesTipo(fila[24] != null ? (String) fila[24] : "");
-            infoComunicaciones.setComunicacionesDaceId(fila[25] != null ? ((BigInteger ) fila[25]).longValue() : 0);
-            infoComunicaciones.setComunicacionesMatriculaId(fila[26] != null ? ((BigInteger ) fila[26]).longValue() : 0);
+            infoComunicaciones.setComunicacionesCorrelativo(fila[22] != null ? ((Integer) fila[22]) : 0);
+            infoComunicaciones.setComunicacionesDescripcion(fila[23] != null ? (String) fila[23] : "");
+            infoComunicaciones.setComunicacionesFecha(fila[24] != null ? (Date) fila[24] : null);
+            infoComunicaciones.setComunicacionesTipo(fila[25] != null ? (String) fila[25] : "");
+            infoComunicaciones.setComunicacionesTitulo(fila[26] != null ? (String) fila[26] : "");
+            infoComunicaciones.setComunicacionesDaceId(fila[27] != null ? ((BigInteger ) fila[27]).longValue() : 0);
+            infoComunicaciones.setComunicacionesMatriculaId(fila[28] != null ? ((BigInteger ) fila[28]).longValue() : 0);
 
 
 

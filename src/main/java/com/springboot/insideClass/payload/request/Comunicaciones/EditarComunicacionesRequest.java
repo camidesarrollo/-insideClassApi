@@ -11,6 +11,8 @@ public class EditarComunicacionesRequest {
 
     private String tipo;
 
+    private String titulo;
+
     public Long getId_comunicacion() {
         return id_comunicacion;
     }
@@ -41,5 +43,13 @@ public class EditarComunicacionesRequest {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }

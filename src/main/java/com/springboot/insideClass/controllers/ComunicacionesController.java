@@ -183,16 +183,23 @@ public class ComunicacionesController {
             }
 
             // Editar entidad ComunicacionesEntity
-            ComunicacionesEntity comunicaciones = comunicacionesService.obtenerComunicacionPorId(editRequest.getId_comunicacion());
-            if (comunicaciones == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("No se encontró la comunicación a editar."));
-            }
-            comunicaciones.setComunicaciones_tipo(editRequest.getTipo());
-            comunicaciones.setComunicaciones_fecha(editRequest.getFecha());
-            comunicaciones.setComunicaciones_descripcion(editRequest.getDescripcion());
+            List<Long> com =  comunicacionesService.ObtenerIdComunicacionPorCorrelativo(editRequest.getId_comunicacion());
 
-            // Guardar la entidad editada en la base de datos
-            comunicacionesService.guardarComunicacion(comunicaciones);
+            for (Long id : com) {
+                ComunicacionesEntity comunicaciones = comunicacionesService.obtenerComunicacionPorId(id);
+                if (comunicaciones == null) {
+                    return ResponseEntity.badRequest().body(new MessageResponse("No se encontró la comunicación a editar."));
+                }
+                comunicaciones.setComunicaciones_tipo(editRequest.getTipo());
+                comunicaciones.setComunicaciones_fecha(editRequest.getFecha());
+                comunicaciones.setComunicaciones_descripcion(editRequest.getDescripcion());
+                comunicaciones.setComunicaciones_titulo(editRequest.getTitulo());
+
+                // Guardar la entidad editada en la base de datos
+                comunicacionesService.guardarComunicacion(comunicaciones);
+            }
+
+
 
             return ResponseEntity.ok(new MessageResponse("Se ha editado comunicación con éxito!"));
         } catch (Exception e) {

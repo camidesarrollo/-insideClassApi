@@ -73,4 +73,7 @@ public interface ComunicacionesRepository extends JpaRepository<ComunicacionesEn
             "WHERE t_comunicaciones.comunicaciones_correlativo = :id", nativeQuery = true)
     void EliminarComunicacionPorCorrelativo(@Param("id") Long id);
 
+    @Query(value = "SELECT comunicaciones_id FROM t_comunicaciones WHERE t_comunicaciones.comunicaciones_correlativo = :correlativo", nativeQuery = true)
+    List<Long> findComunicacionesIdsByCorrelativo(Long correlativo);
+
 }

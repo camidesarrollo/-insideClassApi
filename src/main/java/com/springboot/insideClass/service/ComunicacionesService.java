@@ -131,6 +131,8 @@ public class ComunicacionesService {
         return null; // Or throw an exception if needed
     }
 
-
+    public List<Long>  ObtenerIdComunicacionPorCorrelativo(Long correlativo) {
+        return  comunicacionesRepository.findComunicacionesIdsByCorrelativo(1L);
+    }
 
 }

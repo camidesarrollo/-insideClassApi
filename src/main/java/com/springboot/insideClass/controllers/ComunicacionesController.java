@@ -7,6 +7,7 @@ import com.springboot.insideClass.entity.Docente_Asignatura_Curso_Establecimient
 import com.springboot.insideClass.payload.request.Comunicaciones.BuscarComunicacionesRequest;
 import com.springboot.insideClass.payload.request.Comunicaciones.CrearComunicacionesRequest;
 import com.springboot.insideClass.payload.request.Comunicaciones.EditarComunicacionesRequest;
+import com.springboot.insideClass.payload.response.Comunicaciones.ComunicacionesResponse;
 import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.*;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -199,27 +201,32 @@ public class ComunicacionesController {
     }
 
     @DeleteMapping("/Delete/{id}")
+    @Transactional
     public ResponseEntity<?> deleteComunicacion(@PathVariable("id") Long id) {
 
-        try{
+        try {
+            // Validar campos obligatorios (if required)
 
-            // Validar campos obligatorios
-
-            // Eliminar entidad ComunicacionesEntity
-            ComunicacionesEntity comunicaciones = comunicacionesService.obtenerComunicacionPorId(id);
-            if (comunicaciones == null) {
+            // Check if the entity exists before attempting to delete
+            ComunicacionesResponse com = comunicacionesService.ObtenerComunicacionPorCorrelativo(id);
+            if (com == null) {
                 return ResponseEntity.badRequest().body(new MessageResponse("No se encontró la comunicación a editar."));
             }
 
-            comunicacionesService.eliminarComunicacion(comunicaciones.getComunicaciones_id());
+            // Delete the entity
+            comunicacionesService.eliminarComunicacionPorCorrelativo(id);
+
             return ResponseEntity.ok(new MessageResponse("Se ha eliminado comunicacion con exito!"));
-
-
-        }catch (Exception e){
-
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado eliminar comunicacion!"));
-
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado eliminar comunicacion!"));
         }
     }
+
+    @PostMapping("/GetPorCorrelativo")
+    public ResponseEntity<?> obtenerComunicacionesCorrelativo(@Valid @RequestBody Long id) {
+        ComunicacionesResponse com =  comunicacionesService.ObtenerComunicacionPorCorrelativo(id);
+        return ResponseEntity.ok(com);
+    }
+
 
 }

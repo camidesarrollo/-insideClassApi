@@ -2,6 +2,7 @@ package com.springboot.insideClass.repository;
 
 import com.springboot.insideClass.entity.ComunicacionesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -62,4 +63,14 @@ public interface ComunicacionesRepository extends JpaRepository<ComunicacionesEn
 
     @Query(value = "SELECT * FROM t_comunicaciones order by comunicaciones_correlativo desc", nativeQuery = true)
     List<ComunicacionesEntity> ObtenerUltimaComunicacion();
+
+    @Query(value = "select distinct comunicaciones_correlativo, comunicaciones_titulo, comunicaciones_tipo, comunicaciones_descripcion, comunicaciones_fecha from t_comunicaciones c where c.comunicaciones_correlativo = :comunicaciones_correlativo", nativeQuery = true)
+    Object ObtenerComunicacionPorCorrelativo(@Param("comunicaciones_correlativo") Long comunicaciones_correlativo);
+
+
+    @Modifying
+    @Query(value = "DELETE FROM t_comunicaciones\n" +
+            "WHERE t_comunicaciones.comunicaciones_correlativo = :id", nativeQuery = true)
+    void EliminarComunicacionPorCorrelativo(@Param("id") Long id);
+
 }

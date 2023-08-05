@@ -1,6 +1,7 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.ComunicacionesEntity;
+import com.springboot.insideClass.payload.response.Comunicaciones.ComunicacionesResponse;
 import com.springboot.insideClass.payload.response.Comunicaciones.DatosAlumnoComunicacionesResponse;
 import com.springboot.insideClass.repository.ComunicacionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class ComunicacionesService {
 
     public void eliminarComunicacion(Long id) {
         comunicacionesRepository.deleteById(id);
+    }
+
+    public void eliminarComunicacionPorCorrelativo(Long id) {
+        comunicacionesRepository.EliminarComunicacionPorCorrelativo(id);
     }
 
     // Agrega aquí otros servicios que necesites
@@ -105,4 +110,27 @@ public class ComunicacionesService {
     public List<ComunicacionesEntity> ObtenerUltimaComunicacion() {
         return comunicacionesRepository.ObtenerUltimaComunicacion();
     }
+
+    public ComunicacionesResponse ObtenerComunicacionPorCorrelativo(Long correlativo) {
+        Object datosNativos = comunicacionesRepository.ObtenerComunicacionPorCorrelativo(correlativo);
+
+        // Check if the data is not null and an instance of Object[]
+        if (datosNativos != null && datosNativos instanceof Object[]) {
+            Object[] data = (Object[]) datosNativos;
+
+            ComunicacionesResponse comunicacionesResponse = new ComunicacionesResponse();
+            comunicacionesResponse.setComunicaciones_correlativo((Integer) data[0]);
+            comunicacionesResponse.setComunicaciones_titulo((String) data[1]);
+            comunicacionesResponse.setComunicaciones_tipo((String) data[2]);
+            comunicacionesResponse.setComunicaciones_descripcion((String) data[3]);
+            comunicacionesResponse.setComunicaciones_fecha((Date) data[4]);
+
+            return comunicacionesResponse;
+        }
+
+        return null; // Or throw an exception if needed
+    }
+
+
+
 }

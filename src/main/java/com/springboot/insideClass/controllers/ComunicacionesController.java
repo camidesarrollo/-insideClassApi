@@ -5,6 +5,7 @@ import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.ComunicacionesEntity;
 import com.springboot.insideClass.entity.Docente_Asignatura_Curso_EstablecimientoEntity;
 import com.springboot.insideClass.payload.request.Comunicaciones.BuscarComunicacionesRequest;
+import com.springboot.insideClass.payload.request.Comunicaciones.BuscarPorCorrelativoComunicacionesRequest;
 import com.springboot.insideClass.payload.request.Comunicaciones.CrearComunicacionesRequest;
 import com.springboot.insideClass.payload.request.Comunicaciones.EditarComunicacionesRequest;
 import com.springboot.insideClass.payload.response.Comunicaciones.ComunicacionesResponse;
@@ -230,8 +231,8 @@ public class ComunicacionesController {
     }
 
     @PostMapping("/GetPorCorrelativo")
-    public ResponseEntity<?> obtenerComunicacionesCorrelativo(@Valid @RequestBody Long id) {
-        ComunicacionesResponse com =  comunicacionesService.ObtenerComunicacionPorCorrelativo(id);
+    public ResponseEntity<?> obtenerComunicacionesCorrelativo(@Valid @RequestBody BuscarPorCorrelativoComunicacionesRequest comunicacionRequest) {
+        ComunicacionesResponse com =  comunicacionesService.ObtenerComunicacionPorCorrelativo(comunicacionRequest.getCorrelativo());
         return ResponseEntity.ok(com);
     }
 

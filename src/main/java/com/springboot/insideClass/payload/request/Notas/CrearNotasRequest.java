@@ -17,9 +17,9 @@ public class CrearNotasRequest {
 
     private int notas_posicion;
 
-    private int nota;
+    private double nota;
 
-    private int promedio;
+    private double promedio;
 
     public String getRun() {
         return run;
@@ -69,7 +69,7 @@ public class CrearNotasRequest {
         this.notas_posicion = notas_posicion;
     }
 
-    public int getNota() {
+    public double getNota() {
         return nota;
     }
 
@@ -77,11 +77,11 @@ public class CrearNotasRequest {
         this.nota = nota;
     }
 
-    public int getPromedio() {
+    public double getPromedio() {
         return promedio;
     }
 
-    public void setPromedio(int promedio) {
+    public void setPromedio(double promedio) {
         this.promedio = promedio;
     }
 }

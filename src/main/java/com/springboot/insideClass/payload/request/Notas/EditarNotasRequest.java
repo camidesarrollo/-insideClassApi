@@ -10,9 +10,9 @@ public class EditarNotasRequest {
 
     int notas_posicion;
 
-    int nota;
+    double nota;
 
-    int promedio;
+    double promedio;
 
     public Long getDace_notas_id() {
         return dace_notas_id;
@@ -38,19 +38,19 @@ public class EditarNotasRequest {
         this.notas_posicion = notas_posicion;
     }
 
-    public int getNota() {
+    public double getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 
-    public int getPromedio() {
+    public double getPromedio() {
         return promedio;
     }
 
-    public void setPromedio(int promedio) {
+    public void setPromedio(double promedio) {
         this.promedio = promedio;
     }
 }

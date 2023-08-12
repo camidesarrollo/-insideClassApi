@@ -34,7 +34,7 @@ public interface PersonaRepository extends JpaRepository<PersonaEntity, String> 
             "inner join t_matricula m on apo.apoderado_id = m.matricula_apoderado_id\n" +
             "inner join t_alumno a on  m.matricula_alumno_id = a.alumno_id \n" +
             "inner join t_persona per on a.alumno_persona_run = per.persona_run\n" +
-            "where  m.curso_agno = YEAR(CURRENT_TIMESTAMP) and apo.apoderado_persona_run = ? and m.matricula_vigencia  = ? and m.matricula_curso_establecimiento_id = ?", nativeQuery = true)
+            "where  m.curso_agno = YEAR(CURRENT_TIMESTAMP) and apo.apoderado_persona_run = :apoderado_persona_run and m.matricula_vigencia  = :matricula_vigencia and m.matricula_curso_establecimiento_id = :establ_id", nativeQuery = true)
     List<PersonaEntity> findAlumnosByApoderado(@Param("apoderado_persona_run") String apoderado_persona_run, @Param("matricula_vigencia") Boolean matricula_vigencia,
                                                @Param("establ_id") String establ_id);
 

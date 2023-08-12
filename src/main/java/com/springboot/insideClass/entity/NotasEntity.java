@@ -23,9 +23,9 @@ public class NotasEntity {
 
     int notas_posicion;
 
-    int nota;
+    double nota;
 
-    int promedio;
+    double promedio;
 
     public NotasEntity() {
     }
@@ -79,19 +79,19 @@ public class NotasEntity {
         this.notas_posicion = notas_posicion;
     }
 
-    public int getNota() {
+    public double getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 
-    public int getPromedio() {
+    public double getPromedio() {
         return promedio;
     }
 
-    public void setPromedio(int promedio) {
+    public void setPromedio(double promedio) {
         this.promedio = promedio;
     }
 }

@@ -13,10 +13,10 @@ public class DatosNotasResponse {
     private String alumno_numero_telefonico;
     private String alumno_numero_sexo;
     private Long dace_notas_id;
-    private Integer nota;
+    private Double nota;
     private Date notas_fecha;
     private Integer notas_posicion;
-    private Integer promedio;
+    private Double promedio;
     private Long notas_dace_id;
     private Long notas_matricula_id;
     private String docente_run;
@@ -106,11 +106,11 @@ public class DatosNotasResponse {
         this.dace_notas_id = dace_notas_id;
     }
 
-    public Integer getNota() {
+    public Double getNota() {
         return nota;
     }
 
-    public void setNota(Integer nota) {
+    public void setNota(Double nota) {
         this.nota = nota;
     }
 
@@ -130,11 +130,11 @@ public class DatosNotasResponse {
         this.notas_posicion = notas_posicion;
     }
 
-    public Integer getPromedio() {
+    public Double getPromedio() {
         return promedio;
     }
 
-    public void setPromedio(Integer promedio) {
+    public void setPromedio(Double promedio) {
         this.promedio = promedio;
     }
 

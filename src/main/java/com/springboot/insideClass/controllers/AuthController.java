@@ -109,8 +109,6 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    System.out.println(roles.get(0));
-
     roles.forEach(role -> System.out.println(role));
 
 
@@ -121,6 +119,8 @@ public class AuthController {
       List<PerfilEntity> perfilList = new ArrayList<>();
 
       for (UsuarioEntity usuario1 : usuarioList) {
+        System.out.println("Obteniendo roles");
+        System.out.println(usuario1.getPerfil().getPerfil_id());
           perfilList.add(usuario1.getPerfil());
       }
 

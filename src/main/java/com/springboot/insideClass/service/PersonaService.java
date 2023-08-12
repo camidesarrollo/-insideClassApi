@@ -48,13 +48,15 @@ public class PersonaService {
     }
 
     public List<PersonaEntity> buscarAlumnosPorApoderado(String apoderado_run, Boolean matricula_vigencia, String establ_id){
-
+/*
         try{
-            return personaRepo.findAlumnosByApoderado(apoderado_run, matricula_vigencia, establ_id);
+
         }catch (Exception e){
             System.out.println(e);
         }
-        return null;
+        return null;*/
+
+        return personaRepo.findAlumnosByApoderado(apoderado_run, matricula_vigencia, establ_id);
     }
 
     public List<PersonaEntity> buscarAlumnosPorCursoEstablecimiento(Boolean matricula_vigencia,Long curso_establecimiento_establecimiento_id,

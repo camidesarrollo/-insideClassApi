@@ -67,10 +67,10 @@ public class NotasService {
             infoNotas.setAlumno_numero_telefonico(fila[6] != null ? (String) fila[6] : "");
             infoNotas.setAlumno_numero_sexo(fila[7] != null ? ((Character) fila[7]).toString() : "");
             infoNotas.setDace_notas_id(fila[8] != null ? ((BigInteger) fila[8]).longValue() : 0);
-            infoNotas.setNota(fila[9] != null ? (Integer) fila[9] : 0);
+            infoNotas.setNota(fila[9] != null ? (Double) fila[9] : 0);
             infoNotas.setNotas_fecha(fila[10] != null ? (Date) fila[10] : null);
             infoNotas.setNotas_posicion(fila[11] != null ? (Integer) fila[11] : 0);
-            infoNotas.setPromedio(fila[12] != null ? (Integer) fila[12] : 0);
+            infoNotas.setPromedio(fila[12] != null ? (Double) fila[12] : 0);
             infoNotas.setNotas_dace_id(fila[13] != null ? ((BigInteger) fila[13]).longValue() : 0);
             infoNotas.setNotas_matricula_id(fila[14] != null ? ((BigInteger) fila[14]).longValue() : 0);
             infoNotas.setDocente_run(fila[15] != null ? (String) fila[15] : "");

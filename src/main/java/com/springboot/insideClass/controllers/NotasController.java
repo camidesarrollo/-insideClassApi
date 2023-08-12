@@ -145,7 +145,7 @@ public class NotasController {
         }
     }
 
-    @PutMapping("/Edit")
+    @PutMapping("/Update")
     public ResponseEntity<?> editarNota(@Valid @RequestBody EditarNotasRequest notasRequest) {
 
         try {
@@ -166,11 +166,12 @@ public class NotasController {
             opanota.setNotas_posicion(notasRequest.getNotas_posicion());
             opanota.setNota(notasRequest.getNota());
             opanota.setNotas_fecha(notasRequest.getNotas_fecha());
+            opanota.setPromedio(notasRequest.getPromedio());
 
             // Guardar la nueva entidad en la base de datos
             notasService.guardarNota(opanota);
 
-            return ResponseEntity.ok(new MessageResponse("Se ha editado anotacion con exito!"));
+            return ResponseEntity.ok(new MessageResponse("Se ha editado nota con exito!"));
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar anotacion!"));

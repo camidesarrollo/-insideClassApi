@@ -2549,7 +2549,9 @@ VALUES
        ('prueba17@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'pedrorodriguez456', 2, '10207401-7', 1),
        ('prueba18@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'luciamartinez789', 2, '10224802-3', 1),
        ('prueba19@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'robertosilva123', 2, '10241265-6', 1),
-       ('prueba20@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'andreamartinez456', 2, '10258276-4', 1);
+       ('prueba20@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'andreamartinez456', 2, '10258276-4', 1),
+        ('prueba21@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'juanperez1234', 1, '10007672-1', 1)
+       ;
 
        INSERT INTO [dbo].[t_docente_asignatura]
                   ([docente_asignatura_id_asignatura_id]
@@ -2741,7 +2743,7 @@ INSERT INTO [dbo].[t_matricula]
            ,[matricula_curso_establecimiento_id])
      VALUES
            (2023,1,1,1,1),
-		   (2023,1,2,2,1),
+		   (2023,1,2,1,1),
 		   (2023,1,3,3,1),
 		   (2023,1,4,4,1),
 		   (2023,1,5,5,1),

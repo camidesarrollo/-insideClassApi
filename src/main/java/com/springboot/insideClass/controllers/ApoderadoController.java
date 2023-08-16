@@ -1,6 +1,7 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.entity.ApoderadoEntity;
+import com.springboot.insideClass.payload.request.Apoderado.BuscarApoderadoCursoRequest;
 import com.springboot.insideClass.payload.request.Apoderado.BuscarApoderadoRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.ApoderadoService;
@@ -43,4 +44,11 @@ public class ApoderadoController {
         apoderadoService.eliminarApoderado(id);
         return ResponseEntity.ok(new MessageResponse("Apoderado eliminado con éxito!"));
     }
+
+    @PostMapping("/obtenerApoderadosPorEstablecimientoCurso")
+    public ResponseEntity<?> obtenerApoderadosByEstablecimientoCurso(@Valid @RequestBody BuscarApoderadoCursoRequest buscarApoderadoCursoRequest) {
+        return ResponseEntity.ok(apoderadoService.obtenerApoderadosByEstablecimientoCurso(buscarApoderadoCursoRequest.apoderado_persona_run, buscarApoderadoCursoRequest.matricula_vigencia,
+                buscarApoderadoCursoRequest.establ_id, buscarApoderadoCursoRequest.curso_id));
+    }
+
 }

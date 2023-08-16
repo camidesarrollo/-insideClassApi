@@ -14,7 +14,7 @@ public interface CursoRepository extends JpaRepository<CursoEntity, Long> {
     @Query(value = "select * from t_curso c where (c.comuna_id = :comuna_id or :comuna_id = -1) and (c.curso_nombre = :curso_nombre or :curso_nombre is null) and (c.curso_nivel = :curso_nivel or :curso_nivel is null) ", nativeQuery = true)
     List<CursoEntity> findByFilters(@Param("comuna_id") Long curso_id, @Param("curso_nombre") String curso_nombre, @Param("curso_nivel") String curso_nivel);
 
-    @Query(value = "Select  c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
+    @Query(value = "Select  distinct c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
             "inner join t_docente_asignatura_curso_establecimiento dace on ce.curso_establecimiento_id = dace.dace_curso_establecimiento_id\n" +
             "inner join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_id\n" +
             "where (da.docente_asignatura_docente_id = :docente_asignatura_docente_id or :docente_asignatura_docente_id = -1) " +
@@ -30,7 +30,7 @@ public interface CursoRepository extends JpaRepository<CursoEntity, Long> {
                                     @Param("curso_establecimiento_curso_id") Long curso_establecimiento_curso_id,
                                     @Param("curso_establecimiento_establecimiento_id") Long curso_establecimiento_establecimiento_id);
 
-    @Query(value = "Select c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
+    @Query(value = "Select distinct c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
             "            inner join t_matricula m on ce.curso_establecimiento_id = m.matricula_curso_establecimiento_id AND (:vigencia = -1 OR ce.vigencia = :vigencia)\n" +
             "AND (:curso_establecimiento_curso_id =  -1 OR ce.curso_establecimiento_curso_id = :curso_establecimiento_curso_id)\n" +
             "AND (:curso_establecimiento_establecimiento_id  =  -1 OR ce.curso_establecimiento_establecimiento_id = :curso_establecimiento_establecimiento_id)\n" +
@@ -47,7 +47,7 @@ public interface CursoRepository extends JpaRepository<CursoEntity, Long> {
                                       @Param("matricula_alumno_id") Long matricula_alumno_id
                                     );
 
-    @Query(value = "Select c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
+    @Query(value = "Select distinct c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
             "inner join t_establecimiento e on ce.curso_establecimiento_establecimiento_id = e.establecimiento_id\n" +
             "inner join t_director d on e.establecimiento_id =  d.director_establecimiento_id\n" +
             "AND (:vigencia = '-1' OR ce.vigencia = :vigencia) " +

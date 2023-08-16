@@ -2550,7 +2550,8 @@ VALUES
        ('prueba18@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'luciamartinez789', 2, '10224802-3', 1),
        ('prueba19@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'robertosilva123', 2, '10241265-6', 1),
        ('prueba20@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'andreamartinez456', 2, '10258276-4', 1),
-        ('prueba21@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'juanperez1234', 1, '10007672-1', 1)
+        ('prueba21@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'juanperez1234', 1, '10007672-1', 1),
+        ('prueba22@gmail.com', '$2a$10$QTcOKUGsLI6eiUmQHRc5i.NIkXIE.ax6aHR6Hc83yTJQin0.BPqNa', 'testing1234', 2, '14386647-5', 1)
        ;
 
        INSERT INTO [dbo].[t_docente_asignatura]
@@ -2772,3 +2773,9 @@ INSERT INTO [dbo].[t_dace_notas]
                           ,1
                           ,1);
 
+INSERT INTO [dbo].[t_asistencia]
+           ([fecha]
+           ,[asistencia_matricula_id])
+     VALUES
+           ('2023-08-08'
+           ,1);

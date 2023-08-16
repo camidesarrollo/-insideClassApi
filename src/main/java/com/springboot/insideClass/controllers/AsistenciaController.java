@@ -1,6 +1,7 @@
 package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.componet.Correo;
+import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.AsistenciaEntity;
 import com.springboot.insideClass.entity.MatriculaEntity;
 import com.springboot.insideClass.payload.request.Asistencia.BuscarAsistenciaRequest;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/asistencia")
 public class AsistenciaController {
 
     @Autowired
@@ -31,27 +34,34 @@ public class AsistenciaController {
     @Autowired
     private Correo correo;
 
+
+    @Autowired
+    private Metodos metodos;
+
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerAsistencia(@Valid @RequestBody BuscarAsistenciaRequest request) {
-        try{
+       try{
 
-            if (request.getEstablecimiento_id() == null || StringUtils.isEmpty(request.getAlumno_persona_run())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: establecimiento_id y run_alumno son campos obligatorios"));
-            }
+           if (request.getEstablecimiento_id() == null || StringUtils.isEmpty(request.getAlumno_persona_run())) {
+               return ResponseEntity.badRequest().body(new MessageResponse("Error: establecimiento_id y run_alumno son campos obligatorios"));
+           }
 
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(asistenciaService.obtenerAsistenciasPorFiltros(
-                          request.getCurso_agno(),
-                          request.isMatricula_vigencia(),
-                          request.getAlumno_persona_run(),
-                          request.getFecha(),
-                          request.getAnio(),
-                          request.getEstablecimiento_id(),
-                          request.getCurso_id()
-                    ));
+           return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                   .body(asistenciaService.obtenerAsistenciasPorFiltros(
+                           request.getCurso_agno(),
+                           request.isMatricula_vigencia(),
+                           request.getAlumno_persona_run(),
+                           request.getFecha(),
+                           request.getAnio(),
+                           request.getEstablecimiento_id(),
+                           request.getCurso_id()
+                   ));
+
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+
+
     }
 
     @PostMapping("/Create")
@@ -78,15 +88,22 @@ public class AsistenciaController {
                     return ResponseEntity.badRequest().body(new MessageResponse("Error: No se encontró la matrícula con ID: " + matricula));
                 }
 
-                AsistenciaEntity asistencia1 = new AsistenciaEntity(matriculaenty.get(), asistenciaRequest.getFecha());
+                List<AsistenciaEntity> buscarAsistencia = asistenciaService.obtenerAsistenciaPorMatricula(matricula,asistenciaRequest.getFecha());
 
-                correo.enviarCorreoAsistencia(matriculaenty.get().getAlumno().getPersona().getPersona_nombre(),
-                        asistenciaRequest.getFecha().toString(),
-                        "Asistio",
-                        matriculaenty.get().getCursoEstablecimiento().getEstablecimiento().getEstablecimiento_nombre()
-                );
+                if(buscarAsistencia.size() == 0){
 
-                asistenciaService.guardarAsistencia(asistencia1);
+                    AsistenciaEntity asistencia1 = new AsistenciaEntity(matriculaenty.get(), metodos.parseDate(asistenciaRequest.getFecha()));
+
+                    /*correo.enviarCorreoAsistencia(matriculaenty.get().getAlumno().getPersona().getPersona_nombre(),
+                            asistenciaRequest.getFecha().toString(),
+                            "Asistio",
+                            matriculaenty.get().getCursoEstablecimiento().getEstablecimiento().getEstablecimiento_nombre()
+                    );*/
+
+                    asistenciaService.guardarAsistencia(asistencia1);
+                }
+
+
             }
 
             return ResponseEntity.ok(new MessageResponse("Se ha registrado asistencia con éxito!"));
@@ -94,8 +111,52 @@ public class AsistenciaController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar asistencia!"));
         }
     }
-    @DeleteMapping("/Delete/{id}")
-    public ResponseEntity<?> eliminarAsistencia(@PathVariable("id") Long id) {
+
+    @DeleteMapping("/Delete")
+    public ResponseEntity<?> eliminarAsistencias(@Valid @RequestBody CrearAsistenciaRequest asistenciaRequest) {
+        try {
+            if (asistenciaRequest.getMatricula() == null || asistenciaRequest.getMatricula().isEmpty()) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: La lista de matrículas está vacía."));
+            }
+
+
+            if (asistenciaRequest.getFecha() == null) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: La fecha de asistencia no puede ser nula."));
+            }
+
+            System.out.println(asistenciaRequest.getFecha());
+
+            List<Long> matriculas = asistenciaRequest.getMatricula();
+            for (Long matricula : matriculas) {
+                // Aquí puedes hacer lo que necesites con cada elemento de la lista
+                System.out.println(matricula);
+                Optional<MatriculaEntity> matriculaenty = matriculaService.obtenerMatriculaPorId(matricula);
+
+                if (matriculaenty == null) {
+                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se encontró la matrícula con ID: " + matricula));
+                }
+
+                List<AsistenciaEntity> buscarAsistencia = asistenciaService.obtenerAsistenciaPorMatricula(matricula,asistenciaRequest.getFecha());
+
+                if(buscarAsistencia.size() > 0){
+
+                    AsistenciaEntity asistencia = asistenciaService.obtenerAsistenciaPorMatricula(matricula, asistenciaRequest.getFecha().toString()).get(0);
+
+                    asistenciaService.eliminarAsistencia(asistencia.getAsistencia_id());
+
+                }
+
+
+            }
+
+            return ResponseEntity.ok(new MessageResponse("Se ha eliminado asistencia con éxito!"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado eliminar la asistencia!"));
+        }
+    }
+
+    @DeleteMapping("/DeleteById/{id}")
+    public ResponseEntity<?> eliminarAsistenciaPorId(@PathVariable("id") Long id) {
         try {
             if (id <= 0) {
                 return ResponseEntity.badRequest().body(new MessageResponse("Error: El ID de asistencia no es válido."));

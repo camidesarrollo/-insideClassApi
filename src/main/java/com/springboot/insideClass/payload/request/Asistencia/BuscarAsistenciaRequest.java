@@ -7,6 +7,8 @@ public class BuscarAsistenciaRequest {
     int anio; Long establecimiento_id;
     Long curso_id;
 
+    Long matricuala_id;
+
     public int getCurso_agno() {
         return curso_agno;
     }
@@ -61,5 +63,13 @@ public class BuscarAsistenciaRequest {
 
     public void setCurso_id(Long curso_id) {
         this.curso_id = curso_id;
+    }
+
+    public Long getMatricuala_id() {
+        return matricuala_id;
+    }
+
+    public void setMatricuala_id(Long matricuala_id) {
+        this.matricuala_id = matricuala_id;
     }
 }

@@ -82,6 +82,8 @@ public class WebSecurityConfig implements WebSocketMessageBrokerConfigurer { // 
             .antMatchers("/api/notas/**").permitAll()
             .antMatchers("/api/asistencia/**").permitAll()
             .antMatchers("/api/docente_asignatura_curso_establecimiento/**").permitAll()
+            .antMatchers("/api/mensaje/**").permitAll()
+
 
             /*    .antMatchers("/api/anotaciones/**").permitAll()
                .antMatchers("/api/chat/**").permitAll()

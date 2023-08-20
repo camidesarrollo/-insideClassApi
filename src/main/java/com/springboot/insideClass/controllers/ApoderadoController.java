@@ -45,8 +45,8 @@ public class ApoderadoController {
         return ResponseEntity.ok(new MessageResponse("Apoderado eliminado con éxito!"));
     }
 
-    @PostMapping("/obtenerApoderadosPorEstablecimientoCurso")
-    public ResponseEntity<?> obtenerApoderadosByEstablecimientoCurso(@Valid @RequestBody BuscarApoderadoCursoRequest buscarApoderadoCursoRequest) {
+    @PostMapping("/obtenerApoderadosPorEstablecimientoCursoMensaje")
+    public ResponseEntity<?> obtenerApoderadosPorEstablecimientoCursoMensaje(@Valid @RequestBody BuscarApoderadoCursoRequest buscarApoderadoCursoRequest) {
         return ResponseEntity.ok(apoderadoService.obtenerApoderadosByEstablecimientoCurso(buscarApoderadoCursoRequest.apoderado_persona_run, buscarApoderadoCursoRequest.matricula_vigencia,
                 buscarApoderadoCursoRequest.establ_id, buscarApoderadoCursoRequest.curso_id));
     }

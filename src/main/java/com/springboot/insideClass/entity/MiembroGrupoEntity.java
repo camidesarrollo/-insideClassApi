@@ -1,7 +1,8 @@
 package com.springboot.insideClass.entity;
 
 import javax.persistence.*;
-
+@Entity
+@Table(name = "t_miembroGrupo", uniqueConstraints = {@UniqueConstraint(columnNames =  "miembro_id")})
 public class MiembroGrupoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

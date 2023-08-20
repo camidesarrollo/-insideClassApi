@@ -132,7 +132,7 @@ public class ComunicacionesService {
     }
 
     public List<Long>  ObtenerIdComunicacionPorCorrelativo(Long correlativo) {
-        return  comunicacionesRepository.findComunicacionesIdsByCorrelativo(1L);
+        return  comunicacionesRepository.findComunicacionesIdsByCorrelativo(correlativo);
     }
 
 }

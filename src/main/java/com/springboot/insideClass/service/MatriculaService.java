@@ -14,8 +14,6 @@ import java.util.Optional;
 
 @Service
 public class MatriculaService {
-
-    public MatriculaEntity ComunicacionesEntity;
     @Autowired
     private MatriculaRepository matriculaRepository;
 

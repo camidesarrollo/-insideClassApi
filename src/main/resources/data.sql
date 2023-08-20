@@ -2779,3 +2779,92 @@ INSERT INTO [dbo].[t_asistencia]
      VALUES
            ('2023-08-08'
            ,1);
+INSERT INTO [dbo].[t_grupos]
+           ([nombre_grupo])
+     VALUES
+           ('Pre-Kinder 2023');
+           INSERT INTO [dbo].[t_miembro_grupo]
+                      ([grupo_id]
+                      ,[persona_run])
+                VALUES
+                      (1
+                      ,'10007672-1'),
+           		   (1
+                      ,'10023418-1'),
+           		   (1
+                      ,'10028406-5'),
+           		   (1
+                      ,'10030941-6'),
+           		   (1
+                      ,'10033211-6'),
+           		   (1
+                      ,'10042303-0'),
+           		   (1
+                      ,'10045179-4'),
+           		   (1
+                      ,'10069276-7'),
+           		   (1
+                      ,'10078762-8');
+
+
+
+                      		   -- Insertar mensajes entre personas
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, persona_run)
+                      VALUES ('Hola', '2023-08-20 10:00:00', '10007672-1');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, persona_run)
+                      VALUES ('¡Hola de nuevo!', '2023-08-20 11:30:00', '10042303-0');
+
+                      -- Insertar mensajes en el grupo con ID 1
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Mensaje en el grupo', '2023-08-20 09:00:00', 1, '10007672-1');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Otro mensaje en el grupo', '2023-08-20 09:30:00', 1, '10042303-0');
+
+
+                      -- Insertar mensajes en el grupo con ID 1 y temática "Fiesta fin de año"
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('¡Preparen sus mejores trajes! La fiesta de fin de año se acerca.', '2023-08-20 14:00:00', 1, '10007672-1');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Vamos a celebrar juntos un gran cierre de año. ¡No falten!', '2023-08-20 15:30:00', 1, '10042303-0');
+
+                      -- Insertar mensajes en el grupo con ID 1 y temática "Paseo de curso"
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Estimados alumnos, se acerca el emocionante paseo de curso. Prepárense para la diversión.', '2023-08-21 09:00:00', 1, '10007672-1');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Recuerden llevar ropa cómoda y muchas ganas de disfrutar. ¡Será un día inolvidable!', '2023-08-21 10:30:00', 1, '10042303-0');
+
+                      -- Insertar mensajes en el grupo con ID 1 y temática "Fiesta fin de año"
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('¡La fiesta de fin de año está a punto de comenzar! No olviden confirmar su asistencia.', '2023-08-22 18:00:00', 1, '10023418-1');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Habrá música, baile y mucha diversión. ¡Los esperamos a todos!', '2023-08-22 19:30:00', 1, '10028406-5');
+
+                      -- Insertar mensajes en el grupo con ID 1 y temática "Paseo de curso"
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Prepárense para nuestro emocionante paseo de curso. Será un día lleno de aventuras.', '2023-08-23 10:00:00', 1, '10030941-6');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Asegúrense de llevar sus cámaras y capturar los mejores momentos juntos.', '2023-08-23 11:30:00', 1, '10033211-6');
+
+                      -- Insertar mensajes en el grupo con ID 1 y temática "Reunión de padres"
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Recordatorio: Mañana tendremos la reunión de padres a las 18:00 hrs. ¡Esperamos su participación!', '2023-08-24 16:00:00', 1, '10042303-0');
+
+                      INSERT INTO t_mensajeria (contenido, fecha_envio, grupo_id, persona_run)
+                      VALUES ('Discutiremos importantes temas relacionados con el progreso de nuestros estudiantes. Los esperamos.', '2023-08-24 17:30:00', 1, '10045179-4');
+
+INSERT INTO [dbo].[t_destinatario]
+           ([mensaje_id]
+           ,[persona_run], visto)
+     VALUES
+           (1
+           ,'10042303-0', 0 ),
+		     (2
+           ,'10007672-1', 0);
+
+

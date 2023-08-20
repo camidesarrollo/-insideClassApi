@@ -2,10 +2,7 @@ package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.*;
-import com.springboot.insideClass.payload.request.Docente.BuscarDocenteRequest;
-import com.springboot.insideClass.payload.request.Docente.CrearDocenteRequest;
-import com.springboot.insideClass.payload.request.Docente.CrearDocenteRequestValidator;
-import com.springboot.insideClass.payload.request.Docente.TraerDocenteRequest;
+import com.springboot.insideClass.payload.request.Docente.*;
 import com.springboot.insideClass.payload.request.Persona.CrearPersonaRequest;
 import com.springboot.insideClass.payload.request.Persona.CrearPersonaRequestValidator;
 import com.springboot.insideClass.payload.request.Usuario.CrearUsuarioRequest;
@@ -281,6 +278,16 @@ public class DocenteController {
     @PostMapping("/Traer")
     public ResponseEntity<List<InfoDocenteResponse>> traer(@Valid @RequestBody TraerDocenteRequest traerDocenteRequest) {
         List<InfoDocenteResponse> docentes = docenteService.infoDocente(traerDocenteRequest.getEstablecimiento(),  traerDocenteRequest.getDocente_run(), traerDocenteRequest.getCurso());
+        return ResponseEntity.ok(docentes);
+    }
+
+
+    @PostMapping("/obtenerDocenteByEstablecimientoCurso")
+    public ResponseEntity<List<PersonaEntity>> obtenerDocenteByEstablecimientoCurso(@Valid @RequestBody BuscarDocentePorEstablecimientoCursoRequest buscarDocentePorEstablecimientoCursoRequest) {
+        List<PersonaEntity> docentes = docenteService.obtenerDocenteByEstablecimientoCurso(buscarDocentePorEstablecimientoCursoRequest.getPersona_run(),
+                buscarDocentePorEstablecimientoCursoRequest.getEstablecimiento_id(),
+                buscarDocentePorEstablecimientoCursoRequest.getCurso_id(),
+                buscarDocentePorEstablecimientoCursoRequest.getDocente_id());
         return ResponseEntity.ok(docentes);
     }
 

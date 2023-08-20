@@ -1,8 +1,10 @@
 package com.springboot.insideClass.service;
 
 import com.springboot.insideClass.entity.DocenteEntity;
+import com.springboot.insideClass.entity.PersonaEntity;
 import com.springboot.insideClass.payload.response.Docente.InfoDocenteResponse;
 import com.springboot.insideClass.repository.DocenteRepository;
+import com.springboot.insideClass.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ public class DocenteService {
 
     @Autowired
     private DocenteRepository docenteRepository;
+
+    @Autowired
+    private PersonaRepository personaRepository;
 
     public List<DocenteEntity> obtenerTodosLosDocentes() {
         return docenteRepository.findAll();
@@ -76,6 +81,13 @@ public class DocenteService {
         return listaDocente;
     }
 
-
+    public List<PersonaEntity> obtenerDocenteByEstablecimientoCurso(String persona_run,
+                                                                    Long establecimiento_id,
+                                                                    Long curso_id, Long docente_id) {
+        return personaRepository.findDocenteByEstablecimientoCurso(
+                persona_run,
+                 establecimiento_id,
+                 curso_id,  docente_id);
+    }
 
 }

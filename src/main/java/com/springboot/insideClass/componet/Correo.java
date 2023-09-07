@@ -75,6 +75,17 @@ public class Correo {
         emailSenderService.sendEmailWithTemplate(recipientEmail, subject, templateVariables, 4);
     }
 
+    public void enviarCorreoCodigoVerificacion(String correo, String codigo) {
+        String recipientEmail = correo;
+        String subject = "Codigo Verificación InsideClass";
+
+        // Variables para reemplazar en la plantilla
+        Map<String, Object> templateVariables = new HashMap<>();
+        templateVariables.put("codigoVerificacion", codigo);
+
+        emailSenderService.sendEmailWithTemplate(recipientEmail, subject, templateVariables, 6);
+    }
+
     public void enviarCorreoGeneracionCuenta(String nombreUsuario, String contraseña, String tipoPerfil, String recipientEmail, String nombrePersona) {
         String subject = "Generación de cuenta";
 

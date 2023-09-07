@@ -11,6 +11,9 @@ public class MensajeEntity {
     @Column(name = "mensaje_id")
     private Long mensajeId;
 
+    @Column(name = "groupMensaje_id")
+    private Long groupMensaje;
+
     @Column(name = "contenido", columnDefinition = "nvarchar(max)", nullable = false)
     private String contenido;
 
@@ -25,7 +28,8 @@ public class MensajeEntity {
     @JoinColumn(name = "grupo_id", referencedColumnName = "grupo_id")
     private GrupoEntity grupo;
 
-    public MensajeEntity(String contenido, LocalDateTime fechaEnvio, PersonaEntity persona_run, GrupoEntity grupo) {
+    public MensajeEntity(Long groupMensaje, String contenido, LocalDateTime fechaEnvio, PersonaEntity persona_run, GrupoEntity grupo) {
+        this.groupMensaje = groupMensaje;
         this.contenido = contenido;
         this.fechaEnvio = fechaEnvio;
         this.persona_run = persona_run;
@@ -70,5 +74,13 @@ public class MensajeEntity {
 
     public void setGrupo(GrupoEntity grupo) {
         this.grupo = grupo;
+    }
+
+    public Long getGroupMensaje() {
+        return groupMensaje;
+    }
+
+    public void setGroupMensaje(Long groupMensaje) {
+        this.groupMensaje = groupMensaje;
     }
 }

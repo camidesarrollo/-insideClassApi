@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class InfoDocenteResponse {
     private BigInteger docente_id;
+
+    private Boolean vigencia;
     private String docente_persona_run;
     private BigInteger establecimiento_id;
     private BigInteger establecimiento_codigo_area;
@@ -22,15 +24,18 @@ public class InfoDocenteResponse {
     private String persona_apellido_paterno;
     private String persona_apellido_materno;
     private Date persona_fecha_nacimiento;
-    private Character persona_sexo;
+
     private String persona_numero_telefonico;
     private String persona_numero_celular;
+    private Character persona_sexo;
+
 
     // Constructor
 
 
-    public InfoDocenteResponse(BigInteger docente_id, String docente_persona_run, BigInteger establecimiento_id, BigInteger establecimiento_codigo_area, String establecimiento_nombre, BigInteger establecimiento_telefono, BigInteger establecimiento_dependencia_id, BigInteger establecimiento_direccion_id, BigInteger establecimiento_sostenedor_id, BigInteger curso_id, String curso_nivel, String curso_nombre, String persona_run, String persona_nombre, String persona_apellido_paterno, String persona_apellido_materno, Date persona_fecha_nacimiento, Character persona_sexo, String persona_numero_telefonico, String persona_numero_celular) {
+    public InfoDocenteResponse(BigInteger docente_id, Boolean vigencia, String docente_persona_run, BigInteger establecimiento_id, BigInteger establecimiento_codigo_area, String establecimiento_nombre, BigInteger establecimiento_telefono, BigInteger establecimiento_dependencia_id, BigInteger establecimiento_direccion_id, BigInteger establecimiento_sostenedor_id, BigInteger curso_id, String curso_nivel, String curso_nombre, String persona_run, String persona_nombre, String persona_apellido_paterno, String persona_apellido_materno, Date persona_fecha_nacimiento, String persona_numero_telefonico, String persona_numero_celular, Character persona_sexo) {
         this.docente_id = docente_id;
+        this.vigencia = vigencia;
         this.docente_persona_run = docente_persona_run;
         this.establecimiento_id = establecimiento_id;
         this.establecimiento_codigo_area = establecimiento_codigo_area;
@@ -47,9 +52,9 @@ public class InfoDocenteResponse {
         this.persona_apellido_paterno = persona_apellido_paterno;
         this.persona_apellido_materno = persona_apellido_materno;
         this.persona_fecha_nacimiento = persona_fecha_nacimiento;
-        this.persona_sexo = persona_sexo;
         this.persona_numero_telefonico = persona_numero_telefonico;
         this.persona_numero_celular = persona_numero_celular;
+        this.persona_sexo = persona_sexo;
     }
 
     public BigInteger getDocente_id() {

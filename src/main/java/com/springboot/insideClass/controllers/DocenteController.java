@@ -82,7 +82,7 @@ public class DocenteController {
                 buscarDocenteRequest.getDocente_id(),
                 buscarDocenteRequest.getDocente_persona_run());
 
-        if (docentes.isEmpty()) {
+        if (docentes.size() == 0) {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(docentes);
@@ -95,10 +95,36 @@ public class DocenteController {
         return ResponseEntity.ok(nuevoDocente);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<MessageResponse> eliminarDocente(@PathVariable("id") Long id) {
+    @DeleteMapping("/Delete")
+    public ResponseEntity<MessageResponse> eliminarDocente(@Valid @RequestBody EliminarDocenteRequest docenterequest) {
+        DocenteEntity docente =  docenteService.obtenerDocentesPorFiltro(-1L, docenterequest.getDocente_run()).get(0);
 
-        docenteService.eliminarDocente(id);
+        if(docente == null){
+            return ResponseEntity.badRequest().body(new MessageResponse("No se ha encontrado el docente"));
+        }
+
+        if(docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(
+                -1L,
+                docente.getPersona().getPersona_run(),
+                -1L,
+                "-1",
+                -1L,
+                "-1",
+                "-1",
+                -1L,
+                "-1",
+                "-1",
+                "-1",
+                -1,
+                -1
+        ).size() == 0){
+            docenteService.eliminarDocente(docente.getDocente_id());
+        }else{
+            docente.setVigencia(false);
+            docenteService.guardarDocente(docente);
+        }
+
+
         return ResponseEntity.ok(new MessageResponse("Docente eliminado con éxito!"));
     }
 
@@ -190,7 +216,7 @@ public class DocenteController {
         if (docenteEntities.isEmpty() || docenteEntities.size() == 0) {
             DocenteEntity nuevoDocente = new DocenteEntity( personaService.obtenerPersonasPorFiltro(
                     personaRequest.getPersona_run(), "-1", "-1", "-1", "-1", "-1", "-1", "-1"
-            ).get(0));
+            ).get(0), true);
             docenteService.guardarDocente(nuevoDocente);
         }
 
@@ -277,7 +303,7 @@ public class DocenteController {
 
     @PostMapping("/Traer")
     public ResponseEntity<List<InfoDocenteResponse>> traer(@Valid @RequestBody TraerDocenteRequest traerDocenteRequest) {
-        List<InfoDocenteResponse> docentes = docenteService.infoDocente(traerDocenteRequest.getEstablecimiento(),  traerDocenteRequest.getDocente_run(), traerDocenteRequest.getCurso());
+        List<InfoDocenteResponse> docentes = docenteService.infoDocente(traerDocenteRequest.getEstablecimiento(),  traerDocenteRequest.getDocente_run(), traerDocenteRequest.getCurso(), traerDocenteRequest.getVigencia());
         return ResponseEntity.ok(docentes);
     }
 

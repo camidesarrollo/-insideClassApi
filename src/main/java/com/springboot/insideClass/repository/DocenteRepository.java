@@ -24,7 +24,7 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity, Long> {
             "inner join t_establecimiento e on ce.curso_establecimiento_establecimiento_id = e.establecimiento_id\n" +
             "inner join t_persona p on p.persona_run = d.docente_persona_run\n" +
             "WHERE (:docente_run = '-1' OR d.docente_persona_run = :docente_run) and (:curso = '-1' OR c.curso_id = :curso) and (:establecimiento = '-1' OR e.establecimiento_id = :establecimiento)\n" +
-            "and TRY_CONVERT(DATE,dace.fecha_fin) >= TRY_CONVERT(DATE,GETDATE())", nativeQuery = true)
-    List<Object> infoDocente(@Param("docente_run") String docente_run, @Param("curso") Long curso, @Param("establecimiento") Long establecimiento );
+            "and TRY_CONVERT(DATE,dace.fecha_fin) >= TRY_CONVERT(DATE,GETDATE()) and d.vigencia = :vigencia", nativeQuery = true)
+    List<Object> infoDocente(@Param("docente_run") String docente_run, @Param("curso") Long curso, @Param("establecimiento") Long establecimiento, @Param("vigencia") Boolean vigencia);
 
 }

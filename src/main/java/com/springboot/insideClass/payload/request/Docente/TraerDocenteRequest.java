@@ -5,6 +5,8 @@ public class TraerDocenteRequest {
     Long curso;
     Long establecimiento;
 
+    Boolean vigencia;
+
     public String getDocente_run() {
         return docente_run;
     }
@@ -27,5 +29,13 @@ public class TraerDocenteRequest {
 
     public void setEstablecimiento(Long establecimiento) {
         this.establecimiento = establecimiento;
+    }
+
+    public Boolean getVigencia() {
+        return vigencia;
+    }
+
+    public void setVigencia(Boolean vigencia) {
+        this.vigencia = vigencia;
     }
 }

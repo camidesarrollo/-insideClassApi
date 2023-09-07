@@ -43,36 +43,38 @@ public class DocenteService {
         docenteRepository.deleteById(id);
     }
 
-    public List<InfoDocenteResponse> infoDocente(long establecimiento_id, String run, long curso) {
+    public List<InfoDocenteResponse> infoDocente(long establecimiento_id, String run, long curso,  boolean vigencia ) {
         List<InfoDocenteResponse> listaDocente = new ArrayList<>();
 
-        List<Object> listaObjetosNativos = docenteRepository.infoDocente(run, curso, establecimiento_id);
+        List<Object> listaObjetosNativos = docenteRepository.infoDocente(run, curso, establecimiento_id, vigencia);
 
         for (Object item : listaObjetosNativos) {
             Object[] fila = (Object[]) item;
 
             InfoDocenteResponse infoDocenteResponse = new InfoDocenteResponse(
-                    fila[0] != null ? new BigInteger(fila[0].toString()) : BigInteger.ZERO, // docente_id
-                    fila[1] != null ? (String) fila[1] : "", // docente_persona_run
-                    fila[2] != null ? new BigInteger(fila[2].toString()) : BigInteger.ZERO, // establecimiento_id
-                    fila[3] != null ? new BigInteger(fila[3].toString()) : BigInteger.ZERO, // establecimiento_codigo_area
-                    fila[4] != null ? (String) fila[4] : "", // establecimiento_nombre
-                    fila[5] != null ? new BigInteger(fila[5].toString()) : BigInteger.ZERO, // establecimiento_telefono
-                    fila[6] != null ? new BigInteger(fila[6].toString()) : BigInteger.ZERO, // establecimiento_dependencia_id
-                    fila[7] != null ? new BigInteger(fila[7].toString()) : BigInteger.ZERO, // establecimiento_direccion_id
-                    fila[8] != null ? new BigInteger(fila[8].toString()) : BigInteger.ZERO, // establecimiento_sostenedor_id
-                    fila[9] != null ? new BigInteger(fila[9].toString()) : BigInteger.ZERO, // curso_id
-                    fila[10] != null ? (String) fila[10] : "", // curso_nivel
-                    fila[11] != null ? (String) fila[11] : "", // curso_nombre
-                    fila[12] != null ? (String) fila[12] : "", // persona_run
-                    fila[16] != null ? (String) fila[16] : "", // persona_nombre
-                    fila[13] != null ? (String) fila[14] : "", // persona_apellido_paterno
-                    fila[14] != null ? (String) fila[13] : "", // persona_apellido_materno
-                     fila[15] != null ? (Date) fila[15] : new Date(), // persona_fecha_nacimiento
-                    fila[19] != null ? (Character) fila[19] : 'I', // persona_sexo,
-                    fila[17] != null ? (String) fila[17] : "", // persona_numero_telefonico
-                    fila[18] != null ? (String) fila[18] : "" // persona_numero_celular
 
+
+                    fila[0] != null ? new BigInteger(fila[0].toString()) : BigInteger.ZERO, // docente_id
+                    fila[1] != null ? Boolean.parseBoolean(fila[1].toString()) : false,
+                    fila[2] != null ? (String) fila[2] : "", // docente_persona_run
+                    fila[3] != null ? new BigInteger(fila[3].toString()) : BigInteger.ZERO, // establecimiento_id
+                    fila[4] != null ? new BigInteger(fila[4].toString()) : BigInteger.ZERO, // establecimiento_codigo_area
+                    fila[5] != null ? (String) fila[5] : "", // establecimiento_nombre
+                    fila[6] != null ? new BigInteger(fila[6].toString()) : BigInteger.ZERO, // establecimiento_telefono
+                    fila[7] != null ? new BigInteger(fila[7].toString()) : BigInteger.ZERO, // establecimiento_dependencia_id
+                    fila[8] != null ? new BigInteger(fila[8].toString()) : BigInteger.ZERO, // establecimiento_direccion_id
+                    fila[9] != null ? new BigInteger(fila[9].toString()) : BigInteger.ZERO, // establecimiento_sostenedor_id
+                    fila[10] != null ? new BigInteger(fila[10].toString()) : BigInteger.ZERO, // curso_id
+                    fila[11] != null ? (String) fila[11] : "", // curso_nivel
+                    fila[12] != null ? (String) fila[12] : "", // curso_nombre
+                    fila[13] != null ? (String) fila[13] : "", // persona_run
+                    fila[17] != null ? (String) fila[17] : "", // persona_nombre
+                    fila[14] != null ? (String) fila[14] : "", // persona_apellido_paterno
+                    fila[15] != null ? (String) fila[15] : "", // persona_apellido_materno
+                    fila[16] != null ? (Date) fila[16] : new Date(), // persona_fecha_nacimiento
+                    fila[18] != null ? (String) fila[18] : "", // persona_numero_telefonico
+                    fila[19] != null ? (String) fila[19] : "", // persona_numero_celular
+                    fila[20] != null ? (Character) fila[20] : 'I' // persona_sexo,
             );
 
             listaDocente.add(infoDocenteResponse);
@@ -86,8 +88,7 @@ public class DocenteService {
                                                                     Long curso_id, Long docente_id) {
         return personaRepository.findDocenteByEstablecimientoCurso(
                 persona_run,
-                 establecimiento_id,
-                 curso_id,  docente_id);
+                establecimiento_id,
+                curso_id,  docente_id);
     }
-
 }

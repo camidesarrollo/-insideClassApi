@@ -92,6 +92,8 @@ public class EmailSenderService {
                 content = templateEngine.process("Asistencia.html", context);
             }else if(tipoCorreo == 5){
                 content = templateEngine.process("Cuenta.html", context);
+            }else if(tipoCorreo == 6){
+                content = templateEngine.process("CodigoVerificacion.html", context);
             }
 
 

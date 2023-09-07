@@ -83,27 +83,10 @@ public class WebSecurityConfig implements WebSocketMessageBrokerConfigurer { // 
             .antMatchers("/api/asistencia/**").permitAll()
             .antMatchers("/api/docente_asignatura_curso_establecimiento/**").permitAll()
             .antMatchers("/api/mensaje/**").permitAll()
-
-
-            /*    .antMatchers("/api/anotaciones/**").permitAll()
-               .antMatchers("/api/chat/**").permitAll()
-               .antMatchers("/api/apoderado/**").permitAll()
-               .antMatchers("/api/establecimiento/**").permitAll()
-               .antMatchers("/api/predicciones/**").permitAll()
-               .antMatchers("/api/comunicaciones/**").permitAll()
-               .antMatchers("/api/notas/**").permitAll()
-               .antMatchers("/api/docente/**").permitAll()
-               .antMatchers("/api/usuario/**").permitAll()
-               .antMatchers("/api/alumno/**").permitAll()
-               .antMatchers("/api/matricula/**").permitAll()
-               .antMatchers("/api/asistencia/**").permitAll()
-               .antMatchers("/api/curso/**").permitAll()
-               .antMatchers("/api/asignatura/**").permitAll()
-               .antMatchers("/api/conversations/**").permitAll()
-               .antMatchers("/api/persona/**").permitAll()
-           .antMatchers("/api/test/**").permitAll()*/
+            .antMatchers("/api/ws/**").permitAll()
+            .antMatchers("/ws/**").permitAll()
         .anyRequest().authenticated();
-    
+
     http.authenticationProvider(authenticationProvider());
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

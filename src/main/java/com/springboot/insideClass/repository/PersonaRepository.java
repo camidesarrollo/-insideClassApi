@@ -85,7 +85,6 @@ public interface PersonaRepository extends JpaRepository<PersonaEntity, String> 
             "(e.establecimiento_id = :establ_id  or :establ_id = -1 ) and \n" +
             "(c.curso_id = :curso_id  or :curso_id = -1)", nativeQuery = true)
     List<Object> findApoderadosByEstablecimientoCursoMensaje(@Param("apoderado_persona_run") String apoderado_persona_run, @Param("matricula_vigencia") Boolean matricula_vigencia, @Param("establ_id") Long establ_id, @Param("curso_id") Long curso_id);
-
     @Query(value = "Select distinct p.* from t_docente_asignatura_curso_establecimiento dace\n" +
             "inner join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_id\n" +
             "inner join t_docente d on da.docente_asignatura_docente_id = d.docente_id\n" +
@@ -99,5 +98,6 @@ public interface PersonaRepository extends JpaRepository<PersonaEntity, String> 
     List<PersonaEntity> findDocenteByEstablecimientoCurso(@Param("persona_run") String persona_run,
                                                           @Param("establecimiento_id") Long establecimiento_id,
                                                           @Param("curso_id") Long curso_id, @Param("docente_id") Long docente_id);
+
 
 }

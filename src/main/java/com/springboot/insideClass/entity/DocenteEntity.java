@@ -14,11 +14,14 @@ public class DocenteEntity {
     @JoinColumn(name = "docente_persona_run", nullable = false, unique = true)
     PersonaEntity persona;
 
+    Boolean vigencia;
+
     public DocenteEntity() {
     }
 
-    public DocenteEntity(PersonaEntity persona) {
+    public DocenteEntity(PersonaEntity persona, Boolean vigencia) {
         this.persona = persona;
+        this.vigencia = vigencia;
     }
 
     public Long getDocente_id() {
@@ -35,5 +38,13 @@ public class DocenteEntity {
 
     public void setPersona(PersonaEntity persona) {
         this.persona = persona;
+    }
+
+    public Boolean getVigencia() {
+        return vigencia;
+    }
+
+    public void setVigencia(Boolean vigencia) {
+        this.vigencia = vigencia;
     }
 }

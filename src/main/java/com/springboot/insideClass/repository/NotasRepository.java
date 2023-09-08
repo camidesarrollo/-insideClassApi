@@ -45,7 +45,7 @@ public interface NotasRepository extends JpaRepository<NotasEntity, Long> {
             "                    AND (n.notas_matricula_id = :anotaciones_matricula_id OR :anotaciones_matricula_id = -1) \n" +
             "                    AND (pd.persona_run = :docente_run OR :docente_run = '-1')\n" +
             "                    AND (asi.asignatura_id = :asignatura_id OR :asignatura_id = -1)\n" +
-            "                    AND (c.curso_id = :curso_id OR :curso_id = -1)", nativeQuery = true)
+            "                    AND (c.curso_id = :curso_id OR :curso_id = -1) order by n.notas_fecha desc", nativeQuery = true)
     List<Object> findByFilters(
             @Param("matricula_vigencia") boolean matricula_vigencia,
             @Param("establecimiento_id") Long establecimiento_id,

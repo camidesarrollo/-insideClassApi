@@ -59,6 +59,21 @@ public class MatriculaController {
         return ResponseEntity.ok(datos);
     }
 
+    @PostMapping("/alumno/Get")
+    public ResponseEntity<?> obtenerDatosMatriculaPorAlumnoFiltros(@Valid @RequestBody BuscarDatosMatriculaRequest buscarDatosMatriculaRequest) {
+
+        List<DatosMatriculaResponse> datos = matriculaService.obtenerDatosMatricula(buscarDatosMatriculaRequest.isMatricula_vigencia(),
+                buscarDatosMatriculaRequest.getCurso_agno(), buscarDatosMatriculaRequest.getApoderado_id(), buscarDatosMatriculaRequest.getApoderado_persona_run(), buscarDatosMatriculaRequest.getAlumno_id(), buscarDatosMatriculaRequest.getAlumno_persona_run(), buscarDatosMatriculaRequest.getEstablecimiento_id(), buscarDatosMatriculaRequest.getCurso_id());
+
+        MatriculaEntity matricula = null;
+
+        if(datos.size() > 0){
+            matricula = matriculaService.obtenerMatriculaPorId(datos.get(0).getMatricula_id().longValue()).get();
+        }
+
+        return ResponseEntity.ok(matricula);
+    }
+
     @PostMapping("/Create")
     public ResponseEntity<?> agregarMatricula(@Valid @RequestBody CrearMatriculaRequest matriculaRequest) {
         // Validar existencia del alumno

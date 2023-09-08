@@ -221,7 +221,7 @@ public class AuthController {
     RecoveryCodeEntity recoveryCodeEntity = recoveryCodeService.obtenerCodigoVerificacionFiltros(-1L,"-1",codigoVerificacionRequest.getCodigoVerificacion(), buscarUsuariosPorFiltroUserName.get(0).getId());
 
     if(recoveryCodeEntity == null){
-      return ResponseEntity.badRequest().body("Error");
+      return ResponseEntity.ok().body(new MessageResponse("No se ha podido verificar el codigo, por favor vuelva a intentarlo"));
     }
 
     if (recoveryCodeEntity.getExpirationDateTime().before(new Date())) {

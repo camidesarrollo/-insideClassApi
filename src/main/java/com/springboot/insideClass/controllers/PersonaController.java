@@ -2,10 +2,13 @@ package com.springboot.insideClass.controllers;
 
 import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.PersonaEntity;
+import com.springboot.insideClass.entity.UsuarioEntity;
 import com.springboot.insideClass.payload.request.Persona.BuscarPersonaRequest;
 import com.springboot.insideClass.payload.request.Persona.CrearPersonaRequest;
 import com.springboot.insideClass.payload.response.MessageResponse;
+import com.springboot.insideClass.service.PerfilService;
 import com.springboot.insideClass.service.PersonaService;
+import com.springboot.insideClass.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +25,12 @@ public class PersonaController {
 
     @Autowired
     private PersonaService personaService;
+
+    @Autowired
+    private UsuarioService usuarioService;
+    @Autowired
+    private PerfilService perfilService;
+
 
     @Autowired
     Metodos metodos;
@@ -99,6 +108,10 @@ public class PersonaController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró editar la información requerida!"));
         } */
 
+        if(usuarioService.buscarUsuariosPorFiltro(-1L, persona.getPersona_correo(), "-1", "-1", -1L, "-1", 1L).size() > 0){
+            return ResponseEntity.badRequest().body(new MessageResponse("Ya existe el correo ingresado para un usuario, por favor ingrese otro"));
+        }
+
         PersonaEntity personaEntity = new PersonaEntity();
 
         // Verificar y asignar valores solo si no están vacíos
@@ -121,11 +134,21 @@ public class PersonaController {
         if (apellidoMaterno != null && !apellidoMaterno.isEmpty()) {
             personaEntity.setPersona_apellido_materno(apellidoMaterno);
         }
-
+        System.out.println(persona.getPersona_correo());
         personaEntity.setPersona_run(persona.getPersona_run());
         personaEntity.setPersona_sexo(persona.getPersona_sexo());
         personaEntity.setPersona_numero_telefonico(persona.getPersona_numero_telefonico());
         personaEntity.setPersona_numero_celular(persona.getPersona_numero_celular());
+
+        if(persona.getTipoUsuario() == 1){
+            List<UsuarioEntity> usuario2 = usuarioService.buscarUsuariosPorFiltro(-1L, persona.getPersona_correo(), "-1", "-1", -1L, "-1", 1L);
+
+            if(usuario2.size() == 0){
+                UsuarioEntity usuario3 = usuarioService.buscarUsuariosPorFiltro(-1L, "-1", "-1", "-1", 2L,persona.getPersona_run() , 1L).get(0);
+                usuario3.setEmail(persona.getPersona_correo());
+                usuarioService.guardarUsuario(usuario3);
+            }
+        }
 
         personaService.guardarPersona(personaEntity);
         return ResponseEntity.ok().body(new MessageResponse("Se ha modificado la persona con éxito"));

@@ -21,6 +21,10 @@ public class CrearPersonaRequest {
 
     String persona_numero_celular;
 
+    String persona_correo;
+
+    int tipoUsuario;
+
     public String getPersona_run() {
         return persona_run;
     }
@@ -85,5 +89,19 @@ public class CrearPersonaRequest {
         this.persona_numero_celular = persona_numero_celular;
     }
 
+    public String getPersona_correo() {
+        return persona_correo;
+    }
 
+    public void setPersona_correo(String persona_correo) {
+        this.persona_correo = persona_correo;
+    }
+
+    public int getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(int tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 }

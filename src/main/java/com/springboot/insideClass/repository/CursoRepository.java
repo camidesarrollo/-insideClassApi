@@ -11,8 +11,19 @@ import java.util.List;
 @Repository
 public interface CursoRepository extends JpaRepository<CursoEntity, Long> {
 
-    @Query(value = "select * from t_curso c where (c.comuna_id = :comuna_id or :comuna_id = -1) and (c.curso_nombre = :curso_nombre or :curso_nombre is null) and (c.curso_nivel = :curso_nivel or :curso_nivel is null) ", nativeQuery = true)
-    List<CursoEntity> findByFilters(@Param("comuna_id") Long curso_id, @Param("curso_nombre") String curso_nombre, @Param("curso_nivel") String curso_nivel);
+    @Query(value = "SELECT *\n" +
+            "FROM     t_docente_asignatura_curso_establecimiento dace INNER JOIN\n" +
+            "                  t_docente_asignatura da ON dace.dace_docente_asignatura_id = da.docente_asignatura_id INNER JOIN\n" +
+            "                  t_asignatura asi ON da.docente_asignatura_id_asignatura_id = asi.asignatura_id INNER JOIN\n" +
+            "                  t_curso_establecimiento ce ON dace.dace_curso_establecimiento_id = ce.curso_establecimiento_id INNER JOIN\n" +
+            "                  t_curso c ON ce.curso_establecimiento_curso_id = c.curso_id INNER JOIN\n" +
+            "                  t_docente d ON da.docente_asignatura_docente_id = d.docente_id\n" +
+            "\t\t\t\t  where (c.curso_id = :curso_id or :curso_id = -1) and (c.curso_nombre = :curso_nombre or :curso_nombre = '-1') and (c.curso_nivel = :curso_nivel or :curso_nivel = '-1')\n" +
+            "\t\t\t\t  and ('-1' = :docente_persona_run or d.docente_persona_run = :docente_persona_run)", nativeQuery = true)
+    List<CursoEntity> findByFiltersJoin(@Param("curso_id") Long curso_id, @Param("curso_nombre") String curso_nombre, @Param("curso_nivel") String curso_nivel, @Param("docente_persona_run") String docente_persona_run);
+
+    @Query(value = "select * from t_curso c where (c.curso_id = :curso_id or :curso_id = -1) and (c.curso_nombre = :curso_nombre or :curso_nombre is null) and (c.curso_nivel = :curso_nivel or :curso_nivel is null)", nativeQuery = true)
+    List<CursoEntity> findByFilters(@Param("curso_id") Long curso_id, @Param("curso_nombre") String curso_nombre, @Param("curso_nivel") String curso_nivel);
 
     @Query(value = "Select  distinct c.* from t_curso c inner join t_curso_establecimiento ce on c.curso_id = ce.curso_establecimiento_curso_id\n" +
             "inner join t_docente_asignatura_curso_establecimiento dace on ce.curso_establecimiento_id = dace.dace_curso_establecimiento_id\n" +

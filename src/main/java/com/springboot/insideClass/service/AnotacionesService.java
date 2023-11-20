@@ -46,7 +46,7 @@ public class AnotacionesService {
                                                                            Long anotaciones_matricula_id,
                                                                            String docente_run,
                                                                            Long asignatura_id,
-                                                                           Long curso_id) {
+                                                                           Long curso_id, Long anotaciones_id) {
 
         List<DatosAlumnoAnotacionResponse> listaAlumnoAnotacion = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class AnotacionesService {
          anotaciones_matricula_id,
          docente_run,
          asignatura_id,
-         curso_id);
+         curso_id, anotaciones_id);
 
         for (Object item : listaObjetosNativos) {
             Object[] fila = (Object[]) item;

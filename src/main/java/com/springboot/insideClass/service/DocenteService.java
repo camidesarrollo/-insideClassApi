@@ -43,7 +43,7 @@ public class DocenteService {
         docenteRepository.deleteById(id);
     }
 
-    public List<InfoDocenteResponse> infoDocente(long establecimiento_id, String run, long curso,  boolean vigencia ) {
+    public List<InfoDocenteResponse> infoDocente(String run,  long curso, long establecimiento_id,  boolean vigencia ) {
         List<InfoDocenteResponse> listaDocente = new ArrayList<>();
 
         List<Object> listaObjetosNativos = docenteRepository.infoDocente(run, curso, establecimiento_id, vigencia);

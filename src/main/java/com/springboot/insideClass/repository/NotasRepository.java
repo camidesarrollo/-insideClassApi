@@ -26,17 +26,19 @@ public interface NotasRepository extends JpaRepository<NotasEntity, Long> {
             "                    pd.persona_numero_celular as docente_numero_celular,\n" +
             "                    pd.persona_numero_telefonico as docente_numero_telefonico,\n" +
             "                    pd.persona_sexo as docente_numero_sexo, asi.*, c.*  \n" +
-            "\t\t\t\n" +
-            "\t\t\tfrom  t_dace_notas n inner join t_matricula m on m.matricula_id = n.notas_matricula_id\n" +
-            "                    inner join t_docente_asignatura_curso_establecimiento dace on n.notas_dace_id = dace.dace_id\n" +
-            "                  inner join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_docente_id\n" +
-            "                    inner join t_asignatura asi on da.docente_asignatura_id_asignatura_id = asi.asignatura_id\n" +
-            "                   inner join t_curso_establecimiento ce on dace.dace_curso_establecimiento_id = ce.curso_establecimiento_id\n" +
-            "                    inner join t_curso c on ce.curso_establecimiento_curso_id = c.curso_id\n" +
-            "                    inner join t_docente d on da.docente_asignatura_docente_id = d.docente_id\n" +
-            "                   inner join t_alumno al on m.matricula_alumno_id = al.alumno_id\n" +
-            "                    inner join t_persona pd on pd.persona_run = d.docente_persona_run\n" +
-            "                   inner join t_persona pa on pa.persona_run = al.alumno_persona_run\n" +
+            "FROM t_matricula m left join t_dace_notas n on m.matricula_id = n.notas_matricula_id \n" +
+            "\t\t\t  left join t_curso_establecimiento ce on m.matricula_curso_establecimiento_id = ce.curso_establecimiento_id\n" +
+            "\t\t\t \n" +
+            "\t\t\t  left join t_docente_asignatura_curso_establecimiento dace on ce.curso_establecimiento_id = dace.dace_curso_establecimiento_id \n" +
+            "\t\t\t  \n" +
+            "                  left join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_docente_id\n" +
+            "                    left join t_asignatura asi on da.docente_asignatura_id_asignatura_id = asi.asignatura_id\n" +
+            "                   \n" +
+            "                    left join t_curso c on ce.curso_establecimiento_curso_id = c.curso_id\n" +
+            "                    left join t_docente d on da.docente_asignatura_docente_id = d.docente_id\n" +
+            "                   left join t_alumno al on m.matricula_alumno_id = al.alumno_id\n" +
+            "                    left join t_persona pd on pd.persona_run = d.docente_persona_run\n" +
+            "                   left join t_persona pa on pa.persona_run = al.alumno_persona_run" +
             "                    WHERE\n" +
             "                   (m.matricula_vigencia = :matricula_vigencia OR :matricula_vigencia = -1)\n" +
             "                    AND (ce.curso_establecimiento_establecimiento_id = :establecimiento_id OR :establecimiento_id = -1) \n" +

@@ -10,6 +10,7 @@ public class BuscarAnotacionesRequest {
     String docente_run;
     Long asignatura_id;
     Long curso_id;
+    Long anotaciones_id;
 
     public boolean isMatricula_vigencia() {
         return matricula_vigencia;
@@ -73,5 +74,13 @@ public class BuscarAnotacionesRequest {
 
     public void setCurso_id(Long curso_id) {
         this.curso_id = curso_id;
+    }
+
+    public Long getAnotaciones_id() {
+        return anotaciones_id;
+    }
+
+    public void setAnotaciones_id(Long anotaciones_id) {
+        this.anotaciones_id = anotaciones_id;
     }
 }

@@ -134,6 +134,10 @@ public class DocenteController {
         CrearPersonaRequest personaRequest = docente.getCrearUsuarioRequest().getCrearPersonaRequest();
         CrearUsuarioRequest usuarioRequest = docente.getCrearUsuarioRequest();
 
+        if(usuarioService.buscarUsuariosPorFiltro(-1L, usuarioRequest.getEmail(), "-1", "-1", -1L, "-1", 1L).size() > 0){
+            return ResponseEntity.badRequest().body(new MessageResponse("Ya existe el correo ingresado para un usuario, por favor ingrese otro"));
+        }
+
         // Validar datos de persona
         if (!CrearPersonaRequestValidator.isValid(personaRequest)) {
             return ResponseEntity.badRequest().body(new MessageResponse("Datos de persona no válidos"));
@@ -303,7 +307,12 @@ public class DocenteController {
 
     @PostMapping("/Traer")
     public ResponseEntity<List<InfoDocenteResponse>> traer(@Valid @RequestBody TraerDocenteRequest traerDocenteRequest) {
-        List<InfoDocenteResponse> docentes = docenteService.infoDocente(traerDocenteRequest.getEstablecimiento(),  traerDocenteRequest.getDocente_run(), traerDocenteRequest.getCurso(), traerDocenteRequest.getVigencia());
+        List<InfoDocenteResponse> docentes = docenteService.infoDocente(
+                traerDocenteRequest.getDocente_run(),
+                traerDocenteRequest.getCurso(),
+                traerDocenteRequest.getEstablecimiento(),
+                traerDocenteRequest.getVigencia()
+        );
         return ResponseEntity.ok(docentes);
     }
 

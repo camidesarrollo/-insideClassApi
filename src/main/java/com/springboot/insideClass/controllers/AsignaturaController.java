@@ -73,21 +73,6 @@ public class AsignaturaController {
     }
     @PostMapping("/obtenerAsignaturaPorDocenteEstablcimiento")
     public ResponseEntity<?>  obtenerAsignaturaPorDocenteEstablcimiento(@Valid @RequestBody BuscarAsignaturaCursoDocenteEstablecimientoRequest buscarAsignaturaDocenteEstablecimientoRequest) {
-
-System.out.println(" Select asi.* from  t_docente_asignatura_curso_establecimiento dace\n" +
-        " inner join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_docente_id\n" +
-        "inner join t_asignatura asi on da.docente_asignatura_id_asignatura_id = asi.asignatura_id\n" +
-        "inner join t_curso_establecimiento ce on dace.dace_curso_establecimiento_id = ce.curso_establecimiento_id\n" +
-        "inner join t_curso c on ce.curso_establecimiento_curso_id = c.curso_id\n" +
-        "inner join t_docente d on da.docente_asignatura_docente_id = d.docente_id\n" +
-        "where (asi.asignatura_id = "+buscarAsignaturaDocenteEstablecimientoRequest.getAsignatura_id()+" or "+buscarAsignaturaDocenteEstablecimientoRequest.getAsignatura_id()+" = -1) " +
-        "and (asi.asignatura_nombre = "+buscarAsignaturaDocenteEstablecimientoRequest.getAsignatura_nombre()+" or "+buscarAsignaturaDocenteEstablecimientoRequest.getAsignatura_nombre()+" = '-1')\n" +
-        "and (c.curso_id = "+buscarAsignaturaDocenteEstablecimientoRequest.getCurso_id()+" or "+buscarAsignaturaDocenteEstablecimientoRequest.getCurso_id()+" = -1) " +
-        "and (c.curso_nombre = "+buscarAsignaturaDocenteEstablecimientoRequest.getCurso_nombre()+" or "+buscarAsignaturaDocenteEstablecimientoRequest.getCurso_nombre()+" = '-1')\n" +
-        "and (d.docente_id = "+buscarAsignaturaDocenteEstablecimientoRequest.getDocente_id()+" or "+buscarAsignaturaDocenteEstablecimientoRequest.getDocente_id()+"= -1) and (d.docente_persona_run =  "+buscarAsignaturaDocenteEstablecimientoRequest.getDocente_persona_run()+" " +
-        "or :docente_persona_run = "+buscarAsignaturaDocenteEstablecimientoRequest.getDocente_persona_run()+")\n" +
-        "and (ce.curso_establecimiento_establecimiento_id = "+buscarAsignaturaDocenteEstablecimientoRequest.getCurso_establecimiento_establecimiento_id()+" or :curso_establecimiento_establecimiento_id =  "+buscarAsignaturaDocenteEstablecimientoRequest.getCurso_establecimiento_establecimiento_id()+")\n" +
-        "and dace.fecha_fin >= GETDATE() \n");
         return ResponseEntity.ok(asignaturaService.findByAsignaturaCursoDocente(buscarAsignaturaDocenteEstablecimientoRequest.getAsignatura_id(),
                 buscarAsignaturaDocenteEstablecimientoRequest.getAsignatura_nombre()
         , buscarAsignaturaDocenteEstablecimientoRequest.getCurso_id(),

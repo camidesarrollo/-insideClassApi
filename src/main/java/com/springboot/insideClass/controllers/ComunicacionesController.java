@@ -111,16 +111,21 @@ public class ComunicacionesController {
             }
 
             List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntity =
-                    docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(-1L,
-                            cursoEstablecimientoService.obtenerCursosEstablecimientoPorFiltro(
-                                    -1L, comunicacionRequest.getCurso(), comunicacionRequest.getEstablecimiento(), true
-                            ).get(0).getEstablecimiento().getEstablecimiento_id(),
-                            docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(comunicacionRequest.getAsignatura(), "-1", -1L, comunicacionRequest.getRun_docente()).get(0).getDocente_asignatura_id(), "-1", "-1",
-                            metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR), metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR));
-
-            if (docente_asignatura_curso_establecimientoEntity.size() == 0) {
-                return ResponseEntity.badRequest().body(new MessageResponse("No se ha encontrado docente en el establecimiento, ni curso"));
-            }
+                    docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(
+                            -1L,
+                            comunicacionRequest.getRun_docente(),
+                            comunicacionRequest.getAsignatura(),
+                            "-1",
+                            comunicacionRequest.getCurso(),
+                            "-1",
+                            "-1",
+                            comunicacionRequest.getEstablecimiento(),
+                            "-1",
+                            "-1",
+                            "-1",
+                            metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).getWeekYear(),
+                            metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).getWeekYear()
+                    );
 
 
             List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(true, metodos.convertirFechaACalendar(comunicacionRequest.getFecha()).get(Calendar.YEAR), -1L, "-1", -1L, "-1", comunicacionRequest.getEstablecimiento(), comunicacionRequest.getCurso());

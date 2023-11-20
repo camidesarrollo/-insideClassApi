@@ -42,7 +42,9 @@ public class CursoController {
     public ResponseEntity<?> obtenerCursoPorId(@Valid @RequestBody Long id) {
         return ResponseEntity.ok(cursoService.obtenerCursoPorId(id));
     }
-    @PostMapping("/obtenerCursoPorFiltro")
+
+
+    @PostMapping("/obtenerCursoPor")
     public ResponseEntity<?>  obtenerCursoPorFiltro(@Valid @RequestBody BuscarCursoRequest buscarCursoRequest) {
         return ResponseEntity.ok(cursoService.obtenerCursoPorFiltro(buscarCursoRequest.getCurso_id(), buscarCursoRequest.getCurso_nombre(), buscarCursoRequest.getCurso_nivel()));
     }

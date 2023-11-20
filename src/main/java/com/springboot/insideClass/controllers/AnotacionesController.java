@@ -45,16 +45,17 @@ public class AnotacionesController {
 
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerAnotaciones(@Valid @RequestBody BuscarAnotacionesRequest request) {
-        try{
-            return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
-                    .body(anotacionesService.obtenerDatosAlumnoAnotacion(
-                            request.isMatricula_vigencia(), request.getEstablecimiento_id(),request.getApoderado_id(),request.getAlumno_run(), request.getAnotaciones_matricula_id(),
-                            request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id())
-                    );
+
+        System.out.println(request.getAnotaciones_id());
+        /*try{
+
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-
+        }*/
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                .body(anotacionesService.obtenerDatosAlumnoAnotacion(
+                        request.isMatricula_vigencia(), request.getEstablecimiento_id(),request.getApoderado_id(),request.getAlumno_run(), request.getAnotaciones_matricula_id(),
+                        request.getDocente_run(), request.getAsignatura_id(), request.getCurso_id(), request.getAnotaciones_id()));
 
     }
 

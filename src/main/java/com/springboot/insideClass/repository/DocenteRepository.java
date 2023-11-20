@@ -15,7 +15,7 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity, Long> {
             "AND (:docente_persona_run = '-1' OR d.docente_persona_run = :docente_persona_run)", nativeQuery = true)
     List<DocenteEntity> findByFilters(@Param("docente_id") Long docente_id, @Param("docente_persona_run") String docente_persona_run);
 
-    @Query(value = "SELECT d.*, e.*, c.*, p.*\n" +
+    @Query(value = "SELECT distinct d.*, e.*, c.*, p.*\n" +
             "FROM  t_docente d inner join t_docente_asignatura da on d.docente_id = da.docente_asignatura_docente_id\n" +
             "inner join t_asignatura a on da.docente_asignatura_id_asignatura_id = a.asignatura_id\n" +
             "inner join t_docente_asignatura_curso_establecimiento dace on da.docente_asignatura_id =  dace.dace_docente_asignatura_id \n" +

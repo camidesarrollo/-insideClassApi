@@ -35,14 +35,14 @@ public interface AnotacionesRepository extends JpaRepository<AnotacionesEntity, 
             "        inner join t_persona pd on pd.persona_run = d.docente_persona_run\n" +
             "        inner join t_persona pa on pa.persona_run = al.alumno_persona_run\n" +
             "        WHERE\n" +
-            "        (m.matricula_vigencia = :matricula_vigencia OR :matricula_vigencia = -1) -- Obtener las matrículas vigentes\n" +
-            "        AND (ce.curso_establecimiento_establecimiento_id = :establecimiento_id OR :establecimiento_id = -1) -- Establecimiento específico\n" +
+            "        (m.matricula_vigencia = :matricula_vigencia OR :matricula_vigencia = -1) \n" +
+            "        AND (ce.curso_establecimiento_establecimiento_id = :establecimiento_id OR :establecimiento_id = -1) \n" +
             "        AND (m.matricula_apoderado_id = :apoderado_id OR :apoderado_id = -1) -- Apoderado específico\n" +
             "        AND (pa.persona_run = :alumno_run OR :alumno_run = '-1') -- Run del alumno específico\n" +
-            "        AND (a.anotaciones_matricula_id = :anotaciones_matricula_id OR :anotaciones_matricula_id = -1) -- ID de la matrícula específica\n" +
+            "        AND (a.anotaciones_matricula_id = :anotaciones_matricula_id OR :anotaciones_matricula_id = -1) \n" +
             "        AND (pd.persona_run = :docente_run OR :docente_run = '-1') -- Run del docente específico\n" +
             "        AND (asi.asignatura_id = :asignatura_id OR :asignatura_id = -1) -- ID de la asignatura específica\n" +
-            "        AND (c.curso_id = :curso_id OR :curso_id = -1) -- ID del curso específico", nativeQuery = true)
+            "        AND (c.curso_id = :curso_id OR :curso_id = -1)  AND (a.anotaciones_id = :anotaciones_id OR :anotaciones_id = -1)", nativeQuery = true)
     List<Object> findByFilters(
             @Param("matricula_vigencia") boolean matricula_vigencia,
             @Param("establecimiento_id") Long establecimiento_id,
@@ -51,7 +51,8 @@ public interface AnotacionesRepository extends JpaRepository<AnotacionesEntity, 
             @Param("anotaciones_matricula_id") Long anotaciones_matricula_id,
             @Param("docente_run") String docente_run,
             @Param("asignatura_id") Long asignatura_id,
-            @Param("curso_id") Long curso_id
+            @Param("curso_id") Long curso_id,
+            @Param("anotaciones_id") Long anotaciones_id
     );
 
 }

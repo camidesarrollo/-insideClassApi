@@ -62,119 +62,127 @@ public class NotasController {
     }
 
     @PostMapping("/Create")
-    public ResponseEntity<?> ingresarAnotacion(@Valid @RequestBody CrearNotasRequest notasRequest) {
+    public ResponseEntity<?> ingresarAnotacion(@Valid @RequestBody List<CrearNotasRequest> notasRequestList) {
 
         try{
+            for (CrearNotasRequest notasRequest : notasRequestList) {
+                // Validar campos obligatorios
 
-            // Validar campos obligatorios
-            if (StringUtils.isEmpty(notasRequest.getRun())
-                    || notasRequest.getEstablecimiento() == null
-                    || notasRequest.getAsignatura() == null
-                    || notasRequest.getNotas_fecha() == null
-                    || StringUtils.isEmpty(notasRequest.getRun_docente())) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+                if (StringUtils.isEmpty(notasRequest.getRun())
+                        || notasRequest.getEstablecimiento() == null
+                        || notasRequest.getAsignatura() == null
+                        || notasRequest.getNotas_fecha() == null
+                        || StringUtils.isEmpty(notasRequest.getRun_docente())) {
+                    return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+                }
+
+                LocalDate localDate = notasRequest.getNotas_fecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                int year = localDate.getYear();
+
+                List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(
+                        true,
+                        year,
+                        -1L,
+                        "-1",
+                        -1L, notasRequest.getRun(), notasRequest.getEstablecimiento(),-1L);
+
+                if(matricula == null){
+                    return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
+                }
+
+
+                Optional<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.obtenerCursosEstablecimientoPorId(matricula.get(0).getMatricula_curso_establecimiento_id().longValue());
+
+                if(cursoEstablecimiento == null){
+                    return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
+                }
+
+                List<DocenteAsignaturaEntity> asignaturaDocente = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
+                        notasRequest.getAsignatura(),
+                        "-1",
+                        -1L,
+                        notasRequest.getRun_docente()
+                );
+
+
+                if(asignaturaDocente == null){
+                    return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota1!"));
+                }
+
+                List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntities =
+                        docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(
+                                -1L,
+                                cursoEstablecimiento.get().getCurso_establecimiento_id(),
+                                asignaturaDocente.get(0).getDocente_asignatura_id(),
+                                "-1", "-1",
+                                metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR),
+                                metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR));
+
+
+                if(docente_asignatura_curso_establecimientoEntities.size() == 0){
+                    return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota2!"));
+                }
+
+                // Crear nueva entidad NotasEntity
+                NotasEntity notas = new NotasEntity();
+                notas.setMatricula(matriculaService.obtenerMatriculaPorId(matricula.get(0).getMatricula_id().longValue()).get());
+                notas.setDocente_asignatura_curso_establecimiento(docente_asignatura_curso_establecimientoEntities.get(0));
+                notas.setNotas_fecha(notasRequest.getNotas_fecha());
+                notas.setNotas_posicion(notasRequest.getNotas_posicion());
+                notas.setNota(notasRequest.getNota());
+                notas.setNotas_fecha(notasRequest.getNotas_fecha());
+                notas.setPromedio(notasRequest.getPromedio());
+
+                // Guardar la nueva entidad en la base de datos
+                notasService.guardarNota(notas);
+
+                /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
+
             }
 
-            LocalDate localDate = notasRequest.getNotas_fecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            int year = localDate.getYear();
-
-            List<DatosMatriculaResponse> matricula = matriculaService.obtenerDatosMatricula(
-                    true,
-                    year,
-                    -1L,
-                    "-1",
-                    -1L, notasRequest.getRun(), notasRequest.getEstablecimiento(),-1L);
-
-            if(matricula == null){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
-            }
-
-
-            Optional<CursoEstablecimientoEntity> cursoEstablecimiento = cursoEstablecimientoService.obtenerCursosEstablecimientoPorId(matricula.get(0).getMatricula_curso_establecimiento_id().longValue());
-
-            if(cursoEstablecimiento == null){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
-            }
-
-            List<DocenteAsignaturaEntity> asignaturaDocente = docenteAsignaturaService.obtenerDocenteAsignaturaPorFiltro(
-                    notasRequest.getAsignatura(),
-                    "-1",
-                    -1L,
-                    notasRequest.getRun_docente()
-            );
-
-
-            if(asignaturaDocente == null){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
-            }
-
-            List<Docente_Asignatura_Curso_EstablecimientoEntity> docente_asignatura_curso_establecimientoEntities =
-                    docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltro(
-                            -1L,
-                            cursoEstablecimiento.get().getEstablecimiento().getEstablecimiento_id(),
-                            asignaturaDocente.get(0).getDocente_asignatura_id(),
-                            "-1", "-1",
-                            metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR),
-                            metodos.convertirFechaACalendar(new Date()).get(Calendar.YEAR));
-
-
-            if(docente_asignatura_curso_establecimientoEntities.size() == 0){
-                return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar anotacion!"));
-            }
-
-            // Crear nueva entidad NotasEntity
-            NotasEntity notas = new NotasEntity();
-            notas.setMatricula(matriculaService.obtenerMatriculaPorId(matricula.get(0).getMatricula_id().longValue()).get());
-            notas.setDocente_asignatura_curso_establecimiento(docente_asignatura_curso_establecimientoEntities.get(0));
-            notas.setNotas_fecha(notasRequest.getNotas_fecha());
-            notas.setNotas_posicion(notasRequest.getNotas_posicion());
-            notas.setNota(notasRequest.getNota());
-            notas.setNotas_fecha(notasRequest.getNotas_fecha());
-
-            // Guardar la nueva entidad en la base de datos
-            notasService.guardarNota(notas);
-
-            /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
-            return ResponseEntity.ok(new MessageResponse("Se ha registrado anotacion con exito!"));
-
-
+            return ResponseEntity.ok(new MessageResponse("Se ha registrado nota con exito!"));
         }catch (Exception e){
 
-            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar asistencia!"));
+            return  ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado registrar nota3!"));
 
         }
     }
 
     @PutMapping("/Update")
-    public ResponseEntity<?> editarNota(@Valid @RequestBody EditarNotasRequest notasRequest) {
+    public ResponseEntity<?> editarNota(@Valid @RequestBody List<EditarNotasRequest> notasRequestList) {
 
         try {
-            // Validar campos obligatorios
-            if (notasRequest.getDace_notas_id() == null
-                    || notasRequest.getNotas_fecha() == null) {
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+
+            for (EditarNotasRequest notasRequest : notasRequestList) {
+                // Validar campos obligatorios
+                if (notasRequest.getDace_notas_id() == null
+                        || notasRequest.getNotas_fecha() == null) {
+                    return ResponseEntity.badRequest().body(new MessageResponse("Error: Todos los campos son obligatorios"));
+                }
+
+                // Editar nueva entidad AnotacionesEntity
+                NotasEntity opanota = notasService.obtenerNotaPorId(notasRequest.getDace_notas_id());
+
+                if(opanota == null){
+                    return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado la nota"));
+                }
+
+                opanota.setNotas_fecha(notasRequest.getNotas_fecha());
+                opanota.setNotas_posicion(notasRequest.getNotas_posicion());
+                opanota.setNota(notasRequest.getNota());
+                opanota.setNotas_fecha(notasRequest.getNotas_fecha());
+                opanota.setPromedio(notasRequest.getPromedio());
+
+                // Guardar la nueva entidad en la base de datos
+                notasService.guardarNota(opanota);
+
+
             }
-
-            // Editar nueva entidad AnotacionesEntity
-            NotasEntity opanota = notasService.obtenerNotaPorId(notasRequest.getDace_notas_id());
-
-            if(opanota == null){
-                return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado la anotación"));
-            }
-
-            opanota.setNotas_fecha(notasRequest.getNotas_fecha());
-            opanota.setNotas_posicion(notasRequest.getNotas_posicion());
-            opanota.setNota(notasRequest.getNota());
-            opanota.setNotas_fecha(notasRequest.getNotas_fecha());
-            opanota.setPromedio(notasRequest.getPromedio());
-
-            // Guardar la nueva entidad en la base de datos
-            notasService.guardarNota(opanota);
 
             return ResponseEntity.ok(new MessageResponse("Se ha editado nota con exito!"));
 
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar anotacion!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha logrado editar nota!"));
         }
     }
 

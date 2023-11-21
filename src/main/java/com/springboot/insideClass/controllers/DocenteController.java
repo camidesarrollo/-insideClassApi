@@ -102,8 +102,7 @@ public class DocenteController {
         if(docente == null){
             return ResponseEntity.badRequest().body(new MessageResponse("No se ha encontrado el docente"));
         }
-
-        if(docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(
+        List<Docente_Asignatura_Curso_EstablecimientoEntity> dace = docente_asignatura_curso_establecimientoService.obtenerDocenteAsignaturaCursoEstablecimientoPorFiltroIndexado(
                 -1L,
                 docente.getPersona().getPersona_run(),
                 -1L,
@@ -117,11 +116,26 @@ public class DocenteController {
                 "-1",
                 -1,
                 -1
-        ).size() == 0){
+        );
+
+        if(dace.size() == 0){
             docenteService.eliminarDocente(docente.getDocente_id());
+
         }else{
             docente.setVigencia(false);
             docenteService.guardarDocente(docente);
+            // Crear un objeto Calendar y establecer la fecha de fechaFin
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+
+            // Restar un día a la fecha de fechaFin
+            calendar.add(Calendar.DAY_OF_MONTH, -1);
+            for (Docente_Asignatura_Curso_EstablecimientoEntity item : dace) {
+                item.setFecha_fin(calendar.getTime());
+                docente_asignatura_curso_establecimientoService.guardarDocenteAsignaturaCursoEstablecimiento(item);
+            }
+
+
         }
 
 
@@ -134,9 +148,9 @@ public class DocenteController {
         CrearPersonaRequest personaRequest = docente.getCrearUsuarioRequest().getCrearPersonaRequest();
         CrearUsuarioRequest usuarioRequest = docente.getCrearUsuarioRequest();
 
-        if(usuarioService.buscarUsuariosPorFiltro(-1L, usuarioRequest.getEmail(), "-1", "-1", -1L, "-1", 1L).size() > 0){
+        /*if(usuarioService.buscarUsuariosPorFiltro(-1L, usuarioRequest.getEmail(), "-1", "-1", 2L, "-1", 1L).size() > 0){
             return ResponseEntity.badRequest().body(new MessageResponse("Ya existe el correo ingresado para un usuario, por favor ingrese otro"));
-        }
+        }*/
 
         // Validar datos de persona
         if (!CrearPersonaRequestValidator.isValid(personaRequest)) {
@@ -183,16 +197,18 @@ public class DocenteController {
         // Verificar si el usuario existe para ese perfil
         List<UsuarioEntity> usuarios = usuarioService.buscarUsuariosPorFiltro(
                 -1L,
-                "-1",
+                usuarioRequest.getEmail(),
                 "-1",
                "-1",
                 usuarioRequest.getPerfil_id(),
                 personaRequest.getPersona_run(),
-                usuarioRequest.getVigencia_id()
+                -1L
         );
 
+
+
         // Si no existe, insertar en usuario
-        if (usuarios.isEmpty() || usuarios.size() == 0) {
+        if ((usuarios.isEmpty() || usuarios.size() == 0)) {
            /* UsuarioEntity nuevoUsuario = new UsuarioEntity(
                     usuarioRequest.getUsername(),
                     usuarioRequest.getEmail(),
@@ -206,6 +222,12 @@ public class DocenteController {
             usuarioService.createUsuario(perfil.get(0),vigenciaService.obtenerVigenciaPorId(1L).get(),personaService.obtenerPersonasPorFiltro(
                     personaRequest.getPersona_run(), "-1", "-1", "-1", "-1", "-1", "-1", "-1"
             ).get(0), usuarioRequest.getEmail());
+        }else{
+            if(usuarios.get(0).getVigencia().getVigencia_id() == 2L){
+                usuarios.get(0).setEmail(usuarioRequest.getEmail());
+                usuarios.get(0).setVigencia(vigenciaService.buscarVigenciasPorFiltro(1L, "-1").get(0));
+                usuarioService.guardarUsuario(usuarios.get(0));
+            }
         }
 
         // Validar datos de docente
@@ -222,6 +244,11 @@ public class DocenteController {
                     personaRequest.getPersona_run(), "-1", "-1", "-1", "-1", "-1", "-1", "-1"
             ).get(0), true);
             docenteService.guardarDocente(nuevoDocente);
+        }else{
+            if(docenteEntities.get(0).getVigencia() == false){
+                docenteEntities.get(0).setVigencia(true);
+                docenteService.guardarDocente(docenteEntities.get(0));
+            }
         }
 
         docenteEntities = docenteService.obtenerDocentesPorFiltro(-1L, personaRequest.getPersona_run());

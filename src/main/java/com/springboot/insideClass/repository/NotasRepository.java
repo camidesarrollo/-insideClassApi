@@ -10,44 +10,53 @@ import java.util.List;
 
 @Repository
 public interface NotasRepository extends JpaRepository<NotasEntity, Long> {
-    @Query(value = "Select distinct pa.persona_run as alumno_run,\n" +
-            "                    pa.persona_apellido_materno as alumno_apellido_materno,\n" +
-            "                    pa.persona_apellido_paterno as alumno_apellido_paterno,\n" +
-            "                    pa.persona_fecha_nacimiento as alumno_fecha_nacimiento,\n" +
-            "                    pa.persona_nombre as alumno_nombre,\n" +
-            "                    pa.persona_numero_celular as alumno_numero_celular,\n" +
-            "                    pa.persona_numero_telefonico as alumno_numero_telefonico,\n" +
-            "                    pa.persona_sexo as alumno_numero_sexo,\n" +
-            "                    n.*, pd.persona_run as docente_run,\n" +
-            "                    pd.persona_apellido_materno as docente_apellido_materno,\n" +
-            "                    pd.persona_apellido_paterno as docente_apellido_paterno,\n" +
-            "                    pd.persona_fecha_nacimiento as docente_fecha_nacimiento,\n" +
-            "                   pd.persona_nombre as docente_nombre,\n" +
-            "                    pd.persona_numero_celular as docente_numero_celular,\n" +
-            "                    pd.persona_numero_telefonico as docente_numero_telefonico,\n" +
-            "                    pd.persona_sexo as docente_numero_sexo, asi.*, c.*  \n" +
-            "FROM t_matricula m left join t_dace_notas n on m.matricula_id = n.notas_matricula_id \n" +
-            "\t\t\t  left join t_curso_establecimiento ce on m.matricula_curso_establecimiento_id = ce.curso_establecimiento_id\n" +
-            "\t\t\t \n" +
-            "\t\t\t  left join t_docente_asignatura_curso_establecimiento dace on ce.curso_establecimiento_id = dace.dace_curso_establecimiento_id \n" +
-            "\t\t\t  \n" +
-            "                  left join t_docente_asignatura da on dace.dace_docente_asignatura_id = da.docente_asignatura_docente_id\n" +
-            "                    left join t_asignatura asi on da.docente_asignatura_id_asignatura_id = asi.asignatura_id\n" +
-            "                   \n" +
-            "                    left join t_curso c on ce.curso_establecimiento_curso_id = c.curso_id\n" +
-            "                    left join t_docente d on da.docente_asignatura_docente_id = d.docente_id\n" +
-            "                   left join t_alumno al on m.matricula_alumno_id = al.alumno_id\n" +
-            "                    left join t_persona pd on pd.persona_run = d.docente_persona_run\n" +
-            "                   left join t_persona pa on pa.persona_run = al.alumno_persona_run" +
-            "                    WHERE\n" +
-            "                   (m.matricula_vigencia = :matricula_vigencia OR :matricula_vigencia = -1)\n" +
-            "                    AND (ce.curso_establecimiento_establecimiento_id = :establecimiento_id OR :establecimiento_id = -1) \n" +
-            "                    AND (m.matricula_apoderado_id = :apoderado_id OR :apoderado_id = -1)\n" +
-            "                    AND (pa.persona_run = :alumno_run OR :alumno_run = '-1')\n" +
-            "                    AND (n.notas_matricula_id = :anotaciones_matricula_id OR :anotaciones_matricula_id = -1) \n" +
-            "                    AND (pd.persona_run = :docente_run OR :docente_run = '-1')\n" +
-            "                    AND (asi.asignatura_id = :asignatura_id OR :asignatura_id = -1)\n" +
-            "                    AND (c.curso_id = :curso_id OR :curso_id = -1) order by n.notas_fecha desc", nativeQuery = true)
+    @Query(value = "SELECT DISTINCT \n" +
+            "    pa.persona_run AS alumno_run,\n" +
+            "    pa.persona_apellido_materno AS alumno_apellido_materno,\n" +
+            "    pa.persona_apellido_paterno AS alumno_apellido_paterno,\n" +
+            "    pa.persona_fecha_nacimiento AS alumno_fecha_nacimiento,\n" +
+            "    pa.persona_nombre AS alumno_nombre,\n" +
+            "    pa.persona_numero_celular AS alumno_numero_celular,\n" +
+            "    pa.persona_numero_telefonico AS alumno_numero_telefonico,\n" +
+            "    pa.persona_sexo AS alumno_numero_sexo,\n" +
+            "    n.*, \n" +
+            "    t1.persona_run AS docente_run,\n" +
+            "    t1.persona_apellido_materno AS docente_apellido_materno,\n" +
+            "    t1.persona_apellido_paterno AS docente_apellido_paterno,\n" +
+            "    t1.persona_fecha_nacimiento AS docente_fecha_nacimiento,\n" +
+            "    t1.persona_nombre AS docente_nombre,\n" +
+            "    t1.persona_numero_celular AS docente_numero_celular,\n" +
+            "    t1.persona_numero_telefonico AS docente_numero_telefonico,\n" +
+            "    t1.persona_sexo AS docente_numero_sexo, \n" +
+            "    t1.asignatura_id, \n" +
+            "    t1.asignatura_nombre, \n" +
+            "    c.*\n" +
+            "FROM t_matricula m \n" +
+            "LEFT JOIN t_dace_notas n ON m.matricula_id = n.notas_matricula_id \n" +
+            "LEFT JOIN t_curso_establecimiento ce ON m.matricula_curso_establecimiento_id = ce.curso_establecimiento_id\n" +
+            "LEFT JOIN t_curso c ON ce.curso_establecimiento_curso_id = c.curso_id\n" +
+            "LEFT JOIN t_alumno al ON m.matricula_alumno_id = al.alumno_id\n" +
+            "LEFT JOIN t_persona pa ON pa.persona_run = al.alumno_persona_run    \n" +
+            "LEFT JOIN (\n" +
+            "    SELECT DISTINCT pd.*, ce.*, asi.*\n" +
+            "    FROM t_docente d \n" +
+            "    LEFT JOIN t_persona pd ON pd.persona_run = d.docente_persona_run\n" +
+            "    LEFT JOIN t_docente_asignatura da ON da.docente_asignatura_docente_id = d.docente_id\n" +
+            "    LEFT JOIN t_asignatura asi ON da.docente_asignatura_id_asignatura_id = asi.asignatura_id\n" +
+            "    LEFT JOIN t_docente_asignatura_curso_establecimiento dace ON da.docente_asignatura_id = dace.dace_docente_asignatura_id\n" +
+            "    LEFT JOIN t_curso_establecimiento ce ON ce.curso_establecimiento_id = dace.dace_curso_establecimiento_id\n" +
+            "    WHERE \n" +
+            "        (ce.curso_establecimiento_establecimiento_id = :establecimiento_id OR :establecimiento_id = -1) \n" +
+            "        AND (pd.persona_run = :docente_run OR :docente_run = '-1') \n" +
+            "        AND (asi.asignatura_id = :asignatura_id OR :asignatura_id = -1)\n" +
+            ") t1 ON t1.curso_establecimiento_curso_id = ce.curso_establecimiento_curso_id\n" +
+            "WHERE \n" +
+            "    (m.matricula_vigencia = :matricula_vigencia OR :matricula_vigencia = -1)\n" +
+            "    AND (m.matricula_apoderado_id = :apoderado_id OR :apoderado_id = -1)\n" +
+            "    AND (pa.persona_run = :alumno_run OR :alumno_run = '-1')\n" +
+            "    AND (n.notas_matricula_id = :anotaciones_matricula_id OR :anotaciones_matricula_id = -1) \n" +
+            "    AND (c.curso_id = :curso_id OR :curso_id = -1) \n" +
+            "ORDER BY n.notas_fecha DESC\n", nativeQuery = true)
     List<Object> findByFilters(
             @Param("matricula_vigencia") boolean matricula_vigencia,
             @Param("establecimiento_id") Long establecimiento_id,

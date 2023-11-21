@@ -1,5 +1,6 @@
 package com.springboot.insideClass.controllers;
 
+import com.springboot.insideClass.componet.Correo;
 import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.AnotacionesEntity;
 import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
@@ -42,6 +43,8 @@ public class AnotacionesController {
     @Autowired private Docente_Asignatura_Curso_EstablecimientoService docente_asignatura_curso_establecimientoService;
 
     @Autowired private Metodos metodos;
+
+    @Autowired private Correo correo;
 
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerAnotaciones(@Valid @RequestBody BuscarAnotacionesRequest request) {
@@ -134,7 +137,7 @@ public class AnotacionesController {
         // Guardar la nueva entidad en la base de datos
         anotacionesService.guardarAnotacion(anotacion);
 
-        /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
+         correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.get(0).getAsignatura().getAsignatura_nombre(), matricula.get(0).getPersona_nombre(),  asignaturaDocente.get(0).getDocente().getPersona().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());
         return ResponseEntity.ok(new MessageResponse("Se ha registrado anotacion con exito!"));
 
         }catch (Exception e){

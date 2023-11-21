@@ -159,7 +159,7 @@ public class ComunicacionesController {
                 String fecha = localDate.format(formatter);
                 System.out.println(fecha);
 
-                //correo.enviarCorreoComunicacion(fecha, comunicacionRequest.getTipo(), comunicaciones.getComunicaciones_descripcion());
+                correo.enviarCorreoComunicacion(fecha, comunicacionRequest.getTipo(), comunicaciones.getComunicaciones_descripcion());
             }
 
 

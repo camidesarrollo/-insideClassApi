@@ -1,5 +1,6 @@
 package com.springboot.insideClass.controllers;
 
+import com.springboot.insideClass.componet.Correo;
 import com.springboot.insideClass.componet.Metodos;
 import com.springboot.insideClass.entity.CursoEstablecimientoEntity;
 import com.springboot.insideClass.entity.DocenteAsignaturaEntity;
@@ -41,6 +42,8 @@ public class NotasController {
     @Autowired private Docente_Asignatura_Curso_EstablecimientoService docente_asignatura_curso_establecimientoService;
 
     @Autowired private Metodos metodos;
+
+    @Autowired private Correo correo;
 
     @PostMapping("/Get")
     public ResponseEntity<?> obtenerNotas(@Valid @RequestBody BuscarNotasRequest request) {
@@ -136,7 +139,11 @@ public class NotasController {
                 // Guardar la nueva entidad en la base de datos
                 notasService.guardarNota(notas);
 
-                /* correo.enviarCorreoAnotacion(anotacionRequest.getFecha().toString(),asignaturaDocente.getAsignaturaEntity().getAsignatura_nombre(), matricula.getAlumnoEntity().getPersonaEntity().getPersona_nombre(),  asignaturaDocente.getDocenteCursoEntity().getDocenteEntity().getPersonaEntity().getPersona_nombre(), anotacionRequest.getDescripcion(),anotacionRequest.getGravedad());*/
+                 correo.enviarCorreoNota(matricula.get(0).getPersona_nombre(),
+                         asignaturaDocente.get(0).getAsignatura().getAsignatura_nombre(),
+                         String.valueOf(notasRequest.getNota()),
+                         asignaturaDocente.get(0).getDocente().getPersona().getPersona_nombre(),
+                         new Date().toString());
 
             }
 

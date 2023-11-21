@@ -4,6 +4,7 @@ import com.springboot.insideClass.entity.*;
 import com.springboot.insideClass.payload.request.Matricula.BuscarDatosMatriculaRequest;
 import com.springboot.insideClass.payload.request.Matricula.CrearMatriculaRequest;
 import com.springboot.insideClass.payload.request.Matricula.EditarMatriculaRequest;
+import com.springboot.insideClass.payload.request.Matricula.EliminarMatricula;
 import com.springboot.insideClass.payload.response.Matricula.DatosMatriculaResponse;
 import com.springboot.insideClass.payload.response.MessageResponse;
 import com.springboot.insideClass.service.*;
@@ -236,10 +237,10 @@ public class MatriculaController {
         }
     }
 
-    @DeleteMapping("/Delete/{id}")
-    public ResponseEntity<?> deleteMatricula(@PathVariable("id") Long id) {
+    @DeleteMapping("/Delete")
+    public ResponseEntity<?> deleteMatricula(@Valid @RequestBody EliminarMatricula matriculaRequest) {
 
-        Optional<MatriculaEntity> matricula = matriculaService.obtenerMatriculaPorId(id);
+        Optional<MatriculaEntity> matricula = matriculaService.obtenerMatriculaPorId(matriculaRequest.getId());
 
         if(matricula == null){
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se ha encontrado matricula en el sistema!"));

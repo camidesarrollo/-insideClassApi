@@ -108,7 +108,10 @@ public class PersonaController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: No se logró editar la información requerida!"));
         } */
 
-        if(usuarioService.buscarUsuariosPorFiltro(-1L, persona.getPersona_correo(), "-1", "-1", -1L, "-1", 1L).size() > 0){
+
+
+        //Que otro usuario diferente tenga el rut ingresado, si es el mismo no deberia mandar el mensaje
+        if(usuarioService.buscarUsuariosPorFiltro(-1L, persona.getPersona_correo(), "-1", "-1", -1L, persona.getPersona_run(), 1L).size() == 0 && usuarioService.buscarUsuariosPorFiltro(-1L, persona.getPersona_correo(), "-1", "-1", -1L, "-1", 1L).size() > 0){
             return ResponseEntity.badRequest().body(new MessageResponse("Ya existe el correo ingresado para un usuario, por favor ingrese otro"));
         }
 
